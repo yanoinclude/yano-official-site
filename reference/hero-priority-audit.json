@@ -1,0 +1,206 @@
+[
+  {
+    "size": "1440",
+    "objectPosition": "50% 49%",
+    "overflowers": [],
+    "scrollWidth": 1425,
+    "subcopy": {
+      "bottom": 772,
+      "height": 74,
+      "left": 313,
+      "right": 538,
+      "top": 698,
+      "width": 226
+    },
+    "subcopyFontSize": "18px",
+    "title": {
+      "bottom": 679,
+      "height": 513,
+      "left": 316,
+      "right": 568,
+      "top": 166,
+      "width": 252
+    },
+    "titleColumns": [
+      {
+        "rect": {
+          "bottom": 679,
+          "height": 513,
+          "left": 461,
+          "right": 568,
+          "top": 166,
+          "width": 107
+        },
+        "text": "島の続きを、",
+        "writingMode": "vertical-rl"
+      },
+      {
+        "rect": {
+          "bottom": 679,
+          "height": 513,
+          "left": 316,
+          "right": 423,
+          "top": 166,
+          "width": 107
+        },
+        "text": "手入れする。",
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "titleFontSize": "79.2px",
+    "viewportWidth": 1425
+  },
+  {
+    "size": "768",
+    "objectPosition": "44% 50%",
+    "overflowers": [],
+    "scrollWidth": 753,
+    "subcopy": {
+      "bottom": 732,
+      "height": 66,
+      "left": 131,
+      "right": 332,
+      "top": 666,
+      "width": 201
+    },
+    "subcopyFontSize": "16px",
+    "title": {
+      "bottom": 650,
+      "height": 441,
+      "left": 134,
+      "right": 348,
+      "top": 210,
+      "width": 213
+    },
+    "titleColumns": [
+      {
+        "rect": {
+          "bottom": 650,
+          "height": 441,
+          "left": 255,
+          "right": 348,
+          "top": 210,
+          "width": 92
+        },
+        "text": "島の続きを、",
+        "writingMode": "vertical-rl"
+      },
+      {
+        "rect": {
+          "bottom": 650,
+          "height": 441,
+          "left": 134,
+          "right": 227,
+          "top": 210,
+          "width": 92
+        },
+        "text": "手入れする。",
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "titleFontSize": "68px",
+    "viewportWidth": 753
+  },
+  {
+    "size": "390",
+    "objectPosition": "37% 50%",
+    "overflowers": [],
+    "scrollWidth": 375,
+    "subcopy": {
+      "bottom": 518,
+      "height": 53,
+      "left": 63,
+      "right": 234,
+      "top": 465,
+      "width": 171
+    },
+    "subcopyFontSize": "14.43px",
+    "title": {
+      "bottom": 443,
+      "height": 262,
+      "left": 64,
+      "right": 191,
+      "top": 181,
+      "width": 126
+    },
+    "titleColumns": [
+      {
+        "rect": {
+          "bottom": 443,
+          "height": 262,
+          "left": 136,
+          "right": 191,
+          "top": 181,
+          "width": 55
+        },
+        "text": "島の続きを、",
+        "writingMode": "vertical-rl"
+      },
+      {
+        "rect": {
+          "bottom": 443,
+          "height": 262,
+          "left": 64,
+          "right": 119,
+          "top": 181,
+          "width": 55
+        },
+        "text": "手入れする。",
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "titleFontSize": "40.8px",
+    "viewportWidth": 375
+  },
+  {
+    "size": "375",
+    "objectPosition": "37% 50%",
+    "overflowers": [],
+    "scrollWidth": 360,
+    "subcopy": {
+      "bottom": 506,
+      "height": 51,
+      "left": 58,
+      "right": 223,
+      "top": 454,
+      "width": 165
+    },
+    "subcopyFontSize": "13.875px",
+    "title": {
+      "bottom": 430,
+      "height": 260,
+      "left": 60,
+      "right": 185,
+      "top": 170,
+      "width": 126
+    },
+    "titleColumns": [
+      {
+        "rect": {
+          "bottom": 430,
+          "height": 260,
+          "left": 130,
+          "right": 185,
+          "top": 170,
+          "width": 55
+        },
+        "text": "島の続きを、",
+        "writingMode": "vertical-rl"
+      },
+      {
+        "rect": {
+          "bottom": 430,
+          "height": 260,
+          "left": 60,
+          "right": 114,
+          "top": 170,
+          "width": 55
+        },
+        "text": "手入れする。",
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "titleFontSize": "40.5px",
+    "viewportWidth": 360
+  }
+]

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="週末移住レモン果汁を想定した仮ビジュアル">
+  <rect width="1400" height="900" fill="#F4F0E9"/>
+  <rect x="0" y="560" width="1400" height="340" fill="#D8D2C5" opacity=".7"/>
+  <circle cx="1040" cy="260" r="110" fill="#D7C43B"/>
+  <path d="M575 175h250v85c0 52-34 75-34 128v330c0 62-41 94-91 94s-91-32-91-94V388c0-53-34-76-34-128Z" fill="#FBFAF6" stroke="#5A4635" stroke-width="20"/>
+  <rect x="610" y="420" width="180" height="190" fill="#D7C43B" opacity=".78"/>
+  <path d="M635 500h130" stroke="#5A4635" stroke-width="8" opacity=".65"/>
+  <path d="M355 675c190-48 390-58 600-30 160 21 280 10 445-46v301H0V724c120-4 238-20 355-49Z" fill="#F2EFE7"/>
+</svg>

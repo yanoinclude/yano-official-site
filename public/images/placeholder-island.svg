@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-label="中島の海と空を想定した仮ビジュアル">
+  <rect width="1200" height="1500" fill="#F2EFE7"/>
+  <rect width="1200" height="820" fill="#9BAEB2"/>
+  <circle cx="930" cy="280" r="130" fill="#D7C43B" opacity=".8"/>
+  <path d="M0 760c210-72 410-86 608-42 218 48 390 42 592-48v830H0Z" fill="#6F8991"/>
+  <path d="M0 930c280-58 480-46 700 35 172 64 330 66 500 4v531H0Z" fill="#F2EFE7" opacity=".92"/>
+  <path d="M95 690c95-88 190-132 285-132 88 0 171 38 248 114Z" fill="#5A4635" opacity=".65"/>
+</svg>

@@ -1,0 +1,182 @@
+{
+  "desktop1440": {
+    "h1LetterSpacing": "8.6px",
+    "h1LineHeight": "58.48px",
+    "h1Size": "34.4px",
+    "h1WritingMode": "vertical-rl",
+    "headerHeight": 80,
+    "height": 950,
+    "heroHeight": 880,
+    "heroImage": {
+      "height": 800,
+      "ratio": 1.98,
+      "width": 1580
+    },
+    "heroImageTop": 80,
+    "mainSections": [
+      {
+        "cls": "hero",
+        "h": 880,
+        "top": 80
+      },
+      {
+        "cls": "story-section story-section--philosophy",
+        "h": 1264,
+        "top": 960
+      },
+      {
+        "cls": "scenery-section",
+        "h": 1083,
+        "top": 2224
+      },
+      {
+        "cls": "about-section",
+        "h": 800,
+        "top": 3307
+      },
+      {
+        "cls": "concept-section",
+        "h": 934,
+        "top": 4107
+      },
+      {
+        "cls": "activities-section",
+        "h": 2750,
+        "top": 5041
+      },
+      {
+        "cls": "product-section",
+        "h": 1100,
+        "top": 7791
+      },
+      {
+        "cls": "journal-section",
+        "h": 1234,
+        "top": 8891
+      }
+    ],
+    "scrollHeight": 10404,
+    "scrollWidth": 1425,
+    "width": 1440
+  },
+  "tablet768": {
+    "h1LetterSpacing": "8.6px",
+    "h1LineHeight": "58.48px",
+    "h1Size": "34.4px",
+    "h1WritingMode": "vertical-rl",
+    "headerHeight": 80,
+    "height": 1024,
+    "heroHeight": 880,
+    "heroImage": {
+      "height": 800,
+      "ratio": 1.14,
+      "width": 908
+    },
+    "heroImageTop": 80,
+    "mainSections": [
+      {
+        "cls": "hero",
+        "h": 880,
+        "top": 80
+      },
+      {
+        "cls": "story-section story-section--philosophy",
+        "h": 1546,
+        "top": 960
+      },
+      {
+        "cls": "scenery-section",
+        "h": 1003,
+        "top": 2506
+      },
+      {
+        "cls": "about-section",
+        "h": 1006,
+        "top": 3509
+      },
+      {
+        "cls": "concept-section",
+        "h": 931,
+        "top": 4515
+      },
+      {
+        "cls": "activities-section",
+        "h": 3721,
+        "top": 5446
+      },
+      {
+        "cls": "product-section",
+        "h": 1326,
+        "top": 9167
+      },
+      {
+        "cls": "journal-section",
+        "h": 1278,
+        "top": 10493
+      }
+    ],
+    "scrollHeight": 12356,
+    "scrollWidth": 753,
+    "width": 768
+  },
+  "mobile390": {
+    "h1LetterSpacing": "7px",
+    "h1LineHeight": "47.6px",
+    "h1Size": "28px",
+    "h1WritingMode": "vertical-rl",
+    "headerHeight": 64,
+    "height": 844,
+    "heroHeight": 691,
+    "heroImage": {
+      "height": 675,
+      "ratio": 0.52,
+      "width": 354
+    },
+    "heroImageTop": 64,
+    "mainSections": [
+      {
+        "cls": "hero",
+        "h": 691,
+        "top": 64
+      },
+      {
+        "cls": "story-section story-section--philosophy",
+        "h": 1550,
+        "top": 755
+      },
+      {
+        "cls": "scenery-section",
+        "h": 1222,
+        "top": 2305
+      },
+      {
+        "cls": "about-section",
+        "h": 910,
+        "top": 3527
+      },
+      {
+        "cls": "concept-section",
+        "h": 800,
+        "top": 4437
+      },
+      {
+        "cls": "activities-section",
+        "h": 3067,
+        "top": 5237
+      },
+      {
+        "cls": "product-section",
+        "h": 1145,
+        "top": 8304
+      },
+      {
+        "cls": "journal-section",
+        "h": 966,
+        "top": 9449
+      }
+    ],
+    "scrollHeight": 11090,
+    "scrollWidth": 375,
+    "width": 390
+  }
+}

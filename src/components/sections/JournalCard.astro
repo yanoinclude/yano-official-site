@@ -1,0 +1,18 @@
+---
+type Props = {
+  title: string;
+  date: string;
+  excerpt: string;
+  href: string;
+};
+
+const { title, date, excerpt, href } = Astro.props;
+---
+
+<article class="journal-card">
+  <p class="journal-card__date">{date}</p>
+  <h3>
+    <a href={href}>{title}</a>
+  </h3>
+  <p>{excerpt}</p>
+</article>

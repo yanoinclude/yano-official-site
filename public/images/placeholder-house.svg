@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="古民家を想定した仮ビジュアル">
+  <rect width="1400" height="900" fill="#D8D2C5"/>
+  <path d="M170 445 700 145l530 300v355H170Z" fill="#F2EFE7"/>
+  <path d="M110 450 700 95l590 355-50 82-540-323-540 323Z" fill="#5A4635"/>
+  <rect x="560" y="520" width="280" height="280" fill="#5A4635" opacity=".85"/>
+  <rect x="250" y="520" width="210" height="170" fill="#6F8991" opacity=".75"/>
+  <rect x="940" y="520" width="210" height="170" fill="#6F8991" opacity=".75"/>
+  <path d="M0 780c290-70 540-68 770 6 226 72 426 70 630-8v122H0Z" fill="#F2EFE7"/>
+</svg>

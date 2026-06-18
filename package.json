@@ -1,0 +1,33 @@
+{
+  "name": "yano-official-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "typecheck": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "astro": "6.4.6",
+    "rollup": "npm:@rollup/wasm-node@4.61.1",
+    "tailwindcss": "3.4.19"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "@eslint/js": "10.0.1",
+    "autoprefixer": "10.5.0",
+    "eslint": "10.5.0",
+    "eslint-plugin-astro": "1.7.0",
+    "postcss": "8.5.15",
+    "prettier": "3.8.4",
+    "prettier-plugin-astro": "0.14.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.61.0",
+    "wrangler": "4.100.0"
+  }
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "size": "1440",
+    "framePaddingLeft": "30.24px",
+    "framePaddingTop": "30.24px",
+    "header": {
+      "bottom": 94,
+      "height": 64,
+      "left": 30,
+      "right": 1395,
+      "top": 30,
+      "width": 1365
+    },
+    "hero": {
+      "bottom": 950,
+      "height": 836,
+      "left": 30,
+      "right": 1395,
+      "top": 114,
+      "width": 1365
+    },
+    "heroImage": {
+      "bottom": 930,
+      "height": 816,
+      "left": 30,
+      "right": 1395,
+      "top": 114,
+      "width": 1365
+    },
+    "innerWidth": 1440,
+    "overflowers": [],
+    "philosophyHeading": {
+      "bottom": 1810,
+      "height": 561,
+      "left": 1130,
+      "right": 1287,
+      "top": 1249,
+      "width": 157
+    },
+    "philosophyHeadingText": "この島に、|帰ってこられる風景を。",
+    "scrollWidth": 1425,
+    "viewportWidth": 1425
+  },
+  {
+    "size": "768",
+    "framePaddingLeft": "23.04px",
+    "framePaddingTop": "23.04px",
+    "header": {
+      "bottom": 85,
+      "height": 62,
+      "left": 23,
+      "right": 730,
+      "top": 23,
+      "width": 707
+    },
+    "hero": {
+      "bottom": 1013,
+      "height": 916,
+      "left": 23,
+      "right": 730,
+      "top": 97,
+      "width": 707
+    },
+    "heroImage": {
+      "bottom": 917,
+      "height": 820,
+      "left": 23,
+      "right": 730,
+      "top": 97,
+      "width": 707
+    },
+    "innerWidth": 768,
+    "overflowers": [],
+    "philosophyHeading": {
+      "bottom": 1660,
+      "height": 433,
+      "left": 564,
+      "right": 682,
+      "top": 1227,
+      "width": 118
+    },
+    "philosophyHeadingText": "この島に、|帰ってこられる風景を。",
+    "scrollWidth": 753,
+    "viewportWidth": 753
+  },
+  {
+    "size": "390",
+    "framePaddingLeft": "14px",
+    "framePaddingTop": "14px",
+    "header": {
+      "bottom": 72,
+      "height": 58,
+      "left": 14,
+      "right": 361,
+      "top": 14,
+      "width": 347
+    },
+    "hero": {
+      "bottom": 842,
+      "height": 758,
+      "left": 14,
+      "right": 361,
+      "top": 84,
+      "width": 347
+    },
+    "heroImage": {
+      "bottom": 830,
+      "height": 746,
+      "left": 14,
+      "right": 361,
+      "top": 84,
+      "width": 347
+    },
+    "innerWidth": 390,
+    "overflowers": [],
+    "philosophyHeading": {
+      "bottom": 1413,
+      "height": 383,
+      "left": 235,
+      "right": 337,
+      "top": 1030,
+      "width": 102
+    },
+    "philosophyHeadingText": "この島に、|帰ってこられる風景を。",
+    "scrollWidth": 375,
+    "viewportWidth": 375
+  }
+]

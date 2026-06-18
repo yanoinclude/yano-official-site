@@ -1,0 +1,263 @@
+[
+  {
+    "size": "1440",
+    "body": {
+      "bottom": 1770,
+      "height": 560,
+      "left": 133,
+      "right": 814,
+      "top": 1210,
+      "width": 682
+    },
+    "columns": [
+      {
+        "fontSize": "18.432px",
+        "height": 480,
+        "left": 695,
+        "right": 771,
+        "top": 1290,
+        "width": 76,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "18.432px",
+        "height": 480,
+        "left": 565,
+        "right": 641,
+        "top": 1290,
+        "width": 76,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "18.432px",
+        "height": 480,
+        "left": 435,
+        "right": 510,
+        "top": 1290,
+        "width": 76,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "18.432px",
+        "height": 480,
+        "left": 304,
+        "right": 380,
+        "top": 1290,
+        "width": 76,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "18.432px",
+        "height": 480,
+        "left": 174,
+        "right": 250,
+        "top": 1290,
+        "width": 76,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "heading": {
+      "bottom": 1544,
+      "height": 357,
+      "left": 1047,
+      "right": 1293,
+      "top": 1187,
+      "width": 246
+    },
+    "heroTitle": {
+      "bottom": 732,
+      "height": 619,
+      "left": 677,
+      "right": 748,
+      "top": 113,
+      "width": 71
+    },
+    "heroTitleText": "島の続きを、手入れする。",
+    "innerWidth": 1440,
+    "overflowers": [],
+    "scrollWidth": 1425,
+    "section": {
+      "bottom": 1992,
+      "height": 1080,
+      "left": 0,
+      "right": 1425,
+      "top": 912,
+      "width": 1425
+    },
+    "viewportWidth": 1425
+  },
+  {
+    "size": "768",
+    "body": {
+      "bottom": 1752,
+      "height": 568,
+      "left": 32,
+      "right": 465,
+      "top": 1184,
+      "width": 433
+    },
+    "columns": [
+      {
+        "fontSize": "16px",
+        "height": 496,
+        "left": 404,
+        "right": 465,
+        "top": 1256,
+        "width": 61,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "16px",
+        "height": 496,
+        "left": 319,
+        "right": 379,
+        "top": 1256,
+        "width": 61,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "16px",
+        "height": 496,
+        "left": 233,
+        "right": 294,
+        "top": 1256,
+        "width": 61,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "16px",
+        "height": 496,
+        "left": 147,
+        "right": 208,
+        "top": 1256,
+        "width": 61,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "16px",
+        "height": 496,
+        "left": 92,
+        "right": 123,
+        "top": 1256,
+        "width": 30,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "heading": {
+      "bottom": 1442,
+      "height": 275,
+      "left": 537,
+      "right": 721,
+      "top": 1166,
+      "width": 184
+    },
+    "heroTitle": {
+      "bottom": 740,
+      "height": 599,
+      "left": 343,
+      "right": 410,
+      "top": 141,
+      "width": 67
+    },
+    "heroTitleText": "島の続きを、手入れする。",
+    "innerWidth": 768,
+    "overflowers": [],
+    "scrollWidth": 753,
+    "section": {
+      "bottom": 1920,
+      "height": 944,
+      "left": 0,
+      "right": 753,
+      "top": 976,
+      "width": 753
+    },
+    "viewportWidth": 753
+  },
+  {
+    "size": "390",
+    "body": {
+      "bottom": 1684,
+      "height": 712,
+      "left": 24,
+      "right": 366,
+      "top": 972,
+      "width": 342
+    },
+    "columns": [
+      {
+        "fontSize": "13.44px",
+        "height": 464,
+        "left": 345,
+        "right": 366,
+        "top": 1220,
+        "width": 21,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "13.44px",
+        "height": 464,
+        "left": 312,
+        "right": 333,
+        "top": 1220,
+        "width": 21,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "13.44px",
+        "height": 464,
+        "left": 258,
+        "right": 301,
+        "top": 1220,
+        "width": 42,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "13.44px",
+        "height": 464,
+        "left": 204,
+        "right": 247,
+        "top": 1220,
+        "width": 42,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "fontSize": "13.44px",
+        "height": 464,
+        "left": 171,
+        "right": 193,
+        "top": 1220,
+        "width": 21,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "heading": {
+      "bottom": 1224,
+      "height": 244,
+      "left": 207,
+      "right": 366,
+      "top": 980,
+      "width": 159
+    },
+    "heroTitle": {
+      "bottom": 522,
+      "height": 386,
+      "left": 166,
+      "right": 209,
+      "top": 136,
+      "width": 43
+    },
+    "heroTitleText": "島の続きを、手入れする。",
+    "innerWidth": 390,
+    "overflowers": [],
+    "scrollWidth": 375,
+    "section": {
+      "bottom": 1780,
+      "height": 976,
+      "left": 0,
+      "right": 375,
+      "top": 804,
+      "width": 375
+    },
+    "viewportWidth": 375
+  }
+]

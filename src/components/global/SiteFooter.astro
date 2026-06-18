@@ -1,0 +1,30 @@
+---
+import { footerNavigation } from "@/content/pages/navigation";
+import { siteConfig } from "@/content/pages/site";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div>
+      <p class="site-footer__copy">{siteConfig.mainCopy}</p>
+      <p>{siteConfig.activityCopy}</p>
+    </div>
+
+    <nav aria-label="フッターナビゲーション">
+      <ul>
+        {
+          footerNavigation.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="site-footer__contact">
+      <a href={`mailto:${siteConfig.contact.email}`}>お問い合わせ</a>
+      <small>&copy; {new Date().getFullYear()} {siteConfig.name}</small>
+    </div>
+  </div>
+</footer>

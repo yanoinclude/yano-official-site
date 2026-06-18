@@ -1,0 +1,234 @@
+[
+  {
+    "h1": {
+      "bottom": 760,
+      "fontSize": "64.8px",
+      "height": 499,
+      "left": 168,
+      "right": 512,
+      "top": 261,
+      "width": 344,
+      "writingMode": "horizontal-tb"
+    },
+    "overflowers": [],
+    "scrollWidth": 1425,
+    "spans": [
+      {
+        "bottom": 617,
+        "height": 356,
+        "left": 418,
+        "right": 512,
+        "text": "この島に、",
+        "top": 261,
+        "width": 94,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 760,
+        "height": 499,
+        "left": 293,
+        "right": 387,
+        "text": "帰ってこられる",
+        "top": 261,
+        "width": 94,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 546,
+        "height": 285,
+        "left": 168,
+        "right": 261,
+        "text": "風景を。",
+        "top": 261,
+        "width": 94,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "sub": {
+      "bottom": 712,
+      "fontSize": "15.84px",
+      "height": 208,
+      "left": 539,
+      "right": 572,
+      "top": 504,
+      "width": 34,
+      "writingMode": "vertical-rl"
+    },
+    "viewportWidth": 1425,
+    "width": 1440
+  },
+  {
+    "h1": {
+      "bottom": 623,
+      "fontSize": "40px",
+      "height": 308,
+      "left": 61,
+      "right": 274,
+      "top": 315,
+      "width": 212,
+      "writingMode": "horizontal-tb"
+    },
+    "overflowers": [],
+    "scrollWidth": 753,
+    "spans": [
+      {
+        "bottom": 535,
+        "height": 220,
+        "left": 216,
+        "right": 274,
+        "text": "この島に、",
+        "top": 315,
+        "width": 58,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 623,
+        "height": 308,
+        "left": 139,
+        "right": 197,
+        "text": "帰ってこられる",
+        "top": 315,
+        "width": 58,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 491,
+        "height": 176,
+        "left": 61,
+        "right": 119,
+        "text": "風景を。",
+        "top": 315,
+        "width": 58,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "sub": {
+      "bottom": 665,
+      "fontSize": "14px",
+      "height": 208,
+      "left": 301,
+      "right": 335,
+      "top": 457,
+      "width": 34,
+      "writingMode": "vertical-rl"
+    },
+    "viewportWidth": 753,
+    "width": 768
+  },
+  {
+    "h1": {
+      "bottom": 730,
+      "fontSize": "38.22px",
+      "height": 496,
+      "left": 30,
+      "right": 222,
+      "top": 234,
+      "width": 192,
+      "writingMode": "horizontal-tb"
+    },
+    "overflowers": [],
+    "scrollWidth": 375,
+    "spans": [
+      {
+        "bottom": 440,
+        "height": 206,
+        "left": 168,
+        "right": 222,
+        "text": "この島に、",
+        "top": 234,
+        "width": 54,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 523,
+        "height": 289,
+        "left": 99,
+        "right": 153,
+        "text": "帰ってこられる",
+        "top": 234,
+        "width": 54,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 399,
+        "height": 165,
+        "left": 30,
+        "right": 84,
+        "text": "風景を。",
+        "top": 234,
+        "width": 54,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "sub": {
+      "bottom": 678,
+      "fontSize": "13.26px",
+      "height": 176,
+      "left": 236,
+      "right": 257,
+      "top": 502,
+      "width": 21,
+      "writingMode": "vertical-rl"
+    },
+    "viewportWidth": 375,
+    "width": 390
+  },
+  {
+    "h1": {
+      "bottom": 730,
+      "fontSize": "36.75px",
+      "height": 496,
+      "left": 30,
+      "right": 214,
+      "top": 234,
+      "width": 184,
+      "writingMode": "horizontal-tb"
+    },
+    "overflowers": [],
+    "scrollWidth": 360,
+    "spans": [
+      {
+        "bottom": 432,
+        "height": 198,
+        "left": 162,
+        "right": 214,
+        "text": "この島に、",
+        "top": 234,
+        "width": 52,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 512,
+        "height": 278,
+        "left": 96,
+        "right": 148,
+        "text": "帰ってこられる",
+        "top": 234,
+        "width": 52,
+        "writingMode": "vertical-rl"
+      },
+      {
+        "bottom": 393,
+        "height": 159,
+        "left": 30,
+        "right": 82,
+        "text": "風景を。",
+        "top": 234,
+        "width": 52,
+        "writingMode": "vertical-rl"
+      }
+    ],
+    "sub": {
+      "bottom": 678,
+      "fontSize": "12.75px",
+      "height": 176,
+      "left": 229,
+      "right": 250,
+      "top": 502,
+      "width": 21,
+      "writingMode": "vertical-rl"
+    },
+    "viewportWidth": 360,
+    "width": 375
+  }
+]

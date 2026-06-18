@@ -1,0 +1,50 @@
+[
+  {
+    "bodyScrollWidth": 1425,
+    "hasHorizontalOverflow": false,
+    "headerHeight": 80,
+    "headerPosition": "relative",
+    "heroHeight": 880,
+    "overflowers": [],
+    "requestedWidth": 1440,
+    "scrollWidth": 1425,
+    "sectionCount": 11,
+    "viewportWidth": 1425
+  },
+  {
+    "bodyScrollWidth": 753,
+    "hasHorizontalOverflow": false,
+    "headerHeight": 80,
+    "headerPosition": "relative",
+    "heroHeight": 880,
+    "overflowers": [],
+    "requestedWidth": 768,
+    "scrollWidth": 753,
+    "sectionCount": 11,
+    "viewportWidth": 753
+  },
+  {
+    "bodyScrollWidth": 375,
+    "hasHorizontalOverflow": false,
+    "headerHeight": 64,
+    "headerPosition": "relative",
+    "heroHeight": 691,
+    "overflowers": [],
+    "requestedWidth": 390,
+    "scrollWidth": 375,
+    "sectionCount": 11,
+    "viewportWidth": 375
+  },
+  {
+    "bodyScrollWidth": 360,
+    "hasHorizontalOverflow": false,
+    "headerHeight": 64,
+    "headerPosition": "relative",
+    "heroHeight": 691,
+    "overflowers": [],
+    "requestedWidth": 375,
+    "scrollWidth": 360,
+    "sectionCount": 11,
+    "viewportWidth": 360
+  }
+]

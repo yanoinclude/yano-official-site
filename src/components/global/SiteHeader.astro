@@ -1,0 +1,65 @@
+---
+import { primaryNavigation } from "@/content/pages/navigation";
+import { siteConfig } from "@/content/pages/site";
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header" data-site-header>
+  <a class="site-logo" href="/" aria-label={`${siteConfig.name} トップページ`}>
+    {siteConfig.name}
+  </a>
+
+  <button
+    class="menu-button"
+    type="button"
+    aria-expanded="false"
+    aria-controls="site-navigation"
+    data-menu-button
+  >
+    <span class="menu-button__label">メニュー</span>
+    <span class="menu-button__line" aria-hidden="true"></span>
+  </button>
+
+  <nav
+    class="site-nav"
+    id="site-navigation"
+    aria-label="主要ナビゲーション"
+    data-site-nav
+  >
+    <ul>
+      {
+        primaryNavigation.map((item) => {
+          const isCurrent = item.href === currentPath;
+
+          return (
+            <li>
+              <a href={item.href} aria-current={isCurrent ? "page" : undefined}>
+                {item.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const header = document.querySelector("[data-site-header]");
+  const button = document.querySelector("[data-menu-button]");
+  const nav = document.querySelector("[data-site-nav]");
+
+  button?.addEventListener("click", () => {
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!isOpen));
+    header?.toggleAttribute("data-menu-open", !isOpen);
+  });
+
+  nav?.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      button?.setAttribute("aria-expanded", "false");
+      header?.removeAttribute("data-menu-open");
+    }
+  });
+</script>

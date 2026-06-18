@@ -1,0 +1,13 @@
+---
+type Props = {
+  href: string;
+  label?: string;
+  variant?: "primary" | "quiet";
+};
+
+const { href, label, variant = "primary" } = Astro.props;
+---
+
+<a class={`text-link text-link--${variant}`} href={href}>
+  <slot>{label}</slot>
+</a>

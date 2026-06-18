@@ -1,0 +1,22 @@
+:root {
+  --island-background: #f2efe7;
+  --island-surface: #ffffff;
+  --island-text: #333333;
+  --island-muted: #7b7b7b;
+  --island-wood: #5a4635;
+  --island-lemon: #d7c43b;
+  --island-sea: #6f8991;
+  --island-border: #d8d2c5;
+  --island-soft-line: #eaeaea;
+  --island-footer: #eee9e2;
+  --island-focus: #426f79;
+  --island-gutter: clamp(1rem, 4vw, 4rem);
+  --island-section: clamp(4.5rem, 9vw, 8rem);
+  --island-page: 72rem;
+  --island-readable: 42rem;
+  --island-radius: 0.375rem;
+  --font-island-heading: "Noto Serif JP", "Yu Mincho", "YuMincho", serif;
+  --font-island-body:
+    "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+  --font-island-accent: "Noto Sans", Arial, sans-serif;
+}

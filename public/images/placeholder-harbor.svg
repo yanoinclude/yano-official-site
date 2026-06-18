@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200" role="img" aria-label="港から船を見送る人の後ろ姿を想定した仮ビジュアル">
+  <rect width="1800" height="1200" fill="#6F8991"/>
+  <path d="M0 680c260-90 510-120 750-88 220 30 390 92 630 62 150-19 280-62 420-132v678H0Z" fill="#D8D2C5" opacity=".72"/>
+  <path d="M0 760c320-80 610-78 890 8 250 76 520 82 910-34v466H0Z" fill="#F2EFE7"/>
+  <path d="M0 735h1800" stroke="#F2EFE7" stroke-width="4" opacity=".45"/>
+  <circle cx="1420" cy="420" r="112" fill="#D7C43B" opacity=".7"/>
+  <path d="M775 790c0-72 56-130 125-130s125 58 125 130v224H775Z" fill="#22211E"/>
+  <circle cx="900" cy="610" r="66" fill="#22211E"/>
+  <path d="M0 0h1800v1200H0Z" fill="#22211E" opacity=".18"/>
+</svg>

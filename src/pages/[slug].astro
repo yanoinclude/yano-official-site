@@ -1,0 +1,47 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { subpages } from "@/content/pages/subpages";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return subpages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const isImageHero = "variant" in page && page.variant === "imageHero";
+---
+
+<BaseLayout title={page.title} description={page.description}>
+  {
+    isImageHero ? (
+      <article class="subpage-hero subpage-hero--image">
+        <figure aria-hidden="true">
+          <img src={page.image} alt="" />
+        </figure>
+        <div class="subpage-hero--image__content">
+          <p class="subpage-hero__label">{page.label}</p>
+          <h1>{page.title}</h1>
+          <p>{page.description}</p>
+          <TextLink href="/" variant="quiet">
+            トップへ戻る
+          </TextLink>
+        </div>
+      </article>
+    ) : (
+      <article class="subpage-hero">
+        <p class="subpage-hero__label">{page.label}</p>
+        <h1>{page.title}</h1>
+        <p>{page.description}</p>
+        <figure>
+          <img src={page.image} alt={page.imageAlt} />
+        </figure>
+        <TextLink href="/" variant="quiet">
+          トップへ戻る
+        </TextLink>
+      </article>
+    )
+  }
+</BaseLayout>

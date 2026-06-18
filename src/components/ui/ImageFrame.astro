@@ -1,0 +1,14 @@
+---
+type Props = {
+  src: string;
+  alt: string;
+  aspect?: "wide" | "portrait" | "square";
+  loading?: "eager" | "lazy";
+};
+
+const { src, alt, aspect = "wide", loading = "lazy" } = Astro.props;
+---
+
+<figure class={`image-frame image-frame--${aspect}`}>
+  <img src={src} alt={alt} loading={loading} decoding="async" />
+</figure>

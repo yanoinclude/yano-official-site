@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-label="古民家を直す仲間を想定した仮ビジュアル">
+  <rect width="1400" height="900" fill="#F2EFE7"/>
+  <rect x="130" y="180" width="1140" height="560" fill="#D8D2C5"/>
+  <path d="M90 260 700 88l610 172-34 104-576-160-576 160Z" fill="#5A4635"/>
+  <rect x="260" y="420" width="240" height="240" fill="#6F8991" opacity=".64"/>
+  <rect x="860" y="420" width="240" height="240" fill="#6F8991" opacity=".64"/>
+  <g fill="#22211E">
+    <circle cx="610" cy="560" r="38"/>
+    <path d="M540 650c0-58 31-100 70-100s70 42 70 100v90H540Z"/>
+    <circle cx="760" cy="538" r="34"/>
+    <path d="M700 628c0-54 27-94 60-94s60 40 60 94v100H700Z"/>
+  </g>
+  <path d="M305 360 480 245M440 360 620 245M830 360l180-115" stroke="#5A4635" stroke-width="18" stroke-linecap="round"/>
+</svg>

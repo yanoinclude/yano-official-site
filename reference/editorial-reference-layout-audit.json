@@ -1,0 +1,44 @@
+{
+  "body": {
+    "bottom": 592,
+    "height": 445,
+    "left": 193,
+    "right": 793,
+    "top": 148,
+    "width": 600
+  },
+  "bodyFontSize": "18.432px",
+  "bodyToNote": 103,
+  "columnHeight": 365,
+  "columnWidth": 76,
+  "heading": {
+    "bottom": 478,
+    "height": 394,
+    "left": 1123,
+    "right": 1233,
+    "top": 84,
+    "width": 110
+  },
+  "headingFontSize": "32.832px",
+  "leftOuter": 0,
+  "note": {
+    "bottom": 558,
+    "height": 467,
+    "left": 896,
+    "right": 921,
+    "top": 92,
+    "width": 25
+  },
+  "noteToHeading": 201,
+  "paper": {
+    "bottom": 719,
+    "height": 700,
+    "left": 193,
+    "right": 1233,
+    "top": 19,
+    "width": 1040
+  },
+  "rightOuter": 0,
+  "scrollWidth": 1425,
+  "viewportWidth": 1425
+}
