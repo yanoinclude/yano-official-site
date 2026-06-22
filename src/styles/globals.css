@@ -2490,11 +2490,6 @@ button {
 
 .philosophy-paper {
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 42rem) minmax(10rem, 13rem);
-  column-gap: clamp(3rem, 6vw, 5.5rem);
-  justify-content: space-between;
-  align-items: start;
   width: min(100%, 1040px);
   min-height: clamp(25rem, 45svh, 32rem);
   margin-inline: auto;
@@ -2516,13 +2511,13 @@ button {
 }
 
 .philosophy-paper__body {
-  grid-column: 1;
-  align-self: start;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: center;
   gap: clamp(1.05rem, 2vw, 1.8rem);
+  width: min(100%, 52rem);
   min-height: clamp(23rem, 43svh, 29rem);
+  margin-inline: auto;
   padding-top: clamp(4rem, 6vw, 5rem);
   padding-right: 0;
   font-family: var(--font-island-heading);
@@ -2542,33 +2537,8 @@ button {
   writing-mode: vertical-rl;
 }
 
-.philosophy-paper__heading {
-  grid-column: 2;
-  justify-self: start;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: 0.45em;
-  margin: clamp(2rem, 5vw, 4rem) 0 0;
-  color: #111;
-  font-family: var(--font-island-heading);
-  font-size: clamp(1.5rem, 2.28vw, 2.8rem);
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: 0.09em;
-  line-break: strict;
-  text-align: start;
-}
-
-.philosophy-paper__heading span {
-  display: block;
-  white-space: nowrap;
-  text-orientation: upright;
-  writing-mode: vertical-rl;
-}
-
 .philosophy-paper__label,
-.philosophy-paper__body,
-.philosophy-paper__heading {
+.philosophy-paper__body {
   opacity: 0;
   transform: translateY(16px);
   transition:
@@ -2580,13 +2550,8 @@ button {
   transition-delay: 90ms;
 }
 
-.philosophy-paper__heading {
-  transition-delay: 170ms;
-}
-
 .philosophy-section[data-in-view="true"] .philosophy-paper__label,
-.philosophy-section[data-in-view="true"] .philosophy-paper__body,
-.philosophy-section[data-in-view="true"] .philosophy-paper__heading {
+.philosophy-section[data-in-view="true"] .philosophy-paper__body {
   opacity: 1;
   transform: translateY(0);
 }
@@ -2598,9 +2563,7 @@ button {
   }
 
   .philosophy-paper {
-    grid-template-columns: minmax(0, 1fr) minmax(7.5rem, 9.5rem);
-    column-gap: 1.5rem;
-    min-height: 680px;
+    min-height: 620px;
   }
 
   .philosophy-paper__body {
@@ -2616,11 +2579,6 @@ button {
     line-height: 1.9;
     letter-spacing: 0.06em;
   }
-
-  .philosophy-paper__heading {
-    gap: 0.38em;
-    font-size: clamp(1.4rem, 3.3vw, 1.95rem);
-  }
 }
 
 @media (max-width: 640px) {
@@ -2629,10 +2587,9 @@ button {
   }
 
   .philosophy-paper {
-    grid-template-columns: 1fr;
     width: calc(100vw - 48px);
     max-width: calc(100vw - 48px);
-    min-height: 760px;
+    min-height: 610px;
   }
 
   .philosophy-paper__label {
@@ -2640,24 +2597,13 @@ button {
     left: 0;
   }
 
-  .philosophy-paper__heading {
-    position: absolute;
-    top: 3.5rem;
-    right: 0;
-    gap: 0.36em;
-    margin: 0;
-    font-size: clamp(1.35rem, 5.75vw, 1.65rem);
-    line-height: 1.42;
-  }
-
   .philosophy-paper__body {
-    align-self: end;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 0.72rem;
     width: 100%;
     max-width: 100%;
     min-height: 32rem;
-    padding-top: 15.5rem;
+    padding-top: 6rem;
     padding-right: 0;
     overflow: visible;
   }
@@ -3219,5 +3165,263 @@ body {
 
   .site-frame .concept-section__body p {
     font-size: 0.9rem;
+  }
+}
+
+/* Scenery film roll */
+.site-frame .scenery-section {
+  padding: clamp(6.5rem, 10vw, 10rem) 0 clamp(7rem, 11vw, 11rem);
+  overflow: hidden;
+  background: var(--island-surface);
+}
+
+.scenery-intro {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.45fr) minmax(0, 1fr);
+  gap: clamp(3rem, 8vw, 9rem);
+  align-items: end;
+  width: min(calc(100% - 10rem), 1105px);
+  margin: 0 auto clamp(3.5rem, 6vw, 6rem);
+}
+
+.site-frame .scenery-heading {
+  width: auto;
+  margin: 0;
+}
+
+.site-frame .scenery-heading p {
+  font-size: clamp(1.65rem, 2.5vw, 2.5rem);
+  line-height: 1;
+}
+
+.site-frame .scenery-heading span {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+}
+
+.scenery-intro__copy {
+  max-width: 40rem;
+}
+
+.scenery-intro__copy h2 {
+  margin: 0;
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: clamp(2rem, 3.4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.06em;
+}
+
+.scenery-intro__copy > p {
+  max-width: 38rem;
+  margin: 1.4rem 0 0;
+  color: var(--island-muted);
+  line-height: 2;
+}
+
+.scenery-marquee {
+  width: 100%;
+  overflow: hidden;
+  outline: none;
+  touch-action: pan-x;
+}
+
+.scenery-marquee:focus-visible {
+  outline: 2px solid var(--island-focus);
+  outline-offset: 6px;
+}
+
+.scenery-marquee__track {
+  display: flex;
+  gap: 32px;
+  width: max-content;
+  animation: sceneryDrift 21s linear infinite;
+  will-change: transform;
+}
+
+.scenery-marquee__set {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.scenery-marquee:hover .scenery-marquee__track,
+.scenery-marquee:focus-within .scenery-marquee__track {
+  animation-play-state: paused;
+}
+
+.scenery-card {
+  flex: 0 0 clamp(320px, 30vw, 440px);
+  width: clamp(320px, 30vw, 440px);
+  margin: 0;
+}
+
+.scenery-card:nth-child(even) {
+  flex-basis: clamp(300px, 25vw, 380px);
+  width: clamp(300px, 25vw, 380px);
+  padding-top: clamp(2rem, 4vw, 4.5rem);
+}
+
+.scenery-card__image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--island-background);
+}
+
+.scenery-card:nth-child(3n + 2) .scenery-card__image {
+  aspect-ratio: 3 / 4;
+}
+
+.scenery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scenery-card figcaption {
+  padding-top: 1.25rem;
+}
+
+.scenery-card__label {
+  margin: 0 0 0.6rem;
+  color: var(--island-muted);
+  font-family: var(--font-island-accent);
+  font-size: 0.68rem;
+  line-height: 1.4;
+  letter-spacing: 0.22em;
+}
+
+.scenery-card h3 {
+  margin: 0;
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: clamp(1.2rem, 1.45vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.06em;
+}
+
+.scenery-card figcaption > p:last-child {
+  margin: 0.55rem 0 0;
+  color: var(--island-muted);
+  font-size: 0.84rem;
+  line-height: 1.8;
+  white-space: nowrap;
+}
+
+.site-frame .scenery-image-link {
+  margin: clamp(3.5rem, 6vw, 6rem) auto 0;
+}
+
+@keyframes sceneryDrift {
+  from {
+    transform: translate3d(calc(-50% - 16px), 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .scenery-intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: min(calc(100% - 6rem), 672px);
+  }
+
+  .scenery-intro__copy {
+    max-width: 34rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-frame .scenery-section {
+    padding-block: 6rem 7rem;
+  }
+
+  .scenery-intro {
+    gap: 1.75rem;
+    width: calc(100% - 3rem);
+    margin-bottom: 3.25rem;
+  }
+
+  .site-frame .scenery-heading {
+    width: auto;
+  }
+
+  .scenery-intro__copy h2 {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+
+  .scenery-intro__copy > p {
+    font-size: 0.92rem;
+  }
+
+  .scenery-marquee {
+    overflow-x: auto;
+    padding-inline: 1.5rem;
+    scroll-padding-inline: 1.5rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+  }
+
+  .scenery-marquee__track {
+    gap: 1.25rem;
+    animation: none;
+    will-change: auto;
+  }
+
+  .scenery-marquee__set {
+    gap: 1.25rem;
+  }
+
+  .scenery-marquee__set[aria-hidden="true"] {
+    display: none;
+  }
+
+  .scenery-card,
+  .scenery-card:nth-child(even) {
+    flex-basis: 82vw;
+    width: 82vw;
+    max-width: 340px;
+    padding-top: 0;
+    scroll-snap-align: start;
+  }
+
+  .scenery-card:nth-child(3n + 2) .scenery-card__image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .scenery-card figcaption > p:last-child {
+    white-space: normal;
+  }
+
+  .site-frame .scenery-image-link {
+    margin-top: 3.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scenery-marquee {
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  .scenery-marquee__track {
+    animation: none !important;
+    transform: none !important;
+    will-change: auto;
+  }
+
+  .scenery-marquee__set[aria-hidden="true"] {
+    display: none;
+  }
+
+  .scenery-card {
+    scroll-snap-align: start;
   }
 }
