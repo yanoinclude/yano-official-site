@@ -52,9 +52,9 @@ export const homeContent = {
       {
         image: scenerySea,
         label: "SEA",
-        title: "海辺の道",
+        title: "浜辺の道",
         description: "何もないようで、島の時間が流れている。",
-        alt: "穏やかな瀬戸内海に沿って続く島の道",
+        alt: "中島の緑の中から瀬戸内海へ下っていく浜辺の道",
       },
       {
         image: sceneryTable,
@@ -68,7 +68,7 @@ export const homeContent = {
         label: "PEOPLE",
         title: "島の人と仲間",
         description: "できる範囲を持ち寄って、少しずつ手を入れる。",
-        alt: "古民家で作業する島の人と仲間",
+        alt: "中島のレモン畑に集まった島の人と仲間",
       },
     ],
   },

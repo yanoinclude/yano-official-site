@@ -78,7 +78,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div class="scenery-marquee__set">
           {
             homeContent.scenery.slides.map((slide) => (
-              <figure class="scenery-card">
+              <figure
+                class:list={[
+                  "scenery-card",
+                  { "scenery-card--portrait": slide.label === "PORT" },
+                ]}
+              >
                 <div class="scenery-card__image">
                   <img
                     src={slide.image.src}
@@ -100,7 +105,12 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <div class="scenery-marquee__set" aria-hidden="true">
           {
             homeContent.scenery.slides.map((slide) => (
-              <figure class="scenery-card">
+              <figure
+                class:list={[
+                  "scenery-card",
+                  { "scenery-card--portrait": slide.label === "PORT" },
+                ]}
+              >
                 <div class="scenery-card__image">
                   <img
                     src={slide.image.src}
