@@ -51,29 +51,87 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           この島に帰ってこられる風景を、次の世代へ手渡していくための営みです。
         </p>
       </div>
-      <h2 class="philosophy-paper__heading">
-        <span>この島に、</span>
-        <span>帰ってこられる風景を。</span>
-      </h2>
     </div>
   </section>
 
   <section class="scenery-section reveal-section" id="scenery">
-    <div class="scenery-heading" aria-label="SCENERY in Nakajima">
-      <p>SCENERY</p>
-      <span>in Nakajima</span>
+    <div class="scenery-intro">
+      <div
+        class="scenery-heading"
+        aria-label={`${homeContent.scenery.eyebrow} ${homeContent.scenery.sublabel}`}
+      >
+        <p>{homeContent.scenery.eyebrow}</p>
+        <span>{homeContent.scenery.sublabel}</span>
+      </div>
+      <div class="scenery-intro__copy">
+        <h2>{homeContent.scenery.heading}</h2>
+        <p>{homeContent.scenery.body}</p>
+      </div>
     </div>
-    <figure class="scenery-panorama">
-      <img
-        src={homeContent.scenery.images[0].src}
-        alt={homeContent.scenery.images[0].alt}
-      />
-      <figcaption>
-        <span>SCENERY</span>
-        <span>NAKAJIMA</span>
-      </figcaption>
-    </figure>
-    <a class="scenery-image-link" href="/landscape">島の風景をのぞく</a>
+    <div
+      class="scenery-marquee"
+      tabindex="0"
+      role="region"
+      aria-label="中島の風景写真。横方向にスクロールできます。"
+    >
+      <div class="scenery-marquee__track">
+        <div class="scenery-marquee__set">
+          {
+            homeContent.scenery.slides.map((slide) => (
+              <figure
+                class:list={[
+                  "scenery-card",
+                  { "scenery-card--portrait": slide.label === "PORT" },
+                ]}
+              >
+                <div class="scenery-card__image">
+                  <img
+                    src={slide.image.src}
+                    width={slide.image.width}
+                    height={slide.image.height}
+                    alt={slide.alt}
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>
+                  <p class="scenery-card__label">{slide.label}</p>
+                  <h3>{slide.title}</h3>
+                  <p>{slide.description}</p>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+        <div class="scenery-marquee__set" aria-hidden="true">
+          {
+            homeContent.scenery.slides.map((slide) => (
+              <figure
+                class:list={[
+                  "scenery-card",
+                  { "scenery-card--portrait": slide.label === "PORT" },
+                ]}
+              >
+                <div class="scenery-card__image">
+                  <img
+                    src={slide.image.src}
+                    width={slide.image.width}
+                    height={slide.image.height}
+                    alt=""
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption>
+                  <p class="scenery-card__label">{slide.label}</p>
+                  <h3>{slide.title}</h3>
+                  <p>{slide.description}</p>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <a class="scenery-image-link" href="/landscape">島の風景をもっと見る</a>
   </section>
 
   <section class="about-section reveal-section" id="about">

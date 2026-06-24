@@ -1,4 +1,10 @@
 import { placeholderImages } from "./site";
+import sceneryKominka from "@/assets/images/scenery/scenery-kominka.jpg";
+import sceneryLemonOrchard from "@/assets/images/scenery/scenery-lemon-orchard.jpg";
+import sceneryPeople from "@/assets/images/scenery/scenery-people.jpg";
+import sceneryPort from "@/assets/images/scenery/scenery-port.jpg";
+import scenerySea from "@/assets/images/scenery/scenery-sea.jpg";
+import sceneryTable from "@/assets/images/scenery/scenery-table.jpg";
 
 export const homeContent = {
   hero: {
@@ -18,20 +24,51 @@ export const homeContent = {
   },
   scenery: {
     eyebrow: "SCENERY",
-    heading: "何もないように見える島に、\n残したいものがある。",
-    body: "海と山が近く、港からの坂道に畑と家が続いていく。何もないように見える場所に、受け取ってきた時間があります。",
-    images: [
+    sublabel: "in Nakajima",
+    heading: "中島の風景をのぞく",
+    body: "港、畑、古民家、食卓。誰かが手入れしてきた風景を、少しずつ記録しています。",
+    slides: [
       {
-        src: placeholderImages.island,
-        alt: "中島のレモン畑、古民家、港、海辺、食卓の風景を組み合わせた写真",
+        image: sceneryPort,
+        label: "PORT",
+        title: "船を見送る港",
+        description: "帰る人と、旅立つ人が交わる場所。",
+        alt: "中島の港で船を見送る人の後ろ姿",
       },
       {
-        src: placeholderImages.hero,
-        alt: "港から船を見送る人を想定した仮ビジュアル",
+        image: sceneryLemonOrchard,
+        label: "LEMON ORCHARD",
+        title: "100本のレモン畑",
+        description: "季節ごとに表情を変える、島の畑。",
+        alt: "中島のレモン畑で木を手入れする人",
       },
       {
-        src: placeholderImages.farm,
-        alt: "中島の畑と集落を想定した仮ビジュアル",
+        image: sceneryKominka,
+        label: "KOMINKA",
+        title: "築100年の古民家",
+        description: "長く使われてきた家に、もう一度風を通す。",
+        alt: "手入れの途中にある築100年の古民家",
+      },
+      {
+        image: scenerySea,
+        label: "SEA",
+        title: "浜辺の道",
+        description: "何もないようで、島の時間が流れている。",
+        alt: "中島の緑の中から瀬戸内海へ下っていく浜辺の道",
+      },
+      {
+        image: sceneryTable,
+        label: "TABLE",
+        title: "島の食卓",
+        description: "レモンや季節のものを囲む時間。",
+        alt: "島の人と仲間が季節の料理を囲む食卓",
+      },
+      {
+        image: sceneryPeople,
+        label: "PEOPLE",
+        title: "島の人と仲間",
+        description: "できる範囲を持ち寄って、少しずつ手を入れる。",
+        alt: "中島のレモン畑に集まった島の人と仲間",
       },
     ],
   },
