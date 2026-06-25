@@ -25,8 +25,6 @@ export const homeContent = {
   scenery: {
     eyebrow: "SCENERY",
     sublabel: "in Nakajima",
-    heading: "中島の風景をのぞく",
-    body: "港、畑、古民家、食卓。誰かが手入れしてきた風景を、少しずつ記録しています。",
     slides: [
       {
         image: sceneryPort,
@@ -47,7 +45,7 @@ export const homeContent = {
         label: "KOMINKA",
         title: "築100年の古民家",
         description: "長く使われてきた家に、もう一度風を通す。",
-        alt: "手入れの途中にある築100年の古民家",
+        alt: "築100年の古民家の室内を手入れする人",
       },
       {
         image: scenerySea,
@@ -61,7 +59,7 @@ export const homeContent = {
         label: "TABLE",
         title: "島の食卓",
         description: "レモンや季節のものを囲む時間。",
-        alt: "島の人と仲間が季節の料理を囲む食卓",
+        alt: "中島のレモンを浮かべた鍋を囲む食卓",
       },
       {
         image: sceneryPeople,
@@ -80,7 +78,7 @@ export const homeContent = {
       "古民家、レモン畑、果汁づくりは別々の事業ではありません。気に留めたものへ、できる範囲で手を入れる同じ活動です。",
     ],
     image: placeholderImages.about,
-    imageAlt: "古民家や畑、港の気配が残る中島の風景を想定した仮ビジュアル",
+    imageAlt: "中島のレモン畑で作業する矢野諭稔",
   },
   concept: {
     sectionLabel: "99 + 1 project｜原体験",

@@ -2482,7 +2482,7 @@ button {
 .philosophy-section {
   min-height: auto;
   padding: clamp(2.25rem, 4vw, 4rem) clamp(1.5rem, 5vw, 4.5rem)
-    clamp(8.5rem, 11vw, 11.5rem);
+    clamp(3rem, 5vw, 5rem);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 28%),
     var(--island-surface);
@@ -2559,7 +2559,7 @@ button {
 @media (max-width: 900px) {
   .philosophy-section {
     min-height: auto;
-    padding: 4rem 2rem 9rem;
+    padding: 4rem 2rem 4.5rem;
   }
 
   .philosophy-paper {
@@ -2583,7 +2583,7 @@ button {
 
 @media (max-width: 640px) {
   .philosophy-section {
-    padding: 3rem 1.5rem 7rem;
+    padding: 3rem 1.5rem 4rem;
   }
 
   .philosophy-paper {
@@ -3170,18 +3170,14 @@ body {
 
 /* Scenery film roll */
 .site-frame .scenery-section {
-  padding: clamp(6.5rem, 10vw, 10rem) 0 clamp(7rem, 11vw, 11rem);
+  padding: clamp(2.75rem, 4.5vw, 4.75rem) 0 clamp(7rem, 11vw, 11rem);
   overflow: hidden;
   background: var(--island-surface);
 }
 
 .scenery-intro {
-  display: grid;
-  grid-template-columns: minmax(11rem, 0.45fr) minmax(0, 1fr);
-  gap: clamp(3rem, 8vw, 9rem);
-  align-items: end;
   width: min(calc(100% - 10rem), 1105px);
-  margin: 0 auto clamp(3.5rem, 6vw, 6rem);
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
 }
 
 .site-frame .scenery-heading {
@@ -3198,27 +3194,6 @@ body {
   margin-top: 0.8rem;
   font-size: 0.8rem;
   letter-spacing: 0.16em;
-}
-
-.scenery-intro__copy {
-  max-width: 40rem;
-}
-
-.scenery-intro__copy h2 {
-  margin: 0;
-  color: var(--island-text);
-  font-family: var(--font-island-heading);
-  font-size: clamp(2rem, 3.4vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: 0.06em;
-}
-
-.scenery-intro__copy > p {
-  max-width: 38rem;
-  margin: 1.4rem 0 0;
-  color: var(--island-muted);
-  line-height: 2;
 }
 
 .scenery-marquee {
@@ -3268,10 +3243,6 @@ body {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--island-background);
-}
-
-.scenery-card:nth-child(3n + 2) .scenery-card__image {
-  aspect-ratio: 3 / 4;
 }
 
 .scenery-card--portrait .scenery-card__image {
@@ -3331,37 +3302,22 @@ body {
 
 @media (max-width: 900px) {
   .scenery-intro {
-    grid-template-columns: 1fr;
-    gap: 2rem;
     width: min(calc(100% - 6rem), 672px);
-  }
-
-  .scenery-intro__copy {
-    max-width: 34rem;
   }
 }
 
 @media (max-width: 640px) {
   .site-frame .scenery-section {
-    padding-block: 6rem 7rem;
+    padding-block: 3.75rem 7rem;
   }
 
   .scenery-intro {
-    gap: 1.75rem;
     width: calc(100% - 3rem);
     margin-bottom: 3.25rem;
   }
 
   .site-frame .scenery-heading {
     width: auto;
-  }
-
-  .scenery-intro__copy h2 {
-    font-size: clamp(1.75rem, 8vw, 2.35rem);
-  }
-
-  .scenery-intro__copy > p {
-    font-size: 0.92rem;
   }
 
   .scenery-marquee {

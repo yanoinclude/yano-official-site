@@ -63,10 +63,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <p>{homeContent.scenery.eyebrow}</p>
         <span>{homeContent.scenery.sublabel}</span>
       </div>
-      <div class="scenery-intro__copy">
-        <h2>{homeContent.scenery.heading}</h2>
-        <p>{homeContent.scenery.body}</p>
-      </div>
     </div>
     <div
       class="scenery-marquee"
@@ -81,7 +77,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               <figure
                 class:list={[
                   "scenery-card",
-                  { "scenery-card--portrait": slide.label === "PORT" },
+                  {
+                    "scenery-card--portrait": [
+                      "PORT",
+                      "LEMON ORCHARD",
+                      "KOMINKA",
+                    ].includes(slide.label),
+                  },
                 ]}
               >
                 <div class="scenery-card__image">
@@ -108,7 +110,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               <figure
                 class:list={[
                   "scenery-card",
-                  { "scenery-card--portrait": slide.label === "PORT" },
+                  {
+                    "scenery-card--portrait": [
+                      "PORT",
+                      "LEMON ORCHARD",
+                      "KOMINKA",
+                    ].includes(slide.label),
+                  },
                 ]}
               >
                 <div class="scenery-card__image">

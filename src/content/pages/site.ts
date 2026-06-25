@@ -20,7 +20,7 @@ export const placeholderImages = {
   hero: heroUserLemonGrove.src,
   island: sceneryUserNakajima.src,
   concept: conceptUserForestLemon.src,
-  about: aboutLandscape.src,
+  about: aboutYanoLemonGrove.src,
   house: activityKominka.src,
   repair: activityPeople.src,
   farm: activityLemonFarm.src,
@@ -28,12 +28,12 @@ export const placeholderImages = {
   bottle: productLemonBottle.src,
   table: experienceIslandLife.src,
   closing: closingFerrywave.src,
-  yano: aboutLandscape.src,
+  yano: aboutYanoLemonGrove.src,
 } as const;
 import heroUserLemonGrove from "@/assets/images/hero-user-lemon-grove.jpg";
 import conceptUserForestLemon from "@/assets/images/concept-user-forest-lemon.png";
 import sceneryUserNakajima from "@/assets/images/scenery-user-nakajima.png";
-import aboutLandscape from "@/assets/images/generated/about-landscape.jpg";
+import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
 import activityKominka from "@/assets/images/generated/activity-kominka.jpg";
 import activityLemonFarm from "@/assets/images/generated/activity-lemon-farm.jpg";
 import activityPeople from "@/assets/images/generated/activity-people.jpg";
