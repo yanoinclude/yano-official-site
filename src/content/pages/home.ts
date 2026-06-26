@@ -72,10 +72,9 @@ export const homeContent = {
   },
   about: {
     eyebrow: "ABOUT US",
-    heading: "放っておけなかったことから、\nすべてが始まりました。",
     body: [
-      "矢野諭稔は、この風景を案内する語り手です。主役は中島の海、家、畑、そこで暮らしてきた人たちの時間です。",
-      "古民家、レモン畑、果汁づくりは別々の事業ではありません。気に留めたものへ、できる範囲で手を入れる同じ活動です。",
+      "矢野諭稔は、平日は都市で働き、週末になると中島へ通っています。最初から古民家改修や農業ができたわけではありません。",
+      "島の人や仲間に教わりながら、できる範囲で家や畑に手を入れていく。週末移住レモンは、移住するかしないかではなく、自分にできる距離から島と関わるための入口です。",
     ],
     image: placeholderImages.about,
     imageAlt: "中島のレモン畑で作業する矢野諭稔",
@@ -83,6 +82,8 @@ export const homeContent = {
   concept: {
     sectionLabel: "99 + 1 project｜原体験",
     eyebrow: "99 + 1 project｜コンセプト",
+    intro:
+      "99＋1 Projectは、週末移住レモンから生まれた、人と島の最初の一歩をつくるプロジェクトです。",
     headline: "99の「ない」に、1を足す。",
     heading: "99の「ない」に、1を足す。",
     body: "田舎暮らしなんて無理。週末移住なんて時間がない。古民家なんて直せない。農業なんて経験がない。気づけば、ない、ない、ない、のまま、時間だけが過ぎていく。でも、99がそろっていなくても、島に行ってみる。レモンを味わう。手を貸してみる。話を聴いてみる。それは、小さくて確かなはじまりの一歩。99 + 1 Projectは、人と島のあいだに、その一歩をつくるプロジェクトです。",
@@ -123,21 +124,21 @@ export const homeContent = {
         title: "築100年の古民家",
         body: "長く使われてきた家に風を通し、人が集まれる余白を取り戻していく。",
         image: placeholderImages.house,
-        alt: "築100年の古民家を想定した仮ビジュアル",
+        alt: "古民家の外壁を塗る矢野諭稔",
         href: "/kominka",
       },
       {
         title: "100本のレモン",
         body: "受け取った畑に通い、草を刈り、木を見て、季節の変化を受け取る。",
         image: placeholderImages.farm,
-        alt: "レモン畑を想定した仮ビジュアル",
+        alt: "レモンの木を手入れする矢野諭稔",
         href: "/lemon-farm",
       },
       {
         title: "人と島との関わり",
         body: "一人で抱えず、島の人や仲間とできる範囲を持ち寄って手を入れる。",
         image: placeholderImages.repair,
-        alt: "古民家を直す仲間を想定した仮ビジュアル",
+        alt: "島での活動を写した写真を並べたテーブル",
         href: "/people",
       },
     ],
@@ -149,6 +150,8 @@ export const homeContent = {
     body: "強く売り込むための商品ではなく、食卓から中島を気に留めてもらうための入口です。畑で受け取った季節を、できるだけそのまま瓶に閉じ込めます。",
     image: placeholderImages.bottle,
     imageAlt: "週末移住レモン果汁を想定した仮ビジュアル",
+    href: "https://drafts.editmysite.com/d/9qMX00kNEKH5198B0GE8FoEJpD61/",
+    cta: "週末移住レモン果汁を見る",
   },
   experience: {
     eyebrow: "EXPERIENCE",
@@ -161,7 +164,7 @@ export const homeContent = {
   journal: {
     eyebrow: "JOURNAL",
     heading: "島の日々を記録する。",
-    body: "Journal記事は今後Notionから取得します。ここでは配置確認用の仮記事を表示しています。",
+    body: "古民家のこと、畑のこと、島で出会った人のこと。週末ごとに積み重なる、小さな記録です。",
     items: [
       {
         title: "港で見送った朝のこと",
@@ -218,8 +221,7 @@ export const homeContent = {
     lines: [
       "帰る人を迎え、",
       "旅立つ人を見送る。",
-      "この島に残り続ける風景を、",
-      "次の世代へ。",
+      "この島に、帰ってこられる風景を。",
     ],
   },
 } as const;

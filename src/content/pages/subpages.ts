@@ -8,7 +8,7 @@ export const subpages = [
     description:
       "中島の風景を主役に、矢野諭稔が案内人として関わりを伝えるページです。",
     image: placeholderImages.yano,
-    imageAlt: "島の風景を案内する人物を想定した仮ビジュアル",
+    imageAlt: "中島のレモン畑で作業する矢野諭稔",
   },
   {
     slug: "landscape",

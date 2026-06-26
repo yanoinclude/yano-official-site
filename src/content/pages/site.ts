@@ -21,9 +21,9 @@ export const placeholderImages = {
   island: sceneryUserNakajima.src,
   concept: conceptUserForestLemon.src,
   about: aboutYanoLemonGrove.src,
-  house: activityKominka.src,
-  repair: activityPeople.src,
-  farm: activityLemonFarm.src,
+  house: activityKominkaUser.src,
+  repair: activityIslandPeopleUser.src,
+  farm: activityLemonTreeUser.src,
   farmer: activityLemonFarm.src,
   bottle: productLemonBottle.src,
   table: experienceIslandLife.src,
@@ -34,9 +34,10 @@ import heroUserLemonGrove from "@/assets/images/hero-user-lemon-grove.jpg";
 import conceptUserForestLemon from "@/assets/images/concept-user-forest-lemon.png";
 import sceneryUserNakajima from "@/assets/images/scenery-user-nakajima.png";
 import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
-import activityKominka from "@/assets/images/generated/activity-kominka.jpg";
+import activityIslandPeopleUser from "@/assets/images/activities/activity-island-people-user.jpg";
+import activityKominkaUser from "@/assets/images/activities/activity-kominka-user.jpeg";
+import activityLemonTreeUser from "@/assets/images/activities/activity-lemon-tree-user.jpeg";
 import activityLemonFarm from "@/assets/images/generated/activity-lemon-farm.jpg";
-import activityPeople from "@/assets/images/generated/activity-people.jpg";
 import closingFerrywave from "@/assets/images/generated/closing-ferrywave.jpg";
 import experienceIslandLife from "@/assets/images/generated/experience-island-life.jpg";
 import productLemonBottle from "@/assets/images/generated/product-lemon-bottle.jpg";
