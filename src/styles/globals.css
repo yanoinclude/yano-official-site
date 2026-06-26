@@ -3401,3 +3401,326 @@ body {
     scroll-snap-align: start;
   }
 }
+
+/* Readability pass: consistent type rhythm for the editorial sections. */
+:root {
+  --type-label: clamp(0.76rem, 0.78vw, 0.86rem);
+  --type-body: clamp(0.94rem, 0.9vw, 1rem);
+  --type-lead: clamp(1rem, 1vw, 1.08rem);
+  --type-link: clamp(0.9rem, 0.86vw, 0.96rem);
+  --type-section-heading: clamp(1.95rem, 2.8vw, 2.85rem);
+  --type-card-heading: clamp(1.24rem, 1.45vw, 1.55rem);
+  --space-readable-section: clamp(5rem, 8vw, 7.5rem);
+  --space-readable-gap: clamp(2rem, 4vw, 4rem);
+}
+
+body {
+  font-size: var(--type-body);
+  line-height: 1.95;
+  letter-spacing: 0.035em;
+}
+
+.site-frame :is(.eyebrow, .section-title__en) {
+  margin-bottom: clamp(0.65rem, 1.1vw, 0.95rem);
+  color: var(--island-muted);
+  font-family: var(--font-island-accent);
+  font-size: var(--type-label);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.2em;
+}
+
+.site-frame
+  :is(
+    .section-copy h2,
+    .section-title h2,
+    .product-section h2,
+    .news-section h2
+  ) {
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: var(--type-section-heading);
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: 0.055em;
+}
+
+.site-frame
+  :is(
+    .section-copy p,
+    .section-title--row > p,
+    .product-section__text > p:not(.section-title__en),
+    .journal-section .section-title > p
+  ) {
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--island-text) 78%, white);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.site-frame .section-copy p {
+  margin-top: clamp(1.1rem, 1.7vw, 1.55rem);
+}
+
+.site-frame .section-copy p.eyebrow {
+  margin-top: 0;
+}
+
+.site-frame .text-link {
+  gap: 0.58rem;
+  margin-top: clamp(1.4rem, 2.1vw, 2rem);
+  font-size: var(--type-link);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.055em;
+}
+
+.site-frame :is(.about-section, .activities-section, .product-section) {
+  padding-block: var(--space-readable-section);
+}
+
+.site-frame :is(.experience-section, .journal-section, .news-section) {
+  padding-block: clamp(4.75rem, 7vw, 6.75rem);
+}
+
+.site-frame .section-grid {
+  gap: clamp(2.6rem, 5vw, 5rem);
+}
+
+.site-frame .section-title--row {
+  gap: clamp(2rem, 4.5vw, 5rem);
+  margin-bottom: var(--space-readable-gap);
+}
+
+.site-frame .section-title--row > p {
+  align-self: end;
+}
+
+.site-frame .about-section .section-photo,
+.site-frame .experience-section .section-photo {
+  align-self: center;
+}
+
+.site-frame .activity-list--compact {
+  gap: clamp(2.75rem, 4.5vw, 4.9rem);
+}
+
+.site-frame .activity-list--compact .activity-row {
+  gap: clamp(1.7rem, 3.5vw, 3.8rem);
+}
+
+.site-frame .activity-row span {
+  color: var(--island-muted);
+  font-family: var(--font-island-accent);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+}
+
+.site-frame .activity-row h3 {
+  margin-top: 0.85rem;
+  color: var(--island-text);
+  font-size: var(--type-card-heading);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .activity-row p {
+  max-width: 34rem;
+  color: color-mix(in srgb, var(--island-text) 76%, white);
+  font-size: var(--type-body);
+  line-height: 1.92;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .product-section {
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.site-frame .product-section__lead {
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: clamp(1.08rem, 1.25vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.06em;
+}
+
+.site-frame .experience-list {
+  gap: clamp(0.85rem, 1.5vw, 1.25rem);
+  margin-top: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+.site-frame .experience-list li {
+  min-height: 3.75rem;
+  padding: 1.05rem 1.25rem;
+  font-family: var(--font-island-heading);
+  font-size: clamp(1rem, 1.12vw, 1.14rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.07em;
+}
+
+.site-frame .journal-showcase {
+  gap: clamp(1.75rem, 3vw, 3rem);
+}
+
+.site-frame .journal-card {
+  padding-block: clamp(1.15rem, 1.6vw, 1.55rem);
+}
+
+.site-frame .journal-card__date,
+.site-frame .news-list time,
+.site-frame .scenery-card__label {
+  font-size: clamp(0.68rem, 0.72vw, 0.76rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+}
+
+.site-frame .journal-card h3 {
+  font-size: clamp(1.08rem, 1.28vw, 1.32rem);
+  font-weight: 400;
+  line-height: 1.68;
+  letter-spacing: 0.04em;
+}
+
+.site-frame .journal-card p:not(.journal-card__date) {
+  color: color-mix(in srgb, var(--island-text) 74%, white);
+  font-size: clamp(0.88rem, 0.84vw, 0.94rem);
+  line-height: 1.9;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .news-section__inner {
+  gap: clamp(2rem, 4vw, 4.5rem);
+}
+
+.site-frame .news-list a {
+  gap: clamp(1rem, 2vw, 2rem);
+  padding-block: 1.15rem;
+  font-size: clamp(0.9rem, 0.9vw, 1rem);
+  line-height: 1.8;
+}
+
+.site-frame .closing-section__vertical {
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+}
+
+.site-frame .closing-section__body p {
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  line-height: 1.9;
+}
+
+.site-frame .site-footer__copy {
+  font-size: clamp(1.18rem, 1.55vw, 1.48rem);
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+.site-frame .site-footer a {
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --type-body: 0.93rem;
+    --type-section-heading: clamp(1.75rem, 5.1vw, 2.4rem);
+    --space-readable-section: clamp(4.2rem, 9vw, 5.75rem);
+  }
+
+  .site-frame .section-title--row {
+    gap: 1.35rem;
+  }
+
+  .site-frame .section-title--row > p {
+    align-self: start;
+  }
+
+  .site-frame .activity-list--compact,
+  .site-frame .journal-showcase {
+    gap: 2.2rem;
+  }
+
+  .site-frame .product-section {
+    gap: 2.4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --type-label: 0.72rem;
+    --type-body: 0.92rem;
+    --type-link: 0.9rem;
+    --type-section-heading: clamp(1.58rem, 7vw, 2.05rem);
+    --type-card-heading: 1.18rem;
+    --space-readable-section: clamp(3.8rem, 13vw, 5rem);
+  }
+
+  body {
+    line-height: 1.9;
+    letter-spacing: 0.025em;
+  }
+
+  .site-frame
+    :is(
+      .section-copy h2,
+      .section-title h2,
+      .product-section h2,
+      .news-section h2
+    ) {
+    line-height: 1.6;
+    letter-spacing: 0.045em;
+  }
+
+  .site-frame
+    :is(
+      .section-copy p,
+      .section-title--row > p,
+      .product-section__text > p:not(.section-title__en),
+      .journal-section .section-title > p
+    ) {
+    line-height: 1.9;
+  }
+
+  .site-frame .section-copy p {
+    margin-top: 1rem;
+  }
+
+  .site-frame .section-grid,
+  .site-frame .activity-list--compact .activity-row {
+    gap: 1.45rem;
+  }
+
+  .site-frame .activity-row h3 {
+    margin-top: 0.65rem;
+    line-height: 1.52;
+  }
+
+  .site-frame .activity-row p,
+  .site-frame .journal-card p:not(.journal-card__date) {
+    line-height: 1.82;
+  }
+
+  .site-frame .experience-list li {
+    min-height: 0;
+    padding: 0.95rem 1rem;
+    font-size: 0.98rem;
+  }
+
+  .site-frame .news-list a {
+    padding-block: 1rem;
+  }
+
+  .site-frame .closing-section__vertical {
+    font-size: clamp(1.22rem, 5.8vw, 1.55rem);
+  }
+}
