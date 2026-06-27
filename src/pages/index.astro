@@ -171,7 +171,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
   <section
     class="current-detail current-detail--kominka reveal-section"
-    id="kominka-detail"
+    id="event-detail"
   >
     <header class="current-detail__heading">
       <p class="section-title__en">
@@ -221,6 +221,33 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </TextLink>
       </div>
     </div>
+  </section>
+
+  <section
+    class="gallery-preview reveal-section"
+    aria-labelledby="gallery-title"
+  >
+    <header>
+      <p class="section-title__en">{homeContent.gallery.eyebrow}</p>
+      <h2 id="gallery-title">{homeContent.gallery.heading}</h2>
+      <p>{homeContent.gallery.lead}</p>
+    </header>
+    <a
+      class="gallery-preview__grid"
+      href="/gallery"
+      aria-label="島のギャラリーを見る"
+    >
+      {
+        homeContent.gallery.items.slice(0, 4).map((item) => (
+          <figure>
+            <img src={item.image} alt={item.alt} loading="lazy" />
+          </figure>
+        ))
+      }
+    </a>
+    <TextLink href="/gallery" variant="quiet">
+      {homeContent.gallery.cta}
+    </TextLink>
   </section>
 
   <section class="scenery-section reveal-section" id="scenery">

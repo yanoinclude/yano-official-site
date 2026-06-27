@@ -1,0 +1,34 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="島のギャラリー"
+  description="観光地ではない中島に残る、自然と暮らしの風景を写真で紹介します。"
+>
+  <article class="gallery-page">
+    <header class="gallery-page__header">
+      <p class="section-title__en">{homeContent.gallery.eyebrow}</p>
+      <h1>{homeContent.gallery.heading}</h1>
+      <p>{homeContent.gallery.lead}</p>
+    </header>
+
+    <div class="gallery-page__grid">
+      {
+        homeContent.gallery.items.map((item, index) => (
+          <figure class={`gallery-page__item gallery-page__item--${item.size}`}>
+            <img
+              src={item.image}
+              alt={item.alt}
+              loading={index < 4 ? "eager" : "lazy"}
+            />
+          </figure>
+        ))
+      }
+    </div>
+
+    <TextLink href="/" variant="quiet">トップページへ戻る</TextLink>
+  </article>
+</BaseLayout>

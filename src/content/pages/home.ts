@@ -139,11 +139,11 @@ export const homeContent = {
           imageAlt: "中島のレモン畑で木を手入れする矢野諭稔",
         },
         {
-          title: "古民家",
-          label: "KOMINKA",
-          href: "#kominka-detail",
+          title: "イベント企画",
+          label: "EVENT",
+          href: "#event-detail",
           image: placeholderImages.house,
-          imageAlt: "中島の築100年の古民家を手入れする矢野諭稔",
+          imageAlt: "中島の古民家を拠点にしたイベントの様子",
         },
       ],
     },
@@ -165,12 +165,12 @@ export const homeContent = {
       instagramLabel: "Instagramはこちら",
     },
     kominka: {
-      eyebrow: "KOMINKA",
-      heading: "古民家",
-      body: "築100年の古民家を拠点に、島の人や訪れる人とイベントを重ねながら、島内外の人が出会える交流の場所を目指しています。",
+      eyebrow: "EVENT",
+      heading: "イベント企画",
+      body: "築100年の古民家やレモン畑を舞台に、島の人と訪れる人が出会えるイベントや体験を企画しています。",
       image: placeholderImages.house,
       imageAlt: "中島の築100年の古民家を改修する様子",
-      experiencesHeading: "古民家から始まる体験",
+      experiencesHeading: "島でひらいたイベントと体験",
       experiences: [
         {
           title: "レモン狩り",
@@ -196,9 +196,67 @@ export const homeContent = {
       ],
       future: "2026年夏、さらに新しい計画を準備しています。",
       instagramLead:
-        "イベントや作業日の案内は、矢野のInstagramでもお知らせします。",
-      instagramLabel: "Instagramをチェック",
+        "イベントや体験の企画についてのご相談は、InstagramのDMからご連絡ください。開催案内もInstagramでお知らせします。",
+      instagramLabel: "InstagramのDMで相談する",
     },
+  },
+  gallery: {
+    eyebrow: "PHOTOGRAPHS",
+    heading: "島のギャラリー",
+    lead: "観光地ではない島、中島。でも、ここには今も自然の景色と、人の暮らしが残っています。",
+    cta: "写真をもっと見る",
+    items: [
+      {
+        image: sceneryNakajimaSea.src,
+        alt: "中島の山から見下ろす瀬戸内海とフェリー",
+        size: "wide",
+      },
+      {
+        image: sceneryPort.src,
+        alt: "中島の港で船を見送る人",
+        size: "portrait",
+      },
+      {
+        image: sceneryLemonOrchard.src,
+        alt: "レモン畑で木を手入れする人",
+        size: "square",
+      },
+      {
+        image: sceneryKominka.src,
+        alt: "築100年の古民家の室内",
+        size: "wide",
+      },
+      {
+        image: scenerySea.src,
+        alt: "緑の中から海へ続く中島の道",
+        size: "wide",
+      },
+      {
+        image: sceneryTable.src,
+        alt: "レモンを浮かべた鍋を囲む島の食卓",
+        size: "square",
+      },
+      {
+        image: sceneryPeople.src,
+        alt: "中島のレモン畑に集まった人と仲間",
+        size: "wide",
+      },
+      {
+        image: introYano.src,
+        alt: "中島のレモン畑で話す矢野諭稔",
+        size: "portrait",
+      },
+      {
+        image: sceneryMap.src,
+        alt: "瀬戸内海と中島を示す線画地図",
+        size: "square",
+      },
+      {
+        image: placeholderImages.repair,
+        alt: "古民家での活動を記録した写真",
+        size: "wide",
+      },
+    ],
   },
   scenery: {
     eyebrow: "Nakajima",
