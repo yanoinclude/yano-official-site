@@ -6,6 +6,8 @@ import sceneryPeople from "@/assets/images/scenery/scenery-people.jpg";
 import sceneryPort from "@/assets/images/scenery/scenery-port.jpg";
 import scenerySea from "@/assets/images/scenery/scenery-sea.jpg";
 import sceneryTable from "@/assets/images/scenery/scenery-table.jpg";
+import sceneryMap from "@/assets/images/scenery/nakajima-map.svg";
+import sceneryNakajimaSea from "@/assets/images/closing/closing-nakajima-ferry.jpeg";
 
 export const homeContent = {
   hero: {
@@ -22,10 +24,90 @@ export const homeContent = {
     image: introYano,
     imageAlt: "中島のレモン畑で作業の合間に話す矢野諭稔",
   },
+  timeline: {
+    eyebrow: "STORY",
+    heading: "ヤノの軌跡",
+    lead: "松山へ移り住み、中島へ通い始めてから。週末ごとに手を動かしてきた時間をたどります。",
+    items: [
+      {
+        date: "2022",
+        title: "松山にIターン",
+        body: "ウェブ会社に勤めながら、田舎暮らしに憧れる。",
+        photoNote: "松山で暮らし始めた頃",
+      },
+      {
+        date: "2023.02",
+        title: "松山市・中島に来島",
+        body: "毎週末、島へ通い始める。",
+        photoNote: "初めて中島を訪れた頃",
+      },
+      {
+        date: "2023.12",
+        title: "築100年の古民家を譲り受ける",
+        body: "島の古民家を、2円で受け取る。",
+        photoNote: "手を入れる前の古民家",
+      },
+      {
+        date: "2024.06",
+        title: "屋根の瓦下ろし",
+        body: "仲間とともに、本格的な改修を始める。",
+        photoNote: "瓦下ろしの作業風景",
+      },
+      {
+        date: "2025.02",
+        title: "屋根の張り替えが完了",
+        body: "雨風から家を守る、大きな工程を終える。",
+        photoNote: "張り替えを終えた屋根",
+      },
+      {
+        date: "2025.03",
+        title: "クラウドファンディングを実施",
+        body: "古民家の続きを、多くの人とつくり始める。",
+        photoNote: "応援を呼びかけた記録",
+      },
+      {
+        date: "2025.05",
+        title: "電気工事と漆喰塗り",
+        body: "人を迎えるため、室内を少しずつ整える。",
+        photoNote: "漆喰を塗る作業風景",
+      },
+      {
+        date: "2025.08",
+        title: "トイレ工事と床の張り替え",
+        body: "暮らし、集まれる場所へ仕上げていく。",
+        photoNote: "床を張り替える作業風景",
+      },
+      {
+        date: "2025.08.26",
+        title: "古民家が完成",
+        body: "受け取った家に、もう一度人が集まる。",
+        photoNote: "完成した古民家と仲間",
+      },
+      {
+        date: "2025.10",
+        title: "100本のレモンの木を譲り受ける",
+        body: "家に続いて、島の畑の手入れが始まる。",
+        photoNote: "受け取ったレモン畑",
+      },
+    ],
+    current: {
+      date: "現在",
+      heading: "家と畑を行き来する、週末。",
+      body: "平日は松山や東京で働き、週末は中島へ。古民家とレモン畑を行き来しながら、島の人や仲間と手を動かしています。",
+    },
+  },
   scenery: {
-    eyebrow: "PLACE",
-    heading: "中島という場所",
-    body: "松山から船で約1時間。\n瀬戸内海に浮かぶ、柑橘の島です。\n\n港に船が着き、山の斜面には畑が続く。\n島の家や畑は、長いあいだ誰かの手によって守られてきました。",
+    eyebrow: "Nakajima",
+    heading: "中島",
+    body: [
+      "中島は、愛媛県松山市の沖合に浮かぶ忽那諸島のひとつ。松山から船で約1時間の場所にあります。",
+      "忽那諸島の中で最も大きな島で、海からすぐに山の斜面が立ち上がります。あたたかな日差しと潮風を受けるその斜面には、みかんやレモンなどの柑橘畑が広がっています。",
+      "港に船が着き、人が行き交い、家や畑には誰かの手が入る。ここにある風景は、島で暮らしてきた人たちの営みの積み重ねです。",
+    ],
+    map: sceneryMap,
+    mapAlt: "松山市の沖合、忽那諸島の中央に位置する中島を示した線画地図",
+    featureImage: sceneryNakajimaSea,
+    featureImageAlt: "中島の山の斜面から見下ろす瀬戸内海と港を行き交うフェリー",
     slides: [
       {
         image: sceneryPort,

@@ -40,13 +40,68 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </figure>
   </section>
 
-  <section class="scenery-section reveal-section" id="scenery">
-    <div class="scenery-intro">
-      <div class="scenery-intro__heading">
-        <p class="section-title__en">{homeContent.scenery.eyebrow}</p>
-        <h2>{homeContent.scenery.heading}</h2>
+  <section class="timeline-section reveal-section" id="timeline">
+    <header class="timeline-section__heading">
+      <p class="section-title__en">{homeContent.timeline.eyebrow}</p>
+      <h2>{homeContent.timeline.heading}</h2>
+      <p>{homeContent.timeline.lead}</p>
+    </header>
+
+    <div
+      class="timeline-scroll"
+      tabindex="0"
+      role="region"
+      aria-label="ヤノの活動年表。横方向にスクロールできます。"
+    >
+      <ol class="timeline-list">
+        {
+          homeContent.timeline.items.map((item, index) => (
+            <li class="timeline-item">
+              <div class="timeline-item__photo" aria-hidden="true">
+                <span>PHOTO {String(index + 1).padStart(2, "0")}</span>
+                <small>{item.photoNote}</small>
+              </div>
+              <div class="timeline-item__marker" aria-hidden="true" />
+              <div class="timeline-item__copy">
+                <time>{item.date}</time>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="timeline-current">
+      <p>{homeContent.timeline.current.date}</p>
+      <div>
+        <h3>{homeContent.timeline.current.heading}</h3>
+        <p>{homeContent.timeline.current.body}</p>
       </div>
-      <p>{homeContent.scenery.body}</p>
+      <nav aria-label="現在の活動を詳しく見る">
+        <TextLink href="/about" variant="quiet">矢野について</TextLink>
+        <TextLink href="/kominka" variant="quiet">古民家のこと</TextLink>
+        <TextLink href="/lemon-farm" variant="quiet">レモン畑のこと</TextLink>
+      </nav>
+    </div>
+  </section>
+
+  <section class="scenery-section reveal-section" id="scenery">
+    <div class="scenery-place">
+      <header class="scenery-place__heading">
+        <h2>{homeContent.scenery.heading}</h2>
+        <p>{homeContent.scenery.eyebrow}</p>
+      </header>
+      <div class="scenery-place__copy">
+        {homeContent.scenery.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <figure class="scenery-place__photo">
+        <img
+          src={homeContent.scenery.featureImage.src}
+          alt={homeContent.scenery.featureImageAlt}
+        />
+      </figure>
     </div>
     <div
       class="scenery-marquee"
