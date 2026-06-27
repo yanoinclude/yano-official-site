@@ -40,6 +40,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </figure>
   </section>
 
+  <section class="short-profile reveal-section" aria-labelledby="short-profile-title">
+    <div>
+      <p class="section-title__en">{homeContent.shortProfile.eyebrow}</p>
+      <h2 id="short-profile-title">{homeContent.shortProfile.heading}</h2>
+    </div>
+    <div class="short-profile__body">
+      <p>{homeContent.shortProfile.body}</p>
+      <a
+        class="short-profile__instagram"
+        href={siteConfig.social.instagram}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {homeContent.shortProfile.instagramLabel}
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
   <section class="timeline-section reveal-section" id="timeline">
     <header class="timeline-section__heading">
       <p class="section-title__en">{homeContent.timeline.eyebrow}</p>
@@ -47,30 +66,38 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <p>{homeContent.timeline.lead}</p>
     </header>
 
-    <div
-      class="timeline-scroll"
-      tabindex="0"
-      role="region"
-      aria-label="ヤノの活動年表。横方向にスクロールできます。"
-    >
-      <ol class="timeline-list">
-        {
-          homeContent.timeline.items.map((item, index) => (
-            <li class="timeline-item">
-              <div class="timeline-item__photo" aria-hidden="true">
-                <span>PHOTO {String(index + 1).padStart(2, "0")}</span>
-                <small>{item.photoNote}</small>
-              </div>
-              <div class="timeline-item__marker" aria-hidden="true" />
-              <div class="timeline-item__copy">
-                <time>{item.date}</time>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ol>
+    <div class="timeline-chapters">
+      {
+        homeContent.timeline.groups.map((group) => (
+          <details class="timeline-chapter">
+            <summary>
+              <span class="timeline-chapter__number">{group.number}</span>
+              <span class="timeline-chapter__title">
+                <strong>{group.title}</strong>
+                <small>{group.body}</small>
+              </span>
+              <time>{group.period}</time>
+              <span class="timeline-chapter__toggle" aria-hidden="true">
+                ＋
+              </span>
+            </summary>
+            <ol>
+              {group.itemIndexes.map((itemIndex) => {
+                const item = homeContent.timeline.items[itemIndex];
+                return (
+                  <li>
+                    <time>{item.date}</time>
+                    <div>
+                      <h3>{item.title}</h3>
+                      <p>{item.body}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </details>
+        ))
+      }
     </div>
 
     <div class="timeline-current">
@@ -84,6 +111,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <TextLink href="/kominka" variant="quiet">古民家のこと</TextLink>
         <TextLink href="/lemon-farm" variant="quiet">レモン畑のこと</TextLink>
       </nav>
+    </div>
+    <div class="timeline-more">
+      <TextLink href="/story" variant="quiet">
+        {homeContent.timeline.moreLabel}
+      </TextLink>
     </div>
   </section>
 

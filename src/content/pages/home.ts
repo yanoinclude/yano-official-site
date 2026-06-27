@@ -24,10 +24,39 @@ export const homeContent = {
     image: introYano,
     imageAlt: "中島のレモン畑で作業の合間に話す矢野諭稔",
   },
+  shortProfile: {
+    eyebrow: "ABOUT ME",
+    heading: "暮らしを変えすぎず、島へ通う。",
+    body: "松山へIターンし、2026年からは東京との二拠点生活へ。平日は仕事をしながら、週末になると中島へ通っています。すべてを移すのではなく、自分にできる範囲で田舎暮らしを実現していきたいと思っています。",
+    instagramLabel: "Instagramはこちら",
+  },
   timeline: {
     eyebrow: "STORY",
-    heading: "ヤノの軌跡",
+    heading: "私の軌跡",
     lead: "松山へ移り住み、中島へ通い始めてから。週末ごとに手を動かしてきた時間をたどります。",
+    groups: [
+      {
+        number: "01",
+        title: "Iターン",
+        period: "2022—2023",
+        body: "松山へ移り住み、中島と出会うまで。",
+        itemIndexes: [0, 1],
+      },
+      {
+        number: "02",
+        title: "古民家再生",
+        period: "2023.12—2025.08",
+        body: "2円で譲り受けた築100年の家を、仲間と直した時間。",
+        itemIndexes: [2, 3, 4, 5, 6, 7, 8],
+      },
+      {
+        number: "03",
+        title: "レモン畑",
+        period: "2025.10—",
+        body: "100本の木を受け取り、畑へ通い始める。",
+        itemIndexes: [9],
+      },
+    ],
     items: [
       {
         date: "2022",
@@ -95,6 +124,7 @@ export const homeContent = {
       heading: "家と畑を行き来する、週末。",
       body: "平日は松山や東京で働き、週末は中島へ。古民家とレモン畑を行き来しながら、島の人や仲間と手を動かしています。",
     },
+    moreLabel: "ストーリーをもっと見る",
   },
   scenery: {
     eyebrow: "Nakajima",
