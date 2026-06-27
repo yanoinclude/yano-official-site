@@ -1,0 +1,121 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import { siteConfig } from "@/content/pages/site";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const farm = homeContent.currentActivities.lemonFarm;
+const product = homeContent.product;
+
+const farmOffers = [
+  {
+    number: "01",
+    title: "レモンの収穫体験",
+    body: "畑に入り、木の状態や実のつき方を見ながら、自分の手でレモンを収穫します。",
+  },
+  {
+    number: "02",
+    title: "週末移住レモン果汁",
+    body: "この畑で受け取ったレモンを搾り、食卓から島との関係が始まる一本として届けています。",
+  },
+  {
+    number: "03",
+    title: "レモンの販売",
+    body: "旬を迎える12月頃から6月中旬頃まで、生果のレモンを販売します。",
+  },
+  {
+    number: "04",
+    title: "企業向けノベルティ",
+    body: "贈り物や催しに合わせた、企業・団体向けのレモン果汁のご相談も受け付けています。",
+  },
+  {
+    number: "05",
+    title: "畑の見学",
+    body: "レモン畑や週末の活動を見てみたい方へ。時期と作業状況に合わせてご案内します。",
+  },
+];
+---
+
+<BaseLayout
+  title="週末移住レモン果汁と100本のレモン畑"
+  description="古民家のお隣さんから受け取った100本のレモン畑と、そこから生まれた週末移住レモン果汁の物語。"
+>
+  <article class="lemon-product-page">
+    <section class="lemon-product-hero">
+      <figure>
+        <img src={product.image} alt={product.imageAlt} />
+      </figure>
+      <div>
+        <p class="section-title__en">{product.eyebrow}</p>
+        <h1>{product.heading}</h1>
+        <p class="lemon-product-hero__lead">{product.lead}</p>
+        <p>{product.body}</p>
+        <TextLink href={product.href} variant="quiet">
+          {product.cta}
+        </TextLink>
+      </div>
+    </section>
+
+    <section class="lemon-story" aria-labelledby="lemon-story-title">
+      <header>
+        <p class="section-title__en">STORY</p>
+        <h2 id="lemon-story-title">古民家の隣にあった、レモン畑。</h2>
+      </header>
+      <div class="lemon-story__body">
+        <p>
+          この畑は、古民家のお隣さんが長く手入れしてきた場所です。
+          古民家再生を始めた頃から、一番近くで活動を見守り、
+          みかんを差し入れてくれた農家さんでした。
+        </p>
+        <p>
+          けれど、足を痛めてから、斜面での作業が難しくなっていきました。
+          「もうレモンの木は全部切る」。そう聞いて畑を見に行ったとき、
+          木がなくなることへの悲しさと、「残さないと」という衝動がありました。
+        </p>
+        <p>
+          農業は初めてでした。それでも、まずは借り受け、
+          週末に通いながら草を刈り、枝を見て、少しずつ覚えていくことにしました。
+          古民家とレモン畑は、別々に始まった事業ではなく、
+          島で受け取った関係の続きにあります。
+        </p>
+      </div>
+      <figure>
+        <img src={farm.image} alt={farm.imageAlt} loading="lazy" />
+      </figure>
+    </section>
+
+    <section class="farm-offers" aria-labelledby="farm-offers-title">
+      <header>
+        <p class="section-title__en">AT THE FARM</p>
+        <h2 id="farm-offers-title">この農園で、できること。</h2>
+        <p>
+          収穫から商品づくり、畑を訪れる時間まで。季節と作業状況に合わせて、
+          中島のレモンに触れる機会をひらいています。
+        </p>
+      </header>
+      <ol>
+        {
+          farmOffers.map((offer) => (
+            <li>
+              <span>{offer.number}</span>
+              <h3>{offer.title}</h3>
+              <p>{offer.body}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="farm-offers__links">
+        <TextLink href={product.href} variant="quiet">
+          週末移住レモン果汁を見る
+        </TextLink>
+        <TextLink href={siteConfig.social.instagram} variant="quiet">
+          体験・見学についてInstagramで相談する
+        </TextLink>
+      </div>
+    </section>
+
+    <TextLink href="/#lemon-farm-detail" variant="quiet">
+      トップページへ戻る
+    </TextLink>
+  </article>
+</BaseLayout>

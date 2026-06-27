@@ -39,15 +39,6 @@ export const subpages = [
     imageAlt: "レモン畑を想定した仮ビジュアル",
   },
   {
-    slug: "product",
-    label: "PRODUCT",
-    title: "週末移住レモン果汁",
-    description:
-      "島との関係が始まる一本として、レモン果汁の背景と購入導線を整える予定です。",
-    image: placeholderImages.bottle,
-    imageAlt: "週末移住レモン果汁を想定した仮ビジュアル",
-  },
-  {
     slug: "people",
     label: "PEOPLE",
     title: "島の人や仲間との活動",

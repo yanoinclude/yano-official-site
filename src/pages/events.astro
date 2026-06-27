@@ -1,0 +1,55 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import { siteConfig } from "@/content/pages/site";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const events = homeContent.currentActivities.kominka;
+---
+
+<BaseLayout
+  title="島でひらいたイベントと体験"
+  description="築100年の古民家やレモン畑で開催してきた、中島のイベントと体験を紹介します。"
+>
+  <article class="events-page">
+    <header class="events-page__header">
+      <p class="section-title__en">EVENT</p>
+      <h1>{events.experiencesHeading}</h1>
+      <p>{events.body}</p>
+    </header>
+
+    <div class="kominka-experiences">
+      <ol>
+        {
+          events.experiences.map((experience, index) => (
+            <li>
+              <div class="kominka-experience__copy">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <h2>{experience.title}</h2>
+                {"note" in experience && <p>{experience.note}</p>}
+              </div>
+              <figure>
+                <img
+                  src={experience.image}
+                  alt={experience.imageAlt}
+                  loading={index < 2 ? "eager" : "lazy"}
+                />
+              </figure>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="kominka-experiences__future">{events.future}</p>
+      <div class="kominka-experiences__instagram">
+        <p>{events.instagramLead}</p>
+        <TextLink href={siteConfig.social.instagram} variant="quiet">
+          {events.instagramLabel}
+        </TextLink>
+      </div>
+    </div>
+
+    <TextLink href="/#event-detail" variant="quiet">
+      トップページへ戻る
+    </TextLink>
+  </article>
+</BaseLayout>

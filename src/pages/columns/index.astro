@@ -1,0 +1,42 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="島のあれこれ"
+  description="古民家再生、レモン農園、イベント企画、古民家生活を伝えるコラム一覧です。"
+>
+  <article class="columns-page">
+    <header class="columns-page__header">
+      <p class="section-title__en">COLUMNS</p>
+      <h1>島のあれこれ</h1>
+      <p>
+        古民家再生、レモン農園、イベント企画、古民家生活。<br />
+        中島で積み重なる週末の出来事を、写真と言葉で伝えます。
+      </p>
+    </header>
+
+    <div class="columns-page__grid">
+      {
+        homeContent.columns.items.map((item) => (
+          <article class="column-card">
+            <a href={`/columns/${item.slug}/`}>
+              <figure>
+                <img src={item.image} alt={item.imageAlt} loading="lazy" />
+              </figure>
+              <div class="column-card__copy">
+                <p>{item.category}</p>
+                <h2>{item.title}</h2>
+                <span>{item.excerpt}</span>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    <TextLink href="/" variant="quiet">トップページへ戻る</TextLink>
+  </article>
+</BaseLayout>
