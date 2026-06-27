@@ -30,7 +30,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
   <section class="philosophy-section reveal-section" id="philosophy">
     <div class="philosophy-paper">
-      <p class="philosophy-paper__label">99 + 1 Project｜原体験</p>
+      <p class="philosophy-paper__label">OUR PHILOSOPHY</p>
       <div class="philosophy-paper__body" aria-label="島の風景を手入れする理由">
         <p>愛媛・中島という島で。</p>
         <p>築100年の古民家を2円で譲り受け、100本のレモンの木を任されました。</p>
@@ -156,7 +156,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <p class="concept-section__outer-label">{homeContent.concept.eyebrow}</p>
+  <div class="section-title concept-section__outer-heading">
+    <p class="section-title__en">{homeContent.concept.eyebrow}</p>
+    <h2>{homeContent.concept.heading}</h2>
+  </div>
 
   <section
     class="concept-section reveal-section"
@@ -164,35 +167,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     style={`--concept-image: url('${homeContent.concept.image}')`}
   >
     <div class="concept-section__heading">
-      <p class="concept-section__intro">{homeContent.concept.intro}</p>
       <h2>{homeContent.concept.headline}</h2>
     </div>
-    <p class="concept-section__framed">
-      {homeContent.concept.framedMessage.map((line) => <span>{line}</span>)}
-    </p>
     <div class="concept-section__body" aria-label={homeContent.concept.body}>
       {homeContent.concept.bodyColumns.map((column) => <p>{column}</p>)}
-    </div>
-    <div class="concept-list">
-      {
-        homeContent.concept.ideas.map((idea) => (
-          <article>
-            <p class="concept-list__label">{idea.label}</p>
-            <h3>{idea.title}</h3>
-            <p>{idea.body}</p>
-          </article>
-        ))
-      }
     </div>
   </section>
 
   <section class="activities-section reveal-section" id="activities">
-    <div class="section-title section-title--row">
-      <div>
-        <p class="section-title__en">{homeContent.activities.eyebrow}</p>
-        <h2>{homeContent.activities.heading}</h2>
-      </div>
-      <p>{homeContent.activities.lead}</p>
+    <div class="section-title section-title--stacked">
+      <p class="section-title__en">{homeContent.activities.eyebrow}</p>
+      <h2>{homeContent.activities.heading}</h2>
+      <p class="section-title__lead">{homeContent.activities.lead}</p>
     </div>
     <div class="activity-list activity-list--compact">
       {

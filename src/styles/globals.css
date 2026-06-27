@@ -279,6 +279,10 @@ button {
   object-fit: cover;
 }
 
+.closing-section img {
+  object-position: center 48%;
+}
+
 .hero__copy-block {
   position: absolute;
   top: 50%;
@@ -881,7 +885,19 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.34);
+  background:
+    radial-gradient(
+      circle at 52% 48%,
+      rgba(255, 255, 255, 0.4) 0,
+      rgba(255, 255, 255, 0.18) 24%,
+      rgba(255, 255, 255, 0) 46%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.32) 0%,
+      rgba(0, 0, 0, 0.16) 45%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
   content: "";
 }
 
@@ -2914,7 +2930,7 @@ body {
   }
 }
 
-/* 99 + 1 Project panel: positioned to match the supplied square reference. */
+/* Concept panel: positioned to match the supplied editorial reference. */
 .site-frame .concept-section {
   position: relative;
   display: block;
@@ -2926,15 +2942,13 @@ body {
   background: #06120d;
 }
 
-.site-frame .concept-section__outer-label {
+.site-frame .concept-section__outer-heading {
   width: min(100%, 1254px);
-  margin: clamp(0.4rem, 1vw, 0.9rem) auto clamp(1.1rem, 2vw, 1.65rem);
-  color: #111;
-  font-family: var(--font-island-heading);
-  font-size: clamp(1.35rem, 2.4vw, 2.35rem);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0.24em;
+  margin: 0 auto clamp(2rem, 4vw, 3.6rem);
+}
+
+.site-frame .concept-section__outer-heading h2 {
+  max-width: 17em;
 }
 
 .site-frame .concept-section::before {
@@ -2986,20 +3000,20 @@ body {
 
 .site-frame .concept-section__body {
   position: absolute;
-  top: 18%;
-  left: 9.2%;
+  top: 13%;
+  left: 7.5%;
   z-index: 1;
   display: flex;
   flex-direction: row-reverse;
-  gap: clamp(1.2rem, 2.45vw, 2.35rem);
+  gap: clamp(1rem, 1.7vw, 1.75rem);
   align-items: flex-start;
   justify-content: flex-start;
-  width: 57%;
+  width: 85%;
   margin: 0;
 }
 
 .site-frame .concept-section__body p {
-  max-height: 20.5rem;
+  max-height: 29rem;
   margin: 0;
   color: rgba(255, 255, 255, 0.96);
   font-family: var(--font-island-heading);
@@ -3405,18 +3419,18 @@ body {
 /* Readability pass: consistent type rhythm for the editorial sections. */
 :root {
   --type-label: clamp(0.76rem, 0.78vw, 0.86rem);
-  --type-body: clamp(0.94rem, 0.9vw, 1rem);
-  --type-lead: clamp(1rem, 1vw, 1.08rem);
+  --type-body: clamp(0.95rem, 0.88vw, 1rem);
+  --type-lead: clamp(1rem, 0.96vw, 1.06rem);
   --type-link: clamp(0.9rem, 0.86vw, 0.96rem);
-  --type-section-heading: clamp(1.95rem, 2.8vw, 2.85rem);
-  --type-card-heading: clamp(1.24rem, 1.45vw, 1.55rem);
-  --space-readable-section: clamp(5rem, 8vw, 7.5rem);
-  --space-readable-gap: clamp(2rem, 4vw, 4rem);
+  --type-section-heading: clamp(1.88rem, 2.45vw, 2.58rem);
+  --type-card-heading: clamp(1.18rem, 1.32vw, 1.42rem);
+  --space-readable-section: clamp(4.5rem, 7vw, 6.75rem);
+  --space-readable-gap: clamp(1.8rem, 3.5vw, 3.6rem);
 }
 
 body {
   font-size: var(--type-body);
-  line-height: 1.95;
+  line-height: 1.9;
   letter-spacing: 0.035em;
 }
 
@@ -3441,8 +3455,8 @@ body {
   font-family: var(--font-island-heading);
   font-size: var(--type-section-heading);
   font-weight: 400;
-  line-height: 1.62;
-  letter-spacing: 0.055em;
+  line-height: 1.58;
+  letter-spacing: 0.05em;
 }
 
 .site-frame
@@ -3453,11 +3467,11 @@ body {
     .journal-section .section-title > p
   ) {
   max-width: 42rem;
-  color: color-mix(in srgb, var(--island-text) 78%, white);
+  color: color-mix(in srgb, var(--island-text) 84%, white);
   font-size: var(--type-body);
   font-weight: 400;
-  line-height: 2;
-  letter-spacing: 0.04em;
+  line-height: 1.92;
+  letter-spacing: 0.035em;
 }
 
 .site-frame .section-copy p {
@@ -3482,7 +3496,7 @@ body {
 }
 
 .site-frame :is(.experience-section, .journal-section, .news-section) {
-  padding-block: clamp(4.75rem, 7vw, 6.75rem);
+  padding-block: clamp(4.25rem, 6.5vw, 6.25rem);
 }
 
 .site-frame .section-grid {
@@ -3496,6 +3510,23 @@ body {
 
 .site-frame .section-title--row > p {
   align-self: end;
+}
+
+.site-frame .section-title--stacked {
+  width: min(100%, 1105px);
+  max-width: 1105px;
+  margin-bottom: var(--space-readable-gap);
+  text-align: left;
+}
+
+.site-frame .section-title--stacked .section-title__lead {
+  max-width: 42rem;
+  margin: clamp(1.1rem, 1.7vw, 1.55rem) 0 0;
+  color: color-mix(in srgb, var(--island-text) 84%, white);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 1.92;
+  letter-spacing: 0.035em;
 }
 
 .site-frame .about-section .section-photo,
@@ -3521,7 +3552,7 @@ body {
 }
 
 .site-frame .activity-row h3 {
-  margin-top: 0.85rem;
+  margin-top: 0.75rem;
   color: var(--island-text);
   font-size: var(--type-card-heading);
   font-weight: 400;
@@ -3531,9 +3562,9 @@ body {
 
 .site-frame .activity-row p {
   max-width: 34rem;
-  color: color-mix(in srgb, var(--island-text) 76%, white);
+  color: color-mix(in srgb, var(--island-text) 82%, white);
   font-size: var(--type-body);
-  line-height: 1.92;
+  line-height: 1.88;
   letter-spacing: 0.035em;
 }
 
@@ -3544,9 +3575,9 @@ body {
 .site-frame .product-section__lead {
   color: var(--island-text);
   font-family: var(--font-island-heading);
-  font-size: clamp(1.08rem, 1.25vw, 1.25rem);
+  font-size: clamp(1.04rem, 1.12vw, 1.18rem);
   font-weight: 400;
-  line-height: 1.85;
+  line-height: 1.8;
   letter-spacing: 0.06em;
 }
 
@@ -3559,7 +3590,7 @@ body {
   min-height: 3.75rem;
   padding: 1.05rem 1.25rem;
   font-family: var(--font-island-heading);
-  font-size: clamp(1rem, 1.12vw, 1.14rem);
+  font-size: clamp(0.98rem, 1.02vw, 1.08rem);
   font-weight: 400;
   line-height: 1.55;
   letter-spacing: 0.07em;
@@ -3589,9 +3620,9 @@ body {
 }
 
 .site-frame .journal-card p:not(.journal-card__date) {
-  color: color-mix(in srgb, var(--island-text) 74%, white);
-  font-size: clamp(0.88rem, 0.84vw, 0.94rem);
-  line-height: 1.9;
+  color: color-mix(in srgb, var(--island-text) 80%, white);
+  font-size: clamp(0.9rem, 0.82vw, 0.95rem);
+  line-height: 1.86;
   letter-spacing: 0.035em;
 }
 
@@ -3607,9 +3638,9 @@ body {
 }
 
 .site-frame .closing-section__vertical {
-  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-size: clamp(1.28rem, 1.75vw, 1.78rem);
   font-weight: 400;
-  line-height: 1.9;
+  line-height: 1.85;
   letter-spacing: 0.08em;
 }
 
@@ -3633,8 +3664,8 @@ body {
 @media (max-width: 900px) {
   :root {
     --type-body: 0.93rem;
-    --type-section-heading: clamp(1.75rem, 5.1vw, 2.4rem);
-    --space-readable-section: clamp(4.2rem, 9vw, 5.75rem);
+    --type-section-heading: clamp(1.68rem, 4.8vw, 2.25rem);
+    --space-readable-section: clamp(4rem, 8.5vw, 5.45rem);
   }
 
   .site-frame .section-title--row {
@@ -3660,13 +3691,13 @@ body {
     --type-label: 0.72rem;
     --type-body: 0.92rem;
     --type-link: 0.9rem;
-    --type-section-heading: clamp(1.58rem, 7vw, 2.05rem);
-    --type-card-heading: 1.18rem;
-    --space-readable-section: clamp(3.8rem, 13vw, 5rem);
+    --type-section-heading: clamp(1.5rem, 6.3vw, 1.9rem);
+    --type-card-heading: 1.12rem;
+    --space-readable-section: clamp(3.45rem, 11vw, 4.55rem);
   }
 
   body {
-    line-height: 1.9;
+    line-height: 1.86;
     letter-spacing: 0.025em;
   }
 
@@ -3688,7 +3719,7 @@ body {
       .product-section__text > p:not(.section-title__en),
       .journal-section .section-title > p
     ) {
-    line-height: 1.9;
+    line-height: 1.86;
   }
 
   .site-frame .section-copy p {
