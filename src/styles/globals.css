@@ -3647,6 +3647,11 @@ body {
 .site-frame .closing-section__body p {
   font-size: clamp(1rem, 1.15vw, 1.18rem);
   line-height: 1.9;
+  letter-spacing: 0.12em;
+  text-align: start;
+  text-orientation: upright;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
 }
 
 .site-frame .site-footer__copy {
@@ -3753,5 +3758,503 @@ body {
 
   .site-frame .closing-section__vertical {
     font-size: clamp(1.22rem, 5.8vw, 1.55rem);
+  }
+}
+
+/* Front-page narrative: person, place, work, profile, and relationships. */
+.site-frame .intro-facts-section,
+.site-frame .work-section,
+.site-frame .yano-section,
+.site-frame .people-section {
+  width: min(calc(100% - clamp(3rem, 8vw, 8rem)), 1105px);
+  margin-inline: auto;
+}
+
+.site-frame .intro-facts-section {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+  padding-block: clamp(6rem, 10vw, 9rem);
+}
+
+.site-frame .intro-facts-section__message {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: clamp(1.6rem, 3vw, 2.8rem);
+  justify-content: center;
+  min-height: 30rem;
+}
+
+.site-frame .intro-facts-section__message p {
+  margin: 0;
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: 1.28rem;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.1em;
+  text-orientation: upright;
+  white-space: pre-line;
+  writing-mode: vertical-rl;
+}
+
+.site-frame .intro-facts-section__image,
+.site-frame .work-story figure,
+.site-frame .yano-section__image {
+  margin: 0;
+  overflow: hidden;
+}
+
+.site-frame .intro-facts-section__image {
+  aspect-ratio: 4 / 3;
+}
+
+.site-frame .intro-facts-section__image img,
+.site-frame .work-story img,
+.site-frame .yano-section__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.site-frame .intro-facts-section__image img {
+  object-position: 50% 46%;
+}
+
+.site-frame .work-section {
+  padding-block: clamp(5rem, 8vw, 7.5rem);
+}
+
+.site-frame .work-section__heading {
+  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+.site-frame .work-section__lead {
+  max-width: 36rem;
+  margin: 1.5rem 0 0;
+  color: color-mix(in srgb, var(--island-text) 82%, white);
+  font-size: 0.96rem;
+  line-height: 2;
+  letter-spacing: 0.035em;
+  white-space: pre-line;
+}
+
+.site-frame .work-section__heading h2,
+.site-frame .yano-section__copy h2,
+.site-frame .scenery-intro__heading h2 {
+  margin: 0;
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .work-section__list {
+  display: grid;
+  gap: clamp(5rem, 9vw, 8rem);
+}
+
+.site-frame .work-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(16rem, 0.92fr);
+  gap: clamp(3rem, 7vw, 6.5rem);
+  align-items: center;
+}
+
+.site-frame .work-story:nth-child(even) {
+  grid-template-columns: minmax(16rem, 0.92fr) minmax(0, 1.08fr);
+}
+
+.site-frame .work-story:nth-child(even) figure {
+  order: 2;
+}
+
+.site-frame .work-story figure {
+  aspect-ratio: 4 / 3;
+}
+
+.site-frame .work-story__copy {
+  max-width: 28rem;
+}
+
+.site-frame .work-story__number {
+  margin: 0 0 1.25rem;
+  color: var(--island-muted);
+  font-family: var(--font-island-accent);
+  font-size: 0.78rem;
+  line-height: 1;
+  letter-spacing: 0.2em;
+}
+
+.site-frame .work-story h3 {
+  margin: 0;
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .work-story__copy > p:not(.work-story__number) {
+  margin: 1.25rem 0 0;
+  color: color-mix(in srgb, var(--island-text) 84%, white);
+  font-size: 0.96rem;
+  line-height: 1.95;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .yano-section {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(18rem, 1.05fr);
+  gap: clamp(3.5rem, 8vw, 7rem);
+  align-items: center;
+  padding-block: clamp(6rem, 10vw, 9rem);
+  border-top: 1px solid var(--island-soft-line);
+}
+
+.site-frame .yano-section__image {
+  aspect-ratio: 4 / 3;
+}
+
+.site-frame .yano-section__image img {
+  object-position: center 44%;
+}
+
+.site-frame .yano-section__copy {
+  max-width: 34rem;
+}
+
+.site-frame .yano-section__name {
+  margin: 0.35rem 0 0;
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: 1.3rem;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+}
+
+.site-frame .yano-section__role {
+  margin: 1.75rem 0 0;
+  color: var(--island-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+}
+
+.site-frame
+  .yano-section__copy
+  > p:not(.section-title__en, .yano-section__name, .yano-section__role) {
+  margin: 1.15rem 0 0;
+  color: color-mix(in srgb, var(--island-text) 84%, white);
+  font-size: 0.96rem;
+  line-height: 1.95;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .people-section {
+  padding-block: clamp(5rem, 8vw, 7.5rem);
+  border-top: 1px solid var(--island-soft-line);
+}
+
+.site-frame .people-section__heading {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: end;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+}
+
+.site-frame .people-section__heading h2 {
+  margin: 0;
+  font-family: var(--font-island-heading);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .people-section__heading > p {
+  max-width: 36rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--island-text) 82%, white);
+  font-size: 0.96rem;
+  line-height: 1.95;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .person-story {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr);
+  gap: clamp(3rem, 7vw, 6.5rem);
+  align-items: center;
+}
+
+.site-frame .person-story figure {
+  aspect-ratio: 3 / 2;
+  margin: 0;
+  overflow: hidden;
+}
+
+.site-frame .person-story img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.site-frame .person-story__relation {
+  margin: 0 0 1rem;
+  color: var(--island-muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+}
+
+.site-frame .person-story h3 {
+  margin: 0;
+  font-family: var(--font-island-heading);
+  font-size: 1.55rem;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .person-story div > p:last-child {
+  margin: 1.2rem 0 0;
+  color: color-mix(in srgb, var(--island-text) 82%, white);
+  font-size: 0.96rem;
+  line-height: 1.95;
+}
+
+.site-frame .experience-list {
+  display: block;
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  border-top: 1px solid var(--island-border);
+}
+
+.site-frame .experience-list li {
+  min-height: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--island-border);
+}
+
+.site-frame .experience-list a {
+  display: grid;
+  grid-template-columns: 3rem minmax(10rem, 0.55fr) minmax(18rem, 1fr) 2rem;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 5.75rem;
+  padding: 1.25rem 0;
+  color: var(--island-text);
+  text-decoration: none;
+}
+
+.site-frame .experience-list a > span:first-child {
+  color: var(--island-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+}
+
+.site-frame .experience-list strong {
+  font-family: var(--font-island-heading);
+  font-size: 1.12rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .experience-list p {
+  margin: 0;
+  color: color-mix(in srgb, var(--island-text) 75%, white);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.site-frame .experience-list a > span:last-child {
+  transition: transform 0.3s ease;
+}
+
+.site-frame .experience-list a:hover > span:last-child,
+.site-frame .experience-list a:focus-visible > span:last-child {
+  transform: translateX(4px);
+}
+
+.site-frame .scenery-section {
+  padding-block: clamp(5rem, 8vw, 7.5rem);
+}
+
+.site-frame .scenery-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(18rem, 1.22fr);
+  gap: clamp(3rem, 7vw, 6rem);
+  align-items: end;
+  width: min(calc(100% - clamp(3rem, 8vw, 8rem)), 1105px);
+  margin: 0 auto clamp(3rem, 5vw, 4.5rem);
+}
+
+.site-frame .scenery-intro > p {
+  max-width: 38rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--island-text) 84%, white);
+  font-size: 0.96rem;
+  line-height: 1.95;
+  letter-spacing: 0.035em;
+  white-space: pre-line;
+}
+
+.site-frame .scenery-marquee {
+  overflow-x: auto;
+  scroll-padding-inline: var(--site-frame-space);
+  scroll-snap-type: x proximity;
+  scrollbar-color: var(--island-border) transparent;
+  scrollbar-width: thin;
+}
+
+.site-frame .scenery-marquee__track {
+  width: max-content;
+  transform: none;
+  animation: none;
+}
+
+.site-frame .scenery-marquee__set {
+  width: max-content;
+}
+
+.site-frame .scenery-card {
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .site-frame .intro-facts-section,
+  .site-frame .work-section,
+  .site-frame .yano-section,
+  .site-frame .people-section {
+    width: min(calc(100% - 3rem), 44rem);
+  }
+
+  .site-frame .intro-facts-section {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-block: 5rem;
+  }
+
+  .site-frame .intro-facts-section__message {
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 0;
+  }
+
+  .site-frame .intro-facts-section__message p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    letter-spacing: 0.06em;
+    writing-mode: horizontal-tb;
+  }
+
+  .site-frame .work-section__heading h2,
+  .site-frame .yano-section__copy h2,
+  .site-frame .scenery-intro__heading h2,
+  .site-frame .people-section__heading h2 {
+    font-size: 2.1rem;
+  }
+
+  .site-frame .work-story,
+  .site-frame .work-story:nth-child(even),
+  .site-frame .yano-section {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .site-frame .work-story:nth-child(even) figure {
+    order: 0;
+  }
+
+  .site-frame .people-section__heading,
+  .site-frame .person-story {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .site-frame .work-story__copy,
+  .site-frame .yano-section__copy {
+    max-width: none;
+  }
+
+  .site-frame .scenery-intro {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    width: min(calc(100% - 3rem), 44rem);
+  }
+
+  .site-frame .experience-list a {
+    grid-template-columns: 2.5rem minmax(9rem, 0.65fr) minmax(14rem, 1fr) 1.5rem;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-frame .intro-facts-section,
+  .site-frame .work-section,
+  .site-frame .yano-section,
+  .site-frame .people-section {
+    width: calc(100% - 2rem);
+  }
+
+  .site-frame .intro-facts-section,
+  .site-frame .work-section,
+  .site-frame .yano-section,
+  .site-frame .scenery-section,
+  .site-frame .people-section {
+    padding-block: 4rem;
+  }
+
+  .site-frame .intro-facts-section__image,
+  .site-frame .work-story figure,
+  .site-frame .yano-section__image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .site-frame .work-section__heading {
+    margin-bottom: 2.75rem;
+  }
+
+  .site-frame .work-section__heading h2,
+  .site-frame .yano-section__copy h2,
+  .site-frame .scenery-intro__heading h2,
+  .site-frame .people-section__heading h2 {
+    font-size: 1.75rem;
+  }
+
+  .site-frame .work-section__list {
+    gap: 4.5rem;
+  }
+
+  .site-frame .work-story h3 {
+    font-size: 1.3rem;
+  }
+
+  .site-frame .scenery-intro {
+    width: calc(100% - 2rem);
+  }
+
+  .site-frame .people-section__heading {
+    margin-bottom: 2.75rem;
+  }
+
+  .site-frame .person-story figure {
+    aspect-ratio: 4 / 3;
+  }
+
+  .site-frame .experience-list a {
+    grid-template-columns: 2.25rem 1fr 1.25rem;
+    gap: 0.75rem;
+    min-height: 0;
+    padding: 1.2rem 0;
+  }
+
+  .site-frame .experience-list p {
+    grid-column: 2 / 4;
+    margin-top: -0.2rem;
   }
 }

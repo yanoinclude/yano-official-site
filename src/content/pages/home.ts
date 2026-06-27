@@ -1,4 +1,5 @@
 import { placeholderImages } from "./site";
+import introYano from "@/assets/images/intro/yano-in-lemon-grove.jpeg";
 import sceneryKominka from "@/assets/images/scenery/scenery-kominka.jpg";
 import sceneryLemonOrchard from "@/assets/images/scenery/scenery-lemon-orchard.jpg";
 import sceneryPeople from "@/assets/images/scenery/scenery-people.jpg";
@@ -11,20 +12,20 @@ export const homeContent = {
     image: placeholderImages.hero,
     imageAlt: "レモン畑の中で木を見上げる人の後ろ姿。ユーザー提供のHero写真",
   },
-  philosophy: {
-    eyebrow: "OUR PHILOSOPHY",
-    heading: "放っておけなかった風景に、できる範囲で手を入れる。",
-    body: [
-      "何十年、何百年と、人の手によって守られてきた家や畑。",
-      "すべてを残すことはできなくても、気に留めたものに、できる範囲で手を入れる。",
-      "古民家を直すことも、レモンの木を手入れすることも、この島の続きを次の人へ手渡すための営みです。",
+  intro: {
+    text: "愛媛・中島という島で。築100年の古民家を2円で譲り受け、100本のレモンの木を任されました。",
+    columns: [
+      "愛媛・中島という島で。",
+      "築100年の古民家を\n2円で譲り受け、",
+      "100本のレモンの木を\n任されました。",
     ],
-    image: placeholderImages.table,
-    imageAlt: "島の人と食卓を囲む様子を想定した仮ビジュアル",
+    image: introYano,
+    imageAlt: "中島のレモン畑で作業の合間に話す矢野諭稔",
   },
   scenery: {
-    eyebrow: "SCENERY",
-    sublabel: "in Nakajima",
+    eyebrow: "PLACE",
+    heading: "中島という場所",
+    body: "松山から船で約1時間。\n瀬戸内海に浮かぶ、柑橘の島です。\n\n港に船が着き、山の斜面には畑が続く。\n島の家や畑は、長いあいだ誰かの手によって守られてきました。",
     slides: [
       {
         image: sceneryPort,
@@ -71,59 +72,49 @@ export const homeContent = {
     ],
   },
   about: {
-    eyebrow: "ABOUT US",
-    heading: "暮らしを全部変えなくても、\n島との関係は始められる。",
+    eyebrow: "ABOUT YANO",
+    heading: "この島に通っている人。",
+    name: "矢野 諭稔",
     body: [
-      "矢野諭稔は、平日は松山・東京で働き、週末になると中島へ通っています。最初から古民家改修や農業ができたわけではありません。",
-      "島の人や仲間に教わりながら、できる範囲で家や畑に手を入れていく。週末移住レモンは、移住するかしないかではなく、自分にできる距離から島と関わるための入口です。",
+      "平日は松山や東京で仕事をし、週末になると中島へ通っています。",
+      "最初から古民家を直せたわけでも、農業ができたわけでもありません。島の人や仲間に教わりながら、自分にできる範囲で家や畑に手を入れてきました。",
+      "暮らしをすべて変えなくても、島との関係は始められる。その一つの形を、週末ごとの活動を通して伝えていきたいと思っています。",
     ],
     image: placeholderImages.about,
     imageAlt: "中島のレモン畑で作業する矢野諭稔",
   },
-  concept: {
-    eyebrow: "CONCEPT",
-    headline: "できる範囲で、手を入れる。",
-    heading: "できる範囲で、\n手を入れる。",
-    body: "田舎暮らしなんて無理。週末移住なんて、時間がない。古民家なんて直せない。農業なんて、経験がない。気づけば、「ない、ない」のまま、時間だけが過ぎていく。でも、すべてが揃っていなくても、できることはありました。島へ行ってみる。レモンを味わう。手を貸してみる。話を聴いてみる。古い家に風を通す。畑の草を刈る。誰かに、この島のことを話す。それは、小さくて確かな、はじまりの一歩。週末移住レモンは、大きく暮らしを変えることではなく、自分にできる範囲で島に関わるための入口です。この島に帰ってこられる風景を、次の世代へ手渡していくために。",
-    bodyColumns: [
-      "田舎暮らしなんて無理。\n週末移住なんて、時間がない。",
-      "古民家なんて直せない。\n農業なんて、経験がない。",
-      "気づけば、\n「ない、ない」のまま、\n時間だけが過ぎていく。",
-      "でも、\nすべてが揃っていなくても、\nできることはありました。",
-      "島へ行ってみる。\nレモンを味わう。\n手を貸してみる。\n話を聴いてみる。",
-      "古い家に風を通す。\n畑の草を刈る。\n誰かに、この島のことを話す。",
-      "それは、\n小さくて確かな、\nはじまりの一歩。",
-      "週末移住レモンは、\n大きく暮らしを変えることではなく、\n自分にできる範囲で島に関わるための入口です。",
-      "この島に帰ってこられる風景を、\n次の世代へ手渡していくために。",
-    ],
-    image: placeholderImages.concept,
-    imageAlt: "苔むした石と木々の中にレモンが実る森のような風景",
-  },
   activities: {
     eyebrow: "ACTIVITIES",
-    heading: "島で進んでいること。",
-    lead: "古民家改修、農作業、島への訪問。ひとつずつは小さくても、同じ風景の続きを手入れする動きです。",
+    heading: "島で、手を入れていること。",
+    lead: "古い家に風を通すこと。\nレモンの木を手入れすること。\n\n別々に見える二つの活動は、\nこの島の風景を次へつなぐ、同じ営みです。",
     items: [
       {
-        title: "築100年の古民家",
-        body: "長く使われてきた家に風を通し、人が集まれる余白を取り戻していく。",
+        title: "築100年の古民家再生",
+        body: "長く使われてきた家にもう一度風を通し、人が集まれる場所へ。できるところから、少しずつ手を入れています。",
         image: placeholderImages.house,
         alt: "古民家の外壁を塗る矢野諭稔",
         href: "/kominka",
       },
       {
-        title: "100本のレモン",
-        body: "受け取った畑に通い、草を刈り、木を見て、季節の変化を受け取る。",
+        title: "100本のレモン農園",
+        body: "任された畑に通い、草を刈り、木の状態を見ながら、島の季節と向き合っています。",
         image: placeholderImages.farm,
         alt: "レモンの木を手入れする矢野諭稔",
         href: "/lemon-farm",
       },
+    ],
+  },
+  people: {
+    eyebrow: "PEOPLE",
+    heading: "一緒に、手を入れる人たち。",
+    body: "古民家や畑の活動は、一人では続きません。教えてくれる島の人、週末に手を貸す仲間、訪れてくれる人と、できることを持ち寄っています。",
+    items: [
       {
-        title: "人と島との関わり",
-        body: "一人で抱えず、島の人や仲間とできる範囲を持ち寄って手を入れる。",
+        name: "島の人と仲間",
+        relation: "古民家再生・農作業",
+        body: "作業を教え合い、食卓を囲みながら、無理のない範囲で島の家や畑に関わっています。",
         image: placeholderImages.repair,
-        alt: "島での活動を写した写真を並べたテーブル",
-        href: "/people",
+        imageAlt: "古民家での活動を写した写真を囲む島の人と仲間の時間",
       },
     ],
   },
@@ -140,10 +131,36 @@ export const homeContent = {
   experience: {
     eyebrow: "EXPERIENCE",
     heading: "島との関わり方は、\n一つではありません。",
-    body: "大きな決断をしなくても、関わり方は選べます。味わう、読む、手を貸す、訪れる、見守る。自分に合った距離から、この島を気に留めてもらえたらと思います。",
+    body: "大きな決断をしなくても、自分に合った距離から、この島との関係を始めることができます。",
     image: placeholderImages.table,
-    imageAlt: "島の人と食卓を囲む様子を想定した仮ビジュアル",
-    items: ["味わう", "読む", "手を貸す", "訪れる", "見守る"],
+    imageAlt: "レモンや季節の食材を囲む島の食卓",
+    items: [
+      {
+        title: "レモンを味わう",
+        body: "中島の畑から生まれたレモン果汁を、食卓で味わう。",
+        href: "/product",
+      },
+      {
+        title: "記録を読む",
+        body: "古民家や畑で起きている、週末ごとの出来事を読む。",
+        href: "/journal",
+      },
+      {
+        title: "島を訪れる",
+        body: "港や道を歩き、自分の目で中島の時間に触れる。",
+        href: "/visit",
+      },
+      {
+        title: "作業に参加する",
+        body: "古民家や畑で、できる範囲の手を一緒に動かす。",
+        href: "/visit",
+      },
+      {
+        title: "活動を見守る",
+        body: "記録を読み、誰かに話しながら、離れた場所から応援する。",
+        href: "/journal",
+      },
+    ],
   },
   journal: {
     eyebrow: "JOURNAL",
@@ -202,10 +219,5 @@ export const homeContent = {
   closing: {
     image: placeholderImages.closing,
     imageAlt: "中島の港を出入りする船と瀬戸内海を見下ろす風景",
-    lines: [
-      "帰る人を迎え、",
-      "旅立つ人を見送る。",
-      "この島に、帰ってこられる風景を。",
-    ],
   },
 } as const;

@@ -28,41 +28,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <span class="hero__scroll" aria-hidden="true">scroll</span>
   </section>
 
-  <section class="philosophy-section reveal-section" id="philosophy">
-    <div class="philosophy-paper">
-      <p class="philosophy-paper__label">OUR PHILOSOPHY</p>
-      <div class="philosophy-paper__body" aria-label="島の風景を手入れする理由">
-        <p>愛媛・中島という島で。</p>
-        <p>築100年の古民家を2円で譲り受け、100本のレモンの木を任されました。</p>
-        <p>なぜ、いま、古民家や畑に手を入れるのか。</p>
-        <p>
-          島の家や畑は、何十年、何百年と、誰かの手によって守られてきたものです。
-        </p>
-        <p>
-          それが少しずつ失われていくことを、見過ごすことができませんでした。
-        </p>
-        <p>
-          すべてを守ることはできなくても、気に留めたものに、自分たちのできる範囲で手を入れていく。
-        </p>
-        <p>
-          古民家を直すことも、レモンの木を手入れすることも、私たちにとって、別々の仕事ではありません。
-        </p>
-        <p>
-          この島に帰ってこられる風景を、次の世代へ手渡していくための営みです。
-        </p>
-      </div>
+  <section class="intro-facts-section reveal-section" id="introduction">
+    <div
+      class="intro-facts-section__message"
+      aria-label={homeContent.intro.text}
+    >
+      {homeContent.intro.columns.map((column) => <p>{column}</p>)}
     </div>
+    <figure class="intro-facts-section__image">
+      <img src={homeContent.intro.image.src} alt={homeContent.intro.imageAlt} />
+    </figure>
   </section>
 
   <section class="scenery-section reveal-section" id="scenery">
     <div class="scenery-intro">
-      <div
-        class="scenery-heading"
-        aria-label={`${homeContent.scenery.eyebrow} ${homeContent.scenery.sublabel}`}
-      >
-        <p>{homeContent.scenery.eyebrow}</p>
-        <span>{homeContent.scenery.sublabel}</span>
+      <div class="scenery-intro__heading">
+        <p class="section-title__en">{homeContent.scenery.eyebrow}</p>
+        <h2>{homeContent.scenery.heading}</h2>
       </div>
+      <p>{homeContent.scenery.body}</p>
     </div>
     <div
       class="scenery-marquee"
@@ -104,91 +88,28 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             ))
           }
         </div>
-        <div class="scenery-marquee__set" aria-hidden="true">
-          {
-            homeContent.scenery.slides.map((slide) => (
-              <figure
-                class:list={[
-                  "scenery-card",
-                  {
-                    "scenery-card--portrait": [
-                      "PORT",
-                      "LEMON ORCHARD",
-                      "KOMINKA",
-                    ].includes(slide.label),
-                  },
-                ]}
-              >
-                <div class="scenery-card__image">
-                  <img
-                    src={slide.image.src}
-                    width={slide.image.width}
-                    height={slide.image.height}
-                    alt=""
-                    loading="lazy"
-                  />
-                </div>
-                <figcaption>
-                  <p class="scenery-card__label">{slide.label}</p>
-                  <h3>{slide.title}</h3>
-                  <p>{slide.description}</p>
-                </figcaption>
-              </figure>
-            ))
-          }
-        </div>
       </div>
     </div>
     <a class="scenery-image-link" href="/landscape">島の風景をもっと見る</a>
   </section>
 
-  <section class="about-section reveal-section" id="about">
-    <div class="section-grid">
-      <div class="section-copy">
-        <p class="eyebrow">{homeContent.about.eyebrow}</p>
-        <h2>{homeContent.about.heading}</h2>
-        {homeContent.about.body.map((paragraph) => <p>{paragraph}</p>)}
-        <TextLink href="/about" variant="quiet">私たちについて</TextLink>
-      </div>
-      <figure class="section-photo section-photo--landscape">
-        <img src={homeContent.about.image} alt={homeContent.about.imageAlt} />
-      </figure>
-    </div>
-  </section>
-
-  <div class="section-title concept-section__outer-heading">
-    <p class="section-title__en">{homeContent.concept.eyebrow}</p>
-    <h2>{homeContent.concept.heading}</h2>
-  </div>
-
-  <section
-    class="concept-section reveal-section"
-    id="concept"
-    style={`--concept-image: url('${homeContent.concept.image}')`}
-  >
-    <div class="concept-section__heading">
-      <h2>{homeContent.concept.headline}</h2>
-    </div>
-    <div class="concept-section__body" aria-label={homeContent.concept.body}>
-      {homeContent.concept.bodyColumns.map((column) => <p>{column}</p>)}
-    </div>
-  </section>
-
-  <section class="activities-section reveal-section" id="activities">
-    <div class="section-title section-title--stacked">
+  <section class="work-section reveal-section" id="activities">
+    <div class="work-section__heading">
       <p class="section-title__en">{homeContent.activities.eyebrow}</p>
       <h2>{homeContent.activities.heading}</h2>
-      <p class="section-title__lead">{homeContent.activities.lead}</p>
+      <p class="work-section__lead">{homeContent.activities.lead}</p>
     </div>
-    <div class="activity-list activity-list--compact">
+    <div class="work-section__list">
       {
         homeContent.activities.items.map((item, index) => (
-          <article class="activity-row">
+          <article class="work-story">
             <figure>
-              <img src={item.image} alt={item.alt} />
+              <img src={item.image} alt={item.alt} loading="lazy" />
             </figure>
-            <div>
-              <span>{String(index + 1).padStart(2, "0")}</span>
+            <div class="work-story__copy">
+              <p class="work-story__number">
+                {String(index + 1).padStart(2, "0")}
+              </p>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
               <TextLink href={item.href} variant="quiet">
@@ -201,18 +122,41 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 
-  <section class="product-section reveal-section" id="product">
-    <figure class="product-section__image">
-      <img src={homeContent.product.image} alt={homeContent.product.imageAlt} />
+  <section class="yano-section reveal-section" id="about">
+    <figure class="yano-section__image">
+      <img src={homeContent.about.image} alt={homeContent.about.imageAlt} />
     </figure>
-    <div class="product-section__text">
-      <p class="section-title__en">{homeContent.product.eyebrow}</p>
-      <h2>{homeContent.product.heading}</h2>
-      <p class="product-section__lead">{homeContent.product.lead}</p>
-      <p>{homeContent.product.body}</p>
-      <TextLink href={homeContent.product.href} variant="quiet">
-        {homeContent.product.cta}
-      </TextLink>
+    <div class="yano-section__copy">
+      <p class="section-title__en">{homeContent.about.eyebrow}</p>
+      <h2>{homeContent.about.heading}</h2>
+      <p class="yano-section__role">週末移住レモン</p>
+      <p class="yano-section__name">{homeContent.about.name}</p>
+      {homeContent.about.body.map((paragraph) => <p>{paragraph}</p>)}
+      <TextLink href="/about" variant="quiet">詳しいプロフィール</TextLink>
+    </div>
+  </section>
+
+  <section class="people-section reveal-section" id="people">
+    <div class="people-section__heading">
+      <p class="section-title__en">{homeContent.people.eyebrow}</p>
+      <h2>{homeContent.people.heading}</h2>
+      <p>{homeContent.people.body}</p>
+    </div>
+    <div class="people-section__list">
+      {
+        homeContent.people.items.map((person) => (
+          <article class="person-story">
+            <figure>
+              <img src={person.image} alt={person.imageAlt} loading="lazy" />
+            </figure>
+            <div>
+              <p class="person-story__relation">{person.relation}</p>
+              <h3>{person.name}</h3>
+              <p>{person.body}</p>
+            </div>
+          </article>
+        ))
+      }
     </div>
   </section>
 
@@ -231,7 +175,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       </div>
     </div>
     <ul class="experience-list" aria-label="島との関わり方">
-      {homeContent.experience.items.map((item) => <li>{item}</li>)}
+      {
+        homeContent.experience.items.map((item, index) => (
+          <li>
+            <a href={item.href}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <strong>{item.title}</strong>
+              <p>{item.body}</p>
+              <span aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </section>
 
@@ -275,6 +230,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
   </section>
 
+  <section class="product-section reveal-section" id="product">
+    <figure class="product-section__image">
+      <img
+        src={homeContent.product.image}
+        alt={homeContent.product.imageAlt}
+        loading="lazy"
+      />
+    </figure>
+    <div class="product-section__text">
+      <p class="section-title__en">{homeContent.product.eyebrow}</p>
+      <h2>{homeContent.product.heading}</h2>
+      <p class="product-section__lead">{homeContent.product.lead}</p>
+      <p>{homeContent.product.body}</p>
+      <TextLink href={homeContent.product.href} variant="quiet">
+        {homeContent.product.cta}
+      </TextLink>
+    </div>
+  </section>
+
   <section class="news-section reveal-section" id="news">
     <div class="news-section__inner">
       <div>
@@ -302,10 +276,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <img src={homeContent.closing.image} alt={homeContent.closing.imageAlt} />
     </figure>
     <div>
-      <p class="closing-section__vertical">
-        帰る人を迎え、<br />
-        旅立つ人を見送る。
-      </p>
       <div class="closing-section__body">
         <p>この島に、帰ってこられる風景を。</p>
       </div>
