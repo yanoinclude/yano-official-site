@@ -40,13 +40,16 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </figure>
   </section>
 
-  <section class="short-profile reveal-section" aria-labelledby="short-profile-title">
+  <section
+    class="short-profile reveal-section"
+    aria-labelledby="short-profile-title"
+  >
     <div>
       <p class="section-title__en">{homeContent.shortProfile.eyebrow}</p>
       <h2 id="short-profile-title">{homeContent.shortProfile.heading}</h2>
     </div>
     <div class="short-profile__body">
-      <p>{homeContent.shortProfile.body}</p>
+      {homeContent.shortProfile.body.map((paragraph) => <p>{paragraph}</p>)}
       <a
         class="short-profile__instagram"
         href={siteConfig.social.instagram}
@@ -100,22 +103,123 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       }
     </div>
 
-    <div class="timeline-current">
-      <p>{homeContent.timeline.current.date}</p>
-      <div>
-        <h3>{homeContent.timeline.current.heading}</h3>
-        <p>{homeContent.timeline.current.body}</p>
-      </div>
-      <nav aria-label="現在の活動を詳しく見る">
-        <TextLink href="/about" variant="quiet">矢野について</TextLink>
-        <TextLink href="/kominka" variant="quiet">古民家のこと</TextLink>
-        <TextLink href="/lemon-farm" variant="quiet">レモン畑のこと</TextLink>
-      </nav>
-    </div>
     <div class="timeline-more">
       <TextLink href="/story" variant="quiet">
         {homeContent.timeline.moreLabel}
       </TextLink>
+    </div>
+
+    <div class="timeline-current">
+      <div class="timeline-current__intro">
+        <p>{homeContent.timeline.current.date}</p>
+        <h3>{homeContent.timeline.current.heading}</h3>
+        <p>{homeContent.timeline.current.body}</p>
+      </div>
+      <div class="timeline-current__blocks">
+        {
+          homeContent.timeline.current.blocks.map((block) => (
+            <a href={block.href} class="current-activity-card">
+              <div>
+                <p>{block.label}</p>
+                <h4>{block.title}</h4>
+              </div>
+              <figure>
+                <img src={block.image} alt={block.imageAlt} loading="lazy" />
+              </figure>
+              <span aria-hidden="true">↓</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="current-detail current-detail--lemon reveal-section"
+    id="lemon-farm-detail"
+  >
+    <div class="current-detail__copy">
+      <p class="section-title__en">
+        {homeContent.currentActivities.lemonFarm.eyebrow}
+      </p>
+      <h2>{homeContent.currentActivities.lemonFarm.heading}</h2>
+      <p class="current-detail__lead">
+        {homeContent.currentActivities.lemonFarm.lead}
+      </p>
+      {
+        homeContent.currentActivities.lemonFarm.body.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))
+      }
+      <div class="current-detail__links">
+        <TextLink href="/product" variant="quiet">
+          {homeContent.currentActivities.lemonFarm.productLabel}
+        </TextLink>
+        <TextLink href={siteConfig.social.instagram} variant="quiet">
+          {homeContent.currentActivities.lemonFarm.instagramLabel}
+        </TextLink>
+      </div>
+    </div>
+    <figure class="current-detail__hero">
+      <img
+        src={homeContent.currentActivities.lemonFarm.image}
+        alt={homeContent.currentActivities.lemonFarm.imageAlt}
+        loading="lazy"
+      />
+    </figure>
+  </section>
+
+  <section
+    class="current-detail current-detail--kominka reveal-section"
+    id="kominka-detail"
+  >
+    <header class="current-detail__heading">
+      <p class="section-title__en">
+        {homeContent.currentActivities.kominka.eyebrow}
+      </p>
+      <h2>{homeContent.currentActivities.kominka.heading}</h2>
+      <p>{homeContent.currentActivities.kominka.body}</p>
+    </header>
+    <figure class="current-detail__wide-photo">
+      <img
+        src={homeContent.currentActivities.kominka.image}
+        alt={homeContent.currentActivities.kominka.imageAlt}
+        loading="lazy"
+      />
+    </figure>
+    <div class="kominka-experiences">
+      <h3>{homeContent.currentActivities.kominka.experiencesHeading}</h3>
+      <ol>
+        {
+          homeContent.currentActivities.kominka.experiences.map(
+            (experience, index) => (
+              <li>
+                <div class="kominka-experience__copy">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h4>{experience.title}</h4>
+                  {"note" in experience && <p>{experience.note}</p>}
+                </div>
+                <figure>
+                  <img
+                    src={experience.image}
+                    alt={experience.imageAlt}
+                    loading="lazy"
+                  />
+                </figure>
+              </li>
+            ),
+          )
+        }
+      </ol>
+      <p class="kominka-experiences__future">
+        {homeContent.currentActivities.kominka.future}
+      </p>
+      <div class="kominka-experiences__instagram">
+        <p>{homeContent.currentActivities.kominka.instagramLead}</p>
+        <TextLink href={siteConfig.social.instagram} variant="quiet">
+          {homeContent.currentActivities.kominka.instagramLabel}
+        </TextLink>
+      </div>
     </div>
   </section>
 

@@ -26,8 +26,15 @@ export const homeContent = {
   },
   shortProfile: {
     eyebrow: "ABOUT ME",
-    heading: "暮らしを変えすぎず、島へ通う。",
-    body: "松山へIターンし、2026年からは東京との二拠点生活へ。平日は仕事をしながら、週末になると中島へ通っています。すべてを移すのではなく、自分にできる範囲で田舎暮らしを実現していきたいと思っています。",
+    heading: "週末だけ、移住する。",
+    body: [
+      "初めまして。\n矢野さとしと申します。",
+      "愛知県出身。\n2022年に愛媛・松山へIターンし、\n今は広告代理店で働きながら、\n松山と東京を行き来しています。",
+      "田舎に関わりたい。\nでも、暮らしを大きく変える一歩は、\nなかなか踏み出せなかった。",
+      "そんな自分が出会ったのが、\n愛媛・中島という島でした。",
+      "移住するか、しないかではなく、\n自分にできる距離から、関わってみる。",
+      "週末移住レモンは、\nそんな思いから始まった活動です。",
+    ],
     instagramLabel: "Instagramはこちら",
   },
   timeline: {
@@ -123,8 +130,75 @@ export const homeContent = {
       date: "現在",
       heading: "家と畑を行き来する、週末。",
       body: "平日は松山や東京で働き、週末は中島へ。古民家とレモン畑を行き来しながら、島の人や仲間と手を動かしています。",
+      blocks: [
+        {
+          title: "レモン農園",
+          label: "LEMON FARM",
+          href: "#lemon-farm-detail",
+          image: placeholderImages.farm,
+          imageAlt: "中島のレモン畑で木を手入れする矢野諭稔",
+        },
+        {
+          title: "古民家",
+          label: "KOMINKA",
+          href: "#kominka-detail",
+          image: placeholderImages.house,
+          imageAlt: "中島の築100年の古民家を手入れする矢野諭稔",
+        },
+      ],
     },
     moreLabel: "ストーリーをもっと見る",
+  },
+  currentActivities: {
+    lemonFarm: {
+      eyebrow: "LEMON FARM",
+      heading: "レモン農園",
+      lead: "矢野が譲り受けた、100本のレモン畑。",
+      body: [
+        "木は樹齢12年以上といわれ、畑は2年ほど手が入らなくなる寸前でした。",
+        "古民家再生でお世話になった農家さんが足を痛め、作業を続けることが難しくなった頃。「もう木を切る」と聞き、もったいないと思ったことから、この畑を借り受けました。",
+        "週末ごとに畑へ通い、草を刈り、枝を見て、実を受け取る。その果実から「週末移住レモン果汁」が生まれました。",
+      ],
+      image: placeholderImages.farm,
+      imageAlt: "中島のレモン畑で木の状態を見る矢野諭稔",
+      productLabel: "週末移住レモン果汁 オフィシャルページ",
+      instagramLabel: "Instagramはこちら",
+    },
+    kominka: {
+      eyebrow: "KOMINKA",
+      heading: "古民家",
+      body: "築100年の古民家を拠点に、島の人や訪れる人とイベントを重ねながら、島内外の人が出会える交流の場所を目指しています。",
+      image: placeholderImages.house,
+      imageAlt: "中島の築100年の古民家を改修する様子",
+      experiencesHeading: "古民家から始まる体験",
+      experiences: [
+        {
+          title: "レモン狩り",
+          image: placeholderImages.farm,
+          imageAlt: "中島のレモン畑で行うレモン狩り",
+        },
+        {
+          title: "アロマ蒸留",
+          image: placeholderImages.bottle,
+          imageAlt: "レモンを使ったアロマ蒸留を想定した仮写真",
+        },
+        {
+          title: "海掃除",
+          image: placeholderImages.island,
+          imageAlt: "中島の海辺での活動を想定した仮写真",
+        },
+        {
+          title: "道後マルシェ",
+          note: "これまでに2回開催",
+          image: placeholderImages.table,
+          imageAlt: "島の食卓とマルシェを想定した仮写真",
+        },
+      ],
+      future: "2026年夏、さらに新しい計画を準備しています。",
+      instagramLead:
+        "イベントや作業日の案内は、矢野のInstagramでもお知らせします。",
+      instagramLabel: "Instagramをチェック",
+    },
   },
   scenery: {
     eyebrow: "Nakajima",
