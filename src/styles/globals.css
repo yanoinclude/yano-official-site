@@ -279,6 +279,10 @@ button {
   object-fit: cover;
 }
 
+.closing-section img {
+  object-position: center 48%;
+}
+
 .hero__copy-block {
   position: absolute;
   top: 50%;
@@ -881,7 +885,19 @@ button {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.34);
+  background:
+    radial-gradient(
+      circle at 52% 48%,
+      rgba(255, 255, 255, 0.4) 0,
+      rgba(255, 255, 255, 0.18) 24%,
+      rgba(255, 255, 255, 0) 46%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.32) 0%,
+      rgba(0, 0, 0, 0.16) 45%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
   content: "";
 }
 
@@ -1742,6 +1758,10 @@ button {
   padding-bottom: 180px;
 }
 
+.about-section .section-photo img {
+  object-position: 48% 44%;
+}
+
 .concept-section {
   min-height: 980px;
 }
@@ -2482,7 +2502,7 @@ button {
 .philosophy-section {
   min-height: auto;
   padding: clamp(2.25rem, 4vw, 4rem) clamp(1.5rem, 5vw, 4.5rem)
-    clamp(8.5rem, 11vw, 11.5rem);
+    clamp(3rem, 5vw, 5rem);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 28%),
     var(--island-surface);
@@ -2559,7 +2579,7 @@ button {
 @media (max-width: 900px) {
   .philosophy-section {
     min-height: auto;
-    padding: 4rem 2rem 9rem;
+    padding: 4rem 2rem 4.5rem;
   }
 
   .philosophy-paper {
@@ -2583,7 +2603,7 @@ button {
 
 @media (max-width: 640px) {
   .philosophy-section {
-    padding: 3rem 1.5rem 7rem;
+    padding: 3rem 1.5rem 4rem;
   }
 
   .philosophy-paper {
@@ -2910,7 +2930,7 @@ body {
   }
 }
 
-/* 99 + 1 Project panel: positioned to match the supplied square reference. */
+/* Concept panel: positioned to match the supplied editorial reference. */
 .site-frame .concept-section {
   position: relative;
   display: block;
@@ -2922,15 +2942,13 @@ body {
   background: #06120d;
 }
 
-.site-frame .concept-section__outer-label {
+.site-frame .concept-section__outer-heading {
   width: min(100%, 1254px);
-  margin: clamp(0.4rem, 1vw, 0.9rem) auto clamp(1.1rem, 2vw, 1.65rem);
-  color: #111;
-  font-family: var(--font-island-heading);
-  font-size: clamp(1.35rem, 2.4vw, 2.35rem);
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: 0.24em;
+  margin: 0 auto clamp(2rem, 4vw, 3.6rem);
+}
+
+.site-frame .concept-section__outer-heading h2 {
+  max-width: 17em;
 }
 
 .site-frame .concept-section::before {
@@ -2958,6 +2976,18 @@ body {
   max-width: 56%;
 }
 
+.site-frame .concept-section__intro {
+  max-width: 34rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-island-heading);
+  font-size: clamp(0.82rem, 1.05vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.34);
+}
+
 .site-frame .concept-section__heading h2 {
   position: absolute;
   width: 1px;
@@ -2970,20 +3000,20 @@ body {
 
 .site-frame .concept-section__body {
   position: absolute;
-  top: 18%;
-  left: 9.2%;
+  top: 13%;
+  left: 7.5%;
   z-index: 1;
   display: flex;
   flex-direction: row-reverse;
-  gap: clamp(1.2rem, 2.45vw, 2.35rem);
+  gap: clamp(1rem, 1.7vw, 1.75rem);
   align-items: flex-start;
   justify-content: flex-start;
-  width: 57%;
+  width: 85%;
   margin: 0;
 }
 
 .site-frame .concept-section__body p {
-  max-height: 20.5rem;
+  max-height: 29rem;
   margin: 0;
   color: rgba(255, 255, 255, 0.96);
   font-family: var(--font-island-heading);
@@ -3099,7 +3129,7 @@ body {
     width: auto;
   }
 
-  .site-frame .concept-section__heading p {
+  .site-frame .concept-section__intro {
     font-size: clamp(1.4rem, 4.6vw, 2rem);
   }
 
@@ -3155,7 +3185,7 @@ body {
     padding: 3.25rem 1.25rem;
   }
 
-  .site-frame .concept-section__heading p {
+  .site-frame .concept-section__intro {
     font-size: 1.16rem;
   }
 
@@ -3170,18 +3200,14 @@ body {
 
 /* Scenery film roll */
 .site-frame .scenery-section {
-  padding: clamp(6.5rem, 10vw, 10rem) 0 clamp(7rem, 11vw, 11rem);
+  padding: clamp(2.75rem, 4.5vw, 4.75rem) 0 clamp(7rem, 11vw, 11rem);
   overflow: hidden;
   background: var(--island-surface);
 }
 
 .scenery-intro {
-  display: grid;
-  grid-template-columns: minmax(11rem, 0.45fr) minmax(0, 1fr);
-  gap: clamp(3rem, 8vw, 9rem);
-  align-items: end;
   width: min(calc(100% - 10rem), 1105px);
-  margin: 0 auto clamp(3.5rem, 6vw, 6rem);
+  margin: 0 auto clamp(2.5rem, 4vw, 4rem);
 }
 
 .site-frame .scenery-heading {
@@ -3198,27 +3224,6 @@ body {
   margin-top: 0.8rem;
   font-size: 0.8rem;
   letter-spacing: 0.16em;
-}
-
-.scenery-intro__copy {
-  max-width: 40rem;
-}
-
-.scenery-intro__copy h2 {
-  margin: 0;
-  color: var(--island-text);
-  font-family: var(--font-island-heading);
-  font-size: clamp(2rem, 3.4vw, 3.5rem);
-  font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: 0.06em;
-}
-
-.scenery-intro__copy > p {
-  max-width: 38rem;
-  margin: 1.4rem 0 0;
-  color: var(--island-muted);
-  line-height: 2;
 }
 
 .scenery-marquee {
@@ -3268,10 +3273,6 @@ body {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--island-background);
-}
-
-.scenery-card:nth-child(3n + 2) .scenery-card__image {
-  aspect-ratio: 3 / 4;
 }
 
 .scenery-card--portrait .scenery-card__image {
@@ -3331,37 +3332,22 @@ body {
 
 @media (max-width: 900px) {
   .scenery-intro {
-    grid-template-columns: 1fr;
-    gap: 2rem;
     width: min(calc(100% - 6rem), 672px);
-  }
-
-  .scenery-intro__copy {
-    max-width: 34rem;
   }
 }
 
 @media (max-width: 640px) {
   .site-frame .scenery-section {
-    padding-block: 6rem 7rem;
+    padding-block: 3.75rem 7rem;
   }
 
   .scenery-intro {
-    gap: 1.75rem;
     width: calc(100% - 3rem);
     margin-bottom: 3.25rem;
   }
 
   .site-frame .scenery-heading {
     width: auto;
-  }
-
-  .scenery-intro__copy h2 {
-    font-size: clamp(1.75rem, 8vw, 2.35rem);
-  }
-
-  .scenery-intro__copy > p {
-    font-size: 0.92rem;
   }
 
   .scenery-marquee {
@@ -3427,5 +3413,345 @@ body {
 
   .scenery-card {
     scroll-snap-align: start;
+  }
+}
+
+/* Readability pass: consistent type rhythm for the editorial sections. */
+:root {
+  --type-label: clamp(0.76rem, 0.78vw, 0.86rem);
+  --type-body: clamp(0.95rem, 0.88vw, 1rem);
+  --type-lead: clamp(1rem, 0.96vw, 1.06rem);
+  --type-link: clamp(0.9rem, 0.86vw, 0.96rem);
+  --type-section-heading: clamp(1.88rem, 2.45vw, 2.58rem);
+  --type-card-heading: clamp(1.18rem, 1.32vw, 1.42rem);
+  --space-readable-section: clamp(4.5rem, 7vw, 6.75rem);
+  --space-readable-gap: clamp(1.8rem, 3.5vw, 3.6rem);
+}
+
+body {
+  font-size: var(--type-body);
+  line-height: 1.9;
+  letter-spacing: 0.035em;
+}
+
+.site-frame :is(.eyebrow, .section-title__en) {
+  margin-bottom: clamp(0.65rem, 1.1vw, 0.95rem);
+  color: var(--island-muted);
+  font-family: var(--font-island-accent);
+  font-size: var(--type-label);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.2em;
+}
+
+.site-frame
+  :is(
+    .section-copy h2,
+    .section-title h2,
+    .product-section h2,
+    .news-section h2
+  ) {
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: var(--type-section-heading);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: 0.05em;
+}
+
+.site-frame
+  :is(
+    .section-copy p,
+    .section-title--row > p,
+    .product-section__text > p:not(.section-title__en),
+    .journal-section .section-title > p
+  ) {
+  max-width: 42rem;
+  color: color-mix(in srgb, var(--island-text) 84%, white);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 1.92;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .section-copy p {
+  margin-top: clamp(1.1rem, 1.7vw, 1.55rem);
+}
+
+.site-frame .section-copy p.eyebrow {
+  margin-top: 0;
+}
+
+.site-frame .text-link {
+  gap: 0.58rem;
+  margin-top: clamp(1.4rem, 2.1vw, 2rem);
+  font-size: var(--type-link);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.055em;
+}
+
+.site-frame :is(.about-section, .activities-section, .product-section) {
+  padding-block: var(--space-readable-section);
+}
+
+.site-frame :is(.experience-section, .journal-section, .news-section) {
+  padding-block: clamp(4.25rem, 6.5vw, 6.25rem);
+}
+
+.site-frame .section-grid {
+  gap: clamp(2.6rem, 5vw, 5rem);
+}
+
+.site-frame .section-title--row {
+  gap: clamp(2rem, 4.5vw, 5rem);
+  margin-bottom: var(--space-readable-gap);
+}
+
+.site-frame .section-title--row > p {
+  align-self: end;
+}
+
+.site-frame .section-title--stacked {
+  width: min(100%, 1105px);
+  max-width: 1105px;
+  margin-bottom: var(--space-readable-gap);
+  text-align: left;
+}
+
+.site-frame .section-title--stacked .section-title__lead {
+  max-width: 42rem;
+  margin: clamp(1.1rem, 1.7vw, 1.55rem) 0 0;
+  color: color-mix(in srgb, var(--island-text) 84%, white);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 1.92;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .about-section .section-photo,
+.site-frame .experience-section .section-photo {
+  align-self: center;
+}
+
+.site-frame .activity-list--compact {
+  gap: clamp(2.75rem, 4.5vw, 4.9rem);
+}
+
+.site-frame .activity-list--compact .activity-row {
+  gap: clamp(1.7rem, 3.5vw, 3.8rem);
+}
+
+.site-frame .activity-row span {
+  color: var(--island-muted);
+  font-family: var(--font-island-accent);
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+}
+
+.site-frame .activity-row h3 {
+  margin-top: 0.75rem;
+  color: var(--island-text);
+  font-size: var(--type-card-heading);
+  font-weight: 400;
+  line-height: 1.58;
+  letter-spacing: 0.05em;
+}
+
+.site-frame .activity-row p {
+  max-width: 34rem;
+  color: color-mix(in srgb, var(--island-text) 82%, white);
+  font-size: var(--type-body);
+  line-height: 1.88;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .product-section {
+  gap: clamp(2.5rem, 5vw, 5.5rem);
+}
+
+.site-frame .product-section__lead {
+  color: var(--island-text);
+  font-family: var(--font-island-heading);
+  font-size: clamp(1.04rem, 1.12vw, 1.18rem);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+}
+
+.site-frame .experience-list {
+  gap: clamp(0.85rem, 1.5vw, 1.25rem);
+  margin-top: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+.site-frame .experience-list li {
+  min-height: 3.75rem;
+  padding: 1.05rem 1.25rem;
+  font-family: var(--font-island-heading);
+  font-size: clamp(0.98rem, 1.02vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.07em;
+}
+
+.site-frame .journal-showcase {
+  gap: clamp(1.75rem, 3vw, 3rem);
+}
+
+.site-frame .journal-card {
+  padding-block: clamp(1.15rem, 1.6vw, 1.55rem);
+}
+
+.site-frame .journal-card__date,
+.site-frame .news-list time,
+.site-frame .scenery-card__label {
+  font-size: clamp(0.68rem, 0.72vw, 0.76rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+}
+
+.site-frame .journal-card h3 {
+  font-size: clamp(1.08rem, 1.28vw, 1.32rem);
+  font-weight: 400;
+  line-height: 1.68;
+  letter-spacing: 0.04em;
+}
+
+.site-frame .journal-card p:not(.journal-card__date) {
+  color: color-mix(in srgb, var(--island-text) 80%, white);
+  font-size: clamp(0.9rem, 0.82vw, 0.95rem);
+  line-height: 1.86;
+  letter-spacing: 0.035em;
+}
+
+.site-frame .news-section__inner {
+  gap: clamp(2rem, 4vw, 4.5rem);
+}
+
+.site-frame .news-list a {
+  gap: clamp(1rem, 2vw, 2rem);
+  padding-block: 1.15rem;
+  font-size: clamp(0.9rem, 0.9vw, 1rem);
+  line-height: 1.8;
+}
+
+.site-frame .closing-section__vertical {
+  font-size: clamp(1.28rem, 1.75vw, 1.78rem);
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0.08em;
+}
+
+.site-frame .closing-section__body p {
+  font-size: clamp(1rem, 1.15vw, 1.18rem);
+  line-height: 1.9;
+}
+
+.site-frame .site-footer__copy {
+  font-size: clamp(1.18rem, 1.55vw, 1.48rem);
+  font-weight: 400;
+  line-height: 1.85;
+}
+
+.site-frame .site-footer a {
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --type-body: 0.93rem;
+    --type-section-heading: clamp(1.68rem, 4.8vw, 2.25rem);
+    --space-readable-section: clamp(4rem, 8.5vw, 5.45rem);
+  }
+
+  .site-frame .section-title--row {
+    gap: 1.35rem;
+  }
+
+  .site-frame .section-title--row > p {
+    align-self: start;
+  }
+
+  .site-frame .activity-list--compact,
+  .site-frame .journal-showcase {
+    gap: 2.2rem;
+  }
+
+  .site-frame .product-section {
+    gap: 2.4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --type-label: 0.72rem;
+    --type-body: 0.92rem;
+    --type-link: 0.9rem;
+    --type-section-heading: clamp(1.5rem, 6.3vw, 1.9rem);
+    --type-card-heading: 1.12rem;
+    --space-readable-section: clamp(3.45rem, 11vw, 4.55rem);
+  }
+
+  body {
+    line-height: 1.86;
+    letter-spacing: 0.025em;
+  }
+
+  .site-frame
+    :is(
+      .section-copy h2,
+      .section-title h2,
+      .product-section h2,
+      .news-section h2
+    ) {
+    line-height: 1.6;
+    letter-spacing: 0.045em;
+  }
+
+  .site-frame
+    :is(
+      .section-copy p,
+      .section-title--row > p,
+      .product-section__text > p:not(.section-title__en),
+      .journal-section .section-title > p
+    ) {
+    line-height: 1.86;
+  }
+
+  .site-frame .section-copy p {
+    margin-top: 1rem;
+  }
+
+  .site-frame .section-grid,
+  .site-frame .activity-list--compact .activity-row {
+    gap: 1.45rem;
+  }
+
+  .site-frame .activity-row h3 {
+    margin-top: 0.65rem;
+    line-height: 1.52;
+  }
+
+  .site-frame .activity-row p,
+  .site-frame .journal-card p:not(.journal-card__date) {
+    line-height: 1.82;
+  }
+
+  .site-frame .experience-list li {
+    min-height: 0;
+    padding: 0.95rem 1rem;
+    font-size: 0.98rem;
+  }
+
+  .site-frame .news-list a {
+    padding-block: 1rem;
+  }
+
+  .site-frame .closing-section__vertical {
+    font-size: clamp(1.22rem, 5.8vw, 1.55rem);
   }
 }

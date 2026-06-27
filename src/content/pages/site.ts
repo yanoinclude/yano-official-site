@@ -20,23 +20,24 @@ export const placeholderImages = {
   hero: heroUserLemonGrove.src,
   island: sceneryUserNakajima.src,
   concept: conceptUserForestLemon.src,
-  about: aboutLandscape.src,
-  house: activityKominka.src,
-  repair: activityPeople.src,
-  farm: activityLemonFarm.src,
+  about: aboutYanoLemonGrove.src,
+  house: activityKominkaUser.src,
+  repair: activityIslandPeopleUser.src,
+  farm: activityLemonTreeUser.src,
   farmer: activityLemonFarm.src,
-  bottle: productLemonBottle.src,
+  bottle: productWeekendLemonJuice.src,
   table: experienceIslandLife.src,
-  closing: closingFerrywave.src,
-  yano: aboutLandscape.src,
+  closing: closingNakajimaFerry.src,
+  yano: aboutYanoLemonGrove.src,
 } as const;
 import heroUserLemonGrove from "@/assets/images/hero-user-lemon-grove.jpg";
 import conceptUserForestLemon from "@/assets/images/concept-user-forest-lemon.png";
 import sceneryUserNakajima from "@/assets/images/scenery-user-nakajima.png";
-import aboutLandscape from "@/assets/images/generated/about-landscape.jpg";
-import activityKominka from "@/assets/images/generated/activity-kominka.jpg";
+import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
+import activityIslandPeopleUser from "@/assets/images/activities/activity-island-people-user.jpg";
+import activityKominkaUser from "@/assets/images/activities/activity-kominka-user.jpeg";
+import activityLemonTreeUser from "@/assets/images/activities/activity-lemon-tree-user.jpeg";
+import closingNakajimaFerry from "@/assets/images/closing/closing-nakajima-ferry.jpeg";
 import activityLemonFarm from "@/assets/images/generated/activity-lemon-farm.jpg";
-import activityPeople from "@/assets/images/generated/activity-people.jpg";
-import closingFerrywave from "@/assets/images/generated/closing-ferrywave.jpg";
 import experienceIslandLife from "@/assets/images/generated/experience-island-life.jpg";
-import productLemonBottle from "@/assets/images/generated/product-lemon-bottle.jpg";
+import productWeekendLemonJuice from "@/assets/images/product/weekend-lemon-juice.png";
