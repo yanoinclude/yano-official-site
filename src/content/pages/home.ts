@@ -12,7 +12,7 @@ import sceneryNakajimaSea from "@/assets/images/closing/closing-nakajima-ferry.j
 export const homeContent = {
   hero: {
     image: placeholderImages.hero,
-    imageAlt: "レモン畑の中で木を見上げる人の後ろ姿。ユーザー提供のHero写真",
+    imageAlt: "実ったレモンの木を見上げながら畑を歩く人の後ろ姿",
   },
   intro: {
     text: "愛媛・中島という島で。築100年の古民家を2円で譲り受け、100本のレモンの木を任されました。",
@@ -22,19 +22,29 @@ export const homeContent = {
       "100本のレモンの木を\n任されました。",
     ],
     image: introYano,
-    imageAlt: "中島のレモン畑で作業の合間に話す矢野諭稔",
+    imageAlt: "中島のレモン畑で作業の合間に話す矢野さとし",
+    caption: "矢野さとし／週末移住レモン",
   },
   shortProfile: {
     eyebrow: "ABOUT ME",
     heading: "週末だけ、移住する。",
+    quote:
+      "何かしたい。でも、何をしたらいいのか分からない。そんなところから始まりました。",
+    facts: [
+      "愛知県出身",
+      "2022年、愛媛・松山へIターン",
+      "平日は広告の仕事",
+      "週末は中島へ",
+    ],
     body: [
-      "初めまして。矢野さとしと申します。\n愛知県出身。2022年に愛媛・松山へIターン。\n広告代理店で働きながら、松山と東京を行き来しています。\n田舎に関わりたい。でも、暮らしを大きく変える一歩は踏み出せない。\nそんな自分が出会ったのが、愛媛・中島でした。\n移住するか、しないかではなく、\n自分にできる距離から、関わってみる。\n週末移住レモンは、\nそんな思いから始まった活動です。",
+      "はじめまして。矢野さとしです。\n田舎への憧れがあり、学生時代には地域で活動するなかで、暮らしの先行きに不安を感じる場面にも出会いました。地域の暮らしに関わりたい。でも、何をしたらよいのか分からない。その迷いを抱えたまま、2022年に愛媛・松山へIターンしました。",
+      "今は広告の仕事をしながら松山と東京を行き来し、週末になると中島へ通っています。移住するか、しないかではなく、自分にできる距離から関わってみる。分からないことを教わりながら、昨日より少し変わり続けたい。週末移住レモンは、そんな思いから始まった活動です。",
     ],
     instagramLabel: "Instagramはこちら",
   },
   timeline: {
     eyebrow: "STORY",
-    heading: "私の軌跡",
+    heading: "中島に通い始めてから",
     lead: "松山へ移り住み、中島へ通い始めてから。週末ごとに手を動かしてきた時間をたどります。",
     groups: [
       {
@@ -48,14 +58,14 @@ export const homeContent = {
         number: "02",
         title: "古民家再生",
         period: "2023.12—2025.08",
-        body: "2円で譲り受けた築100年の家を、仲間と直した時間。",
+        body: "築100年の家を引き受け、仲間と直した時間。",
         itemIndexes: [2, 3, 4, 5, 6, 7, 8],
       },
       {
         number: "03",
         title: "レモン畑",
         period: "2025.10—",
-        body: "100本の木を受け取り、畑へ通い始める。",
+        body: "100本のレモンの木の手入れを任され、畑へ通い始める。",
         itemIndexes: [9],
       },
     ],
@@ -116,9 +126,9 @@ export const homeContent = {
       },
       {
         date: "2025.10",
-        title: "100本のレモンの木を譲り受ける",
-        body: "家に続いて、島の畑の手入れが始まる。",
-        photoNote: "受け取ったレモン畑",
+        title: "100本のレモンの木の手入れを任される",
+        body: "木と実に責任を持ち、週末ごとの畑仕事が始まる。",
+        photoNote: "手入れを任されたレモン畑",
       },
     ],
     current: {
@@ -131,11 +141,11 @@ export const homeContent = {
           label: "LEMON FARM",
           href: "#lemon-farm-detail",
           image: placeholderImages.farm,
-          imageAlt: "中島のレモン畑で木を手入れする矢野諭稔",
+          imageAlt: "中島のレモン畑で木を手入れする矢野さとし",
         },
         {
-          title: "イベント企画",
-          label: "EVENT",
+          title: "島と人をつなぐ場づくり",
+          label: "COMMUNITY",
           href: "#event-detail",
           image: placeholderImages.house,
           imageAlt: "中島の古民家を拠点にしたイベントの様子",
@@ -148,46 +158,70 @@ export const homeContent = {
     lemonFarm: {
       eyebrow: "LEMON FARM",
       heading: "レモン農園",
-      lead: "矢野が譲り受けた、100本のレモン畑。",
+      lead: "100本のレモンの木の手入れを任されました。",
       body: [
         "木は樹齢12年以上といわれ、畑は2年ほど手が入らなくなる寸前でした。",
-        "古民家再生でお世話になった農家さんが足を痛め、作業を続けることが難しくなった頃。「もう木を切る」と聞き、もったいないと思ったことから、この畑を借り受けました。",
-        "週末ごとに畑へ通い、草を刈り、枝を見て、実を受け取る。その果実から「週末移住レモン果汁」が生まれました。",
+        "古民家再生でお世話になった農家さんが足を痛め、斜面での作業が難しくなった頃、「もう木を切る」と聞きました。畑を見たときに感じた悲しさと、残したいという衝動から、100本の木の手入れを任せてもらうことになりました。",
+        "週末ごとに草を刈り、枝を見て、実を収穫する。畑を維持するだけでなく、受け取った果実の行き先にも責任を持つ。その果実から「週末移住レモン果汁」が生まれました。",
       ],
       image: placeholderImages.farm,
-      imageAlt: "中島のレモン畑で木の状態を見る矢野諭稔",
+      imageAlt: "中島のレモン畑で木の状態を見る矢野さとし",
       productLabel: "週末移住レモン果汁 オフィシャルページ",
       instagramLabel: "Instagramはこちら",
     },
     kominka: {
       eyebrow: "EVENT",
-      heading: "イベント企画",
-      body: "築100年の古民家やレモン畑を舞台に、島の人と訪れる人が出会えるイベントや体験を企画しています。",
+      heading: "島と人をつなぐ場づくり",
+      body:
+        "古民家再生を通じて出会った人や、やってみたいことを持つ人たちと一緒に、島の内と外が交わる時間をつくっています。\n\n田舎暮らしに憧れながらも、移住までは一歩を踏み出せない。それでも、自分にできる範囲で、時間が許す限り地域に関わってみたい。\n\nそんな人にとって、田舎が遠いものではなく、少し身近に感じられる入口をひらくこと。それが、この場づくりで大切にしていることです。",
       image: placeholderImages.house,
       imageAlt: "中島の築100年の古民家を改修する様子",
       cta: "イベントを見る",
-      experiencesHeading: "島でひらいたイベントと体験",
+      experiencesHeading: "島と人をつなぐ場づくり",
+      playlist: {
+        label: "活動の始まり",
+        title: "古民家再生プロジェクト",
+        description:
+          "築100年の家に、島の人や仲間と少しずつ手を入れました。この時間から生まれた出会いが、畑や海辺、島外での活動へつながっています。",
+        embedUrl:
+          "https://www.youtube-nocookie.com/embed/videoseries?list=PLcHrn5cVHOxJCUtJaAPvsJqQRTznh-FaT",
+        href:
+          "https://www.youtube.com/playlist?list=PLcHrn5cVHOxJCUtJaAPvsJqQRTznh-FaT",
+      },
       experiences: [
         {
-          title: "レモン狩り",
-          image: placeholderImages.farm,
-          imageAlt: "中島のレモン畑で行うレモン狩り",
+          title: "中島のレモンの日",
+          meta: "1月31日",
+          body:
+            "島内外から人が集まり、剪定、収穫、木のカウントを行いました。作業の合間に笑い声があふれ、畑が人の心をゆるめる場所だと感じた一日です。",
+          href: "https://www.instagram.com/p/DVQIBMikpXm/",
+          embedUrl:
+            "https://www.instagram.com/p/DVQIBMikpXm/embed/captioned/",
         },
         {
-          title: "アロマ蒸留",
-          image: placeholderImages.bottle,
-          imageAlt: "レモンを使ったアロマ蒸留を想定した仮写真",
+          title: "レモンのアロマ蒸留",
+          body:
+            "中島の蒸留所「島とみかん」と、レモンの皮を使ったアロマづくりに挑戦。島の時間と記憶を香りに閉じ込めるような時間になりました。",
+          href: "https://www.instagram.com/p/DTtfejZEvoU/",
+          embedUrl:
+            "https://www.instagram.com/p/DTtfejZEvoU/embed/captioned/",
         },
         {
           title: "海掃除",
-          image: placeholderImages.island,
-          imageAlt: "中島の海辺での活動を想定した仮写真",
+          meta: "参加者34人",
+          body:
+            "17年続いてきた海掃除に、島で暮らす人や子どもたちが集まりました。「楽しかったね」という声が残る、次の世代へバトンを渡す節目の一日です。",
+          href: "https://www.instagram.com/p/DXy3hGTh_VD/",
+          embedUrl:
+            "https://www.instagram.com/p/DXy3hGTh_VD/embed/captioned/",
         },
         {
-          title: "道後マルシェ",
-          note: "これまでに2回開催",
-          image: placeholderImages.table,
-          imageAlt: "島の食卓とマルシェを想定した仮写真",
+          title: "ユウヤケバル in 道後",
+          body:
+            "大崎上島と中島が出会い、島の幸を振る舞いました。レモネードやビールを片手に、人と人の距離が近づく、あたたかな時間になりました。",
+          href: "https://www.instagram.com/p/DZD6QxLSGjN/",
+          embedUrl:
+            "https://www.instagram.com/p/DZD6QxLSGjN/embed/captioned/",
         },
       ],
       future: "2026年夏、さらに新しい計画を準備しています。",
@@ -199,7 +233,8 @@ export const homeContent = {
   gallery: {
     eyebrow: "PHOTOGRAPHS",
     heading: "島のギャラリー",
-    lead: "観光地ではない島、中島。でも、ここには今も自然の景色と、人の暮らしが残っています。",
+    lead:
+      "観光案内だけでは見えない、日々の暮らしがある島。自然の景色と、人の営みを写真で記録しています。",
     cta: "写真をもっと見る",
     items: [
       {
@@ -239,7 +274,7 @@ export const homeContent = {
       },
       {
         image: introYano.src,
-        alt: "中島のレモン畑で話す矢野諭稔",
+        alt: "中島のレモン畑で話す矢野さとし",
         size: "portrait",
       },
       {
@@ -266,7 +301,7 @@ export const homeContent = {
         title: "築100年の家に、もう一度風を通す。",
         excerpt: "2円で譲り受けた古民家を、仲間と少しずつ直してきた記録。",
         image: placeholderImages.house,
-        imageAlt: "中島の古民家の外壁を手入れする矢野諭稔",
+        imageAlt: "中島の古民家の外壁を手入れする矢野さとし",
       },
       {
         slug: "lemon-farm",
@@ -354,14 +389,14 @@ export const homeContent = {
   about: {
     eyebrow: "ABOUT YANO",
     heading: "この島に通っている人。",
-    name: "矢野 諭稔",
+    name: "矢野さとし",
     body: [
       "平日は松山や東京で仕事をし、週末になると中島へ通っています。",
       "最初から古民家を直せたわけでも、農業ができたわけでもありません。島の人や仲間に教わりながら、自分にできる範囲で家や畑に手を入れてきました。",
       "暮らしをすべて変えなくても、島との関係は始められる。その一つの形を、週末ごとの活動を通して伝えていきたいと思っています。",
     ],
     image: placeholderImages.about,
-    imageAlt: "中島のレモン畑で作業する矢野諭稔",
+    imageAlt: "中島のレモン畑で作業する矢野さとし",
   },
   activities: {
     eyebrow: "ACTIVITIES",
@@ -372,14 +407,14 @@ export const homeContent = {
         title: "築100年の古民家再生",
         body: "長く使われてきた家にもう一度風を通し、人が集まれる場所へ。できるところから、少しずつ手を入れています。",
         image: placeholderImages.house,
-        alt: "古民家の外壁を塗る矢野諭稔",
+        alt: "古民家の外壁を塗る矢野さとし",
         href: "/kominka",
       },
       {
         title: "100本のレモン農園",
         body: "任された畑に通い、草を刈り、木の状態を見ながら、島の季節と向き合っています。",
         image: placeholderImages.farm,
-        alt: "レモンの木を手入れする矢野諭稔",
+        alt: "レモンの木を手入れする矢野さとし",
         href: "/lemon-farm",
       },
     ],
@@ -405,7 +440,7 @@ export const homeContent = {
     body: "強く売り込むための商品ではなく、食卓から中島を気に留めてもらうための入口です。畑で受け取った季節を、できるだけそのまま瓶に閉じ込めます。",
     image: placeholderImages.bottle,
     imageAlt: "古民家の棚に置かれた週末移住レモン果汁の瓶",
-    href: "https://drafts.editmysite.com/d/9qMX00kNEKH5198B0GE8FoEJpD61/",
+    href: "https://www.instagram.com/kominka.lemon/",
     cta: "週末移住レモン果汁を見る",
   },
   experience: {

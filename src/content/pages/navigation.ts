@@ -16,7 +16,7 @@ export const primaryNavigation: NavigationItem[] = [
 
 export const footerNavigation: NavigationItem[] = [
   ...primaryNavigation,
-  { label: "Instagram", href: "https://www.instagram.com/" },
-  { label: "note", href: "https://note.com/" },
+  { label: "Instagram", href: "https://www.instagram.com/yano_include/" },
+  { label: "note", href: "https://note.com/yano_pleasure" },
   { label: "プライバシーポリシー", href: "/privacy" },
 ];

@@ -6,9 +6,9 @@ export const subpages = [
     label: "ABOUT US",
     title: "私たちについて",
     description:
-      "中島の風景を主役に、矢野諭稔が案内人として関わりを伝えるページです。",
+      "中島の風景を主役に、矢野さとしが案内人として関わりを伝えるページです。",
     image: placeholderImages.yano,
-    imageAlt: "中島のレモン畑で作業する矢野諭稔",
+    imageAlt: "中島のレモン畑で作業する矢野さとし",
   },
   {
     slug: "landscape",

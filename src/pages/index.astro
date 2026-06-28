@@ -36,6 +36,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
     <figure class="intro-facts-section__image">
       <img src={homeContent.intro.image.src} alt={homeContent.intro.imageAlt} />
+      <figcaption>{homeContent.intro.caption}</figcaption>
     </figure>
   </section>
 
@@ -43,9 +44,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     class="short-profile reveal-section"
     aria-labelledby="short-profile-title"
   >
-    <div>
+    <div class="short-profile__summary">
       <p class="section-title__en">{homeContent.shortProfile.eyebrow}</p>
       <h2 id="short-profile-title">{homeContent.shortProfile.heading}</h2>
+      <blockquote>{homeContent.shortProfile.quote}</blockquote>
+      <ul>
+        {
+          homeContent.shortProfile.facts.map((fact) => <li>{fact}</li>)
+        }
+      </ul>
     </div>
     <div class="short-profile__body">
       {homeContent.shortProfile.body.map((paragraph) => <p>{paragraph}</p>)}
@@ -58,6 +65,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         {homeContent.shortProfile.instagramLabel}
         <span aria-hidden="true">↗</span>
       </a>
+    </div>
+  </section>
+
+  <section class="scenery-section reveal-section" id="scenery">
+    <div class="scenery-place">
+      <header class="scenery-place__heading">
+        <h2>{homeContent.scenery.heading}</h2>
+        <p>{homeContent.scenery.eyebrow}</p>
+      </header>
+      <div class="scenery-place__copy">
+        {homeContent.scenery.body.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <figure class="scenery-place__photo">
+        <img
+          src={homeContent.scenery.featureImage.src}
+          alt={homeContent.scenery.featureImageAlt}
+        />
+      </figure>
     </div>
   </section>
 
@@ -154,7 +179,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <TextLink href="/product" variant="quiet">
           {homeContent.currentActivities.lemonFarm.productLabel}
         </TextLink>
-        <TextLink href={siteConfig.social.instagram} variant="quiet">
+        <TextLink href={siteConfig.social.productInstagram} variant="quiet">
           {homeContent.currentActivities.lemonFarm.instagramLabel}
         </TextLink>
       </div>
@@ -172,25 +197,25 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     class="current-detail current-detail--kominka reveal-section"
     id="event-detail"
   >
-    <header class="current-detail__heading">
+    <div class="current-detail__copy">
       <p class="section-title__en">
         {homeContent.currentActivities.kominka.eyebrow}
       </p>
       <h2>{homeContent.currentActivities.kominka.heading}</h2>
-    </header>
-    <figure class="current-detail__wide-photo">
+      <p class="current-detail__community-copy">
+        {homeContent.currentActivities.kominka.body}
+      </p>
+      <TextLink href="/events" variant="quiet">
+        {homeContent.currentActivities.kominka.cta}
+      </TextLink>
+    </div>
+    <figure class="current-detail__hero">
       <img
         src={homeContent.currentActivities.kominka.image}
         alt={homeContent.currentActivities.kominka.imageAlt}
         loading="lazy"
       />
     </figure>
-    <div class="current-detail__after-photo">
-      <p>{homeContent.currentActivities.kominka.body}</p>
-      <TextLink href="/events" variant="quiet">
-        {homeContent.currentActivities.kominka.cta}
-      </TextLink>
-    </div>
   </section>
 
   <section
@@ -254,24 +279,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     <TextLink href="/columns" variant="quiet">
       {homeContent.columns.cta}
     </TextLink>
-  </section>
-
-  <section class="scenery-section reveal-section" id="scenery">
-    <div class="scenery-place">
-      <header class="scenery-place__heading">
-        <h2>{homeContent.scenery.heading}</h2>
-        <p>{homeContent.scenery.eyebrow}</p>
-      </header>
-      <div class="scenery-place__copy">
-        {homeContent.scenery.body.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-      <figure class="scenery-place__photo">
-        <img
-          src={homeContent.scenery.featureImage.src}
-          alt={homeContent.scenery.featureImageAlt}
-        />
-      </figure>
-    </div>
   </section>
 
   <section class="product-section reveal-section" id="product">

@@ -23,7 +23,9 @@ import { siteConfig } from "@/content/pages/site";
     </nav>
 
     <div class="site-footer__contact">
-      <a href={`mailto:${siteConfig.contact.email}`}>お問い合わせ</a>
+      <a href={`mailto:${siteConfig.contact.email}`}>
+        {siteConfig.contact.email}
+      </a>
       <small>&copy; {new Date().getFullYear()} {siteConfig.name}</small>
     </div>
   </div>
