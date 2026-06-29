@@ -19,6 +19,12 @@ const events = homeContent.currentActivities.kominka;
       <p>{events.body}</p>
     </header>
 
+    <section class="event-house-note" aria-labelledby="event-house-title">
+      <p class="section-title__en">KOMINKA / NOW</p>
+      <h2 id="event-house-title">{events.houseHeading}</h2>
+      {events.houseBody.map((paragraph) => <p>{paragraph}</p>)}
+    </section>
+
     <section class="event-origin" aria-labelledby="event-origin-title">
       <div class="event-origin__copy">
         <p class="section-title__en">{events.playlist.label}</p>

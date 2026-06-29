@@ -51,6 +51,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     </div>
     <div class="short-profile__body">
       {homeContent.shortProfile.body.map((paragraph) => <p>{paragraph}</p>)}
+      <aside class="short-profile__present">
+        <p class="section-title__en">
+          {homeContent.shortProfile.presentEyebrow}
+        </p>
+        <strong>{homeContent.shortProfile.presentQuote}</strong>
+        <p>{homeContent.shortProfile.presentBody}</p>
+      </aside>
       <a
         class="short-profile__instagram"
         href={siteConfig.social.instagram}
@@ -203,6 +210,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <p class="current-detail__community-copy">
         {homeContent.currentActivities.kominka.body}
       </p>
+      <div class="current-detail__house-note">
+        <h3>{homeContent.currentActivities.kominka.houseHeading}</h3>
+        {
+          homeContent.currentActivities.kominka.houseBody.map((paragraph) => (
+            <p>{paragraph}</p>
+          ))
+        }
+      </div>
       <TextLink href="/events" variant="quiet">
         {homeContent.currentActivities.kominka.cta}
       </TextLink>
