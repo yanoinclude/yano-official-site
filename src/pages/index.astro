@@ -48,11 +48,6 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <p class="section-title__en">{homeContent.shortProfile.eyebrow}</p>
       <h2 id="short-profile-title">{homeContent.shortProfile.heading}</h2>
       <blockquote>{homeContent.shortProfile.quote}</blockquote>
-      <ul>
-        {
-          homeContent.shortProfile.facts.map((fact) => <li>{fact}</li>)
-        }
-      </ul>
     </div>
     <div class="short-profile__body">
       {homeContent.shortProfile.body.map((paragraph) => <p>{paragraph}</p>)}
@@ -77,6 +72,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
       <div class="scenery-place__copy">
         {homeContent.scenery.body.map((paragraph) => <p>{paragraph}</p>)}
       </div>
+      <figure class="scenery-place__map">
+        <img src={homeContent.scenery.map.src} alt={homeContent.scenery.mapAlt} />
+      </figure>
       <figure class="scenery-place__photo">
         <img
           src={homeContent.scenery.featureImage.src}
