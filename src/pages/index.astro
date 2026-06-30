@@ -9,24 +9,32 @@ const services = [
     title: "古民家再生・活用",
     body: "古い家の原型を尊重しながら手を入れ、人が集まり、次の使い方が生まれる場所へ。",
     href: "/kominka",
+    image: placeholderImages.house,
+    alt: "中島の古民家を手入れする様子",
   },
   {
     number: "02",
     title: "農園再生・管理",
     body: "使われなくなりそうな畑を引き継ぎ、木と実が次の季節へ続くよう手入れします。",
     href: "/lemon-farm",
+    image: placeholderImages.farm,
+    alt: "レモンの木を手入れする様子",
   },
   {
     number: "03",
     title: "商品づくり・販売",
     body: "畑で受け取った恵みに、地域との関係が始まる届け方をつくります。",
     href: "/product",
+    image: placeholderImages.bottle,
+    alt: "週末移住レモン果汁",
   },
   {
     number: "04",
     title: "体験・共同企画",
     body: "島の内と外が出会い、一緒に手を動かせる時間や企画を育てます。",
     href: "/visit",
+    image: placeholderImages.repair,
+    alt: "島の人や仲間と活動する様子",
   },
 ];
 
@@ -80,19 +88,46 @@ const works = [
       </p>
       <div class="purpose__themes">
         <article>
-          <span>01</span><h3>古い家に、<br />人の気配を。</h3><p>
-            古民家再生・活用
-          </p>
+          <figure>
+            <img
+              src={placeholderImages.house}
+              alt="手入れを重ねてきた中島の古民家"
+              loading="lazy"
+            />
+          </figure>
+          <div>
+            <span>01 / PLACE</span><h3>古い家に、<br />人の気配を。</h3><p>
+              古民家再生・活用
+            </p>
+          </div>
         </article>
         <article>
-          <span>02</span><h3>眠りかけた畑に、<br />実りを。</h3><p>
-            レモン農園
-          </p>
+          <figure>
+            <img
+              src={placeholderImages.farm}
+              alt="中島のレモン畑"
+              loading="lazy"
+            />
+          </figure>
+          <div>
+            <span>02 / FARM</span><h3>眠りかけた畑に、<br />実りを。</h3><p>
+              レモン農園
+            </p>
+          </div>
         </article>
         <article>
-          <span>03</span><h3>地域の恵みに、<br />届け方を。</h3><p>
-            商品・体験づくり
-          </p>
+          <figure>
+            <img
+              src={placeholderImages.bottle}
+              alt="週末移住レモン果汁"
+              loading="lazy"
+            />
+          </figure>
+          <div>
+            <span>03 / PRODUCT</span><h3>地域の恵みに、<br />届け方を。</h3><p>
+              商品・体験づくり
+            </p>
+          </div>
         </article>
       </div>
     </div>
@@ -132,6 +167,9 @@ const works = [
         services.map((service) => (
           <a href={service.href}>
             <span>{service.number}</span>
+            <figure>
+              <img src={service.image} alt={service.alt} loading="lazy" />
+            </figure>
             <h3>{service.title}</h3>
             <p>{service.body}</p>
             <i aria-hidden="true">→</i>
@@ -652,6 +690,333 @@ const works = [
       opacity: 1;
       transform: none;
       transition: none;
+    }
+  }
+
+  /* Visual refinement: quieter type, denser photography, island-derived color. */
+  .top-hero {
+    min-height: min(800px, 100svh);
+  }
+  .top-hero__copy h1 {
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 1.22;
+  }
+  .section-heading h2,
+  .about-block h2 {
+    font-size: clamp(2.5rem, 3.5vw, 3rem);
+    line-height: 1.45;
+  }
+  .purpose {
+    grid-template-columns: minmax(14rem, 0.52fr) minmax(0, 1.48fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    padding-block: clamp(5.5rem, 9vw, 8rem);
+  }
+  .purpose__lead {
+    max-width: 38em;
+    margin-bottom: 3.5rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    line-height: 1.95;
+  }
+  .purpose__themes {
+    gap: clamp(0.8rem, 1.5vw, 1.5rem);
+    border-top: 0;
+  }
+  .purpose__themes article {
+    padding: 0;
+  }
+  .purpose__themes article:nth-child(2) {
+    margin-top: 2.5rem;
+  }
+  .purpose__themes figure {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+    border-radius: 0.75rem 0.75rem 2.5rem 0.75rem;
+    background: #e5edcf;
+  }
+  .purpose__themes article:nth-child(2) figure {
+    aspect-ratio: 4 / 5;
+    border-radius: 2.5rem 0.75rem 0.75rem;
+  }
+  .purpose__themes article:nth-child(3) figure {
+    aspect-ratio: 3 / 4;
+    border-radius: 0.75rem 2.5rem 0.75rem 0.75rem;
+  }
+  .purpose__themes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .purpose__themes article:hover img {
+    transform: scale(1.025);
+  }
+  .purpose__themes span {
+    color: #687451;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+  .purpose__themes h3 {
+    margin: 0.65rem 0 0.65rem;
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    line-height: 1.6;
+  }
+  .about-block {
+    min-height: 650px;
+    background:
+      linear-gradient(155deg, transparent 0 72%, rgba(207, 218, 178, 0.45) 72%),
+      #eeecdf;
+  }
+  .about-block figure {
+    min-height: 560px;
+    margin: clamp(2rem, 4vw, 4rem) 0 clamp(2rem, 4vw, 4rem)
+      clamp(2rem, 5vw, 5rem);
+    overflow: hidden;
+    border-radius: 0.75rem 4rem 0.75rem 0.75rem;
+  }
+  .about-block__copy {
+    max-width: 38em;
+    padding: clamp(3rem, 6vw, 6rem);
+  }
+  .about-block__copy > p:not(.section-label) {
+    max-width: 36em;
+    line-height: 1.95;
+  }
+  .services {
+    width: auto;
+    max-width: none;
+    padding: clamp(5.5rem, 9vw, 8rem) max(4rem, calc((100% - 1180px) / 2));
+    background:
+      linear-gradient(175deg, transparent 0 80%, rgba(226, 218, 150, 0.28) 80%),
+      #f7f5e9;
+  }
+  .services__list {
+    margin-top: 3rem;
+  }
+  .services__list a {
+    grid-template-columns: 3rem 8.5rem minmax(12rem, 0.75fr) minmax(
+        18rem,
+        1fr
+      ) 2rem;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    min-height: 9.5rem;
+    padding: 1.25rem 0;
+  }
+  .services__list figure {
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.45rem 1.5rem 0.45rem 0.45rem;
+  }
+  .services__list a:nth-child(even) figure {
+    border-radius: 1.5rem 0.45rem 0.45rem;
+  }
+  .services__list img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+  .services__list a:hover img {
+    transform: scale(1.035);
+  }
+  .services__list h3 {
+    font-size: 1.25rem;
+    line-height: 1.55;
+  }
+  .services__list p {
+    max-width: 36em;
+    line-height: 1.8;
+  }
+  .works,
+  .journal {
+    padding-block: clamp(5.5rem, 9vw, 8rem);
+  }
+  .works__grid,
+  .journal__grid {
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-top: 3rem;
+  }
+  .works__grid figure,
+  .journal__grid figure {
+    border-radius: 0.65rem 2.25rem 0.65rem 0.65rem;
+  }
+  .works__grid a:nth-child(2) {
+    margin-top: 2.5rem;
+  }
+  .works__grid a:nth-child(2) figure,
+  .journal__grid a:nth-child(2) figure {
+    border-radius: 2.25rem 0.65rem 0.65rem;
+  }
+  .works__grid a:nth-child(3) figure {
+    aspect-ratio: 3 / 4;
+  }
+  .journal {
+    background: #f3f5e9;
+  }
+  .journal__intro > p {
+    max-width: 36em;
+    line-height: 1.9;
+  }
+  .journal__grid a:nth-child(2) {
+    margin-top: 2.25rem;
+  }
+  .journal__grid figure {
+    aspect-ratio: 16 / 11;
+  }
+  .closing {
+    min-height: 600px;
+  }
+  .closing h2 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1.45;
+  }
+
+  @media (max-width: 850px) {
+    .purpose {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .purpose .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .purpose__themes article:nth-child(2) {
+      margin-top: 1.5rem;
+    }
+    .about-block figure {
+      margin: 2rem 2rem 0;
+      min-height: 58vw;
+    }
+    .services {
+      padding-inline: 2rem;
+    }
+    .services__list a {
+      grid-template-columns: 2.5rem 7.5rem minmax(11rem, 0.8fr) 1fr 1.5rem;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .top-hero {
+      min-height: 660px;
+    }
+    .top-hero__copy h1 {
+      font-size: clamp(2.5rem, 11vw, 2.875rem);
+      line-height: 1.25;
+    }
+    .section-heading h2,
+    .about-block h2 {
+      font-size: clamp(1.75rem, 8vw, 2.125rem);
+    }
+    .purpose,
+    .works,
+    .journal {
+      padding-block: 4.5rem;
+    }
+    .purpose .section-heading {
+      display: block;
+    }
+    .purpose__lead {
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+    .purpose__themes {
+      gap: 2.5rem;
+    }
+    .purpose__themes article,
+    .purpose__themes article:nth-child(2) {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(8rem, 0.75fr);
+      gap: 1.25rem;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    .purpose__themes figure,
+    .purpose__themes article:nth-child(2) figure,
+    .purpose__themes article:nth-child(3) figure {
+      aspect-ratio: 4 / 3;
+      margin: 0;
+      border-radius: 0.5rem 1.75rem 0.5rem 0.5rem;
+    }
+    .purpose__themes article:nth-child(even) figure {
+      order: 2;
+      border-radius: 1.75rem 0.5rem 0.5rem;
+    }
+    .purpose__themes h3 {
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+    .about-block {
+      min-height: 0;
+    }
+    .about-block figure {
+      min-height: 85vw;
+      margin: 1rem 1rem 0;
+      border-radius: 0.5rem 2.5rem 0.5rem 0.5rem;
+    }
+    .about-block__copy {
+      padding-block: 3.5rem;
+    }
+    .services {
+      padding: 4.5rem 1rem;
+    }
+    .services__list {
+      display: grid;
+      gap: 1rem;
+      border: 0;
+    }
+    .services__list a {
+      display: grid;
+      grid-template-columns: 2rem 1fr 1.5rem;
+      gap: 0.7rem 0.75rem;
+      min-height: 0;
+      padding: 0 0 1.5rem;
+      overflow: hidden;
+      border: 0;
+      border-radius: 0.65rem 1.75rem 0.65rem 0.65rem;
+      background: rgba(255, 255, 255, 0.62);
+    }
+    .services__list figure {
+      grid-column: 1 / -1;
+      aspect-ratio: 16 / 9;
+      border-radius: 0;
+    }
+    .services__list span {
+      grid-column: 1;
+      padding-left: 0.8rem;
+    }
+    .services__list h3 {
+      grid-column: 2;
+      font-size: 1.1rem;
+    }
+    .services__list p {
+      grid-column: 2 / 4;
+      padding-right: 1rem;
+    }
+    .services__list i {
+      grid-column: 3;
+      grid-row: 2;
+    }
+    .works__grid a:nth-child(2),
+    .journal__grid a:nth-child(2) {
+      margin-top: 0;
+    }
+    .works__grid a:nth-child(3) figure {
+      aspect-ratio: 4 / 3;
+    }
+    .closing {
+      min-height: 540px;
+    }
+    .closing h2 {
+      font-size: clamp(1.9rem, 8.5vw, 2.35rem);
+      line-height: 1.5;
     }
   }
 </style>
