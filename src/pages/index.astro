@@ -1,355 +1,215 @@
 ---
-import TextLink from "@/components/ui/TextLink.astro";
 import { homeContent } from "@/content/pages/home";
-import { siteConfig } from "@/content/pages/site";
+import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const services = [
+  {
+    number: "01",
+    title: "古民家再生・活用",
+    body: "古い家の原型を尊重しながら手を入れ、人が集まり、次の使い方が生まれる場所へ。",
+    href: "/kominka",
+  },
+  {
+    number: "02",
+    title: "農園再生・管理",
+    body: "使われなくなりそうな畑を引き継ぎ、木と実が次の季節へ続くよう手入れします。",
+    href: "/lemon-farm",
+  },
+  {
+    number: "03",
+    title: "商品づくり・販売",
+    body: "畑で受け取った恵みに、地域との関係が始まる届け方をつくります。",
+    href: "/product",
+  },
+  {
+    number: "04",
+    title: "体験・共同企画",
+    body: "島の内と外が出会い、一緒に手を動かせる時間や企画を育てます。",
+    href: "/visit",
+  },
+];
+
+const works = [
+  {
+    label: "PLACE",
+    title: "築100年の古民家",
+    image: placeholderImages.house,
+    alt: "手入れを重ねてきた築100年の古民家",
+    href: "/kominka",
+  },
+  {
+    label: "FARM",
+    title: "100本のレモン畑",
+    image: placeholderImages.farm,
+    alt: "中島のレモン畑で木を手入れする様子",
+    href: "/lemon-farm",
+  },
+  {
+    label: "PRODUCT",
+    title: "週末移住レモン果汁",
+    image: placeholderImages.bottle,
+    alt: "週末移住レモン果汁の瓶",
+    href: "/product",
+  },
+];
 ---
 
 <BaseLayout
-  title="愛媛県松山市・中島の風景とレモン"
-  description={siteConfig.description}
+  title="地域の宝を、現役に。"
+  description="古い家や使われなくなりそうな畑を手入れし、もう一度、人と仕事が巡る場所へ。愛媛県松山市・中島で地域の宝を現役に戻す、ヤノの公式サイトです。"
 >
-  <section class="hero" aria-label="週末移住レモンのファーストビュー">
-    <div class="hero__rail" aria-hidden="true">
-      <span>{siteConfig.name}</span>
-    </div>
-    <div class="hero__track">
-      <figure class="hero__image">
-        <img src={homeContent.hero.image} alt={homeContent.hero.imageAlt} />
-      </figure>
-    </div>
-    <p class="eyebrow hero__label">Nakajima, Matsuyama</p>
-    <div class="hero__copy-block">
-      <h1>
-        <span>島の続きを、手入れする。</span>
-      </h1>
-    </div>
-    <span class="hero__scroll" aria-hidden="true">scroll</span>
-  </section>
-
-  <section class="intro-facts-section reveal-section" id="introduction">
-    <div
-      class="intro-facts-section__message"
-      aria-label={homeContent.intro.text}
-    >
-      {homeContent.intro.columns.map((column) => <p>{column}</p>)}
-    </div>
-    <figure class="intro-facts-section__image">
-      <img src={homeContent.intro.image.src} alt={homeContent.intro.imageAlt} />
-      <figcaption>{homeContent.intro.caption}</figcaption>
-    </figure>
-  </section>
-
-  <section
-    class="short-profile reveal-section"
-    aria-labelledby="short-profile-title"
-  >
-    <div class="short-profile__summary">
-      <p class="section-title__en">{homeContent.shortProfile.eyebrow}</p>
-      <h2 id="short-profile-title">{homeContent.shortProfile.heading}</h2>
-      <blockquote>{homeContent.shortProfile.quote}</blockquote>
-    </div>
-    <div class="short-profile__body">
-      {homeContent.shortProfile.body.map((paragraph) => <p>{paragraph}</p>)}
-      <aside class="short-profile__present">
-        <p class="section-title__en">
-          {homeContent.shortProfile.presentEyebrow}
-        </p>
-        <strong>{homeContent.shortProfile.presentQuote}</strong>
-        <p>{homeContent.shortProfile.presentBody}</p>
-      </aside>
-      <a
-        class="short-profile__instagram"
-        href={siteConfig.social.instagram}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {homeContent.shortProfile.instagramLabel}
-        <span aria-hidden="true">↗</span>
-      </a>
+  <section class="top-hero" aria-labelledby="hero-title">
+    <img src={homeContent.hero.image} alt={homeContent.hero.imageAlt} />
+    <div class="top-hero__shade"></div>
+    <div class="top-hero__copy">
+      <p>島の続きを、手入れする。</p>
+      <h1 id="hero-title">地域の宝を、<br />現役に。</h1>
+      <span>愛媛県松山市・中島</span>
     </div>
   </section>
 
-  <section class="scenery-section reveal-section" id="scenery">
-    <div class="scenery-place">
-      <header class="scenery-place__heading">
-        <h2>{homeContent.scenery.heading}</h2>
-        <p>{homeContent.scenery.eyebrow}</p>
-      </header>
-      <div class="scenery-place__copy">
-        {homeContent.scenery.body.map((paragraph) => <p>{paragraph}</p>)}
-      </div>
-      <figure class="scenery-place__map">
-        <img src={homeContent.scenery.map.src} alt={homeContent.scenery.mapAlt} />
-      </figure>
-      <figure class="scenery-place__photo">
-        <img
-          src={homeContent.scenery.featureImage.src}
-          alt={homeContent.scenery.featureImageAlt}
-        />
-      </figure>
-    </div>
-  </section>
-
-  <section class="timeline-section reveal-section" id="timeline">
-    <header class="timeline-section__heading">
-      <p class="section-title__en">{homeContent.timeline.eyebrow}</p>
-      <h2>{homeContent.timeline.heading}</h2>
-      <p>{homeContent.timeline.lead}</p>
+  <section class="purpose section-shell reveal-section" id="about">
+    <header class="section-heading">
+      <p>WHAT WE DO</p>
+      <h2>地域に残るものを、<br />次の営みへ。</h2>
     </header>
-
-    <div class="timeline-chapters">
-      {
-        homeContent.timeline.groups.map((group) => (
-          <details class="timeline-chapter">
-            <summary>
-              <span class="timeline-chapter__number">{group.number}</span>
-              <span class="timeline-chapter__title">
-                <strong>{group.title}</strong>
-                <small>{group.body}</small>
-              </span>
-              <time>{group.period}</time>
-              <span class="timeline-chapter__toggle" aria-hidden="true">
-                ＋
-              </span>
-            </summary>
-            <ol>
-              {group.itemIndexes.map((itemIndex) => {
-                const item = homeContent.timeline.items[itemIndex];
-                return (
-                  <li>
-                    <time>{item.date}</time>
-                    <div>
-                      <h3>{item.title}</h3>
-                      <p>{item.body}</p>
-                    </div>
-                  </li>
-                );
-              })}
-            </ol>
-          </details>
-        ))
-      }
-    </div>
-
-    <div class="timeline-more">
-      <TextLink href="/story" variant="quiet">
-        {homeContent.timeline.moreLabel}
-      </TextLink>
-    </div>
-
-    <div class="timeline-current">
-      <div class="timeline-current__intro">
-        <p>{homeContent.timeline.current.date}</p>
-        <h3>{homeContent.timeline.current.heading}</h3>
-        <p>{homeContent.timeline.current.body}</p>
-      </div>
-      <div class="timeline-current__blocks">
-        {
-          homeContent.timeline.current.blocks.map((block) => (
-            <a href={block.href} class="current-activity-card">
-              <div>
-                <p>{block.label}</p>
-                <h4>{block.title}</h4>
-              </div>
-              <figure>
-                <img src={block.image} alt={block.imageAlt} loading="lazy" />
-              </figure>
-              <span aria-hidden="true">↓</span>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <section
-    class="current-detail current-detail--lemon reveal-section"
-    id="lemon-farm-detail"
-  >
-    <div class="current-detail__copy">
-      <p class="section-title__en">
-        {homeContent.currentActivities.lemonFarm.eyebrow}
+    <div class="purpose__body">
+      <p class="purpose__lead">
+        古い家や使われなくなりそうな畑を手入れし、もう一度、人と仕事が巡る場所へ。ヤノは、地域の宝を現役に戻す仕事をしています。
       </p>
-      <h2>{homeContent.currentActivities.lemonFarm.heading}</h2>
-      <p class="current-detail__lead">
-        {homeContent.currentActivities.lemonFarm.lead}
-      </p>
-      {
-        homeContent.currentActivities.lemonFarm.body.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))
-      }
-      <div class="current-detail__links">
-        <TextLink href="/product" variant="quiet">
-          {homeContent.currentActivities.lemonFarm.productLabel}
-        </TextLink>
-        <TextLink href={siteConfig.social.productInstagram} variant="quiet">
-          {homeContent.currentActivities.lemonFarm.instagramLabel}
-        </TextLink>
-      </div>
-    </div>
-    <figure class="current-detail__hero">
-      <img
-        src={homeContent.currentActivities.lemonFarm.image}
-        alt={homeContent.currentActivities.lemonFarm.imageAlt}
-        loading="lazy"
-      />
-    </figure>
-  </section>
-
-  <section
-    class="current-detail current-detail--kominka reveal-section"
-    id="event-detail"
-  >
-    <div class="current-detail__copy">
-      <p class="section-title__en">
-        {homeContent.currentActivities.kominka.eyebrow}
-      </p>
-      <h2>{homeContent.currentActivities.kominka.heading}</h2>
-      <p class="current-detail__community-copy">
-        {homeContent.currentActivities.kominka.body}
-      </p>
-      <div class="current-detail__house-note">
-        <h3>{homeContent.currentActivities.kominka.houseHeading}</h3>
-        {
-          homeContent.currentActivities.kominka.houseBody.map((paragraph) => (
-            <p>{paragraph}</p>
-          ))
-        }
-      </div>
-      <TextLink href="/events" variant="quiet">
-        {homeContent.currentActivities.kominka.cta}
-      </TextLink>
-    </div>
-    <figure class="current-detail__hero">
-      <img
-        src={homeContent.currentActivities.kominka.image}
-        alt={homeContent.currentActivities.kominka.imageAlt}
-        loading="lazy"
-      />
-    </figure>
-  </section>
-
-  <section
-    class="gallery-preview reveal-section"
-    aria-labelledby="gallery-title"
-  >
-    <header>
-      <p class="section-title__en">{homeContent.gallery.eyebrow}</p>
-      <h2 id="gallery-title">{homeContent.gallery.heading}</h2>
-      <p>{homeContent.gallery.lead}</p>
-    </header>
-    <a
-      class="gallery-preview__grid"
-      href="/gallery"
-      aria-label="島のギャラリーを見る"
-    >
-      {
-        homeContent.gallery.items.slice(0, 4).map((item) => (
-          <figure>
-            <img src={item.image} alt={item.alt} loading="lazy" />
-          </figure>
-        ))
-      }
-    </a>
-    <TextLink href="/gallery" variant="quiet">
-      {homeContent.gallery.cta}
-    </TextLink>
-  </section>
-
-  <section
-    class="columns-preview reveal-section"
-    aria-labelledby="columns-title"
-  >
-    <header>
-      <div>
-        <p class="section-title__en">{homeContent.columns.eyebrow}</p>
-        <h2 id="columns-title">{homeContent.columns.heading}</h2>
-      </div>
-      <p>{homeContent.columns.lead}</p>
-    </header>
-
-    <div class="columns-preview__grid">
-      {
-        homeContent.columns.items.map((item) => (
-          <article class="column-card">
-            <a href={`/columns/${item.slug}/`}>
-              <figure>
-                <img src={item.image} alt={item.imageAlt} loading="lazy" />
-              </figure>
-              <div class="column-card__copy">
-                <p>{item.category}</p>
-                <h3>{item.title}</h3>
-                <span>{item.excerpt}</span>
-              </div>
-            </a>
-          </article>
-        ))
-      }
-    </div>
-
-    <TextLink href="/columns" variant="quiet">
-      {homeContent.columns.cta}
-    </TextLink>
-  </section>
-
-  <section class="product-section reveal-section" id="product">
-    <figure class="product-section__image">
-      <img
-        src={homeContent.product.image}
-        alt={homeContent.product.imageAlt}
-        loading="lazy"
-      />
-    </figure>
-    <div class="product-section__text">
-      <p class="section-title__en">{homeContent.product.eyebrow}</p>
-      <h2>{homeContent.product.heading}</h2>
-      <p class="product-section__lead">{homeContent.product.lead}</p>
-      <p>{homeContent.product.body}</p>
-      <TextLink href={homeContent.product.href} variant="quiet">
-        {homeContent.product.cta}
-      </TextLink>
-    </div>
-  </section>
-
-  <section class="news-section reveal-section" id="news">
-    <div class="news-section__inner">
-      <div>
-        <p class="section-title__en">{homeContent.news.eyebrow}</p>
-        <h2>{homeContent.news.heading}</h2>
-      </div>
-      <div class="news-list">
-        {
-          homeContent.news.items.map((item) => (
-            <a href={item.href}>
-              <time datetime={item.date.replaceAll(".", "-")}>{item.date}</time>
-              <span>{item.title}</span>
-            </a>
-          ))
-        }
+      <div class="purpose__themes">
+        <article>
+          <span>01</span><h3>古い家に、<br />人の気配を。</h3><p>
+            古民家再生・活用
+          </p>
+        </article>
+        <article>
+          <span>02</span><h3>眠りかけた畑に、<br />実りを。</h3><p>
+            レモン農園
+          </p>
+        </article>
+        <article>
+          <span>03</span><h3>地域の恵みに、<br />届け方を。</h3><p>
+            商品・体験づくり
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <section
-    class="closing-section reveal-section"
-    aria-label="クロージングメッセージ"
-  >
+  <section class="about-block reveal-section">
     <figure>
-      <img src={homeContent.closing.image} alt={homeContent.closing.imageAlt} />
+      <img
+        src={placeholderImages.about}
+        alt="中島のレモン畑で作業する矢野さとし"
+        loading="lazy"
+      />
     </figure>
-    <div>
-      <div class="closing-section__body">
-        <p>この島に、帰ってこられる風景を。</p>
-      </div>
+    <div class="about-block__copy">
+      <p class="section-label">ABOUT YANO</p>
+      <h2>島の続きを、<br />手入れする。</h2>
+      <p>
+        築100年の古民家と、100本のレモンの木。受け継いだものの原型を尊重し、必要な分だけ手を入れる。そこから生まれる場所や実りを、人、仕事、商品、そして次の担い手へつないでいきます。
+      </p>
+      <strong
+        >築100年の古民家を2円で譲り受け、<br
+        />100本のレモンの木を引き継ぎました。</strong
+      >
+      <a class="text-arrow" href="/about"
+        >ヤノについて知る <span aria-hidden="true">→</span></a
+      >
+    </div>
+  </section>
+
+  <section class="services section-shell reveal-section" id="services">
+    <header class="section-heading">
+      <p>SERVICES</p>
+      <h2>できること</h2>
+    </header>
+    <div class="services__list">
+      {
+        services.map((service) => (
+          <a href={service.href}>
+            <span>{service.number}</span>
+            <h3>{service.title}</h3>
+            <p>{service.body}</p>
+            <i aria-hidden="true">→</i>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="works section-shell reveal-section" id="works">
+    <header class="section-heading">
+      <p>PROJECTS</p>
+      <h2>手入れしてきたもの</h2>
+    </header>
+    <div class="works__grid">
+      {
+        works.map((work) => (
+          <a href={work.href}>
+            <figure>
+              <img src={work.image} alt={work.alt} loading="lazy" />
+            </figure>
+            <p>{work.label}</p>
+            <h3>{work.title}</h3>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="journal section-shell reveal-section" id="journal">
+    <header class="section-heading">
+      <p>JOURNAL</p>
+      <h2>記録</h2>
+    </header>
+    <div class="journal__intro">
+      <p>
+        家、畑、人との出会い。手入れするなかで起きたことを、写真と言葉で残しています。
+      </p>
+      <a class="text-arrow" href="/columns"
+        >記録を読む <span aria-hidden="true">→</span></a
+      >
+    </div>
+    <div class="journal__grid">
+      {
+        homeContent.columns.items.slice(0, 3).map((item) => (
+          <a href={`/columns/${item.slug}/`}>
+            <figure>
+              <img src={item.image} alt={item.imageAlt} loading="lazy" />
+            </figure>
+            <p>{item.category}</p>
+            <h3>{item.title}</h3>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="closing reveal-section" id="contact">
+    <img
+      src={homeContent.closing.image}
+      alt={homeContent.closing.imageAlt}
+      loading="lazy"
+    />
+    <div class="closing__shade"></div>
+    <div class="closing__copy">
+      <p>この島に、帰ってこられる風景を。</p>
+      <h2>地域の宝を、<br />もう一度動かしませんか。</h2>
+      <a href={`mailto:${siteConfig.contact.email}`}
+        >相談する <span aria-hidden="true">→</span></a
+      >
     </div>
   </section>
 
   <script>
-    const revealTargets = document.querySelectorAll(".reveal-section");
-
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const targets = document.querySelectorAll(".reveal-section");
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((target) => target.setAttribute("data-in-view", "true"));
+    } else {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -359,14 +219,439 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             }
           });
         },
-        { threshold: 0.15 },
+        { threshold: 0.08 },
       );
-
-      revealTargets.forEach((target) => observer.observe(target));
-    } else {
-      revealTargets.forEach((target) =>
-        target.setAttribute("data-in-view", "true"),
-      );
+      targets.forEach((target) => observer.observe(target));
     }
   </script>
 </BaseLayout>
+
+<style>
+  :global(html) {
+    scroll-behavior: smooth;
+  }
+  .section-shell {
+    width: min(calc(100% - 8rem), 1180px);
+    margin-inline: auto;
+  }
+  .top-hero {
+    position: relative;
+    min-height: min(860px, 100svh);
+    color: #fff;
+    overflow: hidden;
+  }
+  .top-hero > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .top-hero__shade,
+  .closing__shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(17, 30, 20, 0.56),
+      rgba(17, 30, 20, 0.05) 72%
+    );
+  }
+  .top-hero__copy {
+    position: absolute;
+    z-index: 1;
+    left: max(4rem, calc((100% - 1180px) / 2));
+    bottom: clamp(4rem, 10vh, 7rem);
+  }
+  .top-hero__copy p {
+    margin: 0 0 1.2rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+  }
+  .top-hero__copy h1 {
+    margin: 0;
+    font-family: var(--font-island-heading);
+    font-size: clamp(3.2rem, 7vw, 6.8rem);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: 0.08em;
+  }
+  .top-hero__copy span {
+    display: block;
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+  }
+  .section-heading > p,
+  .section-label {
+    margin: 0 0 1.2rem;
+    color: var(--island-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+  }
+  .section-heading h2,
+  .about-block h2 {
+    margin: 0;
+    font-family: var(--font-island-heading);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+  }
+  .purpose {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: clamp(4rem, 10vw, 10rem);
+    padding-block: clamp(7rem, 12vw, 11rem);
+  }
+  .purpose__lead {
+    max-width: 42rem;
+    margin: 0 0 5rem;
+    font-family: var(--font-island-heading);
+    font-size: clamp(1.15rem, 2vw, 1.55rem);
+    line-height: 2;
+    letter-spacing: 0.05em;
+  }
+  .purpose__themes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--island-border);
+  }
+  .purpose__themes article {
+    padding: 1.5rem 1rem 0 0;
+  }
+  .purpose__themes span {
+    color: var(--island-muted);
+    font-size: 0.65rem;
+  }
+  .purpose__themes h3 {
+    margin: 1.8rem 0 1.2rem;
+    font-family: var(--font-island-heading);
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+  .purpose__themes p {
+    margin: 0;
+    color: var(--island-muted);
+    font-size: 0.78rem;
+  }
+  .about-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 720px;
+    background: #e9e8df;
+  }
+  .about-block figure {
+    margin: 0;
+    min-height: 600px;
+  }
+  .about-block figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .about-block__copy {
+    align-self: center;
+    max-width: 35rem;
+    padding: clamp(4rem, 8vw, 8rem);
+  }
+  .about-block__copy > p:not(.section-label) {
+    margin: 2rem 0;
+    line-height: 2.1;
+  }
+  .about-block__copy strong {
+    display: block;
+    padding-block: 1.5rem;
+    border-block: 1px solid rgba(40, 52, 42, 0.25);
+    font-family: var(--font-island-heading);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.9;
+  }
+  .text-arrow {
+    display: inline-flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid currentColor;
+    color: inherit;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+  .services,
+  .works,
+  .journal {
+    padding-block: clamp(7rem, 12vw, 11rem);
+  }
+  .services__list {
+    margin-top: 4rem;
+    border-top: 1px solid var(--island-text);
+  }
+  .services__list a {
+    display: grid;
+    grid-template-columns: 4rem minmax(14rem, 0.8fr) 1.2fr 2rem;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--island-border);
+    color: inherit;
+    text-decoration: none;
+  }
+  .services__list span,
+  .services__list p {
+    color: var(--island-muted);
+    font-size: 0.78rem;
+  }
+  .services__list h3 {
+    margin: 0;
+    font-family: var(--font-island-heading);
+    font-size: 1.4rem;
+    font-weight: 400;
+  }
+  .services__list p {
+    max-width: 34rem;
+    margin: 0;
+    line-height: 1.8;
+  }
+  .services__list i {
+    font-style: normal;
+    transition: transform 0.25s;
+  }
+  .services__list a:hover i {
+    transform: translateX(0.4rem);
+  }
+  .works {
+    width: auto;
+    max-width: none;
+    padding-inline: max(4rem, calc((100% - 1180px) / 2));
+    background: #26362a;
+    color: #f5f3e9;
+  }
+  .works .section-heading > p {
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .works__grid,
+  .journal__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .works__grid a,
+  .journal__grid a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .works__grid figure,
+  .journal__grid figure {
+    aspect-ratio: 4/3;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+  }
+  .works__grid img,
+  .journal__grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .works__grid a:hover img,
+  .journal__grid a:hover img {
+    transform: scale(1.025);
+  }
+  .works__grid p,
+  .journal__grid p {
+    margin: 0 0 0.65rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+  }
+  .works__grid h3,
+  .journal__grid h3 {
+    margin: 0;
+    font-family: var(--font-island-heading);
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+  .journal__intro {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: end;
+    margin-top: 2rem;
+  }
+  .journal__intro > p {
+    max-width: 35rem;
+    margin: 0;
+    line-height: 2;
+  }
+  .journal__intro .text-arrow {
+    margin: 0;
+    white-space: nowrap;
+  }
+  .journal__grid p {
+    color: var(--island-muted);
+  }
+  .closing {
+    position: relative;
+    min-height: 680px;
+    color: #fff;
+  }
+  .closing > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .closing__copy {
+    position: absolute;
+    z-index: 1;
+    left: max(4rem, calc((100% - 1180px) / 2));
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .closing__copy > p {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+  }
+  .closing h2 {
+    margin: 1.5rem 0 2.5rem;
+    font-family: var(--font-island-heading);
+    font-size: clamp(2.2rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.06em;
+  }
+  .closing a {
+    display: inline-flex;
+    justify-content: space-between;
+    width: min(20rem, 80vw);
+    padding: 1.2rem 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: #fff;
+    text-decoration: none;
+  }
+  .reveal-section {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s,
+      transform 0.7s;
+  }
+  .reveal-section[data-in-view="true"] {
+    opacity: 1;
+    transform: none;
+  }
+  @media (max-width: 850px) {
+    .section-shell {
+      width: calc(100% - 4rem);
+    }
+    .purpose {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .purpose__lead {
+      margin-bottom: 3.5rem;
+    }
+    .about-block {
+      grid-template-columns: 1fr;
+    }
+    .about-block figure {
+      min-height: 65vw;
+    }
+    .about-block__copy {
+      padding: 5rem 3rem;
+    }
+    .services__list a {
+      grid-template-columns: 3rem 1fr 2rem;
+      gap: 1rem;
+    }
+    .services__list p {
+      grid-column: 2;
+    }
+    .services__list i {
+      grid-column: 3;
+      grid-row: 1 / 3;
+    }
+    .works {
+      padding-inline: 2rem;
+    }
+    .works__grid,
+    .journal__grid {
+      gap: 1rem;
+    }
+  }
+  @media (max-width: 600px) {
+    .section-shell {
+      width: calc(100% - 2rem);
+    }
+    .top-hero {
+      min-height: 760px;
+    }
+    .top-hero__copy,
+    .closing__copy {
+      left: 1.25rem;
+      right: 1.25rem;
+    }
+    .top-hero__copy h1 {
+      font-size: clamp(2.8rem, 14vw, 4.2rem);
+    }
+    .purpose__themes {
+      grid-template-columns: 1fr;
+    }
+    .purpose__themes article {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--island-border);
+    }
+    .purpose__themes h3 {
+      margin: 0.8rem 0;
+    }
+    .about-block figure {
+      min-height: 95vw;
+    }
+    .about-block__copy {
+      padding: 4rem 1.25rem;
+    }
+    .about-block__copy strong br {
+      display: none;
+    }
+    .services__list a {
+      grid-template-columns: 2.2rem 1fr 1.5rem;
+      padding: 2rem 0;
+    }
+    .services__list h3 {
+      font-size: 1.2rem;
+    }
+    .works {
+      padding-inline: 1rem;
+    }
+    .works__grid,
+    .journal__grid {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    .journal__intro {
+      display: block;
+    }
+    .journal__intro .text-arrow {
+      margin-top: 2rem;
+    }
+    .closing {
+      min-height: 620px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(html) {
+      scroll-behavior: auto;
+    }
+    .reveal-section {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
