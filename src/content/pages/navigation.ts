@@ -9,6 +9,7 @@ export const primaryNavigation: NavigationItem[] = [
   { label: "手入れしてきたもの", href: "/#works" },
   { label: "記録", href: "/columns" },
   { label: "お問い合わせ", href: "/contact" },
+  { label: "商品を見る", href: "/product" },
 ];
 
 export const footerNavigation: NavigationItem[] = [

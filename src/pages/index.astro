@@ -83,13 +83,13 @@ const works = [
     <header class="section-heading">
       <p>WHAT WE DO</p>
       <h2>
-        <span>地域に残るものを、</span>
-        <span>次の営みへ。</span>
+        <span>残したいものに、</span>
+        <span>次の役目を。</span>
       </h2>
     </header>
     <div class="purpose__body">
       <p class="purpose__lead">
-        古い家や使われなくなりそうな畑を手入れし、もう一度、人と仕事が巡る場所へ。ヤノは、地域の宝を現役に戻す仕事をしています。
+        古い家や使われなくなりそうな畑を手入れし、もう一度、人と仕事が巡る場所へ。私は、地域の宝を現役に戻す活動をしています。
       </p>
       <div class="purpose__themes">
         <article>
@@ -1047,6 +1047,79 @@ const works = [
     .closing h2 {
       font-size: clamp(1.9rem, 8.5vw, 2.35rem);
       line-height: 1.5;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .purpose {
+      grid-template-columns: minmax(22rem, 0.8fr) minmax(0, 1.2fr);
+      gap: 4rem;
+    }
+    .purpose .section-heading,
+    .purpose__body {
+      min-width: 0;
+    }
+    .purpose .section-heading h2 {
+      font-size: clamp(2.5rem, 3.05vw, 2.75rem);
+      line-height: 1.55;
+      letter-spacing: 0.045em;
+    }
+    .purpose .section-heading h2 span {
+      display: block;
+    }
+    .purpose__themes {
+      gap: 0.6rem;
+    }
+    .purpose__themes h3 {
+      font-size: 1rem;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .services__list a {
+      grid-template-columns:
+        2rem 6.5rem 10rem minmax(30rem, 1fr)
+        1.5rem;
+      gap: 0.75rem;
+    }
+    .services__list p {
+      max-width: none;
+      white-space: nowrap;
+    }
+    .journal__intro {
+      gap: 2rem;
+    }
+    .journal__intro > p {
+      max-width: none;
+      white-space: nowrap;
+    }
+    .journal__intro .text-arrow {
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .purpose .section-heading,
+    .purpose__body {
+      min-width: 0;
+    }
+    .purpose .section-heading h2 span {
+      display: block;
+    }
+    .purpose__themes h3 {
+      white-space: normal;
+    }
+    .services__list p,
+    .journal__intro > p {
+      white-space: normal;
+    }
+  }
+
+  @media (min-width: 601px) and (max-width: 1199px) {
+    .purpose .section-heading h2 {
+      font-size: 1.7rem;
+      line-height: 1.65;
+      letter-spacing: 0.025em;
     }
   }
 </style>
