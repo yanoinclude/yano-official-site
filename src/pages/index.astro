@@ -2,6 +2,8 @@
 import { homeContent } from "@/content/pages/home";
 import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import kominkaRoofRestoration from "@/assets/images/home/kominka-roof-restoration.webp";
+import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
 
 const services = [
   {
@@ -90,8 +92,8 @@ const works = [
         <article>
           <figure>
             <img
-              src={placeholderImages.house}
-              alt="手入れを重ねてきた中島の古民家"
+              src={kominkaRoofRestoration.src}
+              alt="中島の古民家の屋根で工具を手に改修作業をする人"
               loading="lazy"
             />
           </figure>
@@ -118,8 +120,8 @@ const works = [
         <article>
           <figure>
             <img
-              src={placeholderImages.bottle}
-              alt="週末移住レモン果汁"
+              src={lemonJuiceDisplay.src}
+              alt="レモンと一緒に並ぶ週末移住レモン果汁の瓶"
               loading="lazy"
             />
           </figure>
@@ -749,6 +751,12 @@ const works = [
     object-fit: cover;
     transition: transform 0.5s ease;
   }
+  .purpose__themes article:first-child img {
+    object-position: 57% center;
+  }
+  .purpose__themes article:nth-child(3) img {
+    object-position: 48% center;
+  }
   .purpose__themes article:hover img {
     transform: scale(1.025);
   }
@@ -795,10 +803,9 @@ const works = [
     margin-top: 3rem;
   }
   .services__list a {
-    grid-template-columns: 3rem 8.5rem minmax(12rem, 0.75fr) minmax(
-        18rem,
-        1fr
-      ) 2rem;
+    grid-template-columns:
+      3rem 8.5rem minmax(12rem, 0.75fr) minmax(18rem, 1fr)
+      2rem;
     gap: clamp(1rem, 2.5vw, 2.5rem);
     min-height: 9.5rem;
     padding: 1.25rem 0;
@@ -952,6 +959,12 @@ const works = [
     .purpose__themes h3 {
       font-size: 1.05rem;
       line-height: 1.55;
+    }
+    .purpose__themes article:first-child img {
+      object-position: 54% center;
+    }
+    .purpose__themes article:nth-child(3) img {
+      object-position: 45% center;
     }
     .about-block {
       min-height: 0;
