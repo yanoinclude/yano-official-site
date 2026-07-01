@@ -82,7 +82,10 @@ const works = [
   <section class="purpose section-shell reveal-section" id="about">
     <header class="section-heading">
       <p>WHAT WE DO</p>
-      <h2>地域に残るものを、<br />次の営みへ。</h2>
+      <h2>
+        <span>地域に残るものを、</span>
+        <span>次の営みへ。</span>
+      </h2>
     </header>
     <div class="purpose__body">
       <p class="purpose__lead">
@@ -98,7 +101,7 @@ const works = [
             />
           </figure>
           <div>
-            <span>01 / PLACE</span><h3>古い家に、<br />人の気配を。</h3><p>
+            <span>01 / PLACE</span><h3>古い家に、人の気配を。</h3><p>
               古民家再生・活用
             </p>
           </div>
@@ -112,7 +115,7 @@ const works = [
             />
           </figure>
           <div>
-            <span>02 / FARM</span><h3>眠りかけた畑に、<br />実りを。</h3><p>
+            <span>02 / FARM</span><h3>眠りかけた畑に、実りを。</h3><p>
               レモン農園
             </p>
           </div>
@@ -126,7 +129,7 @@ const works = [
             />
           </figure>
           <div>
-            <span>03 / PRODUCT</span><h3>地域の恵みに、<br />届け方を。</h3><p>
+            <span>03 / PRODUCT</span><h3>地域の恵みに、届け方を。</h3><p>
               商品・体験づくり
             </p>
           </div>
@@ -338,6 +341,10 @@ const works = [
     line-height: 1.5;
     letter-spacing: 0.06em;
   }
+  .purpose .section-heading h2 span {
+    display: block;
+    white-space: nowrap;
+  }
   .purpose {
     display: grid;
     grid-template-columns: 0.7fr 1.3fr;
@@ -370,6 +377,7 @@ const works = [
     font-size: clamp(1.2rem, 2vw, 1.65rem);
     font-weight: 400;
     line-height: 1.65;
+    white-space: nowrap;
   }
   .purpose__themes p {
     margin: 0;
@@ -860,6 +868,9 @@ const works = [
     aspect-ratio: 3 / 4;
   }
   .journal {
+    width: auto;
+    max-width: none;
+    padding-inline: max(4rem, calc((100% - 1180px) / 2));
     background: #f3f5e9;
   }
   .journal__intro > p {
@@ -881,6 +892,9 @@ const works = [
   }
 
   @media (max-width: 850px) {
+    .journal {
+      padding-inline: 2rem;
+    }
     .purpose {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -908,6 +922,9 @@ const works = [
   }
 
   @media (max-width: 600px) {
+    .journal {
+      padding-inline: 1rem;
+    }
     .top-hero {
       min-height: 660px;
     }
@@ -957,7 +974,7 @@ const works = [
       border-radius: 1.75rem 0.5rem 0.5rem;
     }
     .purpose__themes h3 {
-      font-size: 1.05rem;
+      font-size: clamp(0.85rem, 3.8vw, 1.05rem);
       line-height: 1.55;
     }
     .purpose__themes article:first-child img {
