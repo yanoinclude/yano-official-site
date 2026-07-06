@@ -12,25 +12,15 @@ const navigationGroups = [
     ],
   },
   {
-    title: "ヤノと関わる",
+    title: "ヤノとつながる",
     items: [
-      { label: "商品を見る", href: "/product", accent: true },
-      { label: "島との関わり方", href: "/visit" },
       { label: "お問い合わせ", href: "/contact" },
-      { label: "古民家", href: "/kominka" },
-      { label: "レモン農園", href: "/lemon-farm" },
-    ],
-  },
-  {
-    title: "外部・規約",
-    items: [
       {
         label: "Instagram",
         href: siteConfig.social.instagram,
         external: true,
       },
       { label: "note", href: siteConfig.social.note, external: true },
-      { label: "プライバシーポリシー", href: "/privacy" },
     ],
   },
 ] as const;
@@ -42,7 +32,7 @@ const navigationGroups = [
       <p class="site-footer__copy">{siteConfig.mainCopy}</p>
       <p>{siteConfig.activityCopy}</p>
       <a class="site-footer__product" href="/product">
-        <span>週末移住レモン果汁を見る</span>
+        <span>レモン果汁を見る</span>
         <span aria-hidden="true">→</span>
       </a>
     </div>
@@ -86,7 +76,10 @@ const navigationGroups = [
       <a href={`mailto:${siteConfig.contact.email}`}>
         {siteConfig.contact.email}
       </a>
-      <small>&copy; {new Date().getFullYear()} {siteConfig.name}</small>
+      <div>
+        <a href="/privacy">プライバシーポリシー</a>
+        <small>&copy; {new Date().getFullYear()} {siteConfig.name}</small>
+      </div>
     </div>
   </div>
 </footer>
@@ -94,7 +87,7 @@ const navigationGroups = [
 <style>
   .site-footer__inner {
     display: grid;
-    grid-template-columns: minmax(17rem, 0.75fr) minmax(0, 1.25fr);
+    grid-template-columns: minmax(17rem, 0.9fr) minmax(0, 1.1fr);
     gap: clamp(4rem, 8vw, 8rem);
     width: min(calc(100% - 8rem), 1180px);
     padding-block: clamp(5rem, 8vw, 7rem) 2.5rem;
@@ -115,7 +108,7 @@ const navigationGroups = [
   }
   .site-footer__navigation {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(1.5rem, 3vw, 3rem);
   }
   .site-footer__navigation nav > p {
@@ -135,10 +128,6 @@ const navigationGroups = [
     align-items: center;
     line-height: 1.6;
   }
-  .site-footer__accent {
-    padding-bottom: 0.15rem;
-    border-bottom: 1px solid #d2c458;
-  }
   .site-footer__bottom {
     grid-column: 1 / -1;
     display: flex;
@@ -146,6 +135,16 @@ const navigationGroups = [
     gap: 2rem;
     padding-top: 2rem;
     border-top: 1px solid rgba(38, 54, 42, 0.16);
+  }
+  .site-footer__bottom > div {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .site-footer__bottom > div a,
+  .site-footer__bottom small {
+    color: #74786f;
+    font-size: 0.7rem;
   }
   @media (max-width: 900px) {
     .site-footer__inner {
@@ -163,12 +162,43 @@ const navigationGroups = [
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem 1.5rem;
     }
-    .site-footer__navigation nav:first-child {
-      grid-column: 1 / -1;
-    }
     .site-footer__bottom {
       display: grid;
       gap: 0.75rem;
+    }
+    .site-footer__bottom > div {
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
+  @media (max-width: 420px) {
+    .site-footer__inner {
+      gap: 3rem;
+      padding-top: 3.5rem;
+    }
+    .site-footer__copy {
+      font-size: 1.35rem;
+    }
+    .site-footer__product {
+      width: 100%;
+      min-height: 4rem;
+      margin-top: 2rem;
+      padding-inline: 1.25rem;
+    }
+    .site-footer__navigation {
+      gap: 2rem 1rem;
+    }
+    .site-footer__navigation nav > p {
+      margin-bottom: 1rem;
+    }
+    .site-footer__navigation nav ul {
+      gap: 0.7rem;
+    }
+    .site-footer__navigation a {
+      font-size: 0.8rem;
+    }
+    .site-footer__bottom > div {
+      display: grid;
     }
   }
 </style>

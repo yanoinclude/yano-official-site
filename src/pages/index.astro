@@ -1027,19 +1027,21 @@ const works = [
     }
 
     .top-hero {
-      width: calc(100% - 1rem);
-      padding: 2.5rem 1rem 0;
-      border-radius: 42% 42% 0 0 / 5% 5% 0 0;
+      width: 100%;
+      padding: 3.25rem 1rem 0;
+      border-radius: 0;
     }
 
     .top-hero__intro h1 {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
     }
 
     .top-hero__activities {
       grid-template-columns: 1fr;
-      gap: 0.9rem;
-      margin-top: 2rem;
+      gap: 1rem;
+      width: min(100%, 22rem);
+      margin-top: 2.5rem;
     }
 
     .top-hero__activities > div {
@@ -1047,21 +1049,24 @@ const works = [
     }
 
     .top-hero__activities strong {
-      padding-block: 0.65rem;
-      font-size: 1rem;
+      padding-block: 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 1.05rem;
     }
 
     .top-hero__intro > p {
       max-width: 24rem;
-      margin-top: 1.7rem;
-      font-size: 0.75rem;
-      text-align: left;
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      line-height: 2;
+      text-align: center;
     }
 
     .top-hero__visual {
-      margin-top: 2rem;
-      border-radius: 38% 38% 0 0 / 12% 12% 0 0;
-      aspect-ratio: 4 / 3;
+      width: calc(100% + 2rem);
+      margin: 2.5rem -1rem 0;
+      border-radius: 45% 45% 0 0 / 14% 14% 0 0;
+      aspect-ratio: 4 / 3.35;
     }
 
     .top-hero__visual img {
@@ -1078,7 +1083,11 @@ const works = [
 
     .profile__copy {
       max-width: 32rem;
-      text-align: left;
+      text-align: center;
+    }
+
+    .profile__copy br {
+      display: none;
     }
 
     .profile__copy p + p {
@@ -1120,23 +1129,60 @@ const works = [
     }
 
     .capability-tabs {
-      gap: 0.4rem;
-      margin-top: 3rem;
-    }
-
-    .capability-tabs button {
-      min-height: 5.25rem;
-      padding: 1rem 0.65rem;
-      font-size: 0.76rem;
+      display: none;
     }
 
     .capability-panels article {
-      gap: 2.5rem;
-      padding-block: 3rem;
+      display: grid;
+      gap: 2.75rem;
+      padding: 4.5rem 1rem;
+      border-top: 1px solid rgba(48, 72, 110, 0.1);
+    }
+
+    .capability-panels article[hidden] {
+      display: grid;
+    }
+
+    .capability-panel__copy {
+      text-align: center;
     }
 
     .capability-panel__copy h3 {
-      font-size: 1.375rem;
+      max-width: none;
+      font-size: 1.5rem;
+    }
+
+    .capability-panel__copy > p:nth-of-type(2) {
+      margin-inline: auto;
+      font-size: 0.78rem;
+      line-height: 2.05;
+    }
+
+    .capability-panel__copy > div {
+      margin-top: 2.5rem;
+      text-align: left;
+    }
+
+    .capability-panel__copy > div > span {
+      display: block;
+      text-align: center;
+    }
+
+    .capability-panel__copy ul {
+      width: min(100%, 23rem);
+      margin-inline: auto;
+    }
+
+    .capability-panel__copy li {
+      width: 100%;
+      min-width: 0;
+      padding: 0.65rem 1rem;
+      text-align: center;
+    }
+
+    .capability-panels figure {
+      border-radius: 0;
+      aspect-ratio: 4 / 3;
     }
 
     .worked-on__grid {
