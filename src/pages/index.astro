@@ -5,6 +5,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import kominkaRoofRestoration from "@/assets/images/home/kominka-roof-restoration.webp";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
 import heroImg0776 from "@/assets/images/home/hero-img-0776.jpeg";
+import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
+import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 
 const activities = [
   {
@@ -53,20 +55,20 @@ const works = [
   {
     category: "YOUTUBE",
     icon: "▶",
-    title: "離島の空き家チャンネル",
-    body: "古民家再生や中島での活動を、動画で記録・発信しています。",
-    image: placeholderImages.repair,
-    alt: "中島の古民家を改修する人たち",
-    href: "https://www.youtube.com/playlist?list=PLcHrn5cVHOxJCUtJaAPvsJqQRTznh-FaT",
+    title: "ヤノッチのNo Plan Project",
+    body: "2円で買った築100年の古民家を、仲間と一緒に再生していく全9話の記録です。",
+    image: noPlanThumbnail.src,
+    alt: "ヤノッチのNo Plan Project vol.1の動画サムネイル",
+    href: "/no-plan-project",
   },
   {
     category: "CROWDFUNDING",
     icon: "支",
     title: "古民家再生クラウドファンディング",
     body: "世界のアーティストと島の人が交流できる、新しい拠点づくりに挑戦しました。",
-    image: kominkaRoofRestoration.src,
-    alt: "中島の古民家再生プロジェクト",
-    href: "https://for-good.net/project/1001493",
+    image: crowdfundingThumbnail.src,
+    alt: "世界のアーティストとまちの人が交流できる新たな拠点をつくるクラウドファンディング",
+    href: "https://for-good.net/project/1001493/activity",
   },
   {
     category: "WEBSITE",
