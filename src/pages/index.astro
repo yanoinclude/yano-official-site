@@ -4,62 +4,86 @@ import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import kominkaRoofRestoration from "@/assets/images/home/kominka-roof-restoration.webp";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
+import heroImg0776 from "@/assets/images/home/hero-img-0776.jpeg";
 
-const services = [
+const activities = [
   {
-    number: "01",
-    title: "古民家再生・活用",
-    body: "古い家の原型を尊重しながら手を入れ、人が集まり、次の使い方が生まれる場所へ。",
-    href: "/kominka",
-    image: placeholderImages.house,
-    alt: "中島の古民家を手入れする様子",
+    id: "house",
+    label: "古民家再生・活用",
+    eyebrow: "01 / PLACE",
+    title: "古い家に、もう一度人の気配を。",
+    body: "建物が持つ原型を大切にしながら、必要な部分を少しずつ手入れしています。滞在や交流、ものづくりが始まる場所を目指しています。",
+    points: ["古民家の再生・活用", "改修作業への参加", "滞在・交流企画"],
+    image: kominkaRoofRestoration.src,
+    alt: "中島の古民家の屋根を改修する様子",
   },
   {
-    number: "02",
-    title: "農園再生・管理",
-    body: "使われなくなりそうな畑を引き継ぎ、木と実が次の季節へ続くよう手入れします。",
-    href: "/lemon-farm",
+    id: "farm",
+    label: "レモン農園",
+    eyebrow: "02 / FARM",
+    title: "眠りかけた畑に、実りを。",
+    body: "使われなくなりそうな畑を引き継ぎ、草刈りや剪定、収穫など、季節に合わせた手入れを続けています。",
+    points: ["レモン農園の管理", "収穫・農作業体験", "中島産柑橘の販売"],
     image: placeholderImages.farm,
-    alt: "レモンの木を手入れする様子",
+    alt: "中島のレモン農園",
   },
   {
-    number: "03",
-    title: "商品づくり・販売",
-    body: "畑で受け取った恵みに、地域との関係が始まる届け方をつくります。",
-    href: "/product",
-    image: placeholderImages.bottle,
-    alt: "週末移住レモン果汁",
+    id: "product",
+    label: "商品づくり",
+    eyebrow: "03 / PRODUCT",
+    title: "島の実りに、届け方を。",
+    body: "中島で採れたレモンを使い、島の風景や物語まで感じられる商品をつくっています。",
+    points: ["週末移住レモン果汁", "柑橘商品の企画", "パッケージ・販売企画"],
+    image: lemonJuiceDisplay.src,
+    alt: "レモンと一緒に並ぶ週末移住レモン果汁",
   },
   {
-    number: "04",
-    title: "体験・共同企画",
-    body: "島の内と外が出会い、一緒に手を動かせる時間や企画を育てます。",
-    href: "/visit",
+    id: "media",
+    label: "発信・地域企画",
+    eyebrow: "04 / PROJECT",
+    title: "島の今を、島の外へ。",
+    body: "YouTubeやウェブサイト、イベントなどを通して、中島で暮らす人や活動、島の魅力を発信しています。",
+    points: ["YouTubeでの情報発信", "ウェブサイト制作", "イベント・共同企画"],
     image: placeholderImages.repair,
-    alt: "島の人や仲間と活動する様子",
+    alt: "島の内外から人が集まり一緒に活動する様子",
   },
 ];
 
 const works = [
   {
-    label: "PLACE",
-    title: "築100年の古民家",
-    image: placeholderImages.house,
-    alt: "手入れを重ねてきた築100年の古民家",
-    href: "/kominka",
+    category: "YOUTUBE",
+    icon: "▶",
+    title: "離島の空き家チャンネル",
+    body: "古民家再生や中島での活動を、動画で記録・発信しています。",
+    image: placeholderImages.repair,
+    alt: "中島の古民家を改修する人たち",
+    href: "https://www.youtube.com/playlist?list=PLcHrn5cVHOxJCUtJaAPvsJqQRTznh-FaT",
   },
   {
-    label: "FARM",
-    title: "100本のレモン畑",
-    image: placeholderImages.farm,
-    alt: "中島のレモン畑で木を手入れする様子",
-    href: "/lemon-farm",
+    category: "CROWDFUNDING",
+    icon: "支",
+    title: "古民家再生クラウドファンディング",
+    body: "世界のアーティストと島の人が交流できる、新しい拠点づくりに挑戦しました。",
+    image: kominkaRoofRestoration.src,
+    alt: "中島の古民家再生プロジェクト",
+    href: "https://for-good.net/project/1001493",
   },
   {
-    label: "PRODUCT",
-    title: "週末移住レモン果汁",
+    category: "WEBSITE",
+    icon: "↗",
+    title: "中島日和",
+    body: "中島の柑橘や島の暮らしを届けるウェブサイトを制作しました。",
+    image: placeholderImages.island,
+    alt: "瀬戸内海に浮かぶ中島の風景",
+    href: "https://nakajima-biyori.com/",
+  },
+  {
+    category: "PRODUCT / WEBSITE",
+    icon: "＋",
+    title: "週末移住レモン",
+    body: "週末に島へ通いながら育てたレモンを届ける、商品ブランドとウェブサイトをつくりました。",
     image: placeholderImages.bottle,
-    alt: "週末移住レモン果汁の瓶",
+    alt: "週末移住レモン果汁",
     href: "/product",
   },
 ];
@@ -67,191 +91,253 @@ const works = [
 
 <BaseLayout
   title="地域の宝を、現役に。"
-  description="古い家や使われなくなりそうな畑を手入れし、もう一度、人と仕事が巡る場所へ。愛媛県松山市・中島で地域の宝を現役に戻す、ヤノの公式サイトです。"
+  description="古民家やレモン畑を手入れし、島の内外の人が関われる場所をつくる、矢野さとしの活動を紹介します。"
 >
   <section class="top-hero" aria-labelledby="hero-title">
-    <img src={homeContent.hero.image} alt={homeContent.hero.imageAlt} />
-    <div class="top-hero__shade"></div>
-    <div class="top-hero__copy">
-      <p>島の続きを、手入れする。</p>
-      <h1 id="hero-title">地域の宝を、<br />現役に。</h1>
-      <span>愛媛県松山市・中島</span>
+    <div class="top-hero__intro">
+      <h1 id="hero-title">島の続きを、手入れする。</h1>
+      <div class="top-hero__activities" aria-label="主な活動">
+        <div>
+          <span>築100年の家を、もう一度現役に</span>
+          <strong>古民家再生</strong>
+        </div>
+        <div>
+          <span>受け継いだ木を、次の季節へ</span>
+          <strong>レモン農園</strong>
+        </div>
+        <div>
+          <span>島の内と外に、関わりしろを</span>
+          <strong>地域活動</strong>
+        </div>
+      </div>
+      <p>
+        私は、週末だけ島に通いながら、古民家再生とレモン畑の手入れを通して、人と島をつなぐ活動をしています。
+      </p>
     </div>
+    <figure class="top-hero__visual">
+      <img src={heroImg0776.src} alt="中島のレモン畑で収穫を楽しむ人たち" />
+    </figure>
   </section>
 
-  <section class="purpose section-shell reveal-section" id="about">
-    <header class="section-heading">
-      <p>WHAT WE DO</p>
+  <section class="profile content-shell reveal-section" id="about">
+    <div class="profile__intro">
+      <p class="section-kicker">ABOUT YANO</p>
       <h2>
-        <span>残したいものに、</span>
-        <span>次の役目を。</span>
+        週末だけ、<br />
+        <span>ちょっと</span>島に移住する。
       </h2>
-    </header>
-    <div class="purpose__body">
-      <p class="purpose__lead">
-        古い家や使われなくなりそうな畑を手入れし、もう一度、人と仕事が巡る場所へ。私は、地域の宝を現役に戻す活動をしています。
-      </p>
-      <div class="purpose__themes">
-        <article>
-          <figure>
-            <img
-              src={kominkaRoofRestoration.src}
-              alt="中島の古民家の屋根で工具を手に改修作業をする人"
-              loading="lazy"
-            />
-          </figure>
-          <div>
-            <span>01 / PLACE</span><h3>古い家に、人の気配を。</h3><p>
-              古民家再生・活用
-            </p>
-          </div>
-        </article>
-        <article>
-          <figure>
-            <img
-              src={placeholderImages.farm}
-              alt="中島のレモン畑"
-              loading="lazy"
-            />
-          </figure>
-          <div>
-            <span>02 / FARM</span><h3>眠りかけた畑に、実りを。</h3><p>
-              レモン農園
-            </p>
-          </div>
-        </article>
-        <article>
-          <figure>
-            <img
-              src={lemonJuiceDisplay.src}
-              alt="レモンと一緒に並ぶ週末移住レモン果汁の瓶"
-              loading="lazy"
-            />
-          </figure>
-          <div>
-            <span>03 / PRODUCT</span><h3>地域の恵みに、届け方を。</h3><p>
-              商品・体験づくり
-            </p>
-          </div>
-        </article>
+      <div class="profile__copy">
+        <p>
+          平日は広告の仕事をしながら、<br />
+          週末は愛媛県松山市の離島・中島へ。
+        </p>
+        <p>
+          築100年の古民家と、100本のレモンの木を受け継ぎ、<br />
+          少しずつ手を入れながら、島に人が集まるきっかけをつくっています。
+        </p>
+        <p>
+          古いものを新しく変えるのではなく、<br />
+          残ってきた風景を活かしながら、<br />
+          人、仕事、商品、次の担い手へとつなげていく活動です。
+        </p>
+      </div>
+    </div>
+
+    <div class="profile__themes">
+      <article>
+        <figure>
+          <img
+            src={kominkaRoofRestoration.src}
+            alt="中島の古民家の屋根を改修する様子"
+            loading="lazy"
+          />
+        </figure>
+        <p>01 / PLACE</p>
+        <h3>築100年の古民家を再生</h3>
+        <span>人が集まり、滞在し、<br />新しい活動が始まる場所へ。</span>
+      </article>
+      <article>
+        <figure>
+          <img
+            src={placeholderImages.farm}
+            alt="中島のレモン農園"
+            loading="lazy"
+          />
+        </figure>
+        <p>02 / FARM</p>
+        <h3>約100本のレモン農園</h3>
+        <span>受け継いだ木を手入れし、<br />島の実りを次の世代へ。</span>
+      </article>
+    </div>
+
+    <a class="pill-link" href="/about">矢野のことを知る</a>
+  </section>
+
+  <section class="capabilities reveal-section" id="services">
+    <div class="content-shell">
+      <header class="capabilities__heading">
+        <h2>
+          <span class="capabilities__heading-en" aria-hidden="true"
+            >What I can <i>do</i></span
+          >
+          <span class="capabilities__heading-ja">私ができること</span>
+        </h2>
+        <p>
+          古民家や畑を手入れするだけでなく、そこから生まれる場所、商品、体験、発信まで。<br
+          />島の内と外をつなぐ活動を行っています。
+        </p>
+      </header>
+
+      <div class="capability-tabs" role="tablist" aria-label="ヤノができること">
+        {
+          activities.map((activity, index) => (
+            <button
+              type="button"
+              role="tab"
+              id={`tab-${activity.id}`}
+              aria-controls={`panel-${activity.id}`}
+              aria-selected={index === 0 ? "true" : "false"}
+              tabindex={index === 0 ? 0 : -1}
+              data-activity-tab={activity.id}
+            >
+              {activity.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="capability-panels">
+        {
+          activities.map((activity, index) => (
+            <article
+              role="tabpanel"
+              id={`panel-${activity.id}`}
+              aria-labelledby={`tab-${activity.id}`}
+              hidden={index !== 0}
+              data-activity-panel={activity.id}
+            >
+              <div class="capability-panel__copy">
+                <p class="section-kicker">{activity.eyebrow}</p>
+                <h3>{activity.title}</h3>
+                <p>{activity.body}</p>
+                <div>
+                  <span>Recommend</span>
+                  <ul>
+                    {activity.points.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <figure>
+                <img src={activity.image} alt={activity.alt} loading="lazy" />
+              </figure>
+            </article>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section class="about-block reveal-section">
-    <figure>
-      <img
-        src={placeholderImages.about}
-        alt="中島のレモン畑で作業する矢野さとし"
-        loading="lazy"
-      />
-    </figure>
-    <div class="about-block__copy">
-      <p class="section-label">ABOUT YANO</p>
-      <h2>島の続きを、<br />手入れする。</h2>
-      <p>
-        築100年の古民家と、100本のレモンの木。受け継いだものの原型を尊重し、必要な分だけ手を入れる。そこから生まれる場所や実りを、人、仕事、商品、そして次の担い手へつないでいきます。
-      </p>
-      <strong
-        >築100年の古民家を2円で譲り受け、<br
-        />100本のレモンの木を引き継ぎました。</strong
-      >
-      <a class="text-arrow" href="/about"
-        >ヤノについて知る <span aria-hidden="true">→</span></a
-      >
-    </div>
-  </section>
-
-  <section class="services section-shell reveal-section" id="services">
+  <section class="worked-on content-shell reveal-section" id="works">
     <header class="section-heading">
-      <p>SERVICES</p>
-      <h2>できること</h2>
+      <p class="section-kicker">WHAT WE WORKED ON</p>
+      <h2>てがけてきたこと</h2>
     </header>
-    <div class="services__list">
-      {
-        services.map((service) => (
-          <a href={service.href}>
-            <span>{service.number}</span>
-            <figure>
-              <img src={service.image} alt={service.alt} loading="lazy" />
-            </figure>
-            <h3>{service.title}</h3>
-            <p>{service.body}</p>
-            <i aria-hidden="true">→</i>
-          </a>
-        ))
-      }
-    </div>
-  </section>
 
-  <section class="works section-shell reveal-section" id="works">
-    <header class="section-heading">
-      <p>PROJECTS</p>
-      <h2>手入れしてきたもの</h2>
-    </header>
-    <div class="works__grid">
+    <div class="worked-on__grid">
       {
         works.map((work) => (
-          <a href={work.href}>
+          <a
+            href={work.href}
+            target={work.href.startsWith("http") ? "_blank" : undefined}
+            rel={work.href.startsWith("http") ? "noreferrer" : undefined}
+          >
             <figure>
               <img src={work.image} alt={work.alt} loading="lazy" />
+              <span aria-hidden="true">{work.icon}</span>
             </figure>
-            <p>{work.label}</p>
+            <p>{work.category}</p>
             <h3>{work.title}</h3>
+            <div>
+              <span>{work.body}</span>
+              <i aria-hidden="true">↗</i>
+            </div>
           </a>
         ))
       }
     </div>
   </section>
 
-  <section class="journal section-shell reveal-section" id="journal">
-    <header class="section-heading">
-      <p>JOURNAL</p>
-      <h2>記録</h2>
-    </header>
-    <div class="journal__intro">
-      <p>
-        家、畑、人との出会い。手入れするなかで起きたことを、写真と言葉で残しています。
-      </p>
-      <a class="text-arrow" href="/columns"
-        >記録を読む <span aria-hidden="true">→</span></a
-      >
-    </div>
-    <div class="journal__grid">
-      {
-        homeContent.columns.items.slice(0, 3).map((item) => (
-          <a href={`/columns/${item.slug}/`}>
-            <figure>
-              <img src={item.image} alt={item.imageAlt} loading="lazy" />
-            </figure>
-            <p>{item.category}</p>
-            <h3>{item.title}</h3>
-          </a>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="closing reveal-section" id="contact">
+  <section class="contact-panel reveal-section" id="contact">
     <img
       src={homeContent.closing.image}
       alt={homeContent.closing.imageAlt}
       loading="lazy"
     />
-    <div class="closing__shade"></div>
-    <div class="closing__copy">
-      <p>この島に、帰ってこられる風景を。</p>
-      <h2>地域の宝を、<br />もう一度動かしませんか。</h2>
-      <a href={`mailto:${siteConfig.contact.email}`}
-        >相談する <span aria-hidden="true">→</span></a
-      >
+    <div class="contact-panel__shade"></div>
+    <div class="contact-panel__copy">
+      <p>PLEASE FEEL FREE TO CONTACT ME.</p>
+      <h2>島に来る。<br />一緒に手を動かす。<br />レモンを味わう。</h2>
+      <span>
+        中島での活動や古民家、レモン農園に興味を持っていただけた方は、<br
+        />お気軽にご連絡ください。
+      </span>
+      <div>
+        <a href={`mailto:${siteConfig.contact.email}`}>お問い合わせ</a>
+        <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"
+          >Instagram</a
+        >
+      </div>
     </div>
   </section>
 
   <script>
-    const targets = document.querySelectorAll(".reveal-section");
+    const tabs = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-activity-tab]"),
+    );
+    const panels = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-activity-panel]"),
+    );
+
+    const selectTab = (tab: HTMLButtonElement, moveFocus = false) => {
+      const id = tab.dataset.activityTab;
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute("aria-selected", String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.activityPanel !== id;
+      });
+      if (moveFocus) tab.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => selectTab(tab));
+      tab.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+          return;
+        }
+        event.preventDefault();
+        let nextIndex = index;
+        if (event.key === "ArrowLeft") {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        }
+        if (event.key === "ArrowRight") {
+          nextIndex = (index + 1) % tabs.length;
+        }
+        if (event.key === "Home") nextIndex = 0;
+        if (event.key === "End") nextIndex = tabs.length - 1;
+        selectTab(tabs[nextIndex], true);
+      });
+    });
+
+    const revealTargets = document.querySelectorAll(".reveal-section");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      targets.forEach((target) => target.setAttribute("data-in-view", "true"));
+      revealTargets.forEach((target) =>
+        target.setAttribute("data-in-view", "true"),
+      );
     } else {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -264,7 +350,7 @@ const works = [
         },
         { threshold: 0.08 },
       );
-      targets.forEach((target) => observer.observe(target));
+      revealTargets.forEach((target) => observer.observe(target));
     }
   </script>
 </BaseLayout>
@@ -273,853 +359,817 @@ const works = [
   :global(html) {
     scroll-behavior: smooth;
   }
-  .section-shell {
-    width: min(calc(100% - 8rem), 1180px);
+
+  .content-shell {
+    width: min(calc(100% - 8rem), 1120px);
     margin-inline: auto;
   }
+
   .top-hero {
-    position: relative;
-    min-height: min(860px, 100svh);
-    color: #fff;
+    width: min(calc(100% - 6rem), 1440px);
+    min-height: 0;
+    margin-inline: auto;
+    padding: clamp(3rem, 5vw, 4.5rem) clamp(2rem, 5vw, 5rem) 0;
     overflow: hidden;
+    border-radius: 48% 48% 0 0 / 12% 12% 0 0;
+    background: #f7f5e9;
+    color: #30463b;
   }
-  .top-hero > img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .top-hero__shade,
-  .closing__shade {
+
+  .contact-panel__shade {
     position: absolute;
     inset: 0;
     background: linear-gradient(
       90deg,
-      rgba(17, 30, 20, 0.56),
-      rgba(17, 30, 20, 0.05) 72%
+      rgba(17, 30, 20, 0.58),
+      rgba(17, 30, 20, 0.06) 72%
     );
   }
-  .top-hero__copy {
-    position: absolute;
+
+  .top-hero__intro {
+    position: relative;
     z-index: 1;
-    left: max(4rem, calc((100% - 1180px) / 2));
-    bottom: clamp(4rem, 10vh, 7rem);
+    display: grid;
+    justify-items: center;
+    text-align: center;
   }
-  .top-hero__copy p {
-    margin: 0 0 1.2rem;
-    font-size: 0.82rem;
-    letter-spacing: 0.18em;
-  }
-  .top-hero__copy h1 {
+
+  .top-hero__intro h1 {
     margin: 0;
-    font-family: var(--font-island-heading);
-    font-size: clamp(3.2rem, 7vw, 6.8rem);
-    font-weight: 400;
-    line-height: 1.18;
-    letter-spacing: 0.08em;
-  }
-  .top-hero__copy span {
-    display: block;
-    margin-top: 2rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-  }
-  .section-heading > p,
-  .section-label {
-    margin: 0 0 1.2rem;
-    color: var(--island-muted);
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-  }
-  .section-heading h2,
-  .about-block h2 {
-    margin: 0;
-    font-family: var(--font-island-heading);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 400;
+    font-family: var(--font-island-body);
+    font-size: 0.95rem;
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
   }
-  .purpose .section-heading h2 span {
-    display: block;
-    white-space: nowrap;
-  }
-  .purpose {
+
+  .top-hero__activities {
     display: grid;
-    grid-template-columns: 0.7fr 1.3fr;
-    gap: clamp(4rem, 10vw, 10rem);
-    padding-block: clamp(7rem, 12vw, 11rem);
+    grid-template-columns: repeat(3, minmax(0, auto));
+    gap: 0.75rem;
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
   }
-  .purpose__lead {
-    max-width: 42rem;
-    margin: 0 0 5rem;
-    font-family: var(--font-island-heading);
-    font-size: clamp(1.15rem, 2vw, 1.55rem);
-    line-height: 2;
-    letter-spacing: 0.05em;
-  }
-  .purpose__themes {
+
+  .top-hero__activities > div {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid var(--island-border);
+    gap: 0.35rem;
   }
-  .purpose__themes article {
-    padding: 1.5rem 1rem 0 0;
+
+  .top-hero__activities span {
+    font-size: 0.62rem;
+    font-weight: 500;
+    line-height: 1.4;
   }
-  .purpose__themes span {
-    color: var(--island-muted);
-    font-size: 0.65rem;
+
+  .top-hero__activities strong {
+    min-width: 9.8rem;
+    padding: 0.7rem 1rem;
+    border-radius: 0.45rem;
+    background: #c9d9d7;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 500;
+    line-height: 1.2;
   }
-  .purpose__themes h3 {
-    margin: 1.8rem 0 1.2rem;
-    font-family: var(--font-island-heading);
-    font-size: clamp(1.2rem, 2vw, 1.65rem);
-    font-weight: 400;
-    line-height: 1.65;
-    white-space: nowrap;
+
+  .top-hero__activities > div:nth-child(2) strong {
+    background: #ded1be;
   }
-  .purpose__themes p {
-    margin: 0;
-    color: var(--island-muted);
+
+  .top-hero__activities > div:nth-child(3) strong {
+    background: #d8d1df;
+  }
+
+  .top-hero__intro > p {
+    max-width: 44rem;
+    margin: 2rem 0 0;
     font-size: 0.78rem;
-  }
-  .about-block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 720px;
-    background: #e9e8df;
-  }
-  .about-block figure {
-    margin: 0;
-    min-height: 600px;
-  }
-  .about-block figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .about-block__copy {
-    align-self: center;
-    max-width: 35rem;
-    padding: clamp(4rem, 8vw, 8rem);
-  }
-  .about-block__copy > p:not(.section-label) {
-    margin: 2rem 0;
-    line-height: 2.1;
-  }
-  .about-block__copy strong {
-    display: block;
-    padding-block: 1.5rem;
-    border-block: 1px solid rgba(40, 52, 42, 0.25);
-    font-family: var(--font-island-heading);
-    font-size: 1.05rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.9;
   }
-  .text-arrow {
-    display: inline-flex;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 2rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid currentColor;
-    color: inherit;
-    font-size: 0.82rem;
-    text-decoration: none;
-  }
-  .services,
-  .works,
-  .journal {
-    padding-block: clamp(7rem, 12vw, 11rem);
-  }
-  .services__list {
-    margin-top: 4rem;
-    border-top: 1px solid var(--island-text);
-  }
-  .services__list a {
-    display: grid;
-    grid-template-columns: 4rem minmax(14rem, 0.8fr) 1.2fr 2rem;
-    gap: 2rem;
-    align-items: center;
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--island-border);
-    color: inherit;
-    text-decoration: none;
-  }
-  .services__list span,
-  .services__list p {
-    color: var(--island-muted);
-    font-size: 0.78rem;
-  }
-  .services__list h3 {
-    margin: 0;
-    font-family: var(--font-island-heading);
-    font-size: 1.4rem;
-    font-weight: 400;
-  }
-  .services__list p {
-    max-width: 34rem;
-    margin: 0;
-    line-height: 1.8;
-  }
-  .services__list i {
-    font-style: normal;
-    transition: transform 0.25s;
-  }
-  .services__list a:hover i {
-    transform: translateX(0.4rem);
-  }
-  .works {
-    width: auto;
-    max-width: none;
-    padding-inline: max(4rem, calc((100% - 1180px) / 2));
-    background: #26362a;
-    color: #f5f3e9;
-  }
-  .works .section-heading > p {
-    color: rgba(255, 255, 255, 0.55);
-  }
-  .works__grid,
-  .journal__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 4rem;
-  }
-  .works__grid a,
-  .journal__grid a {
-    color: inherit;
-    text-decoration: none;
-  }
-  .works__grid figure,
-  .journal__grid figure {
-    aspect-ratio: 4/3;
-    margin: 0 0 1.5rem;
+
+  .top-hero__visual {
+    position: relative;
+    width: min(100%, 1180px);
+    margin: clamp(2.5rem, 5vw, 4.5rem) auto 0;
     overflow: hidden;
+    border-radius: 48% 48% 0 0 / 18% 18% 0 0;
+    aspect-ratio: 1334 / 720;
+    background: #d5ddd4;
   }
-  .works__grid img,
-  .journal__grid img {
+
+  .top-hero__visual img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s;
+    object-position: center 50%;
   }
-  .works__grid a:hover img,
-  .journal__grid a:hover img {
-    transform: scale(1.025);
+
+  .section-kicker {
+    margin: 0 0 1rem;
+    color: var(--island-muted);
+    font-family: var(--font-island-accent);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
   }
-  .works__grid p,
-  .journal__grid p {
-    margin: 0 0 0.65rem;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-  }
-  .works__grid h3,
-  .journal__grid h3 {
+
+  .section-heading h2,
+  .profile h2 {
     margin: 0;
-    font-family: var(--font-island-heading);
-    font-size: 1.3rem;
-    font-weight: 400;
-    line-height: 1.55;
+    font-family: var(--font-island-body);
+    font-size: clamp(1.9rem, 2.8vw, 2.5rem);
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.03em;
   }
-  .journal__intro {
-    display: flex;
-    justify-content: space-between;
-    gap: 3rem;
-    align-items: end;
-    margin-top: 2rem;
-  }
-  .journal__intro > p {
-    max-width: 35rem;
-    margin: 0;
+
+  .section-heading > p:last-child {
+    max-width: 44rem;
+    margin: 1.5rem 0 0;
+    font-size: 0.86rem;
     line-height: 2;
   }
-  .journal__intro .text-arrow {
-    margin: 0;
-    white-space: nowrap;
+
+  .profile {
+    padding-block: clamp(7rem, 12vw, 11rem);
   }
-  .journal__grid p {
-    color: var(--island-muted);
+
+  .profile__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
-  .closing {
+
+  .profile__intro > .section-kicker {
+    margin-bottom: 1.5rem;
+  }
+
+  .profile__intro > h2 {
     position: relative;
-    min-height: 680px;
+    z-index: 0;
+    max-width: 18em;
+    color: #30486e;
+    font-size: clamp(2.1rem, 4vw, 3.8rem);
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+  }
+
+  .profile__intro > h2 span {
+    position: relative;
+    display: inline-block;
+  }
+
+  .profile__intro > h2 span::before {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 46%;
+    width: 1.9em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #f3cf61;
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+
+  .profile__copy {
+    max-width: 50rem;
+    margin-top: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .profile__copy p {
+    margin: 0;
+    color: #30486e;
+    font-size: clamp(0.84rem, 1.2vw, 1rem);
+    font-weight: 600;
+    line-height: 2.2;
+  }
+
+  .profile__copy p + p {
+    margin-top: 0.65rem;
+  }
+
+  .profile__themes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(3rem, 8vw, 8rem);
+    margin-top: clamp(5rem, 9vw, 8rem);
+  }
+
+  .profile__themes figure {
+    aspect-ratio: 4 / 3;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+    background: #e6e7e2;
+  }
+
+  .profile__themes img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .profile__themes article:hover img {
+    transform: scale(1.025);
+  }
+
+  .profile__themes article > p,
+  .worked-on__grid > a > p {
+    margin: 0;
+    color: var(--island-muted);
+    font-size: 0.66rem;
+    letter-spacing: 0.17em;
+  }
+
+  .profile__themes h3 {
+    margin: 0.65rem 0 0.8rem;
+    font-family: var(--font-island-body);
+    font-size: 1.125rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .profile__themes article > span {
+    font-size: 0.78rem;
+    line-height: 1.85;
+  }
+
+  .pill-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: min(18rem, 100%);
+    min-height: 3rem;
+    margin: clamp(4rem, 7vw, 6rem) auto 0;
+    border: 1px solid var(--island-text);
+    border-radius: 999px;
+    color: var(--island-text);
+    font-size: 0.78rem;
+    text-decoration: none;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  .pill-link:hover,
+  .pill-link:focus-visible {
+    background: var(--island-text);
     color: #fff;
   }
-  .closing > img {
+
+  .capabilities {
+    padding: clamp(6rem, 10vw, 9rem) 0 0;
+    overflow: hidden;
+    background: #f5f1ed;
+  }
+
+  .capabilities__heading {
+    text-align: center;
+  }
+
+  .capabilities__heading h2 {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: clamp(7rem, 13vw, 11rem);
+    margin: 0;
+  }
+
+  .capabilities__heading-en {
+    color: #e2e4e9;
+    font-family: var(--font-island-accent);
+    font-size: clamp(4rem, 10vw, 8.8rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+  }
+
+  .capabilities__heading-en i {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    color: #e2e4e9;
+    font-style: normal;
+  }
+
+  .capabilities__heading-en i::before {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    width: 1.45em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #f6cf68;
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+
+  .capabilities__heading-ja {
+    position: absolute;
+    z-index: 1;
+    color: #30486e;
+    font-family: var(--font-island-body);
+    font-size: clamp(1.65rem, 3.2vw, 2.65rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .capabilities__heading > p {
+    max-width: 49rem;
+    margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+    color: #30486e;
+    font-size: 0.86rem;
+    font-weight: 600;
+    line-height: 2;
+  }
+
+  .capability-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-top: clamp(4rem, 7vw, 6rem);
+  }
+
+  .capability-tabs button {
+    min-height: 5.5rem;
+    padding: 1rem 0.75rem;
+    border: 0;
+    border-radius: 1.4rem 1.4rem 0 0;
+    background: #e0e1e6;
+    color: #30486e;
+    font-family: inherit;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .capability-tabs button[aria-selected="true"] {
+    background: #fffdf3;
+    color: #30486e;
+  }
+
+  .capability-panels article {
+    display: grid;
+    grid-template-columns: minmax(20rem, 0.95fr) minmax(25rem, 1.05fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: center;
+    min-height: 38rem;
+    padding: clamp(4rem, 7vw, 6.5rem) clamp(2rem, 5vw, 5rem);
+    background: #fffdf3;
+  }
+
+  .capability-panels article[hidden] {
+    display: none;
+  }
+
+  .capability-panel__copy h3 {
+    max-width: 13em;
+    margin: 0;
+    font-family: var(--font-island-body);
+    color: #30486e;
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .capability-panel__copy > p:nth-of-type(2) {
+    max-width: 33rem;
+    margin: 1.5rem 0 0;
+    color: #30486e;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 2;
+  }
+
+  .capability-panel__copy > div {
+    margin-top: 3rem;
+  }
+
+  .capability-panel__copy > div > span {
+    color: #30486e;
+    font-family: var(--font-island-accent);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .capability-panel__copy ul {
+    display: grid;
+    gap: 0.8rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    color: #30486e;
+    font-size: 0.8rem;
+    font-weight: 600;
+    list-style: none;
+  }
+
+  .capability-panel__copy li {
+    width: fit-content;
+    min-width: min(100%, 23rem);
+    padding: 0.7rem 1.25rem;
+    border: 1px solid #30486e;
+    border-radius: 999px;
+  }
+
+  .capability-panel__copy li::before {
+    margin-right: 0.5rem;
+    content: "・";
+  }
+
+  .capability-panels figure {
+    aspect-ratio: 4 / 3;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.25rem;
+    background: #e4e1d7;
+  }
+
+  .capability-panels img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .worked-on {
+    padding-block: clamp(7rem, 12vw, 11rem);
+  }
+
+  .worked-on__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(4rem, 7vw, 7rem) clamp(3rem, 6vw, 6rem);
+    margin-top: clamp(4rem, 7vw, 6rem);
+  }
+
+  .worked-on__grid > a {
+    color: var(--island-text);
+    text-decoration: none;
+  }
+
+  .worked-on__grid figure {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    margin: 0 0 1.5rem;
+    overflow: hidden;
+    background: #e6e7e2;
+  }
+
+  .worked-on__grid figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+  }
+
+  .worked-on__grid > a:hover figure img {
+    transform: scale(1.025);
+  }
+
+  .worked-on__grid figure span {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    background: rgba(247, 245, 238, 0.92);
+    font-size: 0.8rem;
+  }
+
+  .worked-on__grid h3 {
+    margin: 0.65rem 0 0;
+    font-family: var(--font-island-body);
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  .worked-on__grid > a > div {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: end;
+    margin-top: 0.9rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--island-border);
+  }
+
+  .worked-on__grid > a > div span {
+    max-width: 29rem;
+    font-size: 0.78rem;
+    line-height: 1.85;
+  }
+
+  .worked-on__grid i {
+    font-size: 1rem;
+    font-style: normal;
+    transition: transform 0.25s ease;
+  }
+
+  .worked-on__grid > a:hover i {
+    transform: translate(3px, -3px);
+  }
+
+  .contact-panel {
+    position: relative;
+    min-height: min(720px, 85svh);
+    overflow: hidden;
+    color: #fff;
+  }
+
+  .contact-panel > img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  .closing__copy {
+
+  .contact-panel__shade {
+    background: rgba(21, 37, 27, 0.58);
+  }
+
+  .contact-panel__copy {
     position: absolute;
     z-index: 1;
-    left: max(4rem, calc((100% - 1180px) / 2));
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    width: min(calc(100% - 8rem), 48rem);
+    text-align: center;
+    transform: translate(-50%, -50%);
   }
-  .closing__copy > p {
-    font-size: 0.78rem;
-    letter-spacing: 0.15em;
+
+  .contact-panel__copy > p {
+    margin: 0 0 1.5rem;
+    font-size: 0.67rem;
+    letter-spacing: 0.2em;
   }
-  .closing h2 {
-    margin: 1.5rem 0 2.5rem;
-    font-family: var(--font-island-heading);
-    font-size: clamp(2.2rem, 5vw, 4.5rem);
-    font-weight: 400;
+
+  .contact-panel__copy h2 {
+    margin: 0;
+    font-family: var(--font-island-body);
+    font-size: clamp(1.9rem, 2.8vw, 2.5rem);
+    font-weight: 500;
     line-height: 1.5;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.03em;
   }
-  .closing a {
-    display: inline-flex;
-    justify-content: space-between;
-    width: min(20rem, 80vw);
-    padding: 1.2rem 1.4rem;
-    border: 1px solid rgba(255, 255, 255, 0.7);
+
+  .contact-panel__copy > span {
+    display: block;
+    margin-top: 1.7rem;
+    font-size: 0.8rem;
+    line-height: 2;
+  }
+
+  .contact-panel__copy > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .contact-panel__copy a {
+    display: grid;
+    place-items: center;
+    width: 13rem;
+    min-height: 3rem;
+    border: 1px solid #fff;
+    border-radius: 999px;
     color: #fff;
+    font-size: 0.76rem;
     text-decoration: none;
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
   }
+
+  .contact-panel__copy a:hover,
+  .contact-panel__copy a:focus-visible {
+    background: #fff;
+    color: #24352b;
+  }
+
   .reveal-section {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(1.5rem);
     transition:
-      opacity 0.7s,
-      transform 0.7s;
+      opacity 0.8s ease,
+      transform 0.8s ease;
   }
+
   .reveal-section[data-in-view="true"] {
     opacity: 1;
-    transform: none;
+    transform: translateY(0);
   }
-  @media (max-width: 850px) {
-    .section-shell {
-      width: calc(100% - 4rem);
+
+  @media (max-width: 900px) {
+    .content-shell {
+      width: min(calc(100% - 4rem), 44rem);
     }
-    .purpose {
+
+    .top-hero {
+      width: calc(100% - 2.5rem);
+      padding-inline: 2rem;
+      border-radius: 44% 44% 0 0 / 8% 8% 0 0;
+    }
+
+    .top-hero__activities {
+      width: 100%;
+    }
+
+    .top-hero__activities strong {
+      min-width: 0;
+    }
+
+    .profile__intro {
+      display: flex;
+    }
+
+    .profile__copy {
+      margin-top: 3.5rem;
+    }
+
+    .profile__themes {
+      gap: 2rem;
+    }
+
+    .capability-tabs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .capability-tabs button {
+      border-radius: 1.2rem 1.2rem 0 0;
+    }
+
+    .capability-panels article {
       grid-template-columns: 1fr;
       gap: 3rem;
-    }
-    .purpose__lead {
-      margin-bottom: 3.5rem;
-    }
-    .about-block {
-      grid-template-columns: 1fr;
-    }
-    .about-block figure {
-      min-height: 65vw;
-    }
-    .about-block__copy {
-      padding: 5rem 3rem;
-    }
-    .services__list a {
-      grid-template-columns: 3rem 1fr 2rem;
-      gap: 1rem;
-    }
-    .services__list p {
-      grid-column: 2;
-    }
-    .services__list i {
-      grid-column: 3;
-      grid-row: 1 / 3;
-    }
-    .works {
-      padding-inline: 2rem;
-    }
-    .works__grid,
-    .journal__grid {
-      gap: 1rem;
+      min-height: auto;
+      padding-inline: clamp(1.5rem, 6vw, 3rem);
     }
   }
-  @media (max-width: 600px) {
-    .section-shell {
+
+  @media (max-width: 640px) {
+    .content-shell {
       width: calc(100% - 2rem);
     }
+
     .top-hero {
-      min-height: 760px;
+      width: calc(100% - 1rem);
+      padding: 2.5rem 1rem 0;
+      border-radius: 42% 42% 0 0 / 5% 5% 0 0;
     }
-    .top-hero__copy,
-    .closing__copy {
-      left: 1.25rem;
-      right: 1.25rem;
+
+    .top-hero__intro h1 {
+      font-size: 0.85rem;
     }
-    .top-hero__copy h1 {
-      font-size: clamp(2.8rem, 14vw, 4.2rem);
-    }
-    .purpose__themes {
+
+    .top-hero__activities {
       grid-template-columns: 1fr;
-    }
-    .purpose__themes article {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--island-border);
-    }
-    .purpose__themes h3 {
-      margin: 0.8rem 0;
-    }
-    .about-block figure {
-      min-height: 95vw;
-    }
-    .about-block__copy {
-      padding: 4rem 1.25rem;
-    }
-    .about-block__copy strong br {
-      display: none;
-    }
-    .services__list a {
-      grid-template-columns: 2.2rem 1fr 1.5rem;
-      padding: 2rem 0;
-    }
-    .services__list h3 {
-      font-size: 1.2rem;
-    }
-    .works {
-      padding-inline: 1rem;
-    }
-    .works__grid,
-    .journal__grid {
-      grid-template-columns: 1fr;
-      gap: 3.5rem;
-    }
-    .journal__intro {
-      display: block;
-    }
-    .journal__intro .text-arrow {
+      gap: 0.9rem;
       margin-top: 2rem;
     }
-    .closing {
-      min-height: 620px;
+
+    .top-hero__activities > div {
+      gap: 0.25rem;
+    }
+
+    .top-hero__activities strong {
+      padding-block: 0.65rem;
+      font-size: 1rem;
+    }
+
+    .top-hero__intro > p {
+      max-width: 24rem;
+      margin-top: 1.7rem;
+      font-size: 0.75rem;
+      text-align: left;
+    }
+
+    .top-hero__visual {
+      margin-top: 2rem;
+      border-radius: 38% 38% 0 0 / 12% 12% 0 0;
+      aspect-ratio: 4 / 3;
+    }
+
+    .top-hero__visual img {
+      object-position: 53% center;
+    }
+
+    .profile__copy p {
+      font-size: 0.8125rem;
+    }
+
+    .profile__intro > h2 {
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .profile__copy {
+      max-width: 32rem;
+      text-align: left;
+    }
+
+    .profile__copy p + p {
+      margin-top: 1rem;
+    }
+
+    .profile__themes,
+    .worked-on__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .profile__themes {
+      gap: 4rem;
+    }
+
+    .capabilities {
+      padding-top: 5rem;
+    }
+
+    .capabilities__heading h2 {
+      min-height: 6rem;
+    }
+
+    .capabilities__heading-en {
+      font-size: clamp(3rem, 14vw, 4.2rem);
+    }
+
+    .capabilities__heading-ja {
+      font-size: clamp(1.35rem, 6vw, 1.75rem);
+    }
+
+    .capabilities__heading > p {
+      font-size: 0.78rem;
+      text-align: left;
+    }
+
+    .capabilities__heading > p br {
+      display: none;
+    }
+
+    .capability-tabs {
+      gap: 0.4rem;
+      margin-top: 3rem;
+    }
+
+    .capability-tabs button {
+      min-height: 5.25rem;
+      padding: 1rem 0.65rem;
+      font-size: 0.76rem;
+    }
+
+    .capability-panels article {
+      gap: 2.5rem;
+      padding-block: 3rem;
+    }
+
+    .capability-panel__copy h3 {
+      font-size: 1.375rem;
+    }
+
+    .worked-on__grid {
+      gap: 4.5rem;
+    }
+
+    .contact-panel {
+      min-height: 700px;
+    }
+
+    .contact-panel__copy {
+      width: calc(100% - 2rem);
+    }
+
+    .contact-panel__copy h2 {
+      font-size: 1.75rem;
+    }
+
+    .contact-panel__copy > span br {
+      display: none;
     }
   }
+
   @media (prefers-reduced-motion: reduce) {
     :global(html) {
       scroll-behavior: auto;
     }
-    .reveal-section {
-      opacity: 1;
-      transform: none;
+
+    .reveal-section,
+    .profile__themes img,
+    .worked-on__grid figure img,
+    .worked-on__grid i {
       transition: none;
-    }
-  }
-
-  /* Visual refinement: quieter type, denser photography, island-derived color. */
-  .top-hero {
-    min-height: min(800px, 100svh);
-  }
-  .top-hero__copy h1 {
-    font-size: clamp(3.5rem, 6vw, 5.5rem);
-    line-height: 1.22;
-  }
-  .section-heading h2,
-  .about-block h2 {
-    font-size: clamp(2.5rem, 3.5vw, 3rem);
-    line-height: 1.45;
-  }
-  .purpose {
-    grid-template-columns: minmax(14rem, 0.52fr) minmax(0, 1.48fr);
-    gap: clamp(3rem, 7vw, 7rem);
-    padding-block: clamp(5.5rem, 9vw, 8rem);
-  }
-  .purpose__lead {
-    max-width: 38em;
-    margin-bottom: 3.5rem;
-    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
-    line-height: 1.95;
-  }
-  .purpose__themes {
-    gap: clamp(0.8rem, 1.5vw, 1.5rem);
-    border-top: 0;
-  }
-  .purpose__themes article {
-    padding: 0;
-  }
-  .purpose__themes article:nth-child(2) {
-    margin-top: 2.5rem;
-  }
-  .purpose__themes figure {
-    position: relative;
-    aspect-ratio: 3 / 4;
-    margin: 0 0 1.5rem;
-    overflow: hidden;
-    border-radius: 0.75rem 0.75rem 2.5rem 0.75rem;
-    background: #e5edcf;
-  }
-  .purpose__themes article:nth-child(2) figure {
-    aspect-ratio: 4 / 5;
-    border-radius: 2.5rem 0.75rem 0.75rem;
-  }
-  .purpose__themes article:nth-child(3) figure {
-    aspect-ratio: 3 / 4;
-    border-radius: 0.75rem 2.5rem 0.75rem 0.75rem;
-  }
-  .purpose__themes img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
-  .purpose__themes article:first-child img {
-    object-position: 57% center;
-  }
-  .purpose__themes article:nth-child(3) img {
-    object-position: 48% center;
-  }
-  .purpose__themes article:hover img {
-    transform: scale(1.025);
-  }
-  .purpose__themes span {
-    color: #687451;
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
-  }
-  .purpose__themes h3 {
-    margin: 0.65rem 0 0.65rem;
-    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-    line-height: 1.6;
-  }
-  .about-block {
-    min-height: 650px;
-    background:
-      linear-gradient(155deg, transparent 0 72%, rgba(207, 218, 178, 0.45) 72%),
-      #eeecdf;
-  }
-  .about-block figure {
-    min-height: 560px;
-    margin: clamp(2rem, 4vw, 4rem) 0 clamp(2rem, 4vw, 4rem)
-      clamp(2rem, 5vw, 5rem);
-    overflow: hidden;
-    border-radius: 0.75rem 4rem 0.75rem 0.75rem;
-  }
-  .about-block__copy {
-    max-width: 38em;
-    padding: clamp(3rem, 6vw, 6rem);
-  }
-  .about-block__copy > p:not(.section-label) {
-    max-width: 36em;
-    line-height: 1.95;
-  }
-  .services {
-    width: auto;
-    max-width: none;
-    padding: clamp(5.5rem, 9vw, 8rem) max(4rem, calc((100% - 1180px) / 2));
-    background:
-      linear-gradient(175deg, transparent 0 80%, rgba(226, 218, 150, 0.28) 80%),
-      #f7f5e9;
-  }
-  .services__list {
-    margin-top: 3rem;
-  }
-  .services__list a {
-    grid-template-columns:
-      3rem 8.5rem minmax(12rem, 0.75fr) minmax(18rem, 1fr)
-      2rem;
-    gap: clamp(1rem, 2.5vw, 2.5rem);
-    min-height: 9.5rem;
-    padding: 1.25rem 0;
-  }
-  .services__list figure {
-    aspect-ratio: 4 / 3;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 0.45rem 1.5rem 0.45rem 0.45rem;
-  }
-  .services__list a:nth-child(even) figure {
-    border-radius: 1.5rem 0.45rem 0.45rem;
-  }
-  .services__list img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.45s ease;
-  }
-  .services__list a:hover img {
-    transform: scale(1.035);
-  }
-  .services__list h3 {
-    font-size: 1.25rem;
-    line-height: 1.55;
-  }
-  .services__list p {
-    max-width: 36em;
-    line-height: 1.8;
-  }
-  .works,
-  .journal {
-    padding-block: clamp(5.5rem, 9vw, 8rem);
-  }
-  .works__grid,
-  .journal__grid {
-    gap: clamp(1rem, 2vw, 2rem);
-    margin-top: 3rem;
-  }
-  .works__grid figure,
-  .journal__grid figure {
-    border-radius: 0.65rem 2.25rem 0.65rem 0.65rem;
-  }
-  .works__grid a:nth-child(2) {
-    margin-top: 2.5rem;
-  }
-  .works__grid a:nth-child(2) figure,
-  .journal__grid a:nth-child(2) figure {
-    border-radius: 2.25rem 0.65rem 0.65rem;
-  }
-  .works__grid a:nth-child(3) figure {
-    aspect-ratio: 3 / 4;
-  }
-  .journal {
-    width: auto;
-    max-width: none;
-    padding-inline: max(4rem, calc((100% - 1180px) / 2));
-    background: #f3f5e9;
-  }
-  .journal__intro > p {
-    max-width: 36em;
-    line-height: 1.9;
-  }
-  .journal__grid a:nth-child(2) {
-    margin-top: 2.25rem;
-  }
-  .journal__grid figure {
-    aspect-ratio: 16 / 11;
-  }
-  .closing {
-    min-height: 600px;
-  }
-  .closing h2 {
-    font-size: clamp(2.5rem, 4vw, 3.5rem);
-    line-height: 1.45;
-  }
-
-  @media (max-width: 850px) {
-    .journal {
-      padding-inline: 2rem;
-    }
-    .purpose {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-    .purpose .section-heading {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 2rem;
-      align-items: start;
-    }
-    .purpose__themes article:nth-child(2) {
-      margin-top: 1.5rem;
-    }
-    .about-block figure {
-      margin: 2rem 2rem 0;
-      min-height: 58vw;
-    }
-    .services {
-      padding-inline: 2rem;
-    }
-    .services__list a {
-      grid-template-columns: 2.5rem 7.5rem minmax(11rem, 0.8fr) 1fr 1.5rem;
-      gap: 1rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .journal {
-      padding-inline: 1rem;
-    }
-    .top-hero {
-      min-height: 660px;
-    }
-    .top-hero__copy h1 {
-      font-size: clamp(2.5rem, 11vw, 2.875rem);
-      line-height: 1.25;
-    }
-    .section-heading h2,
-    .about-block h2 {
-      font-size: clamp(1.75rem, 8vw, 2.125rem);
-    }
-    .purpose,
-    .works,
-    .journal {
-      padding-block: 4.5rem;
-    }
-    .purpose .section-heading {
-      display: block;
-    }
-    .purpose__lead {
-      margin-bottom: 2.5rem;
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-    .purpose__themes {
-      gap: 2.5rem;
-    }
-    .purpose__themes article,
-    .purpose__themes article:nth-child(2) {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(8rem, 0.75fr);
-      gap: 1.25rem;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
-    .purpose__themes figure,
-    .purpose__themes article:nth-child(2) figure,
-    .purpose__themes article:nth-child(3) figure {
-      aspect-ratio: 4 / 3;
-      margin: 0;
-      border-radius: 0.5rem 1.75rem 0.5rem 0.5rem;
-    }
-    .purpose__themes article:nth-child(even) figure {
-      order: 2;
-      border-radius: 1.75rem 0.5rem 0.5rem;
-    }
-    .purpose__themes h3 {
-      font-size: clamp(0.85rem, 3.8vw, 1.05rem);
-      line-height: 1.55;
-    }
-    .purpose__themes article:first-child img {
-      object-position: 54% center;
-    }
-    .purpose__themes article:nth-child(3) img {
-      object-position: 45% center;
-    }
-    .about-block {
-      min-height: 0;
-    }
-    .about-block figure {
-      min-height: 85vw;
-      margin: 1rem 1rem 0;
-      border-radius: 0.5rem 2.5rem 0.5rem 0.5rem;
-    }
-    .about-block__copy {
-      padding-block: 3.5rem;
-    }
-    .services {
-      padding: 4.5rem 1rem;
-    }
-    .services__list {
-      display: grid;
-      gap: 1rem;
-      border: 0;
-    }
-    .services__list a {
-      display: grid;
-      grid-template-columns: 2rem 1fr 1.5rem;
-      gap: 0.7rem 0.75rem;
-      min-height: 0;
-      padding: 0 0 1.5rem;
-      overflow: hidden;
-      border: 0;
-      border-radius: 0.65rem 1.75rem 0.65rem 0.65rem;
-      background: rgba(255, 255, 255, 0.62);
-    }
-    .services__list figure {
-      grid-column: 1 / -1;
-      aspect-ratio: 16 / 9;
-      border-radius: 0;
-    }
-    .services__list span {
-      grid-column: 1;
-      padding-left: 0.8rem;
-    }
-    .services__list h3 {
-      grid-column: 2;
-      font-size: 1.1rem;
-    }
-    .services__list p {
-      grid-column: 2 / 4;
-      padding-right: 1rem;
-    }
-    .services__list i {
-      grid-column: 3;
-      grid-row: 2;
-    }
-    .works__grid a:nth-child(2),
-    .journal__grid a:nth-child(2) {
-      margin-top: 0;
-    }
-    .works__grid a:nth-child(3) figure {
-      aspect-ratio: 4 / 3;
-    }
-    .closing {
-      min-height: 540px;
-    }
-    .closing h2 {
-      font-size: clamp(1.9rem, 8.5vw, 2.35rem);
-      line-height: 1.5;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    .purpose {
-      grid-template-columns: minmax(22rem, 0.8fr) minmax(0, 1.2fr);
-      gap: 4rem;
-    }
-    .purpose .section-heading,
-    .purpose__body {
-      min-width: 0;
-    }
-    .purpose .section-heading h2 {
-      font-size: clamp(2.5rem, 3.05vw, 2.75rem);
-      line-height: 1.55;
-      letter-spacing: 0.045em;
-    }
-    .purpose .section-heading h2 span {
-      display: block;
-    }
-    .purpose__themes {
-      gap: 0.6rem;
-    }
-    .purpose__themes h3 {
-      font-size: 1rem;
-      letter-spacing: 0;
-      white-space: nowrap;
-    }
-    .services__list a {
-      grid-template-columns:
-        2rem 6.5rem 10rem minmax(30rem, 1fr)
-        1.5rem;
-      gap: 0.75rem;
-    }
-    .services__list p {
-      max-width: none;
-      white-space: nowrap;
-    }
-    .journal__intro {
-      gap: 2rem;
-    }
-    .journal__intro > p {
-      max-width: none;
-      white-space: nowrap;
-    }
-    .journal__intro .text-arrow {
-      flex: 0 0 auto;
-      margin-left: auto;
-    }
-  }
-
-  @media (max-width: 1199px) {
-    .purpose .section-heading,
-    .purpose__body {
-      min-width: 0;
-    }
-    .purpose .section-heading h2 span {
-      display: block;
-    }
-    .purpose__themes h3 {
-      white-space: normal;
-    }
-    .services__list p,
-    .journal__intro > p {
-      white-space: normal;
-    }
-  }
-
-  @media (min-width: 601px) and (max-width: 1199px) {
-    .purpose .section-heading h2 {
-      font-size: 1.7rem;
-      line-height: 1.65;
-      letter-spacing: 0.025em;
     }
   }
 </style>
