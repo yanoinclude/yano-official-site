@@ -976,6 +976,146 @@ const works = [
     transform: translateY(0);
   }
 
+  @media (min-width: 901px) {
+    .profile {
+      padding-block: clamp(2.15rem, 2.8vw, 3.15rem);
+    }
+
+    .profile__intro > h2 {
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      line-height: 1.35;
+    }
+
+    .profile__copy {
+      margin-top: clamp(1.5rem, 2.4vw, 2.25rem);
+    }
+
+    .profile__copy p {
+      font-size: clamp(0.76rem, 0.88vw, 0.84rem);
+      line-height: 1.82;
+    }
+
+    .profile__copy p + p {
+      margin-top: 0.4rem;
+    }
+
+    .profile__themes {
+      gap: clamp(2rem, 5vw, 5rem);
+      margin-top: clamp(1.8rem, 2.8vw, 2.5rem);
+    }
+
+    .profile__themes figure {
+      max-height: 12.5rem;
+      margin-bottom: 0.8rem;
+      aspect-ratio: 16 / 9;
+    }
+
+    .profile__themes h3 {
+      margin-block: 0.45rem 0.55rem;
+      font-size: 1rem;
+    }
+
+    .profile__themes article > span {
+      font-size: 0.72rem;
+      line-height: 1.7;
+    }
+
+    .pill-link {
+      min-height: 2.5rem;
+      margin-top: clamp(1.5rem, 2.3vw, 2rem);
+    }
+
+    .capabilities {
+      padding-top: clamp(3.25rem, 4.5vw, 4.25rem);
+    }
+
+    .capabilities__heading h2 {
+      min-height: clamp(5.5rem, 7vw, 7rem);
+    }
+
+    .capabilities__heading-en {
+      font-size: clamp(4rem, 8vw, 7rem);
+    }
+
+    .capabilities__heading-ja {
+      font-size: clamp(1.6rem, 2.6vw, 2.25rem);
+    }
+
+    .capabilities__heading > p {
+      margin-top: clamp(1rem, 2vw, 1.75rem);
+      font-size: 0.8rem;
+      line-height: 1.85;
+    }
+
+    .capability-tabs {
+      margin-top: clamp(1.75rem, 2.8vw, 2.5rem);
+    }
+
+    .capability-tabs button {
+      min-height: 4.25rem;
+      padding-block: 0.75rem;
+    }
+
+    .capability-panels article {
+      gap: clamp(2.5rem, 5vw, 5rem);
+      min-height: 27rem;
+      padding: clamp(2.75rem, 4vw, 4rem) clamp(2rem, 4vw, 4rem);
+    }
+
+    .capability-panel__copy > p:nth-of-type(2) {
+      margin-top: 1rem;
+      line-height: 1.85;
+    }
+
+    .capability-panel__copy > div {
+      margin-top: 1.75rem;
+    }
+
+    .capability-panel__copy ul {
+      gap: 0.55rem;
+      margin-top: 0.8rem;
+    }
+
+    .capability-panel__copy li {
+      padding-block: 0.5rem;
+    }
+
+    .capability-panels figure {
+      max-height: 20rem;
+      aspect-ratio: 16 / 10;
+    }
+
+    .worked-on {
+      padding-block: clamp(4.5rem, 6.5vw, 6rem);
+    }
+
+    .worked-on__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(1.25rem, 2.5vw, 2.5rem);
+      margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    }
+
+    .worked-on__grid figure {
+      margin-bottom: 1rem;
+      aspect-ratio: 4 / 3;
+    }
+
+    .worked-on__grid h3 {
+      font-size: 1rem;
+    }
+
+    .worked-on__grid > a > div {
+      gap: 0.75rem;
+      margin-top: 0.7rem;
+      padding-top: 0.75rem;
+    }
+
+    .worked-on__grid > a > div span {
+      font-size: 0.72rem;
+      line-height: 1.7;
+    }
+  }
+
   @media (max-width: 900px) {
     .content-shell {
       width: min(calc(100% - 4rem), 44rem);
