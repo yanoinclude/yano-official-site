@@ -154,9 +154,7 @@ const works = [
             loading="lazy"
           />
         </figure>
-        <p>01 / PLACE</p>
-        <h3>築100年の古民家を再生</h3>
-        <span>人が集まり、滞在し、<br />新しい活動が始まる場所へ。</span>
+        <h3>2円で買った築100年古民家を再生！</h3>
       </article>
       <article>
         <figure>
@@ -166,9 +164,7 @@ const works = [
             loading="lazy"
           />
         </figure>
-        <p>02 / FARM</p>
-        <h3>約100本のレモン農園</h3>
-        <span>受け継いだ木を手入れし、<br />島の実りを次の世代へ。</span>
+        <h3>100本のレモンの木を週末移住で管理！</h3>
       </article>
     </div>
 
@@ -560,10 +556,15 @@ const works = [
   }
 
   .profile__themes figure {
-    aspect-ratio: 4 / 3;
-    margin: 0 0 1.5rem;
+    aspect-ratio: 1 / 0.78;
+    margin: 0 0 1.35rem;
     overflow: hidden;
+    border-radius: 2.2rem;
     background: #e6e7e2;
+  }
+
+  .profile__themes article:nth-child(2) figure {
+    border-radius: 2.2rem;
   }
 
   .profile__themes img {
@@ -586,11 +587,14 @@ const works = [
   }
 
   .profile__themes h3 {
-    margin: 0.65rem 0 0.8rem;
+    margin: 0;
     font-family: var(--font-island-body);
-    font-size: 1.125rem;
-    font-weight: 500;
+    color: var(--island-text);
+    font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+    font-weight: 700;
+    line-height: 1.55;
     letter-spacing: 0.02em;
+    text-align: center;
   }
 
   .profile__themes article > span {
@@ -693,12 +697,14 @@ const works = [
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0.65rem;
+    width: min(100%, 68rem);
     margin-top: clamp(4rem, 7vw, 6rem);
+    margin-inline: auto;
   }
 
   .capability-tabs button {
-    min-height: 5.5rem;
-    padding: 1rem 0.75rem;
+    min-height: 4.75rem;
+    padding: 0.85rem 0.7rem;
     border: 0;
     border-radius: 1.4rem 1.4rem 0 0;
     background: #e0e1e6;
@@ -1005,19 +1011,14 @@ const works = [
     }
 
     .profile__themes figure {
-      max-height: 12.5rem;
-      margin-bottom: 0.8rem;
-      aspect-ratio: 16 / 9;
+      max-height: 15rem;
+      margin-bottom: 0.9rem;
+      aspect-ratio: 1 / 0.78;
     }
 
     .profile__themes h3 {
-      margin-block: 0.45rem 0.55rem;
-      font-size: 1rem;
-    }
-
-    .profile__themes article > span {
-      font-size: 0.72rem;
-      line-height: 1.7;
+      margin: 0;
+      font-size: clamp(0.98rem, 1.15vw, 1.12rem);
     }
 
     .pill-link {
@@ -1048,12 +1049,15 @@ const works = [
     }
 
     .capability-tabs {
-      margin-top: clamp(1.75rem, 2.8vw, 2.5rem);
+      width: min(100%, 58rem);
+      margin-top: clamp(1.6rem, 2.4vw, 2.2rem);
     }
 
     .capability-tabs button {
-      min-height: 4.25rem;
-      padding-block: 0.75rem;
+      min-height: 3.75rem;
+      padding-block: 0.6rem;
+      border-radius: 1.15rem 1.15rem 0 0;
+      font-size: 0.82rem;
     }
 
     .capability-panels article {
@@ -1147,14 +1151,6 @@ const works = [
       gap: 2rem;
     }
 
-    .capability-tabs {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .capability-tabs button {
-      border-radius: 1.2rem 1.2rem 0 0;
-    }
-
     .capability-panels article {
       grid-template-columns: 1fr;
       gap: 3rem;
@@ -1168,10 +1164,72 @@ const works = [
       width: calc(100% - 2rem);
     }
 
+    :global(body:has(.top-hero) .site-frame) {
+      padding: 0;
+    }
+
+    :global(body:has(.top-hero) .site-header) {
+      height: 4rem;
+      padding-inline: 1.25rem;
+      border-bottom: 0;
+      background: #f7f5e9;
+      backdrop-filter: none;
+    }
+
+    :global(body:has(.top-hero) .site-logo) {
+      max-width: 10rem;
+      font-size: 1rem;
+      line-height: 1.25;
+    }
+
+    :global(body:has(.top-hero) .menu-button) {
+      display: grid;
+      place-items: center;
+      width: 2.75rem;
+      min-height: 2.75rem;
+      padding: 0;
+      border-radius: 999px;
+      background: #63758c;
+      color: #fff;
+    }
+
+    :global(body:has(.top-hero) .menu-button__label) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    :global(body:has(.top-hero) .menu-button__line),
+    :global(body:has(.top-hero) .menu-button__line::before),
+    :global(body:has(.top-hero) .menu-button__line::after) {
+      background: currentColor;
+    }
+
+    :global(body:has(.top-hero) .site-nav) {
+      inset: 4rem 0 0;
+    }
+
     .top-hero {
       width: 100%;
-      padding: 3.25rem 1rem 0;
+      position: relative;
+      min-height: calc(100svh - 4rem);
+      padding: 1rem 1.25rem 0;
       border-radius: 0;
+    }
+
+    .top-hero::before {
+      content: "";
+      position: absolute;
+      top: 1rem;
+      right: 1.15rem;
+      width: 3.9rem;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      background: #f7d35b;
+      opacity: 0.9;
     }
 
     .top-hero__intro h1 {
@@ -1180,39 +1238,50 @@ const works = [
     }
 
     .top-hero__activities {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-      width: min(100%, 22rem);
-      margin-top: 2.5rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      width: min(100%, 24rem);
+      margin-top: 2.25rem;
     }
 
     .top-hero__activities > div {
       gap: 0.25rem;
     }
 
+    .top-hero__activities span {
+      min-height: 2.45em;
+      font-size: 0.58rem;
+      line-height: 1.25;
+    }
+
     .top-hero__activities strong {
-      padding-block: 0.75rem;
+      display: grid;
+      place-items: center;
+      min-height: 2.65rem;
+      padding: 0.55rem 0.25rem;
       border-radius: 0.5rem;
-      font-size: 1.05rem;
+      font-size: clamp(0.92rem, 4vw, 1.05rem);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
     }
 
     .top-hero__intro > p {
-      max-width: 24rem;
-      margin-top: 2rem;
-      font-size: 0.78rem;
-      line-height: 2;
+      max-width: 22rem;
+      margin-top: 1.85rem;
+      font-size: 0.82rem;
+      line-height: 1.9;
       text-align: center;
     }
 
     .top-hero__visual {
-      width: calc(100% + 2rem);
-      margin: 2.5rem -1rem 0;
-      border-radius: 45% 45% 0 0 / 14% 14% 0 0;
-      aspect-ratio: 4 / 3.35;
+      width: calc(100% + 2.5rem);
+      margin: 2.15rem -1.25rem 0;
+      border-radius: 46% 46% 0 0 / 11% 11% 0 0;
+      aspect-ratio: 4 / 4.6;
     }
 
     .top-hero__visual img {
-      object-position: 53% center;
+      object-position: 48% center;
     }
 
     .profile__copy p {
