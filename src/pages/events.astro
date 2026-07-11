@@ -1,0 +1,88 @@
+---
+import EventMediaCard from "@/components/sections/EventMediaCard.astro";
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import { siteConfig } from "@/content/pages/site";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const events = homeContent.currentActivities.kominka;
+---
+
+<BaseLayout
+  title="島と人をつなぐ場づくり"
+  description="古民家再生から始まり、中島の畑や海辺、島の外へ広がった活動を紹介します。"
+>
+  <article class="events-page">
+    <header class="events-page__header">
+      <p class="section-title__en">EVENT</p>
+      <h1>{events.experiencesHeading}</h1>
+      <p>{events.body}</p>
+    </header>
+
+    <section class="event-house-note" aria-labelledby="event-house-title">
+      <p class="section-title__en">KOMINKA / NOW</p>
+      <h2 id="event-house-title">{events.houseHeading}</h2>
+      {events.houseBody.map((paragraph) => <p>{paragraph}</p>)}
+    </section>
+
+    <section class="event-origin" aria-labelledby="event-origin-title">
+      <div class="event-origin__copy">
+        <p class="section-title__en">{events.playlist.label}</p>
+        <h2 id="event-origin-title">{events.playlist.title}</h2>
+        <p>{events.playlist.description}</p>
+        <TextLink href={events.playlist.href} variant="quiet">
+          YouTubeで再生リストを見る
+        </TextLink>
+      </div>
+      <div class="event-origin__media">
+        <iframe
+          src={events.playlist.embedUrl}
+          title="古民家再生プロジェクトのYouTube再生リスト"
+          loading="eager"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="event-records" aria-labelledby="event-records-title">
+      <header>
+        <p class="section-title__en">ACTIVITY RECORDS</p>
+        <h2 id="event-records-title">出会いから、次の活動へ。</h2>
+        <p>
+          古民家に人が集まったことをきっかけに、活動はレモン畑や海辺、
+          島の外へ少しずつ広がりました。
+        </p>
+      </header>
+      <div class="event-records__grid">
+        {
+          events.experiences.map((experience, index) => (
+            <EventMediaCard
+              number={String(index + 1).padStart(2, "0")}
+              title={experience.title}
+              body={experience.body}
+              href={experience.href}
+              embedUrl={experience.embedUrl}
+              meta={"meta" in experience ? experience.meta : undefined}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <div class="kominka-experiences">
+      <p class="kominka-experiences__future">{events.future}</p>
+      <div class="kominka-experiences__instagram">
+        <p>{events.instagramLead}</p>
+        <TextLink href={siteConfig.social.instagram} variant="quiet">
+          {events.instagramLabel}
+        </TextLink>
+      </div>
+    </div>
+
+    <TextLink href="/#event-detail" variant="quiet">
+      トップページへ戻る
+    </TextLink>
+  </article>
+</BaseLayout>

@@ -1,10 +1,11 @@
 :root {
   --island-background: #f2efe7;
   --island-surface: #ffffff;
-  --island-text: #333333;
-  --island-muted: #7b7b7b;
+  --island-text: #2e4568;
+  --island-muted: #50627a;
   --island-wood: #5a4635;
-  --island-lemon: #d7c43b;
+  --island-lemon: #ffe500;
+  --island-lemon-soft: #fff04a;
   --island-sea: #6f8991;
   --island-border: #d8d2c5;
   --island-soft-line: #eaeaea;

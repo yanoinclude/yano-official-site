@@ -6,9 +6,9 @@ export const subpages = [
     label: "ABOUT US",
     title: "私たちについて",
     description:
-      "中島の風景を主役に、矢野諭稔が案内人として関わりを伝えるページです。",
+      "中島の風景を主役に、矢野さとしが案内人として関わりを伝えるページです。",
     image: placeholderImages.yano,
-    imageAlt: "中島のレモン畑で作業する矢野諭稔",
+    imageAlt: "中島のレモン畑で作業する矢野さとし",
   },
   {
     slug: "landscape",
@@ -37,15 +37,6 @@ export const subpages = [
       "100本のレモンの木を手入れし、畑の続きを受け取っていく活動を紹介します。",
     image: placeholderImages.farm,
     imageAlt: "レモン畑を想定した仮ビジュアル",
-  },
-  {
-    slug: "product",
-    label: "PRODUCT",
-    title: "週末移住レモン果汁",
-    description:
-      "島との関係が始まる一本として、レモン果汁の背景と購入導線を整える予定です。",
-    image: placeholderImages.bottle,
-    imageAlt: "週末移住レモン果汁を想定した仮ビジュアル",
   },
   {
     slug: "people",

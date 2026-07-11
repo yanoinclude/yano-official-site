@@ -1,0 +1,44 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="中島に通い始めてから"
+  description="松山へ移り住み、中島で古民家とレモン畑に関わるまでの記録です。"
+>
+  <article class="story-page">
+    <header class="story-page__header">
+      <p class="section-title__en">{homeContent.timeline.eyebrow}</p>
+      <h1>{homeContent.timeline.heading}</h1>
+      <p>{homeContent.timeline.lead}</p>
+    </header>
+
+    <ol class="story-page__timeline">
+      {
+        homeContent.timeline.items.map((item, index) => (
+          <li>
+            <div class="story-page__photo" aria-hidden="true">
+              <span>PHOTO {String(index + 1).padStart(2, "0")}</span>
+              <small>{item.photoNote}</small>
+            </div>
+            <div class="story-page__copy">
+              <time>{item.date}</time>
+              <h2>{item.title}</h2>
+              <p>{item.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <section class="story-page__current">
+      <p>{homeContent.timeline.current.date}</p>
+      <h2>{homeContent.timeline.current.heading}</h2>
+      <p>{homeContent.timeline.current.body}</p>
+    </section>
+
+    <TextLink href="/" variant="quiet">トップページへ戻る</TextLink>
+  </article>
+</BaseLayout>

@@ -1,0 +1,36 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+import { homeContent } from "@/content/pages/home";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+export function getStaticPaths() {
+  return homeContent.columns.items.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+
+<BaseLayout title={item.title} description={item.excerpt}>
+  <article class="column-detail">
+    <header>
+      <p class="section-title__en">{item.category}</p>
+      <h1>{item.title}</h1>
+      <p>{item.excerpt}</p>
+    </header>
+
+    <figure>
+      <img src={item.image} alt={item.imageAlt} />
+    </figure>
+
+    <div class="column-detail__body">
+      <p>
+        このページは、これから写真と記録を重ねていくためのコラムの器です。
+        中島で過ごした時間や、そこで出会った人の言葉を、少しずつ残していきます。
+      </p>
+      <TextLink href="/columns" variant="quiet">コラム一覧へ戻る</TextLink>
+    </div>
+  </article>
+</BaseLayout>

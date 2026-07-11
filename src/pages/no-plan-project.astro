@@ -1,0 +1,444 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import vol1 from "@/assets/images/projects/no-plan/vol-1.jpg";
+import vol2 from "@/assets/images/projects/no-plan/vol-2.jpg";
+import vol3 from "@/assets/images/projects/no-plan/vol-3.jpg";
+import vol4 from "@/assets/images/projects/no-plan/vol-4.jpg";
+import vol5 from "@/assets/images/projects/no-plan/vol-5.jpg";
+import vol6 from "@/assets/images/projects/no-plan/vol-6.jpg";
+import vol7 from "@/assets/images/projects/no-plan/vol-7.jpg";
+import vol8 from "@/assets/images/projects/no-plan/vol-8.jpg";
+import finalThumbnail from "@/assets/images/projects/no-plan/final.jpg";
+
+const playlistUrl =
+  "https://www.youtube.com/playlist?list=PLcHrn5cVHOxJCUtJaAPvsJqQRTznh-FaT";
+
+const videos = [
+  {
+    id: "Gqdi3ftCgyU",
+    number: "vol.1",
+    title: "2円で買った古民家。ゼロから再生します！",
+    duration: "13:48",
+    image: vol1.src,
+  },
+  {
+    id: "vIdBk1MHfXc",
+    number: "vol.2",
+    title: "解体予定の空き家へ、廃材をもらいに行く。",
+    duration: "15:07",
+    image: vol2.src,
+  },
+  {
+    id: "9fRRrV6KxbA",
+    number: "vol.3",
+    title: "大きすぎる梁を、どうやって運ぶ？",
+    duration: "12:36",
+    image: vol3.src,
+  },
+  {
+    id: "wZ8ZOfdHW_0",
+    number: "vol.4",
+    title: "天井を壊せ。DIY初心者、覚醒。",
+    duration: "16:55",
+    image: vol4.src,
+  },
+  {
+    id: "buwiMbxkY2E",
+    number: "vol.5",
+    title: "古民家の地下室を片付ける。",
+    duration: "10:30",
+    image: vol5.src,
+  },
+  {
+    id: "LXBcDjwIuDc",
+    number: "vol.6",
+    title: "キッチンの壁をぶっ壊せ！",
+    duration: "22:55",
+    image: vol6.src,
+  },
+  {
+    id: "5GaXXPOj3-I",
+    number: "vol.7",
+    title: "MT車に乗って、板を取りに行く。",
+    duration: "28:15",
+    image: vol7.src,
+  },
+  {
+    id: "2b1BITO4ELw",
+    number: "vol.8",
+    title: "みんなで下ろすぞ、屋根瓦！",
+    duration: "34:47",
+    image: vol8.src,
+  },
+  {
+    id: "v3_z6KWAktQ",
+    number: "FINAL",
+    title: "古民家再生、お手上げです！",
+    duration: "22:49",
+    image: finalThumbnail.src,
+  },
+];
+---
+
+<BaseLayout
+  title="ヤノッチのNo Plan Project"
+  description="2円で買った築100年の古民家を、仲間と一緒に再生していく全9話の動画記録です。"
+>
+  <article class="playlist-page">
+    <header class="playlist-page__header">
+      <p>VIDEO SERIES / KOMINKA</p>
+      <h1>ヤノッチの<br />No Plan Project</h1>
+      <div>
+        <span>全9話</span>
+        <p>
+          思いつきだっていいじゃない。<br />
+          2円で買った築100年の古民家を、ノープランから手入れしていく記録です。
+        </p>
+      </div>
+    </header>
+
+    <div class="playlist-player">
+      <div class="playlist-player__main">
+        <div class="playlist-player__frame">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${videos[0].id}?rel=0`}
+            title={`${videos[0].number} ${videos[0].title}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            data-video-frame
+          ></iframe>
+        </div>
+        <div class="playlist-player__current" aria-live="polite">
+          <span data-current-number>{videos[0].number}</span>
+          <h2 data-current-title>{videos[0].title}</h2>
+        </div>
+      </div>
+
+      <div class="playlist-player__list" aria-label="動画を選ぶ">
+        {
+          videos.map((video, index) => (
+            <button
+              type="button"
+              class="video-choice"
+              class:list={{ "is-selected": index === 0 }}
+              aria-pressed={index === 0 ? "true" : "false"}
+              data-video-id={video.id}
+              data-video-number={video.number}
+              data-video-title={video.title}
+            >
+              <span class="video-choice__image">
+                <img
+                  src={video.image}
+                  alt=""
+                  loading={index > 3 ? "lazy" : "eager"}
+                />
+                <i>{video.duration}</i>
+              </span>
+              <span class="video-choice__copy">
+                <small>{video.number}</small>
+                <strong>{video.title}</strong>
+              </span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <a
+      class="playlist-page__youtube"
+      href={playlistUrl}
+      target="_blank"
+      rel="noreferrer"
+    >
+      YouTubeですべて見る
+      <span aria-hidden="true">↗</span>
+    </a>
+  </article>
+
+  <script>
+    const frame = document.querySelector<HTMLIFrameElement>("[data-video-frame]");
+    const number = document.querySelector<HTMLElement>("[data-current-number]");
+    const title = document.querySelector<HTMLElement>("[data-current-title]");
+    const choices = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-video-id]"),
+    );
+
+    choices.forEach((choice) => {
+      choice.addEventListener("click", () => {
+        const id = choice.dataset.videoId;
+        const nextNumber = choice.dataset.videoNumber ?? "";
+        const nextTitle = choice.dataset.videoTitle ?? "";
+        if (!id || !frame) return;
+
+        frame.src = `https://www.youtube-nocookie.com/embed/${id}?rel=0&autoplay=1`;
+        frame.title = `${nextNumber} ${nextTitle}`;
+        if (number) number.textContent = nextNumber;
+        if (title) title.textContent = nextTitle;
+
+        choices.forEach((item) => {
+          const selected = item === choice;
+          item.classList.toggle("is-selected", selected);
+          item.setAttribute("aria-pressed", String(selected));
+        });
+
+        if (window.matchMedia("(max-width: 760px)").matches) {
+          frame.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .playlist-page {
+    width: min(calc(100% - 8rem), 1240px);
+    margin-inline: auto;
+    padding-block: clamp(5rem, 9vw, 8rem);
+  }
+
+  .playlist-page__header {
+    display: grid;
+    grid-template-columns: 0.7fr 1.15fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--island-border);
+  }
+
+  .playlist-page__header > p {
+    align-self: start;
+    margin: 0;
+    color: var(--island-muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+  }
+
+  .playlist-page__header h1 {
+    margin: 0;
+    font-family: var(--font-island-heading);
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: 0.02em;
+  }
+
+  .playlist-page__header > div {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .playlist-page__header > div span {
+    width: fit-content;
+    padding: 0.25rem 0.8rem;
+    border: 1px solid var(--island-text);
+    border-radius: 999px;
+    font-size: 0.7rem;
+  }
+
+  .playlist-page__header > div p {
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 2;
+  }
+
+  .playlist-player {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(21rem, 0.85fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .playlist-player__main {
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+  }
+
+  .playlist-player__frame {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #171915;
+  }
+
+  .playlist-player__frame iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .playlist-player__current {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding-top: 1.5rem;
+  }
+
+  .playlist-player__current span {
+    color: var(--island-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+
+  .playlist-player__current h2 {
+    margin: 0;
+    font-family: var(--font-island-heading);
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  .playlist-player__list {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--island-border);
+  }
+
+  .video-choice {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    gap: 1.25rem;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--island-border);
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .video-choice__image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #ddd8ce;
+  }
+
+  .video-choice__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-choice__image i {
+    position: absolute;
+    right: 0.35rem;
+    bottom: 0.35rem;
+    padding: 0.05rem 0.35rem;
+    border-radius: 0.2rem;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-size: 0.62rem;
+    font-style: normal;
+    line-height: 1.5;
+  }
+
+  .video-choice__copy {
+    display: grid;
+    gap: 0.3rem;
+  }
+
+  .video-choice__copy small {
+    color: var(--island-muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+  }
+
+  .video-choice__copy strong {
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .video-choice.is-selected .video-choice__image {
+    outline: 3px solid #d7c95e;
+    outline-offset: -3px;
+  }
+
+  .video-choice.is-selected .video-choice__copy strong {
+    font-weight: 500;
+  }
+
+  .playlist-page__youtube {
+    display: flex;
+    justify-content: space-between;
+    width: min(100%, 23rem);
+    margin: clamp(3rem, 6vw, 5rem) 0 0 auto;
+    padding: 1rem 0;
+    border-bottom: 1px solid currentColor;
+    color: inherit;
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+
+  @media (max-width: 900px) {
+    .playlist-page {
+      width: min(calc(100% - 4rem), 44rem);
+    }
+
+    .playlist-page__header {
+      grid-template-columns: 1fr 1.5fr;
+    }
+
+    .playlist-page__header > p {
+      grid-column: 1 / -1;
+    }
+
+    .playlist-player {
+      grid-template-columns: 1fr;
+    }
+
+    .playlist-player__main {
+      position: static;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .playlist-page {
+      width: calc(100% - 2rem);
+      padding-block: 4rem;
+    }
+
+    .playlist-page__header {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .playlist-page__header h1 {
+      font-size: clamp(2.35rem, 13vw, 3.5rem);
+    }
+
+    .playlist-page__header > div p br {
+      display: none;
+    }
+
+    .playlist-player {
+      gap: 2rem;
+      padding-top: 2rem;
+    }
+
+    .playlist-player__current {
+      grid-template-columns: 3.5rem 1fr;
+      gap: 0.75rem;
+    }
+
+    .video-choice {
+      grid-template-columns: 8rem 1fr;
+      gap: 1rem;
+    }
+
+    .video-choice__copy strong {
+      font-size: 0.74rem;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .video-choice {
+      grid-template-columns: 7rem 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,35 @@
+---
+import TextLink from "@/components/ui/TextLink.astro";
+
+type Props = {
+  number: string;
+  title: string;
+  body: string;
+  href: string;
+  embedUrl: string;
+  meta?: string;
+};
+
+const { number, title, body, href, embedUrl, meta } = Astro.props;
+---
+
+<article class="event-media-card">
+  <div class="event-media-card__media">
+    <iframe
+      src={embedUrl}
+      title={`${title}のInstagram投稿`}
+      loading="lazy"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
+  </div>
+  <div class="event-media-card__copy">
+    <div class="event-media-card__meta">
+      <span>{number}</span>
+      {meta && <small>{meta}</small>}
+    </div>
+    <h2>{title}</h2>
+    <p>{body}</p>
+    <TextLink href={href} variant="quiet">Instagramで投稿を見る</TextLink>
+  </div>
+</article>
