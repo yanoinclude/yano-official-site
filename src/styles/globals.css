@@ -4360,14 +4360,14 @@ button {
 }
 
 body {
-  background: #fffdf8;
+  background: var(--island-lemon);
 }
 
 .site-frame {
   width: 100%;
   min-height: 100svh;
   padding: var(--site-frame-space);
-  background: #fffdf8;
+  background: var(--island-lemon);
 }
 
 .site-frame > main,
