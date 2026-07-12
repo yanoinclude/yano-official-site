@@ -1,12 +1,42 @@
 ---
 import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import islandTerrainCutout from "@/assets/images/home/island-terrain-cutout.png";
+import islandUserCutout from "@/assets/images/home/island-user-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
+import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
+import seaWaveCutout from "@/assets/images/home/sea-wave-cutout.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
+
+const seaWaves = [
+  { x: 6, y: 15, size: 6.2, rotate: -4, opacity: 0.55 },
+  { x: 24, y: 8, size: 4.4, rotate: 3, opacity: 0.42 },
+  { x: 43, y: 13, size: 5.3, rotate: -2, opacity: 0.5 },
+  { x: 67, y: 7, size: 4.8, rotate: 5, opacity: 0.44 },
+  { x: 84, y: 16, size: 6.6, rotate: -5, opacity: 0.58 },
+  { x: 13, y: 29, size: 4.7, rotate: 4, opacity: 0.46 },
+  { x: 34, y: 25, size: 6.8, rotate: -3, opacity: 0.54 },
+  { x: 57, y: 31, size: 4.2, rotate: 6, opacity: 0.4 },
+  { x: 76, y: 28, size: 5.6, rotate: 2, opacity: 0.52 },
+  { x: 91, y: 36, size: 4.3, rotate: -6, opacity: 0.43 },
+  { x: 4, y: 45, size: 5.1, rotate: 5, opacity: 0.48 },
+  { x: 22, y: 42, size: 4.5, rotate: -4, opacity: 0.45 },
+  { x: 47, y: 48, size: 6.4, rotate: 3, opacity: 0.56 },
+  { x: 69, y: 43, size: 4.6, rotate: -5, opacity: 0.42 },
+  { x: 86, y: 51, size: 6.1, rotate: 4, opacity: 0.53 },
+  { x: 10, y: 63, size: 6.5, rotate: -3, opacity: 0.55 },
+  { x: 31, y: 59, size: 4.1, rotate: 6, opacity: 0.4 },
+  { x: 54, y: 66, size: 5.7, rotate: -4, opacity: 0.51 },
+  { x: 74, y: 61, size: 4.9, rotate: 2, opacity: 0.46 },
+  { x: 92, y: 69, size: 4.4, rotate: -6, opacity: 0.44 },
+  { x: 5, y: 81, size: 4.6, rotate: 4, opacity: 0.45 },
+  { x: 25, y: 76, size: 6.3, rotate: -2, opacity: 0.54 },
+  { x: 46, y: 84, size: 4.3, rotate: 5, opacity: 0.41 },
+  { x: 68, y: 78, size: 5.5, rotate: -5, opacity: 0.5 },
+  { x: 86, y: 87, size: 6.7, rotate: 3, opacity: 0.57 },
+];
 
 const activities = [
   {
@@ -143,12 +173,34 @@ const works = [
   title="矢野、週末移住中。"
   description="平日は松山で働き、週末は中島へ。古民家を直し、レモンを育て、島に人が集まるきっかけをつくる、矢野さとしの活動を紹介します。"
 >
-  <section class="weekend-hero" aria-labelledby="hero-title">
+  <section class="weekend-hero" aria-label="中島での活動マップ">
     <p class="site-name">矢野、週末移住中。</p>
     <div class="island-map" aria-label="中島での活動マップ">
+      <div class="sea-waves" aria-hidden="true">
+        {
+          seaWaves.map((wave) => (
+            <img
+              class="sea-wave"
+              src={seaWaveCutout.src}
+              alt=""
+              style={`--wave-x:${wave.x}%; --wave-y:${wave.y}%; --wave-size:${wave.size}rem; --wave-rotate:${wave.rotate}deg; --wave-opacity:${wave.opacity};`}
+              loading="eager"
+              decoding="async"
+            />
+          ))
+        }
+      </div>
+      <img
+        class="hero-ferry"
+        src={nakajimaFerryCutout.src}
+        alt=""
+        loading="eager"
+        decoding="async"
+        aria-hidden="true"
+      />
       <img
         class="island-map__art"
-        src={islandTerrainCutout.src}
+        src={islandUserCutout.src}
         alt=""
         loading="eager"
         decoding="async"
@@ -298,18 +350,6 @@ const works = [
         <span class="map-farm" aria-hidden="true"></span>
         <span>レモン畑</span>
       </a>
-    </div>
-
-    <div class="weekend-hero__copy">
-      <h1 id="hero-title">
-        <span class="hero-title-line">週末だけ、</span>
-        <span class="hero-title-line">田舎暮らしを</span>
-        <span class="hero-title-line">つまみ食い。</span>
-      </h1>
-      <p class="weekend-hero__lead">
-        平日は松山で働き、週末は中島へ。古民家を直し、レモンを育て、島に人が集まるきっかけをつくっています。
-      </p>
-      <p class="weekend-hero__philosophy">島の続きを、手入れする。</p>
     </div>
   </section>
 
@@ -587,64 +627,38 @@ const works = [
     display: none;
   }
 
-  .weekend-hero__copy {
-    position: relative;
-    z-index: 5;
-    display: flex;
-    grid-column: 2;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    min-height: 0;
-    padding: clamp(1rem, 2vw, 1.4rem);
-    text-shadow: 0 1px 0 rgb(255 253 248 / 76%);
-  }
-
   .site-name {
     position: absolute;
     top: clamp(1.25rem, 3vw, 2.5rem);
     left: clamp(1.25rem, 3vw, 3rem);
     z-index: 8;
     margin: 0;
-    color: #30486e;
-    font-size: clamp(0.86rem, 1.1vw, 1rem);
-    font-weight: 500;
+    padding: 0.58rem 0.9rem 0.64rem;
+    border: 3px solid #111;
+    border-radius: 0.65rem;
+    background: #fff;
+    color: #111;
+    font-family:
+      "Arial Rounded MT Bold", "Hiragino Maru Gothic ProN", "Noto Sans JP",
+      sans-serif;
+    font-size: clamp(1.45rem, 1.82vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.1;
     letter-spacing: 0.04em;
+    box-shadow: 0 0.22rem 0 rgb(17 17 17 / 18%);
   }
 
-  .weekend-hero h1 {
-    margin: 0;
-    max-width: 26rem;
-    color: #30486e;
-    font-family: var(--font-island-body);
-    font-size: clamp(2.15rem, 3.2vw, 3.45rem);
-    font-weight: 600;
-    line-height: 1.45;
-    letter-spacing: 0;
-  }
-
-  .hero-title-line {
-    display: block;
-  }
-
-  .weekend-hero__lead {
-    max-width: 31rem;
-    margin: clamp(1.4rem, 3vw, 2.2rem) 0 0;
-    color: #2e4568;
-    font-size: clamp(0.94rem, 1.1vw, 1.08rem);
-    font-weight: 400;
-    line-height: 2;
-  }
-
-  .weekend-hero__philosophy {
-    display: inline-flex;
-    width: fit-content;
-    margin: 0;
-    padding: 0.45rem 0.75rem;
-    background: #fffdf8;
-    color: #30486e;
-    font-weight: 500;
-    line-height: 1.5;
+  .site-name::after {
+    position: absolute;
+    bottom: -0.56rem;
+    left: 2rem;
+    width: 0.95rem;
+    height: 0.95rem;
+    border-right: 3px solid #111;
+    border-bottom: 3px solid #111;
+    background: #fff;
+    content: "";
+    transform: rotate(45deg);
   }
 
   .recent-section a {
@@ -696,13 +710,56 @@ const works = [
     position: absolute;
     top: 50%;
     left: clamp(-5rem, -4vw, -2rem);
-    z-index: 0;
-    width: min(78vw, 72rem);
+    z-index: 1;
+    width: min(84vw, 78rem);
     height: auto;
     max-height: 96%;
     object-fit: contain;
     transform: translateY(-50%);
     filter: drop-shadow(0 1.5rem 1.8rem rgb(25 74 92 / 18%));
+  }
+
+  .sea-waves {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .sea-wave {
+    position: absolute;
+    top: var(--wave-y);
+    left: var(--wave-x);
+    width: var(--wave-size);
+    height: auto;
+    opacity: var(--wave-opacity);
+    mix-blend-mode: screen;
+    filter: brightness(1.9) saturate(0.65);
+    transform: translate(-50%, -50%) rotate(var(--wave-rotate));
+  }
+
+  .hero-ferry {
+    position: absolute;
+    top: 20%;
+    left: 8%;
+    z-index: 2;
+    width: clamp(9rem, 18vw, 17rem);
+    height: auto;
+    animation: ferry-float 6.5s ease-in-out infinite;
+    filter: drop-shadow(0 0.55rem 0.7rem rgb(25 74 92 / 16%));
+    transform: rotate(-2deg);
+    transform-origin: 50% 70%;
+  }
+
+  @media (min-width: 1101px) {
+    .island-map__art {
+      left: 50%;
+      width: min(100vw, 92rem);
+      max-width: none;
+      max-height: none;
+      transform: translate(-50%, -50%);
+    }
   }
 
   .island-map__base {
@@ -976,6 +1033,25 @@ const works = [
 
     74% {
       transform: translate(-50%, -50%) translate(0.35rem, 0.3rem) rotate(-6deg);
+    }
+  }
+
+  @keyframes ferry-float {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(-2deg);
+    }
+
+    30% {
+      transform: translate(0.35rem, -0.45rem) rotate(-0.5deg);
+    }
+
+    58% {
+      transform: translate(0.75rem, 0.12rem) rotate(1deg);
+    }
+
+    80% {
+      transform: translate(0.25rem, 0.35rem) rotate(-1deg);
     }
   }
 
@@ -1341,13 +1417,6 @@ const works = [
       margin-inline: 0;
     }
 
-    .weekend-hero__copy {
-      grid-column: 1;
-      align-self: end;
-      justify-self: end;
-      width: min(100%, 32rem);
-    }
-
     .map-spot--farm {
       top: 54%;
     }
@@ -1392,31 +1461,21 @@ const works = [
     .site-name {
       top: 1rem;
       left: 1rem;
-      font-size: 0.86rem;
-      text-shadow: 0 1px 0 rgb(255 253 248 / 70%);
+      padding: 0.42rem 0.6rem 0.46rem;
+      border-width: 2px;
+      border-radius: 0.5rem;
+      font-size: clamp(0.78rem, 3.5vw, 0.88rem);
+      letter-spacing: 0.03em;
+      text-shadow: none;
     }
 
-    .weekend-hero__copy {
-      gap: 0;
-      align-self: end;
-      width: 100%;
-      padding: 0;
-    }
-
-    .weekend-hero h1 {
-      max-width: 100%;
-      font-size: clamp(1.95rem, 10.5vw, 2.85rem);
-      line-height: 1.34;
-    }
-
-    .weekend-hero__lead {
-      margin-top: 1.1rem;
-      font-size: 0.84rem;
-      line-height: 1.85;
-    }
-
-    .weekend-hero__philosophy {
-      font-size: 0.7rem;
+    .site-name::after {
+      bottom: -0.43rem;
+      left: 1.35rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-right-width: 2px;
+      border-bottom-width: 2px;
     }
 
     .island-map {
@@ -1441,6 +1500,12 @@ const works = [
       border-radius: 0;
       object-fit: contain;
       transform: translateY(-50%);
+    }
+
+    .hero-ferry {
+      top: 18%;
+      left: 6%;
+      width: clamp(7.5rem, 38vw, 9.5rem);
     }
 
     .island-map__base {
@@ -1579,6 +1644,10 @@ const works = [
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .hero-ferry {
+      animation: none;
+    }
+
     .reveal-section,
     .activities-section img,
     .pathways-section img,
