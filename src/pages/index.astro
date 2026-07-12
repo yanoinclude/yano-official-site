@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import islandUserCutout from "@/assets/images/home/island-user-cutout.png";
 import kominkaCutout from "@/assets/images/home/kominka-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
+import lemonTreeCutout from "@/assets/images/home/lemon-tree-cutout.png";
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
 import seaWaveCutout from "@/assets/images/home/sea-wave-cutout.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
@@ -355,7 +356,14 @@ const works = [
         href="#lemon-product"
         aria-label="レモン畑と商品へ"
       >
-        <span class="map-farm" aria-hidden="true"></span>
+        <img
+          class="map-farm"
+          src={lemonTreeCutout.src}
+          alt=""
+          loading="eager"
+          decoding="async"
+          aria-hidden="true"
+        />
         <span>レモン畑</span>
       </a>
     </div>
@@ -979,39 +987,34 @@ const works = [
 
   .map-house {
     display: block;
-    width: clamp(8rem, 14vw, 13rem);
+    width: clamp(9.6rem, 16.8vw, 15.6rem);
     max-width: none;
     height: auto;
     border: 0;
     background: transparent;
-    filter: drop-shadow(0.25rem 0.38rem 0 rgb(47 93 67 / 14%));
+    filter: drop-shadow(1px 0 0 rgb(17 17 17 / 72%))
+      drop-shadow(-1px 0 0 rgb(17 17 17 / 72%))
+      drop-shadow(0 1px 0 rgb(17 17 17 / 72%))
+      drop-shadow(0 -1px 0 rgb(17 17 17 / 72%))
+      drop-shadow(0 0 0.4rem rgb(255 255 255 / 96%))
+      drop-shadow(0 0 0.7rem rgb(255 255 255 / 74%))
+      drop-shadow(0.3rem 0.42rem 0 rgb(47 93 67 / 16%));
   }
 
   .map-farm {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.18rem;
-    padding: 0.28rem;
-    border-radius: 1.2rem;
-    background: #fffdf8;
-  }
-
-  .map-farm::before,
-  .map-farm::after {
-    width: 0.6rem;
-    height: 0.6rem;
-    border: 2px solid #2f5d43;
-    border-radius: 50%;
-    background: #ffe500;
-    content: "";
-  }
-
-  .map-farm::after {
-    box-shadow:
-      0.95rem 0.35rem 0 #ffe500,
-      1.9rem -0.05rem 0 #ffe500,
-      0.15rem 1.15rem 0 #ffe500,
-      1.35rem 1.25rem 0 #ffe500;
+    display: block;
+    width: clamp(9.6rem, 16.8vw, 15.6rem);
+    max-width: none;
+    height: auto;
+    border: 0;
+    background: transparent;
+    filter: drop-shadow(1px 0 0 rgb(17 17 17 / 78%))
+      drop-shadow(-1px 0 0 rgb(17 17 17 / 78%))
+      drop-shadow(0 1px 0 rgb(17 17 17 / 78%))
+      drop-shadow(0 -1px 0 rgb(17 17 17 / 78%))
+      drop-shadow(0 0 0.4rem rgb(255 255 255 / 96%))
+      drop-shadow(0 0 0.7rem rgb(255 255 255 / 74%))
+      drop-shadow(0.3rem 0.42rem 0 rgb(47 93 67 / 16%));
   }
 
   @keyframes yano-stroll {
@@ -1443,6 +1446,11 @@ const works = [
   }
 
   @media (max-width: 640px) {
+    .back-to-map {
+      right: auto;
+      left: 1rem;
+    }
+
     .content-shell {
       width: calc(100% - 2rem);
     }
@@ -1490,14 +1498,14 @@ const works = [
       position: absolute;
       display: block;
       top: 44%;
-      left: -25%;
+      left: 50%;
       width: 125%;
       max-width: none;
       height: auto;
       max-height: 72%;
       border-radius: 0;
       object-fit: contain;
-      transform: translateY(-50%);
+      transform: translate(-50%, -50%);
     }
 
     .hero-ferry {
@@ -1530,21 +1538,21 @@ const works = [
     }
 
     .map-spot--yano {
-      top: 57%;
-      left: 36%;
+      top: 47%;
+      left: 43%;
       min-width: 4.9rem;
       min-height: 0;
       animation: yano-stroll 9.5s ease-in-out infinite;
     }
 
     .map-spot--house {
-      top: 61%;
-      left: 36%;
+      top: 60%;
+      left: 30%;
     }
 
     .map-spot--farm {
-      top: 54%;
-      left: 62%;
+      top: 58%;
+      left: 72%;
     }
 
     .map-spot:hover,
@@ -1560,37 +1568,17 @@ const works = [
     }
 
     .map-farm {
-      width: 2rem;
-      height: 2rem;
-      border-width: 2px;
-    }
-
-    .map-house {
-      width: clamp(5.8rem, 28vw, 7rem);
+      width: clamp(7rem, 33.6vw, 8.4rem);
       max-width: none;
       height: auto;
       border: 0;
     }
 
-    .map-farm {
-      gap: 0.1rem;
-      padding: 0.18rem;
-      border-radius: 0.75rem;
-    }
-
-    .map-farm::before,
-    .map-farm::after {
-      width: 0.42rem;
-      height: 0.42rem;
-      border-width: 1.5px;
-    }
-
-    .map-farm::after {
-      box-shadow:
-        0.6rem 0.22rem #ffe500,
-        1.2rem -0.03rem #ffe500,
-        0.1rem 0.74rem #ffe500,
-        0.86rem 0.78rem #ffe500;
+    .map-house {
+      width: clamp(7rem, 33.6vw, 8.4rem);
+      max-width: none;
+      height: auto;
+      border: 0;
     }
 
     .map-yano {
