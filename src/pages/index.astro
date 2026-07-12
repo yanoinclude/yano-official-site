@@ -2,12 +2,14 @@
 import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import islandUserCutout from "@/assets/images/home/island-user-cutout.png";
-import kominkaCutout from "@/assets/images/home/kominka-cutout.png";
+import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
-import lemonTreeCutout from "@/assets/images/home/lemon-tree-cutout.png";
+import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.png";
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
 import seaWaveCutout from "@/assets/images/home/sea-wave-cutout.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
+import yanoKominkaPhoto from "@/assets/images/home/yano-kominka-photo.png";
+import yanoLemonPhoto from "@/assets/images/home/yano-lemon-photo.jpg";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
@@ -177,6 +179,11 @@ const works = [
 >
   <section class="weekend-hero" aria-label="中島での活動マップ">
     <p class="site-name">矢野、週末移住中。</p>
+    <p class="hero-introduction">
+      平日は松山で働き、週末は中島へ。<br />
+      古民家を直し、レモンを育て、<br />
+      島に人が集まるきっかけをつくっています。
+    </p>
     <div class="island-map" aria-label="中島での活動マップ">
       <div class="sea-waves" aria-hidden="true">
         {
@@ -370,16 +377,35 @@ const works = [
   </section>
 
   <section class="empathy-section content-shell reveal-section" id="about">
-    <p class="section-kicker">A SMALL FIRST STEP</p>
-    <div class="empathy-section__grid">
-      <h2>田舎暮らし、憧れる。<br />でも踏み出せない。</h2>
-      <div class="empathy-section__body">
-        <p>
-          いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
-        </p>
-        <p>
-          ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。暮らすほどではないけれど、ただ遊びに行くだけでもない。そんな距離感から、島との関わりが始まりました。
-        </p>
+    <div class="empathy-section__panel">
+      <header class="empathy-section__heading">
+        <p class="section-kicker">A SMALL FIRST STEP</p>
+        <h2>田舎暮らし、憧れる。<br />でも踏み出せない。</h2>
+        <p>島との関わりは、小さな一歩から。</p>
+      </header>
+      <div class="empathy-section__cards">
+        <article>
+          <img
+            src={yanoKominkaPhoto.src}
+            alt="古民家の前に立つヤノ"
+            loading="lazy"
+            decoding="async"
+          />
+          <p>
+            いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
+          </p>
+        </article>
+        <article>
+          <img
+            src={yanoLemonPhoto.src}
+            alt="レモン畑で作業するヤノ"
+            loading="lazy"
+            decoding="async"
+          />
+          <p>
+            ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
+          </p>
+        </article>
       </div>
     </div>
   </section>
@@ -675,6 +701,27 @@ const works = [
     background: #fff;
     content: "";
     transform: rotate(45deg);
+  }
+
+  .hero-introduction {
+    position: absolute;
+    top: 6.8rem;
+    left: clamp(1.25rem, 3vw, 3rem);
+    z-index: 8;
+    width: fit-content;
+    max-width: calc(100% - 2.5rem);
+    margin: 0;
+    padding: 0.62rem 0.78rem 0.68rem;
+    border-bottom: 3px solid #111;
+    background: #fff;
+    color: #111;
+    font-family:
+      "Arial Rounded MT Bold", "Hiragino Maru Gothic ProN", "Noto Sans JP",
+      sans-serif;
+    font-size: clamp(0.78rem, 0.92vw, 0.9rem);
+    font-weight: 700;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
   }
 
   .recent-section a {
@@ -987,34 +1034,22 @@ const works = [
 
   .map-house {
     display: block;
-    width: clamp(9.6rem, 16.8vw, 15.6rem);
+    width: clamp(6.5rem, 10vw, 9.5rem);
     max-width: none;
     height: auto;
     border: 0;
     background: transparent;
-    filter: drop-shadow(1px 0 0 rgb(17 17 17 / 72%))
-      drop-shadow(-1px 0 0 rgb(17 17 17 / 72%))
-      drop-shadow(0 1px 0 rgb(17 17 17 / 72%))
-      drop-shadow(0 -1px 0 rgb(17 17 17 / 72%))
-      drop-shadow(0 0 0.4rem rgb(255 255 255 / 96%))
-      drop-shadow(0 0 0.7rem rgb(255 255 255 / 74%))
-      drop-shadow(0.3rem 0.42rem 0 rgb(47 93 67 / 16%));
+    filter: drop-shadow(0 0.18rem 0.22rem rgb(47 93 67 / 14%));
   }
 
   .map-farm {
     display: block;
-    width: clamp(9.6rem, 16.8vw, 15.6rem);
+    width: clamp(5.8rem, 9vw, 8.5rem);
     max-width: none;
     height: auto;
     border: 0;
     background: transparent;
-    filter: drop-shadow(1px 0 0 rgb(17 17 17 / 78%))
-      drop-shadow(-1px 0 0 rgb(17 17 17 / 78%))
-      drop-shadow(0 1px 0 rgb(17 17 17 / 78%))
-      drop-shadow(0 -1px 0 rgb(17 17 17 / 78%))
-      drop-shadow(0 0 0.4rem rgb(255 255 255 / 96%))
-      drop-shadow(0 0 0.7rem rgb(255 255 255 / 74%))
-      drop-shadow(0.3rem 0.42rem 0 rgb(47 93 67 / 16%));
+    filter: drop-shadow(0 0.18rem 0.22rem rgb(47 93 67 / 14%));
   }
 
   @keyframes yano-stroll {
@@ -1101,6 +1136,92 @@ const works = [
   .empathy-section__body p + p,
   .concept-section__copy p + p {
     margin-top: 1.15rem;
+  }
+
+  .empathy-section {
+    position: relative;
+    width: 100vw;
+    max-width: none;
+    margin-inline: calc(50% - 50vw);
+    padding: clamp(5rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem);
+    overflow: hidden;
+    background: #36a9ee;
+  }
+
+  .empathy-section__panel {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 68rem);
+    margin-inline: auto;
+    padding: clamp(2.5rem, 5vw, 4.5rem);
+    background: #fff;
+    box-shadow:
+      0.75rem 0.55rem 0 #ffe500,
+      1.45rem 1.1rem 0 #111;
+    color: #111;
+    transform: rotate(-1deg);
+  }
+
+  .empathy-section__panel::before,
+  .empathy-section__panel::after {
+    display: none;
+  }
+
+  .empathy-section__heading {
+    margin-bottom: clamp(2rem, 4vw, 3.25rem);
+  }
+
+  .empathy-section .section-kicker {
+    display: inline-flex;
+    margin-bottom: 0.85rem;
+    padding: 0.3rem 0.55rem;
+    border: 2px solid #111;
+    border-radius: 0.35rem;
+    color: #111;
+    font-family: "Arial Rounded MT Bold", "Noto Sans JP", sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .empathy-section h2 {
+    max-width: 34rem;
+    color: #ff3f9f;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.35;
+  }
+
+  .empathy-section__heading > p:last-child {
+    margin: 0.75rem 0 0;
+    color: #111;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .empathy-section__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .empathy-section__cards article {
+    min-width: 0;
+  }
+
+  .empathy-section__cards img {
+    display: block;
+    width: 100%;
+    height: clamp(11rem, 19vw, 14rem);
+    object-fit: cover;
+  }
+
+  .empathy-section__cards p {
+    margin: 1rem 0 0;
+    color: #111;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 500;
+    line-height: 1.75;
   }
 
   .concept-section {
@@ -1433,7 +1554,6 @@ const works = [
   }
 
   @media (max-width: 800px) {
-    .empathy-section__grid,
     .concept-section__inner,
     .place-section,
     .pathways-section__heading {
@@ -1453,6 +1573,33 @@ const works = [
 
     .content-shell {
       width: calc(100% - 2rem);
+    }
+
+    .empathy-section {
+      width: 100vw;
+      padding: 4rem 1rem;
+    }
+
+    .empathy-section__panel {
+      width: min(100%, 34rem);
+      padding: 2rem 1.25rem 2.25rem;
+      box-shadow:
+        0.35rem 0.35rem 0 #ffe500,
+        0.7rem 0.7rem 0 #111;
+      transform: rotate(-0.4deg);
+    }
+
+    .empathy-section h2 {
+      font-size: clamp(1.7rem, 8vw, 2.15rem);
+    }
+
+    .empathy-section__cards {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .empathy-section__cards img {
+      height: clamp(10rem, 55vw, 13rem);
     }
 
     .weekend-hero {
@@ -1482,6 +1629,17 @@ const works = [
       height: 0.7rem;
       border-right-width: 2px;
       border-bottom-width: 2px;
+    }
+
+    .hero-introduction {
+      top: 5.15rem;
+      left: 1rem;
+      max-width: calc(100% - 2rem);
+      padding: 0.48rem 0.58rem 0.52rem;
+      border-bottom-width: 2px;
+      font-size: clamp(0.64rem, 2.8vw, 0.72rem);
+      line-height: 1.55;
+      letter-spacing: 0;
     }
 
     .island-map {
@@ -1568,14 +1726,14 @@ const works = [
     }
 
     .map-farm {
-      width: clamp(7rem, 33.6vw, 8.4rem);
+      width: clamp(4.8rem, 24vw, 6rem);
       max-width: none;
       height: auto;
       border: 0;
     }
 
     .map-house {
-      width: clamp(7rem, 33.6vw, 8.4rem);
+      width: clamp(5.5rem, 26vw, 6.5rem);
       max-width: none;
       height: auto;
       border: 0;
