@@ -1,7 +1,9 @@
 ---
 import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import islandMapWatercolor from "@/assets/images/home/island-map-watercolor.webp";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
+import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
@@ -141,11 +143,13 @@ const works = [
 ---
 
 <BaseLayout
-  title="矢野、週末移住始めてます。"
+  title="矢野、週末移住中。"
   description="平日は松山で働き、週末は中島へ。古民家を直し、レモンを育て、島に人が集まるきっかけをつくる、矢野さとしの活動を紹介します。"
 >
   <section class="weekend-hero" aria-labelledby="hero-title">
+    <p class="site-name">矢野、週末移住中。</p>
     <div class="island-map" aria-label="中島での活動マップ">
+      <img class="island-map__art" src={islandMapWatercolor.src} alt="" loading="eager" decoding="async" />
       <svg class="island-map__base" viewBox="0 0 1200 760" aria-hidden="true">
         <defs>
           <filter id="roughLine">
@@ -199,8 +203,10 @@ const works = [
         </g>
       </svg>
 
-      <a class="map-spot map-spot--yano" href="#about" aria-label="ヤノ なぜやっているのかへ">
-        <span class="map-person map-person--stripe" aria-hidden="true"></span>
+      <a class="map-spot map-spot--yano" href="/about" aria-label="ヤノのプロフィールへ">
+        <span class="map-yano" aria-hidden="true">
+          <img src={yanoWalkingCutout.src} alt="" loading="eager" decoding="async" />
+        </span>
         <span>ヤノ</span>
       </a>
       <a class="map-spot map-spot--house" href="#kominka" aria-label="古民家再生へ">
@@ -214,7 +220,6 @@ const works = [
     </div>
 
     <div class="weekend-hero__copy">
-      <p class="site-name">矢野、週末移住始めてます。</p>
       <h1 id="hero-title">週末だけ、田舎暮らしをつまみ食い。</h1>
       <p class="weekend-hero__lead">
         平日は松山で働き、週末は中島へ。古民家を直し、レモンを育て、島に人が集まるきっかけをつくっています。
@@ -458,6 +463,7 @@ const works = [
   }
 
   .weekend-hero {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(34rem, 1.35fr) minmax(19rem, 0.65fr);
     gap: clamp(1.5rem, 4vw, 4rem);
@@ -478,11 +484,15 @@ const works = [
   }
 
   .site-name {
-    margin: 0 0 clamp(1.6rem, 3vw, 2.8rem);
+    position: absolute;
+    top: clamp(1.25rem, 3vw, 2.5rem);
+    left: 0;
+    z-index: 8;
+    margin: 0;
     color: #30486e;
-    font-size: 0.82rem;
+    font-size: clamp(0.86rem, 1.1vw, 1rem);
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
   }
 
   .weekend-hero h1 {
@@ -542,15 +552,13 @@ const works = [
 
   .island-map {
     position: relative;
-    min-height: clamp(35rem, 76svh, 49rem);
+    aspect-ratio: 1333 / 1180;
+    min-height: 0;
     overflow: hidden;
-    border: 1px solid rgb(47 93 67 / 12%);
+    border: 1px solid rgb(46 69 104 / 10%);
     border-radius: clamp(0.75rem, 2vw, 1.4rem);
-    background:
-      radial-gradient(circle at 18% 20%, rgb(255 246 180 / 26%), transparent 15rem),
-      radial-gradient(circle at 78% 72%, rgb(255 229 0 / 14%), transparent 20rem),
-      linear-gradient(155deg, #d6f279 0%, #c2ea67 52%, #aede58 100%);
-    box-shadow: inset 0 0 0 1px rgb(255 253 248 / 28%);
+    background: #fffdf8;
+    box-shadow: 0 1rem 2.4rem rgb(46 69 104 / 8%);
     isolation: isolate;
   }
 
@@ -565,29 +573,33 @@ const works = [
 
   .island-map::before {
     background:
-      repeating-linear-gradient(84deg, rgb(47 93 67 / 3%) 0 1px, transparent 1px 8px),
-      radial-gradient(circle at 34% 36%, rgb(255 253 248 / 18%), transparent 16rem);
+      linear-gradient(180deg, rgb(255 253 248 / 18%), transparent 42%),
+      radial-gradient(circle at 28% 20%, rgb(255 253 248 / 24%), transparent 14rem);
     mix-blend-mode: multiply;
-    opacity: 0.55;
+    opacity: 0.5;
   }
 
   .island-map::after {
-    background-image:
-      radial-gradient(circle, rgb(47 93 67 / 9%) 0 0.7px, transparent 0.8px),
-      radial-gradient(circle, rgb(255 253 248 / 36%) 0 0.8px, transparent 0.9px);
-    background-position:
-      0 0,
-      15px 22px;
-    background-size:
-      31px 31px,
-      47px 47px;
-    opacity: 0.34;
+    background: radial-gradient(circle, rgb(255 253 248 / 32%) 0 0.8px, transparent 0.9px);
+    background-size: 42px 42px;
+    opacity: 0.28;
+  }
+
+  .island-map__art {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .island-map__base {
     position: absolute;
     inset: 0;
     z-index: 2;
+    display: none;
     width: 100%;
     height: 100%;
   }
@@ -705,24 +717,26 @@ const works = [
   }
 
   .map-spot--yano {
-    top: 39%;
+    top: 57%;
     left: 42%;
     --tilt: -5deg;
+    min-width: 6.6rem;
+    animation: yano-stroll 9.5s ease-in-out infinite;
+    transform-origin: 50% 92%;
   }
 
   .map-spot--house {
-    top: 32%;
-    left: 48%;
+    top: 45%;
+    left: 54%;
     --tilt: 3deg;
   }
 
   .map-spot--farm {
-    top: 62%;
+    top: 66%;
     left: 66%;
     --tilt: -3deg;
   }
 
-  .map-person,
   .map-house,
   .map-farm {
     position: relative;
@@ -734,26 +748,58 @@ const works = [
     box-shadow: 0.18rem 0.22rem 0 rgb(47 93 67 / 9%);
   }
 
-  .map-person {
-    border-radius: 48% 52% 42% 58%;
-    transform: skew(-2deg);
-  }
-
-  .map-person::before {
+  .map-yano {
     position: absolute;
-    top: -0.85rem;
     left: 50%;
-    width: 1.15rem;
-    height: 1.15rem;
-    border: 2.5px solid #2f5d43;
-    border-radius: 50%;
-    background: #fff6ce;
-    content: "";
+    bottom: 1.9rem;
+    display: block;
+    width: clamp(5.2rem, 8.2vw, 7.6rem);
+    aspect-ratio: 485 / 900;
+    filter: drop-shadow(0.22rem 0.3rem 0 rgb(47 93 67 / 16%));
     transform: translateX(-50%);
+    transform-origin: 50% 90%;
   }
 
-  .map-person--stripe {
-    background: repeating-linear-gradient(90deg, #fffdf8 0 0.34rem, #1f2634 0.34rem 0.58rem);
+  .map-yano::after {
+    position: absolute;
+    right: -0.35rem;
+    bottom: 0.5rem;
+    width: 1.2rem;
+    height: 0.55rem;
+    border-bottom: 2px solid #2f5d43;
+    border-radius: 50%;
+    content: "";
+    opacity: 0.25;
+    transform: rotate(-8deg);
+  }
+
+  .map-yano img {
+    display: block;
+    width: 100%;
+    height: auto;
+    animation: yano-step 0.82s ease-in-out infinite;
+    transform-origin: 50% 90%;
+    transition:
+      filter 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .map-spot--yano:hover,
+  .map-spot--yano:focus-visible {
+    animation-play-state: paused;
+    filter: drop-shadow(0 10px 0 rgb(47 93 67 / 12%));
+    transform: translate(-50%, -58%) translate(0.28rem, -0.18rem) rotate(-9deg);
+  }
+
+  .map-spot--yano:hover .map-yano img,
+  .map-spot--yano:focus-visible .map-yano img {
+    animation-duration: 0.42s;
+    filter: saturate(1.08);
+    transform: rotate(-3deg) translateY(-0.18rem);
+  }
+
+  .map-spot--yano:active .map-yano img {
+    transform: rotate(2deg) translateY(0.1rem) scale(0.97);
   }
 
   .map-house {
@@ -800,6 +846,36 @@ const works = [
       1.9rem -0.05rem 0 #ffe500,
       0.15rem 1.15rem 0 #ffe500,
       1.35rem 1.25rem 0 #ffe500;
+  }
+
+  @keyframes yano-stroll {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) translate(0, 0) rotate(-5deg);
+    }
+
+    24% {
+      transform: translate(-50%, -50%) translate(0.35rem, -0.35rem) rotate(-7deg);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) translate(0.95rem, 0.1rem) rotate(-3deg);
+    }
+
+    74% {
+      transform: translate(-50%, -50%) translate(0.35rem, 0.3rem) rotate(-6deg);
+    }
+  }
+
+  @keyframes yano-step {
+    0%,
+    100% {
+      transform: translateY(0) rotate(-1.5deg);
+    }
+
+    50% {
+      transform: translateY(-0.26rem) rotate(2deg);
+    }
   }
 
   .empathy-section,
@@ -1145,10 +1221,12 @@ const works = [
   @media (max-width: 1100px) {
     .weekend-hero {
       grid-template-columns: 1fr;
+      padding-top: clamp(4rem, 8vw, 6rem);
     }
 
     .island-map {
-      min-height: clamp(34rem, 72vw, 45rem);
+      width: min(100%, 58rem);
+      margin-inline: auto;
     }
 
     .pathways-section__grid,
@@ -1183,7 +1261,13 @@ const works = [
       width: calc(100% - 2rem);
       max-width: 100%;
       margin-top: 0.5rem;
-      padding: 1rem;
+      padding: 3.5rem 1rem 1rem;
+    }
+
+    .site-name {
+      top: 1rem;
+      left: 0;
+      font-size: 0.86rem;
     }
 
     .weekend-hero__copy {
@@ -1212,11 +1296,22 @@ const works = [
       padding: 1rem;
       overflow: visible;
       border-radius: 1.5rem;
+      aspect-ratio: auto;
+      background: #fffdf8;
+    }
+
+    .island-map__art {
+      position: relative;
+      display: block;
+      aspect-ratio: 1333 / 1180;
+      border-radius: 1.1rem;
+      object-fit: cover;
     }
 
     .island-map__base {
       position: relative;
-      min-height: 18rem;
+      display: none;
+      min-height: 0;
       border-radius: 1.1rem;
     }
 
@@ -1237,6 +1332,11 @@ const works = [
       transform: none;
     }
 
+    .map-spot--yano {
+      min-height: 5.6rem;
+      animation: none;
+    }
+
     .map-spot:hover,
     .map-spot:focus-visible {
       transform: translateY(-2px);
@@ -1249,11 +1349,23 @@ const works = [
       background: transparent;
     }
 
-    .map-person,
     .map-house,
     .map-farm {
       width: 2.8rem;
       height: 2.8rem;
+    }
+
+    .map-yano {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      align-self: center;
+      width: 2.85rem;
+      transform: none;
+    }
+
+    .map-yano img {
+      animation-duration: 1.05s;
     }
 
     .section-heading h2,
