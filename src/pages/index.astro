@@ -13,8 +13,7 @@ const activities = [
     number: "01",
     targetId: "kominka",
     title: "古民家を直す",
-    body:
-      "2円で譲り受けた築100年の古民家を、泊まる、集まる、手を動かす場所へ。仲間や島の人に教わりながら、少しずつ手入れしています。",
+    body: "2円で譲り受けた築100年の古民家を、泊まる、集まる、手を動かす場所へ。仲間や島の人に教わりながら、少しずつ手入れしています。",
     image: placeholderImages.house,
     alt: "中島の築100年の古民家を改修する様子",
   },
@@ -22,8 +21,7 @@ const activities = [
     number: "02",
     targetId: "lemon-product",
     title: "レモンを育てる",
-    body:
-      "100本のレモンの木を任され、週末に畑へ通っています。草刈り、剪定、収穫まで、できる範囲で木と実の行き先を守っています。",
+    body: "100本のレモンの木を任され、週末に畑へ通っています。草刈り、剪定、収穫まで、できる範囲で木と実の行き先を守っています。",
     image: placeholderImages.farmer,
     alt: "中島のレモン畑で木を手入れする様子",
   },
@@ -31,8 +29,7 @@ const activities = [
     number: "03",
     targetId: "events",
     title: "人が集まるきっかけをつくる",
-    body:
-      "海掃除、マルシェ、収穫イベント、アロマ蒸留体験。島に行ってみたい人が、少し関われる入口をつくっています。",
+    body: "海掃除、マルシェ、収穫イベント、アロマ蒸留体験。島に行ってみたい人が、少し関われる入口をつくっています。",
     image: placeholderImages.repair,
     alt: "島の内外から人が集まり一緒に活動する様子",
   },
@@ -149,71 +146,155 @@ const works = [
   <section class="weekend-hero" aria-labelledby="hero-title">
     <p class="site-name">矢野、週末移住中。</p>
     <div class="island-map" aria-label="中島での活動マップ">
-      <img class="island-map__art" src={islandMapWatercolor.src} alt="" loading="eager" decoding="async" />
+      <img
+        class="island-map__art"
+        src={islandMapWatercolor.src}
+        alt=""
+        loading="eager"
+        decoding="async"
+      />
       <svg class="island-map__base" viewBox="0 0 1200 760" aria-hidden="true">
         <defs>
           <filter id="roughLine">
-            <feTurbulence type="fractalNoise" baseFrequency="0.017" numOctaves="2" seed="11" />
-            <feDisplacementMap in="SourceGraphic" scale="1.8" />
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.017"
+              numOctaves="2"
+              seed="11"></feTurbulence>
+            <feDisplacementMap in="SourceGraphic" scale="1.8"
+            ></feDisplacementMap>
           </filter>
-          <pattern id="paperSpeckles" width="42" height="42" patternUnits="userSpaceOnUse">
-            <circle cx="5" cy="9" r="0.9" />
-            <circle cx="28" cy="17" r="0.7" />
-            <circle cx="17" cy="34" r="0.8" />
-            <circle cx="38" cy="37" r="0.6" />
+          <pattern
+            id="paperSpeckles"
+            width="42"
+            height="42"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle cx="5" cy="9" r="0.9"></circle>
+            <circle cx="28" cy="17" r="0.7"></circle>
+            <circle cx="17" cy="34" r="0.8"></circle>
+            <circle cx="38" cy="37" r="0.6"></circle>
           </pattern>
         </defs>
-        <rect class="island-map__paper" width="1200" height="760" />
+        <rect class="island-map__paper" width="1200" height="760"></rect>
         <path
           class="island-map__shape"
           d="M147 134C234 54 405 62 528 94c103 27 197-6 307 31 124 42 220 139 248 254 31 127-25 258-118 325-96 68-221 42-342 24-115-17-195 30-318 12-130-19-229-89-268-202-38-108 20-322 110-404Z"
-        />
-        <path class="island-map__shore" d="M142 202c132-94 272-88 419-47 111 31 199-6 315 32 103 34 176 102 213 201" />
-        <path class="island-map__trail" d="M201 582c91-91 204-140 323-141 93 0 171 45 274 30 82-12 142-55 209-112" />
-        <path class="island-map__trail island-map__trail--small" d="M516 166c-30 88-12 155 56 209 53 43 70 92 51 147" />
+        ></path>
+        <path
+          class="island-map__shore"
+          d="M142 202c132-94 272-88 419-47 111 31 199-6 315 32 103 34 176 102 213 201"
+        ></path>
+        <path
+          class="island-map__trail"
+          d="M201 582c91-91 204-140 323-141 93 0 171 45 274 30 82-12 142-55 209-112"
+        ></path>
+        <path
+          class="island-map__trail island-map__trail--small"
+          d="M516 166c-30 88-12 155 56 209 53 43 70 92 51 147"></path>
         <g class="island-map__grass">
-          <path d="M82 158c6-16 11-16 14 1M101 152c7-19 13-19 18-1M125 158c8-14 15-13 20 2" />
-          <path d="M228 96c5-13 10-13 14 0M247 91c8-15 15-15 19 1M274 94c5-11 11-11 16 1" />
-          <path d="M391 169c8-17 14-18 20-2M420 167c8-21 17-20 25 1M456 175c7-15 15-14 21 3" />
-          <path d="M690 95c7-15 14-16 19 0M719 92c8-18 17-17 24 1M752 98c6-13 13-12 18 1" />
-          <path d="M965 167c6-17 13-17 19 1M993 163c8-20 17-20 25 0M1030 170c7-14 14-14 20 1" />
-          <path d="M156 319c6-14 12-14 17 1M181 314c7-17 15-17 22 1M214 321c7-13 14-12 20 2" />
-          <path d="M342 349c7-16 14-16 20 0M371 345c9-19 18-19 25 1M407 354c6-12 14-12 20 2" />
-          <path d="M779 330c7-16 13-16 19 0M807 326c9-18 17-18 24 1M842 333c6-12 13-12 19 1" />
-          <path d="M1000 456c7-15 14-15 19 1M1028 452c8-19 17-18 24 1M1063 459c6-12 13-11 19 2" />
-          <path d="M103 520c7-15 13-15 19 1M132 515c9-19 18-18 25 1M169 523c7-12 14-11 20 2" />
-          <path d="M486 612c8-16 16-16 23 1M520 607c9-18 19-18 28 1M560 616c7-13 15-12 22 2" />
-          <path d="M753 629c6-16 13-16 19 0M782 624c9-20 18-19 25 1M819 632c7-13 14-12 20 2" />
-          <path d="M997 624c6-14 12-13 18 1M1022 618c8-18 16-18 23 0M1055 626c7-12 14-12 20 2" />
-          <path d="M270 677c6-13 12-13 18 1M296 671c8-16 16-16 23 1M329 679c6-12 13-11 19 2" />
+          <path
+            d="M82 158c6-16 11-16 14 1M101 152c7-19 13-19 18-1M125 158c8-14 15-13 20 2"
+          ></path>
+          <path
+            d="M228 96c5-13 10-13 14 0M247 91c8-15 15-15 19 1M274 94c5-11 11-11 16 1"
+          ></path>
+          <path
+            d="M391 169c8-17 14-18 20-2M420 167c8-21 17-20 25 1M456 175c7-15 15-14 21 3"
+          ></path>
+          <path
+            d="M690 95c7-15 14-16 19 0M719 92c8-18 17-17 24 1M752 98c6-13 13-12 18 1"
+          ></path>
+          <path
+            d="M965 167c6-17 13-17 19 1M993 163c8-20 17-20 25 0M1030 170c7-14 14-14 20 1"
+          ></path>
+          <path
+            d="M156 319c6-14 12-14 17 1M181 314c7-17 15-17 22 1M214 321c7-13 14-12 20 2"
+          ></path>
+          <path
+            d="M342 349c7-16 14-16 20 0M371 345c9-19 18-19 25 1M407 354c6-12 14-12 20 2"
+          ></path>
+          <path
+            d="M779 330c7-16 13-16 19 0M807 326c9-18 17-18 24 1M842 333c6-12 13-12 19 1"
+          ></path>
+          <path
+            d="M1000 456c7-15 14-15 19 1M1028 452c8-19 17-18 24 1M1063 459c6-12 13-11 19 2"
+          ></path>
+          <path
+            d="M103 520c7-15 13-15 19 1M132 515c9-19 18-18 25 1M169 523c7-12 14-11 20 2"
+          ></path>
+          <path
+            d="M486 612c8-16 16-16 23 1M520 607c9-18 19-18 28 1M560 616c7-13 15-12 22 2"
+          ></path>
+          <path
+            d="M753 629c6-16 13-16 19 0M782 624c9-20 18-19 25 1M819 632c7-13 14-12 20 2"
+          ></path>
+          <path
+            d="M997 624c6-14 12-13 18 1M1022 618c8-18 16-18 23 0M1055 626c7-12 14-12 20 2"
+          ></path>
+          <path
+            d="M270 677c6-13 12-13 18 1M296 671c8-16 16-16 23 1M329 679c6-12 13-11 19 2"
+          ></path>
         </g>
         <g class="island-map__doodles">
-          <path class="island-map__cat" d="M78 279l13-13 14 12 20-2 14-10 15 10M89 278c-4 19 8 31 27 29 18-2 26-13 22-30M105 289h.2M126 286h.2M64 285c-19-4-32-1-39 11" />
-          <path class="island-map__bird" d="M920 284c15-21 34-28 59-20 18 6 33 1 45-14M960 265c-1-18 7-30 25-35" />
-          <path class="island-map__leaf" d="M1096 500c-24-20-46-20-68-1 12 24 37 24 68 1Z" />
-          <path class="island-map__leaf island-map__leaf--small" d="M184 470c-20-16-38-15-54 2 12 18 31 18 54-2Z" />
-          <path class="island-map__lemon" d="M891 70c28-13 67-7 85 17-12 28-52 37-84 21-20-10-21-27-1-38Z" />
-          <path class="island-map__spark" d="M884 60c7-25 22-39 45-43M981 98c24 2 42 12 53 30" />
+          <path
+            class="island-map__cat"
+            d="M78 279l13-13 14 12 20-2 14-10 15 10M89 278c-4 19 8 31 27 29 18-2 26-13 22-30M105 289h.2M126 286h.2M64 285c-19-4-32-1-39 11"
+          ></path>
+          <path
+            class="island-map__bird"
+            d="M920 284c15-21 34-28 59-20 18 6 33 1 45-14M960 265c-1-18 7-30 25-35"
+          ></path>
+          <path
+            class="island-map__leaf"
+            d="M1096 500c-24-20-46-20-68-1 12 24 37 24 68 1Z"></path>
+          <path
+            class="island-map__leaf island-map__leaf--small"
+            d="M184 470c-20-16-38-15-54 2 12 18 31 18 54-2Z"></path>
+          <path
+            class="island-map__lemon"
+            d="M891 70c28-13 67-7 85 17-12 28-52 37-84 21-20-10-21-27-1-38Z"
+          ></path>
+          <path
+            class="island-map__spark"
+            d="M884 60c7-25 22-39 45-43M981 98c24 2 42 12 53 30"></path>
         </g>
         <g class="island-map__waves">
-          <path d="M82 228c34-18 67 19 101 1 30-16 60 6 90 1" />
-          <path d="M912 128c34-18 69 18 103 0 29-15 58 6 88 2" />
-          <path d="M935 678c34-18 69 18 103 0 29-15 58 6 88 2" />
-          <path d="M34 665c34-18 68 17 102 0 29-15 58 6 88 2" />
+          <path d="M82 228c34-18 67 19 101 1 30-16 60 6 90 1"></path>
+          <path d="M912 128c34-18 69 18 103 0 29-15 58 6 88 2"></path>
+          <path d="M935 678c34-18 69 18 103 0 29-15 58 6 88 2"></path>
+          <path d="M34 665c34-18 68 17 102 0 29-15 58 6 88 2"></path>
         </g>
       </svg>
 
-      <a class="map-spot map-spot--yano" href="/about" aria-label="ヤノのプロフィールへ">
+      <a
+        class="map-spot map-spot--yano"
+        href="/about"
+        aria-label="ヤノのプロフィールへ"
+      >
         <span class="map-yano" aria-hidden="true">
-          <img src={yanoWalkingCutout.src} alt="" loading="eager" decoding="async" />
+          <img
+            src={yanoWalkingCutout.src}
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
         </span>
         <span>ヤノ</span>
       </a>
-      <a class="map-spot map-spot--house" href="#kominka" aria-label="古民家再生へ">
+      <a
+        class="map-spot map-spot--house"
+        href="#kominka"
+        aria-label="古民家再生へ"
+      >
         <span class="map-house" aria-hidden="true"></span>
         <span>古民家</span>
       </a>
-      <a class="map-spot map-spot--farm" href="#lemon-product" aria-label="レモン畑と商品へ">
+      <a
+        class="map-spot map-spot--farm"
+        href="#lemon-product"
+        aria-label="レモン畑と商品へ"
+      >
         <span class="map-farm" aria-hidden="true"></span>
         <span>レモン畑</span>
       </a>
@@ -278,7 +359,11 @@ const works = [
       </ul>
     </div>
     <figure class="place-section__map">
-      <img src={nakajimaMap.src} alt="愛媛県松山市と中島の位置を示す地図" loading="lazy" />
+      <img
+        src={nakajimaMap.src}
+        alt="愛媛県松山市と中島の位置を示す地図"
+        loading="lazy"
+      />
     </figure>
   </section>
 
@@ -388,11 +473,15 @@ const works = [
       <p>
         畑の様子、古民家の進み具合、イベントのお知らせはInstagramで更新しています。サイトでは伝えきれない、週末ごとの空気をのぞいてみてください。
       </p>
-      <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer">Instagramを見る</a>
+      <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"
+        >Instagramを見る</a
+      >
     </div>
   </section>
 
-  <a class="back-to-map" href="#main-content" aria-label="TOPへ戻る">TOPへ戻る</a>
+  <a class="back-to-map" href="#main-content" aria-label="TOPへ戻る"
+    >TOPへ戻る</a
+  >
 
   <script>
     const revealTargets = document.querySelectorAll(".reveal-section");
@@ -419,17 +508,17 @@ const works = [
 
 <style>
   :global(html:has(.weekend-hero)) {
-    background: #e7f5ca;
+    background: #7ccfe1;
     scroll-behavior: smooth;
   }
 
   :global(body:has(.weekend-hero)) {
-    background: #e7f5ca;
+    background: #7ccfe1;
     color: #2e4568;
   }
 
   :global(body:has(.weekend-hero) .site-frame) {
-    background: #e7f5ca;
+    background: #fffdf8;
   }
 
   :global(body:has(.weekend-hero) .site-header) {
@@ -472,25 +561,65 @@ const works = [
     grid-template-columns: minmax(34rem, 1.35fr) minmax(19rem, 0.65fr);
     gap: clamp(1.5rem, 4vw, 4rem);
     align-items: center;
-    width: min(calc(100% - clamp(2rem, 5vw, 5rem)), 1440px);
-    min-height: clamp(40rem, 88svh, 54rem);
+    width: 100%;
+    min-height: 100svh;
     margin: 0 auto;
-    padding-block: clamp(1.5rem, 5vw, 4rem);
-    background: #e7f5ca;
+    padding: clamp(4rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
+    overflow: hidden;
+    background: #7ccfe1;
+    isolation: isolate;
+  }
+
+  .weekend-hero::before,
+  .weekend-hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    content: "";
+  }
+
+  .weekend-hero::before {
+    background:
+      linear-gradient(
+        90deg,
+        rgb(125 207 225 / 0%) 0%,
+        rgb(255 253 248 / 18%) 54%,
+        rgb(255 253 248 / 62%) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgb(255 253 248 / 30%) 0%,
+        rgb(255 253 248 / 0%) 28%,
+        rgb(255 253 248 / 20%) 100%
+      );
+  }
+
+  .weekend-hero::after {
+    background: radial-gradient(
+      circle at 22% 26%,
+      rgb(255 253 248 / 26%),
+      transparent 18rem
+    );
+    mix-blend-mode: soft-light;
   }
 
   .weekend-hero__copy {
+    position: relative;
+    z-index: 5;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
     min-height: 0;
+    padding: clamp(1rem, 2vw, 1.4rem);
+    text-shadow: 0 1px 0 rgb(255 253 248 / 76%);
   }
 
   .site-name {
     position: absolute;
     top: clamp(1.25rem, 3vw, 2.5rem);
-    left: 0;
+    left: clamp(1.25rem, 3vw, 3rem);
     z-index: 8;
     margin: 0;
     color: #30486e;
@@ -559,14 +688,18 @@ const works = [
   }
 
   .island-map {
-    position: relative;
-    aspect-ratio: 1333 / 1180;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    aspect-ratio: auto;
+    width: 100%;
+    height: 100%;
     min-height: 0;
     overflow: hidden;
-    border: 1px solid rgb(46 69 104 / 10%);
-    border-radius: clamp(0.75rem, 2vw, 1.4rem);
-    background: #fffdf8;
-    box-shadow: 0 1rem 2.4rem rgb(46 69 104 / 8%);
+    border: 0;
+    border-radius: 0;
+    background: #7ccfe1;
+    box-shadow: none;
     isolation: isolate;
   }
 
@@ -581,14 +714,22 @@ const works = [
 
   .island-map::before {
     background:
-      linear-gradient(180deg, rgb(255 253 248 / 18%), transparent 42%),
-      radial-gradient(circle at 28% 20%, rgb(255 253 248 / 24%), transparent 14rem);
+      linear-gradient(180deg, rgb(255 253 248 / 8%), transparent 42%),
+      radial-gradient(
+        circle at 28% 20%,
+        rgb(255 253 248 / 16%),
+        transparent 14rem
+      );
     mix-blend-mode: multiply;
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
   .island-map::after {
-    background: radial-gradient(circle, rgb(255 253 248 / 32%) 0 0.8px, transparent 0.9px);
+    background: radial-gradient(
+      circle,
+      rgb(255 253 248 / 32%) 0 0.8px,
+      transparent 0.9px
+    );
     background-size: 42px 42px;
     opacity: 0.28;
   }
@@ -600,7 +741,7 @@ const works = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 42% center;
   }
 
   .island-map__base {
@@ -697,7 +838,7 @@ const works = [
     min-width: 5.2rem;
     padding: 0.35rem;
     border: 0;
-    color: #2e4568;
+    color: #233f61;
     font-size: clamp(0.72rem, 0.95vw, 0.84rem);
     font-weight: 500;
     line-height: 1.35;
@@ -726,8 +867,8 @@ const works = [
   }
 
   .map-spot--yano {
-    top: 57%;
-    left: 42%;
+    top: 55%;
+    left: 37%;
     --tilt: -5deg;
     min-width: 6.6rem;
     animation: yano-stroll 9.5s ease-in-out infinite;
@@ -735,14 +876,14 @@ const works = [
   }
 
   .map-spot--house {
-    top: 45%;
-    left: 54%;
+    top: 43%;
+    left: 48%;
     --tilt: 3deg;
   }
 
   .map-spot--farm {
     top: 66%;
-    left: 66%;
+    left: 59%;
     --tilt: -3deg;
   }
 
@@ -864,7 +1005,8 @@ const works = [
     }
 
     24% {
-      transform: translate(-50%, -50%) translate(0.35rem, -0.35rem) rotate(-7deg);
+      transform: translate(-50%, -50%) translate(0.35rem, -0.35rem)
+        rotate(-7deg);
     }
 
     50% {
@@ -1234,8 +1376,8 @@ const works = [
     }
 
     .island-map {
-      width: min(100%, 58rem);
-      margin-inline: auto;
+      width: 100%;
+      margin-inline: 0;
     }
 
     .pathways-section__grid,
@@ -1267,22 +1409,25 @@ const works = [
     }
 
     .weekend-hero {
-      width: calc(100% - 2rem);
+      width: 100%;
       max-width: 100%;
-      margin-top: 0.5rem;
+      margin-top: 0;
       gap: 1.45rem;
-      min-height: auto;
-      padding: 3.5rem 1rem 1.5rem;
+      min-height: 100svh;
+      padding: 3.75rem 1rem 1.5rem;
     }
 
     .site-name {
       top: 1rem;
-      left: 0;
+      left: 1rem;
       font-size: 0.86rem;
+      text-shadow: 0 1px 0 rgb(255 253 248 / 70%);
     }
 
     .weekend-hero__copy {
       gap: 0;
+      align-self: end;
+      padding: 0;
     }
 
     .weekend-hero h1 {
@@ -1306,9 +1451,9 @@ const works = [
       min-height: 0;
       padding: 0;
       overflow: hidden;
-      border-radius: 1.5rem;
-      aspect-ratio: 1333 / 1180;
-      background: #fffdf8;
+      border-radius: 0;
+      aspect-ratio: auto;
+      background: #7ccfe1;
     }
 
     .island-map__art {
@@ -1319,6 +1464,7 @@ const works = [
       height: 100%;
       border-radius: 0;
       object-fit: cover;
+      object-position: 42% center;
     }
 
     .island-map__base {
@@ -1346,7 +1492,7 @@ const works = [
 
     .map-spot--yano {
       top: 57%;
-      left: 42%;
+      left: 36%;
       min-width: 4.9rem;
       min-height: 0;
       animation: yano-stroll 9.5s ease-in-out infinite;
@@ -1354,12 +1500,12 @@ const works = [
 
     .map-spot--house {
       top: 45%;
-      left: 54%;
+      left: 49%;
     }
 
     .map-spot--farm {
       top: 66%;
-      left: 66%;
+      left: 62%;
     }
 
     .map-spot:hover,
