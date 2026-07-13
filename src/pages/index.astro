@@ -6,66 +6,40 @@ import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
 import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.png";
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
-import seaWaveCutout from "@/assets/images/home/sea-wave-cutout.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import yanoKominkaPhoto from "@/assets/images/home/yano-kominka-photo.png";
 import yanoLemonPhoto from "@/assets/images/home/yano-lemon-photo.jpg";
+import rankingLemonJuice from "@/assets/images/home/ranking-lemon-juice.jpeg";
+import rankingKominkaEvent from "@/assets/images/home/ranking-kominka-event.jpeg";
+import rankingMarche from "@/assets/images/home/ranking-marche.jpeg";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
 
-const seaWaves = [
-  { x: 6, y: 15, size: 6.2, rotate: -4, opacity: 0.55 },
-  { x: 24, y: 8, size: 4.4, rotate: 3, opacity: 0.42 },
-  { x: 43, y: 13, size: 5.3, rotate: -2, opacity: 0.5 },
-  { x: 67, y: 7, size: 4.8, rotate: 5, opacity: 0.44 },
-  { x: 84, y: 16, size: 6.6, rotate: -5, opacity: 0.58 },
-  { x: 13, y: 29, size: 4.7, rotate: 4, opacity: 0.46 },
-  { x: 34, y: 25, size: 6.8, rotate: -3, opacity: 0.54 },
-  { x: 57, y: 31, size: 4.2, rotate: 6, opacity: 0.4 },
-  { x: 76, y: 28, size: 5.6, rotate: 2, opacity: 0.52 },
-  { x: 91, y: 36, size: 4.3, rotate: -6, opacity: 0.43 },
-  { x: 4, y: 45, size: 5.1, rotate: 5, opacity: 0.48 },
-  { x: 22, y: 42, size: 4.5, rotate: -4, opacity: 0.45 },
-  { x: 47, y: 48, size: 6.4, rotate: 3, opacity: 0.56 },
-  { x: 69, y: 43, size: 4.6, rotate: -5, opacity: 0.42 },
-  { x: 86, y: 51, size: 6.1, rotate: 4, opacity: 0.53 },
-  { x: 10, y: 63, size: 6.5, rotate: -3, opacity: 0.55 },
-  { x: 31, y: 59, size: 4.1, rotate: 6, opacity: 0.4 },
-  { x: 54, y: 66, size: 5.7, rotate: -4, opacity: 0.51 },
-  { x: 74, y: 61, size: 4.9, rotate: 2, opacity: 0.46 },
-  { x: 92, y: 69, size: 4.4, rotate: -6, opacity: 0.44 },
-  { x: 5, y: 81, size: 4.6, rotate: 4, opacity: 0.45 },
-  { x: 25, y: 76, size: 6.3, rotate: -2, opacity: 0.54 },
-  { x: 46, y: 84, size: 4.3, rotate: 5, opacity: 0.41 },
-  { x: 68, y: 78, size: 5.5, rotate: -5, opacity: 0.5 },
-  { x: 86, y: 87, size: 6.7, rotate: 3, opacity: 0.57 },
-];
-
 const activities = [
   {
     number: "01",
-    targetId: "kominka",
-    title: "古民家を直す",
-    body: "2円で譲り受けた築100年の古民家を、泊まる、集まる、手を動かす場所へ。仲間や島の人に教わりながら、少しずつ手入れしています。",
-    image: placeholderImages.house,
-    alt: "中島の築100年の古民家を改修する様子",
+    targetId: "lemon-product",
+    title: "週末移住レモン果汁。",
+    body: "耕作放棄地寸前だった農園を譲り受け、管理から販売まで担っています。週末移住の暮らしだからこそ、最低限の管理と愛情を注いでいます。",
+    image: rankingLemonJuice.src,
+    alt: "週末移住レモン果汁の瓶が並ぶ様子",
   },
   {
     number: "02",
-    targetId: "lemon-product",
-    title: "レモンを育てる",
-    body: "100本のレモンの木を任され、週末に畑へ通っています。草刈り、剪定、収穫まで、できる範囲で木と実の行き先を守っています。",
-    image: placeholderImages.farmer,
-    alt: "中島のレモン畑で木を手入れする様子",
+    targetId: "kominka",
+    title: "古民家をフルリノベ、地域の拠点へ。",
+    body: "2円で購入した築100年の古民家をセルフリノベーション。1年8か月、土日を島に捧げ、友人や島の人と一緒に再生しています。今では交流拠点として、島内外から人が集まる場所です。",
+    image: rankingKominkaEvent.src,
+    alt: "古民家で開かれた交流イベントの様子",
   },
   {
     number: "03",
     targetId: "events",
-    title: "人が集まるきっかけをつくる",
-    body: "海掃除、マルシェ、収穫イベント、アロマ蒸留体験。島に行ってみたい人が、少し関われる入口をつくっています。",
-    image: placeholderImages.repair,
-    alt: "島の内外から人が集まり一緒に活動する様子",
+    title: "島の魅力を伝えるイベント。",
+    body: "マルシェ出店や収穫イベントなどを企画しています。17年続く海掃除をサポートし、不定期でマルシェや収穫イベントを開催。島の雰囲気を島外へ発信しています。",
+    image: rankingMarche.src,
+    alt: "マルシェでレモン商品を販売する様子",
   },
 ];
 
@@ -185,20 +159,6 @@ const works = [
       島に人が集まるきっかけをつくっています。
     </p>
     <div class="island-map" aria-label="中島での活動マップ">
-      <div class="sea-waves" aria-hidden="true">
-        {
-          seaWaves.map((wave) => (
-            <img
-              class="sea-wave"
-              src={seaWaveCutout.src}
-              alt=""
-              style={`--wave-x:${wave.x}%; --wave-y:${wave.y}%; --wave-size:${wave.size}rem; --wave-rotate:${wave.rotate}deg; --wave-opacity:${wave.opacity};`}
-              loading="eager"
-              decoding="async"
-            />
-          ))
-        }
-      </div>
       <img
         class="hero-ferry"
         src={nakajimaFerryCutout.src}
@@ -328,6 +288,10 @@ const works = [
         </g>
       </svg>
 
+      <svg class="map-route" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M 12 34 C 19 45 27 59 37 73 S 51 70 59 65"></path>
+      </svg>
+
       <a
         class="map-spot map-spot--yano"
         href="/about"
@@ -348,6 +312,7 @@ const works = [
         href="#kominka"
         aria-label="古民家再生へ"
       >
+        <span class="map-spot__label">古民家</span>
         <img
           class="map-house"
           src={kominkaCutout.src}
@@ -356,13 +321,13 @@ const works = [
           decoding="async"
           aria-hidden="true"
         />
-        <span>古民家</span>
       </a>
       <a
         class="map-spot map-spot--farm"
         href="#lemon-product"
         aria-label="レモン畑と商品へ"
       >
+        <span class="map-spot__label">レモン畑</span>
         <img
           class="map-farm"
           src={lemonTreeCutout.src}
@@ -371,41 +336,102 @@ const works = [
           decoding="async"
           aria-hidden="true"
         />
-        <span>レモン畑</span>
       </a>
     </div>
   </section>
 
   <section class="empathy-section content-shell reveal-section" id="about">
-    <div class="empathy-section__panel">
-      <header class="empathy-section__heading">
-        <p class="section-kicker">A SMALL FIRST STEP</p>
-        <h2>田舎暮らし、憧れる。<br />でも踏み出せない。</h2>
-        <p>島との関わりは、小さな一歩から。</p>
+    <div class="empathy-section__stack">
+      <div
+        class="empathy-section__layer empathy-section__layer--black"
+        aria-hidden="true"
+      >
+      </div>
+      <div
+        class="empathy-section__layer empathy-section__layer--yellow"
+        aria-hidden="true"
+      >
+      </div>
+      <div class="empathy-section__panel">
+        <header class="empathy-section__heading">
+          <p class="section-kicker">A SMALL FIRST STEP</p>
+          <h2>田舎暮らし、憧れる。<br />でも踏み出せない。</h2>
+          <p>島との関わりは、小さな一歩から。</p>
+        </header>
+        <div class="empathy-section__cards">
+          <article>
+            <img
+              src={yanoKominkaPhoto.src}
+              alt="古民家の前に立つヤノ"
+              loading="lazy"
+              decoding="async"
+            />
+            <p>
+              いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
+            </p>
+          </article>
+          <article>
+            <img
+              src={yanoLemonPhoto.src}
+              alt="レモン畑で作業するヤノ"
+              loading="lazy"
+              decoding="async"
+            />
+            <p>
+              ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="activities-section reveal-section" id="activities">
+    <div class="content-shell">
+      <header class="ranking-section__heading">
+        <p class="section-kicker">MESSAGE</p>
+        <p class="ranking-section__subtitle">
+          移住しなくても、島は味わえる。田舎を体感しよう
+        </p>
       </header>
-      <div class="empathy-section__cards">
-        <article>
-          <img
-            src={yanoKominkaPhoto.src}
-            alt="古民家の前に立つヤノ"
-            loading="lazy"
-            decoding="async"
-          />
-          <p>
-            いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
-          </p>
-        </article>
-        <article>
-          <img
-            src={yanoLemonPhoto.src}
-            alt="レモン畑で作業するヤノ"
-            loading="lazy"
-            decoding="async"
-          />
-          <p>
-            ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
-          </p>
-        </article>
+      <div class="activities-carousel">
+        <button
+          class="activities-carousel__button activities-carousel__button--prev"
+          type="button"
+          aria-label="前のメッセージへ">←</button
+        >
+        <div class="activities-section__grid">
+          {
+            activities.map((activity, index) => (
+              <article
+                id={activity.targetId}
+                class:list={{
+                  "ranking-card": true,
+                  "ranking-card--featured": index === 0,
+                  "ranking-card--left": index === 2,
+                  "ranking-card--right": index === 1,
+                }}
+              >
+                <span class="ranking-card__badge">{activity.number}</span>
+                <figure>
+                  <img src={activity.image} alt={activity.alt} loading="lazy" />
+                </figure>
+                <div>
+                  <h3>{activity.title}</h3>
+                  <p>{activity.body}</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <button
+          class="activities-carousel__button activities-carousel__button--next"
+          type="button"
+          aria-label="次のメッセージへ">→</button
+        >
+      </div>
+      <div class="activities-carousel__dots" aria-hidden="true">
+        <span class="is-active"></span><span></span><span></span>
       </div>
     </div>
   </section>
@@ -447,31 +473,6 @@ const works = [
         loading="lazy"
       />
     </figure>
-  </section>
-
-  <section class="activities-section reveal-section" id="activities">
-    <div class="content-shell">
-      <header class="section-heading">
-        <p class="section-kicker">WHAT YANO DOES</p>
-        <h2>今、島でしていること</h2>
-      </header>
-      <div class="activities-section__grid">
-        {
-          activities.map((activity) => (
-            <article id={activity.targetId}>
-              <figure>
-                <img src={activity.image} alt={activity.alt} loading="lazy" />
-              </figure>
-              <div>
-                <span>{activity.number}</span>
-                <h3>{activity.title}</h3>
-                <p>{activity.body}</p>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-    </div>
   </section>
 
   <section class="faq-section content-shell reveal-section" id="faq">
@@ -566,6 +567,41 @@ const works = [
   >
 
   <script>
+    const carousel = document.querySelector(".activities-carousel");
+    if (carousel) {
+      const track = carousel.querySelector(".activities-section__grid");
+      const previous = carousel.querySelector(
+        ".activities-carousel__button--prev",
+      );
+      const next = carousel.querySelector(".activities-carousel__button--next");
+      const dots = [
+        ...carousel.querySelectorAll(".activities-carousel__dots span"),
+      ];
+      const cards = [...track.querySelectorAll(".ranking-card")].sort(
+        (a, b) => a.offsetLeft - b.offsetLeft,
+      );
+      let activeIndex = 0;
+
+      const showCard = (index, behavior = "smooth") => {
+        activeIndex = (index + cards.length) % cards.length;
+        const card = cards[activeIndex];
+        track.scrollTo({
+          left: card.offsetLeft - (track.clientWidth - card.clientWidth) / 2,
+          behavior,
+        });
+        dots.forEach((dot, dotIndex) =>
+          dot.classList.toggle("is-active", dotIndex === activeIndex),
+        );
+      };
+
+      previous?.addEventListener("click", () => showCard(activeIndex - 1));
+      next?.addEventListener("click", () => showCard(activeIndex + 1));
+      const initialIndex = window.matchMedia("(max-width: 640px)").matches
+        ? 0
+        : 1;
+      requestAnimationFrame(() => showCard(initialIndex, "auto"));
+    }
+
     const revealTargets = document.querySelectorAll(".reveal-section");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       revealTargets.forEach((target) =>
@@ -590,12 +626,12 @@ const works = [
 
 <style>
   :global(html:has(.weekend-hero)) {
-    background: #28a9df;
+    background: #36a9ee;
     scroll-behavior: smooth;
   }
 
   :global(body:has(.weekend-hero)) {
-    background: #28a9df;
+    background: #36a9ee;
     color: #2e4568;
   }
 
@@ -648,7 +684,7 @@ const works = [
     margin-inline: calc(50% - 50vw);
     padding: clamp(4rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
     overflow: hidden;
-    background: #28a9df;
+    background: #36a9ee;
     isolation: isolate;
   }
 
@@ -759,7 +795,7 @@ const works = [
     overflow: hidden;
     border: 0;
     border-radius: 0;
-    background: #28a9df;
+    background: #36a9ee;
     box-shadow: none;
     isolation: isolate;
   }
@@ -780,26 +816,6 @@ const works = [
     object-fit: contain;
     transform: translateY(-50%);
     filter: drop-shadow(0 1.5rem 1.8rem rgb(25 74 92 / 18%));
-  }
-
-  .sea-waves {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .sea-wave {
-    position: absolute;
-    top: var(--wave-y);
-    left: var(--wave-x);
-    width: var(--wave-size);
-    height: auto;
-    opacity: var(--wave-opacity);
-    mix-blend-mode: screen;
-    filter: brightness(1.9) saturate(0.65);
-    transform: translate(-50%, -50%) rotate(var(--wave-rotate));
   }
 
   .hero-ferry {
@@ -832,6 +848,26 @@ const works = [
     display: none;
     width: 100%;
     height: 100%;
+  }
+
+  .map-route {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .map-route path {
+    fill: none;
+    stroke: #fffdf8;
+    stroke-width: 0.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 1.5 1.7;
+    opacity: 0.7;
   }
 
   .island-map__paper {
@@ -928,7 +964,9 @@ const works = [
     transform: translate(-50%, -50%) rotate(var(--tilt, 0deg));
     transition:
       transform 0.2s ease,
-      filter 0.2s ease;
+      filter 0.2s ease,
+      scale 0.2s ease,
+      translate 0.2s ease;
   }
 
   .map-spot:hover,
@@ -939,7 +977,61 @@ const works = [
     transform: translate(-50%, -56%) rotate(calc(var(--tilt, 0deg) - 2deg));
   }
 
-  .map-spot > span:last-child {
+  .map-spot--farm:hover,
+  .map-spot--farm:focus-visible {
+    outline: 0;
+    outline-offset: 0;
+    filter: none;
+  }
+
+  .map-spot--house,
+  .map-spot--farm {
+    isolation: isolate;
+    scale: 0.72;
+    animation: landmark-pop 0.45s cubic-bezier(0.22, 0.8, 0.32, 1) forwards;
+  }
+
+  .map-spot--house {
+    animation-delay: 0.35s;
+  }
+
+  .map-spot--farm {
+    animation-delay: 0.65s;
+  }
+
+  .map-spot--house::before,
+  .map-spot--farm::before {
+    position: absolute;
+    z-index: -1;
+    bottom: -0.8rem;
+    left: 50%;
+    width: calc(100% + 3.4rem);
+    height: 3.2rem;
+    border-radius: 50%;
+    background: rgb(255 248 207 / 84%);
+    content: "";
+    transform: translateX(-50%);
+  }
+
+  .map-spot__label {
+    display: grid;
+    justify-items: center;
+    color: #233f61;
+    font-size: clamp(0.82rem, 1vw, 0.98rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .map-spot__label::after {
+    width: 1px;
+    height: 0.95rem;
+    margin-top: 0.22rem;
+    background: #233f61;
+    content: "";
+  }
+
+  .map-spot--yano > span:last-child {
     padding: 0.2rem 0.5rem;
     border: 1.5px solid #2f5d43;
     border-radius: 52% 48% 56% 44% / 46% 52% 48% 54%;
@@ -1034,7 +1126,7 @@ const works = [
 
   .map-house {
     display: block;
-    width: clamp(6.5rem, 10vw, 9.5rem);
+    width: clamp(10.5rem, 17vw, 17rem);
     max-width: none;
     height: auto;
     border: 0;
@@ -1044,12 +1136,33 @@ const works = [
 
   .map-farm {
     display: block;
-    width: clamp(5.8rem, 9vw, 8.5rem);
+    width: clamp(10rem, 16vw, 16.5rem);
     max-width: none;
     height: auto;
     border: 0;
     background: transparent;
     filter: drop-shadow(0 0.18rem 0.22rem rgb(47 93 67 / 14%));
+  }
+
+  .map-spot--house:hover,
+  .map-spot--house:focus-visible,
+  .map-spot--farm:hover,
+  .map-spot--farm:focus-visible {
+    scale: 1.05;
+    translate: 0 -0.35rem;
+    filter: drop-shadow(0 0.45rem 0.5rem rgb(35 63 97 / 18%));
+  }
+
+  @keyframes landmark-pop {
+    from {
+      opacity: 0;
+      scale: 0.72;
+    }
+
+    to {
+      opacity: 1;
+      scale: 1;
+    }
   }
 
   @keyframes yano-stroll {
@@ -1143,21 +1256,37 @@ const works = [
     width: 100vw;
     max-width: none;
     margin-inline: calc(50% - 50vw);
-    padding: clamp(5rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem);
+    padding: 1.25rem clamp(1.5rem, 6vw, 5rem) clamp(5rem, 8vw, 7rem);
     overflow: hidden;
     background: #36a9ee;
+  }
+
+  .empathy-section__stack {
+    position: relative;
+    width: min(100%, 68rem);
+    margin-inline: auto;
+  }
+
+  .empathy-section__layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  .empathy-section__layer--black {
+    background: #111;
+    transform: translate(-1rem, 1.35rem) rotate(-2.2deg);
+  }
+
+  .empathy-section__layer--yellow {
+    background: #ffe500;
+    transform: translate(0.85rem, 0.7rem) rotate(1.8deg);
   }
 
   .empathy-section__panel {
     position: relative;
     z-index: 1;
-    width: min(100%, 68rem);
-    margin-inline: auto;
     padding: clamp(2.5rem, 5vw, 4.5rem);
     background: #fff;
-    box-shadow:
-      0.75rem 0.55rem 0 #ffe500,
-      1.45rem 1.1rem 0 #111;
     color: #111;
     transform: rotate(-1deg);
   }
@@ -1212,8 +1341,9 @@ const works = [
   .empathy-section__cards img {
     display: block;
     width: 100%;
-    height: clamp(11rem, 19vw, 14rem);
-    object-fit: cover;
+    height: auto;
+    aspect-ratio: auto;
+    object-fit: contain;
   }
 
   .empathy-section__cards p {
@@ -1270,28 +1400,221 @@ const works = [
   }
 
   .activities-section {
-    padding-block: clamp(5rem, 9vw, 9rem);
-    background: #f5f1ed;
+    padding-block: clamp(4rem, 7vw, 6rem);
+    background: #36a9ee;
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .ranking-section__heading {
+    text-align: center;
+  }
+
+  .ranking-section__heading .section-kicker {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  .ranking-section__subtitle {
+    margin: 0.85rem 0 0;
+    color: #ffe500;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-weight: 700;
+  }
+
+  .ranking-card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    padding: clamp(1.25rem, 2.5vw, 2rem);
+    border-radius: 42% 42% 44% 44% / 28% 28% 34% 34%;
+    background: rgb(179 221 249 / 82%);
+    color: #2e4568;
+  }
+
+  .ranking-card--featured {
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border-radius: 45% 45% 44% 44% / 25% 25% 34% 34%;
+    background: #fff;
+  }
+
+  .ranking-card figure {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.15rem;
+  }
+
+  .ranking-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ranking-card > div {
+    padding-top: 1.15rem;
+  }
+
+  .ranking-card h3 {
+    margin: 0;
+    color: #2e4568;
+    font-size: clamp(1rem, 1.45vw, 1.22rem);
+    font-weight: 700;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+
+  .ranking-card p {
+    margin: 0.7rem 0 0;
+    color: #2e4568;
+    font-size: clamp(0.82rem, 1.05vw, 0.98rem);
+    font-weight: 500;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+  }
+
+  .ranking-card__badge {
+    position: absolute;
+    z-index: 1;
+    top: 0.7rem;
+    left: 0.7rem;
+    display: grid;
+    width: 2.8rem;
+    aspect-ratio: 1;
+    place-items: center;
+    clip-path: polygon(
+      50% 0%,
+      61% 10%,
+      76% 4%,
+      83% 19%,
+      99% 23%,
+      92% 39%,
+      100% 53%,
+      86% 62%,
+      88% 79%,
+      71% 79%,
+      62% 96%,
+      49% 86%,
+      34% 97%,
+      27% 81%,
+      10% 84%,
+      12% 66%,
+      0% 54%,
+      10% 41%,
+      2% 26%,
+      19% 21%,
+      25% 5%,
+      40% 11%
+    );
+    background: #a7d875;
+    color: #2e4568;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .ranking-card--featured .ranking-card__badge {
+    background: #ff3f9f;
+    color: #fff;
   }
 
   .activities-section__grid {
-    display: grid;
-    gap: 1rem;
-    margin-top: clamp(2rem, 5vw, 4rem);
-  }
-
-  .activities-section article {
-    display: grid;
-    grid-template-columns: minmax(16rem, 0.76fr) minmax(0, 1.24fr);
-    gap: clamp(1.2rem, 4vw, 4rem);
+    --card-width: min(72%, 24rem);
+    display: flex;
+    gap: clamp(1rem, 3vw, 2rem);
     align-items: stretch;
-    min-height: 17rem;
-    padding: clamp(1rem, 2vw, 1.5rem);
-    border: 1px solid #e3ded3;
-    background: #fffdf8;
+    width: 100%;
+    padding-inline: calc((100% - var(--card-width)) / 2);
+    overflow-x: auto;
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
   }
 
-  .activities-section figure,
+  .activities-section__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .activities-carousel {
+    position: relative;
+  }
+
+  .activities-carousel__button {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    display: grid;
+    width: 2.6rem;
+    height: 2.6rem;
+    place-items: center;
+    border: 2px solid #111;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    cursor: pointer;
+    font-size: 1.45rem;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .activities-carousel__button:hover,
+  .activities-carousel__button:focus-visible {
+    background: #ffe500;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .activities-carousel__button--prev {
+    left: 0.5rem;
+  }
+
+  .activities-carousel__button--next {
+    right: 0.5rem;
+  }
+
+  .ranking-card--left {
+    order: 1;
+  }
+
+  .ranking-card--featured {
+    order: 2;
+  }
+
+  .ranking-card--right {
+    order: 3;
+  }
+
+  .ranking-card {
+    flex: 0 0 var(--card-width);
+    scroll-snap-align: center;
+  }
+
+  .activities-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.55rem;
+    margin-top: 1.35rem;
+  }
+
+  .activities-carousel__dots span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background: #111;
+  }
+
+  .activities-carousel__dots span.is-active {
+    outline: 2px solid #ffe500;
+    outline-offset: 2px;
+  }
+
   .pathways-section figure,
   .works-section figure {
     margin: 0;
@@ -1299,44 +1622,12 @@ const works = [
     background: #e6e7e2;
   }
 
-  .activities-section figure {
-    min-height: 15rem;
-  }
-
-  .activities-section img,
   .pathways-section img,
   .works-section img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.6s ease;
-  }
-
-  .activities-section article > div {
-    align-self: center;
-    max-width: 40rem;
-  }
-
-  .activities-section span {
-    color: #50627a;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-  }
-
-  .activities-section h3 {
-    margin: 0.7rem 0 0;
-    color: #30486e;
-    font-size: clamp(1.35rem, 2.2vw, 2rem);
-    font-weight: 600;
-    line-height: 1.45;
-  }
-
-  .activities-section p {
-    margin: 1rem 0 0;
-    color: #2e4568;
-    font-weight: 400;
-    line-height: 2;
   }
 
   .faq-section__list {
@@ -1577,16 +1868,20 @@ const works = [
 
     .empathy-section {
       width: 100vw;
-      padding: 4rem 1rem;
+      padding: 1rem 1rem 4rem;
     }
 
     .empathy-section__panel {
-      width: min(100%, 34rem);
       padding: 2rem 1.25rem 2.25rem;
-      box-shadow:
-        0.35rem 0.35rem 0 #ffe500,
-        0.7rem 0.7rem 0 #111;
       transform: rotate(-0.4deg);
+    }
+
+    .empathy-section__layer--black {
+      transform: translate(-0.45rem, 0.7rem) rotate(-1deg);
+    }
+
+    .empathy-section__layer--yellow {
+      transform: translate(0.4rem, 0.35rem) rotate(0.7deg);
     }
 
     .empathy-section h2 {
@@ -1599,7 +1894,8 @@ const works = [
     }
 
     .empathy-section__cards img {
-      height: clamp(10rem, 55vw, 13rem);
+      height: auto;
+      aspect-ratio: auto;
     }
 
     .weekend-hero {
@@ -1649,7 +1945,7 @@ const works = [
       overflow: hidden;
       border-radius: 0;
       aspect-ratio: auto;
-      background: #28a9df;
+      background: #36a9ee;
     }
 
     .island-map__art {
@@ -1718,22 +2014,15 @@ const works = [
       transform: translate(-50%, -56%) rotate(calc(var(--tilt, 0deg) - 2deg));
     }
 
-    .map-spot > span:last-child {
-      align-self: auto;
-      padding: 0.12rem 0.42rem;
-      border: 1.5px solid #2f5d43;
-      background: rgb(255 253 248 / 84%);
-    }
-
     .map-farm {
-      width: clamp(4.8rem, 24vw, 6rem);
+      width: clamp(7.5rem, 32vw, 10rem);
       max-width: none;
       height: auto;
       border: 0;
     }
 
     .map-house {
-      width: clamp(5.5rem, 26vw, 6.5rem);
+      width: clamp(8rem, 34vw, 11rem);
       max-width: none;
       height: auto;
       border: 0;
@@ -1773,6 +2062,60 @@ const works = [
 
     .activities-section article {
       padding: 0.75rem;
+    }
+
+    .ranking-section__heading .section-kicker {
+      font-size: clamp(2.4rem, 14vw, 3.8rem);
+    }
+
+    .ranking-section__subtitle {
+      max-width: 18rem;
+      margin-inline: auto;
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    .activities-section__grid {
+      --card-width: 82%;
+      gap: 1.75rem;
+      margin-top: 2.5rem;
+    }
+
+    .ranking-card,
+    .ranking-card--featured {
+      width: min(100%, 20rem);
+      margin-inline: auto;
+      padding: 1.25rem;
+    }
+
+    .ranking-card--featured {
+      order: 1;
+    }
+
+    .ranking-card--right {
+      order: 2;
+    }
+
+    .ranking-card--left {
+      order: 3;
+    }
+
+    .ranking-card--featured {
+      padding: 1.5rem;
+    }
+
+    .activities-carousel__button {
+      width: 2.2rem;
+      height: 2.2rem;
+      font-size: 1.15rem;
+    }
+
+    .activities-carousel__button--prev {
+      left: 0.15rem;
+    }
+
+    .activities-carousel__button--next {
+      right: 0.15rem;
     }
 
     .pathways-section__grid,
