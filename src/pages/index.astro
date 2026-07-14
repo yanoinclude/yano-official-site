@@ -8,7 +8,6 @@ import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.pn
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import yanoKominkaPhoto from "@/assets/images/home/yano-kominka-photo.png";
-import yanoLemonPhoto from "@/assets/images/home/yano-lemon-photo.jpg";
 import rankingLemonJuice from "@/assets/images/home/ranking-lemon-juice.jpeg";
 import rankingKominkaEvent from "@/assets/images/home/ranking-kominka-event.jpeg";
 import rankingMarche from "@/assets/images/home/ranking-marche.jpeg";
@@ -154,9 +153,10 @@ const works = [
   <section class="weekend-hero" aria-label="中島での活動マップ">
     <p class="site-name">矢野、週末移住中。</p>
     <p class="hero-introduction">
-      平日は松山で働き、週末は中島へ。<br />
-      古民家を直し、レモンを育て、<br />
-      島に人が集まるきっかけをつくっています。
+      <span>平日は松山で働き、週末は中島へ。</span>
+      <span>
+        古民家を直し、レモンを育て、島に人が集まるきっかけをつくっています。
+      </span>
     </p>
     <div class="island-map" aria-label="中島での活動マップ">
       <img
@@ -308,14 +308,15 @@ const works = [
         href="#kominka"
         aria-label="古民家再生へ"
       >
-        <img
-          class="map-house"
-          src={kominkaCutout.src}
-          alt=""
-          loading="eager"
-          decoding="async"
-          aria-hidden="true"
-        />
+        <span class="map-landmark" aria-hidden="true">
+          <img
+            class="map-house"
+            src={kominkaCutout.src}
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
+        </span>
         <span class="map-spot__label">古民家</span>
       </a>
       <a
@@ -323,14 +324,15 @@ const works = [
         href="#lemon-product"
         aria-label="レモン畑と商品へ"
       >
-        <img
-          class="map-farm"
-          src={lemonTreeCutout.src}
-          alt=""
-          loading="eager"
-          decoding="async"
-          aria-hidden="true"
-        />
+        <span class="map-landmark" aria-hidden="true">
+          <img
+            class="map-farm"
+            src={lemonTreeCutout.src}
+            alt=""
+            loading="eager"
+            decoding="async"
+          />
+        </span>
         <span class="map-spot__label">レモン畑</span>
       </a>
     </div>
@@ -349,34 +351,35 @@ const works = [
       >
       </div>
       <div class="empathy-section__panel">
-        <header class="empathy-section__heading">
-          <p class="section-kicker">A SMALL FIRST STEP</p>
-          <h2>田舎暮らし、憧れる。<br />でも踏み出せない。</h2>
-          <p>島との関わりは、小さな一歩から。</p>
-        </header>
-        <div class="empathy-section__cards">
-          <article>
+        <div class="empathy-section__content">
+          <div class="empathy-section__text">
+            <header class="empathy-section__heading">
+              <p class="section-kicker">A SMALL FIRST STEP</p>
+              <h2>
+                <span>田舎暮らし、憧れる。</span>
+                <span>でも踏み出せない。</span>
+              </h2>
+            </header>
+            <p class="empathy-section__lead">
+              島との関わりは、小さな一歩から。
+            </p>
+            <div class="empathy-section__copy">
+              <p>
+                いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
+              </p>
+              <p>
+                ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
+              </p>
+            </div>
+          </div>
+          <figure class="empathy-section__photo">
             <img
               src={yanoKominkaPhoto.src}
               alt="古民家の前に立つヤノ"
               loading="lazy"
               decoding="async"
             />
-            <p>
-              いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
-            </p>
-          </article>
-          <article>
-            <img
-              src={yanoLemonPhoto.src}
-              alt="レモン畑で作業するヤノ"
-              loading="lazy"
-              decoding="async"
-            />
-            <p>
-              ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
-            </p>
-          </article>
+          </figure>
         </div>
       </div>
     </div>
@@ -387,7 +390,8 @@ const works = [
       <header class="ranking-section__heading">
         <p class="section-kicker">MESSAGE</p>
         <p class="ranking-section__subtitle">
-          移住しなくても、島は味わえる。田舎を体感しよう
+          <span>移住しなくても、島は味わえる。</span>
+          <span>田舎を体感しよう</span>
         </p>
       </header>
       <div class="activities-carousel">
@@ -403,10 +407,11 @@ const works = [
                 id={activity.targetId}
                 class:list={{
                   "ranking-card": true,
-                  "ranking-card--featured": index === 0,
+                  "ranking-card--active": index === 0,
                   "ranking-card--left": index === 2,
                   "ranking-card--right": index === 1,
                 }}
+                data-carousel-item
               >
                 <span class="ranking-card__badge">{activity.number}</span>
                 <figure>
@@ -563,9 +568,17 @@ const works = [
   >
 
   <script>
-    const carousel = document.querySelector(".activities-carousel");
-    if (carousel) {
-      const track = carousel.querySelector(".activities-section__grid");
+    const initializeActivitiesCarousel = () => {
+      const carousel = document.querySelector<HTMLElement>(
+        ".activities-carousel",
+      );
+      if (!carousel) return;
+
+      const track = carousel.querySelector<HTMLElement>(
+        ".activities-section__grid",
+      );
+      if (!track) return;
+
       const previous = carousel.querySelector(
         ".activities-carousel__button--prev",
       );
@@ -573,21 +586,32 @@ const works = [
       const dots = [
         ...carousel.querySelectorAll(".activities-carousel__dots span"),
       ];
-      const cards = [...track.querySelectorAll(".ranking-card")].sort(
-        (a, b) => a.offsetLeft - b.offsetLeft,
-      );
+      const cards = [
+        ...track.querySelectorAll<HTMLElement>(".ranking-card"),
+      ].sort((a, b) => a.offsetLeft - b.offsetLeft);
       let activeIndex = 0;
 
-      const showCard = (index, behavior = "smooth") => {
+      const showCard = (index: number, behavior: ScrollBehavior = "smooth") => {
         activeIndex = (index + cards.length) % cards.length;
         const card = cards[activeIndex];
+        const trackRect = track.getBoundingClientRect();
+        const cardRect = card.getBoundingClientRect();
         track.scrollTo({
-          left: card.offsetLeft - (track.clientWidth - card.clientWidth) / 2,
+          left:
+            track.scrollLeft +
+            cardRect.left -
+            trackRect.left -
+            (track.clientWidth - cardRect.width) / 2,
           behavior,
         });
         dots.forEach((dot, dotIndex) =>
           dot.classList.toggle("is-active", dotIndex === activeIndex),
         );
+        cards.forEach((item, cardIndex) => {
+          const isActive = cardIndex === activeIndex;
+          item.classList.toggle("ranking-card--active", isActive);
+          item.setAttribute("aria-current", isActive ? "true" : "false");
+        });
       };
 
       previous?.addEventListener("click", () => showCard(activeIndex - 1));
@@ -596,7 +620,9 @@ const works = [
         ? 0
         : 1;
       requestAnimationFrame(() => showCard(initialIndex, "auto"));
-    }
+    };
+
+    initializeActivitiesCarousel();
 
     const revealTargets = document.querySelectorAll(".reveal-section");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -632,7 +658,14 @@ const works = [
   }
 
   :global(body:has(.weekend-hero) .site-frame) {
-    background: #fffdf8;
+    padding: 0;
+    background: #36a9ee;
+  }
+
+  :global(body:has(.weekend-hero) .site-frame > main),
+  :global(body:has(.weekend-hero) .site-frame > .site-footer),
+  :global(body:has(.weekend-hero) .site-footer) {
+    background: #36a9ee;
   }
 
   :global(body:has(.weekend-hero) .site-header) {
@@ -754,6 +787,11 @@ const works = [
     font-weight: 700;
     line-height: 1.65;
     letter-spacing: 0.02em;
+  }
+
+  .hero-introduction span {
+    display: block;
+    white-space: nowrap;
   }
 
   .recent-section a {
@@ -960,6 +998,15 @@ const works = [
     filter: none;
   }
 
+  .map-spot--farm,
+  .map-spot--farm .map-landmark,
+  .map-spot--farm .map-farm {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
   .map-spot--house,
   .map-spot--farm {
     isolation: isolate;
@@ -975,14 +1022,21 @@ const works = [
     animation-delay: 0.65s;
   }
 
-  .map-spot--house::before,
-  .map-spot--farm::before {
+  .map-landmark {
+    position: relative;
+    z-index: 0;
+    display: grid;
+    place-items: center;
+    isolation: isolate;
+  }
+
+  .map-landmark::before {
     position: absolute;
     z-index: -1;
-    bottom: -0.8rem;
+    bottom: -0.25rem;
     left: 50%;
-    width: calc(100% + 3.4rem);
-    height: 3.2rem;
+    width: 118%;
+    height: 22%;
     border-radius: 50%;
     background: rgb(255 248 207 / 84%);
     content: "";
@@ -990,24 +1044,20 @@ const works = [
   }
 
   .map-spot__label {
-    display: grid;
-    justify-items: center;
-    min-width: 5.8rem;
-    padding: 0.15rem 0.15rem 0.3rem;
-    border-bottom: 2px solid #233f61;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    padding: 0.2rem 0.55rem;
+    border: 1.5px solid #2f5d43;
+    border-radius: 52% 48% 56% 44% / 46% 52% 48% 54%;
+    background: rgb(255 253 248 / 92%);
     color: #233f61;
-    font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+    font-size: clamp(0.82rem, 1vw, 0.96rem);
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em;
     white-space: nowrap;
-  }
-
-  .map-spot__label::before {
-    width: 1px;
-    height: 0.95rem;
-    margin: 0 auto 0.2rem;
-    background: #233f61;
-    content: "";
+    box-shadow: 0 2px 0 rgb(47 93 67 / 10%);
   }
 
   .map-spot--yano > span:last-child {
@@ -1111,6 +1161,9 @@ const works = [
     border: 0;
     background: transparent;
     filter: drop-shadow(0 0.18rem 0.22rem rgb(47 93 67 / 14%));
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease;
   }
 
   .map-farm {
@@ -1131,7 +1184,13 @@ const works = [
     outline-offset: 0;
     scale: 1.05;
     translate: 0 -0.35rem;
+    filter: none;
+  }
+
+  .map-spot--farm:hover .map-farm,
+  .map-spot--farm:focus-visible .map-farm {
     filter: drop-shadow(0 0.45rem 0.5rem rgb(35 63 97 / 18%));
+    transform: translateY(-0.08rem);
   }
 
   @keyframes landmark-pop {
@@ -1277,9 +1336,20 @@ const works = [
     display: none;
   }
 
-  .empathy-section__heading {
-    margin-bottom: clamp(2rem, 4vw, 3.25rem);
+  .empathy-section__content {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
     transform: rotate(1deg);
+  }
+
+  .empathy-section__text {
+    min-width: 0;
+  }
+
+  .empathy-section__heading {
+    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
   }
 
   .empathy-section .section-kicker {
@@ -1296,50 +1366,60 @@ const works = [
   }
 
   .empathy-section h2 {
-    max-width: 34rem;
+    max-width: none;
     color: #ff3f9f;
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(1.75rem, 2.7vw, 2.3rem);
     font-weight: 800;
     line-height: 1.35;
   }
 
-  .empathy-section__heading > p:last-child {
-    margin: 0.75rem 0 0;
+  .empathy-section h2 span {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .empathy-section__lead {
+    margin: 0;
     color: #111;
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: clamp(1rem, 1.45vw, 1.2rem);
+    font-weight: 800;
+    line-height: 1.65;
   }
 
-  .empathy-section__cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1.5rem, 4vw, 2.5rem);
-    transform: rotate(1deg);
+  .empathy-section__copy {
+    margin-top: 1.25rem;
   }
 
-  .empathy-section__cards article {
-    min-width: 0;
+  .empathy-section__copy p {
+    margin: 0;
+    color: #111;
+    font-size: clamp(0.88rem, 1.1vw, 1rem);
+    font-weight: 500;
+    line-height: 1.95;
   }
 
-  .empathy-section__cards img {
+  .empathy-section__copy p + p {
+    margin-top: 1rem;
+  }
+
+  .empathy-section__photo {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .empathy-section__photo img {
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: auto;
-    object-fit: contain;
-  }
-
-  .empathy-section__cards p {
-    margin: 1rem 0 0;
-    color: #111;
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    font-weight: 500;
-    line-height: 1.75;
+    height: 100%;
+    max-height: 32rem;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 30% center;
   }
 
   .concept-section {
     padding-block: clamp(4.5rem, 8vw, 7rem);
-    background: #f5f1ed;
+    background: #36a9ee;
     color: #2e4568;
   }
 
@@ -1409,6 +1489,11 @@ const works = [
     font-weight: 700;
   }
 
+  .ranking-section__subtitle span {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
   .ranking-card {
     position: relative;
     display: flex;
@@ -1418,18 +1503,30 @@ const works = [
     border-radius: 50% / 25%;
     background: rgb(179 221 249 / 82%);
     color: #2e4568;
+    box-sizing: border-box;
+    opacity: 0.74;
+    transform: scale(0.94);
+    transition:
+      background-color 0.25s ease,
+      opacity 0.25s ease,
+      transform 0.25s ease;
   }
 
-  .ranking-card--featured {
+  .ranking-card--active {
     padding: clamp(2.1rem, 3.5vw, 3rem) clamp(1.7rem, 3vw, 2.5rem) 3.2rem;
     border-radius: 50% / 23%;
     background: #fff;
+    opacity: 1;
+    transform: translateY(-0.85rem) scale(1);
   }
 
   .ranking-card figure {
+    width: 100%;
     min-height: 0;
+    margin: 0;
     aspect-ratio: 4 / 3;
     border-radius: 0.15rem;
+    overflow: hidden;
   }
 
   .ranking-card img {
@@ -1464,8 +1561,8 @@ const works = [
   .ranking-card__badge {
     position: absolute;
     z-index: 1;
-    top: -0.35rem;
-    left: -0.4rem;
+    top: 0.8rem;
+    left: 0.8rem;
     display: grid;
     width: 2.8rem;
     aspect-ratio: 1;
@@ -1500,7 +1597,7 @@ const works = [
     font-weight: 800;
   }
 
-  .ranking-card--featured .ranking-card__badge {
+  .ranking-card--active .ranking-card__badge {
     background: #ff3f9f;
     color: #fff;
   }
@@ -1513,7 +1610,7 @@ const works = [
     width: 100%;
     padding-inline: calc((100% - var(--card-width)) / 2);
     overflow-x: auto;
-    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    margin-top: 0;
     scrollbar-width: none;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
@@ -1524,14 +1621,16 @@ const works = [
   }
 
   .activities-carousel {
-    --card-width: min(72%, 24rem);
-    position: relative;
+    display: grid;
+    grid-template-columns: 2.6rem minmax(0, 1fr) 2.6rem;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    align-items: center;
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
   }
 
   .activities-carousel__button {
-    position: absolute;
+    position: relative;
     z-index: 3;
-    top: 50%;
     display: grid;
     width: 2.6rem;
     height: 2.6rem;
@@ -1543,7 +1642,6 @@ const works = [
     cursor: pointer;
     font-size: 1.45rem;
     line-height: 1;
-    transform: translateY(-50%);
     transition:
       transform 0.2s ease,
       background-color 0.2s ease;
@@ -1552,22 +1650,22 @@ const works = [
   .activities-carousel__button:hover,
   .activities-carousel__button:focus-visible {
     background: #ffe500;
-    transform: translateY(-50%) scale(1.05);
+    transform: scale(1.05);
   }
 
   .activities-carousel__button--prev {
-    left: calc(50% - var(--card-width) / 2 - 1.7rem);
+    grid-column: 1;
   }
 
   .activities-carousel__button--next {
-    right: calc(50% - var(--card-width) / 2 - 1.7rem);
+    grid-column: 3;
   }
 
   .ranking-card--left {
     order: 1;
   }
 
-  .ranking-card--featured {
+  .ranking-card--active {
     order: 2;
   }
 
@@ -1664,7 +1762,7 @@ const works = [
 
   .pathways-section {
     padding-block: clamp(5rem, 9vw, 9rem);
-    background: #fffdf6;
+    background: #36a9ee;
   }
 
   .pathways-section__heading {
@@ -1742,7 +1840,7 @@ const works = [
 
   .recent-section {
     padding-block: clamp(5rem, 9vw, 8rem);
-    background: #ffe500;
+    background: #36a9ee;
     color: #2e4568;
   }
 
@@ -1829,6 +1927,15 @@ const works = [
   }
 
   @media (max-width: 800px) {
+    .empathy-section__content {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .empathy-section__photo img {
+      aspect-ratio: 3 / 2;
+    }
+
     .concept-section__inner,
     .place-section,
     .pathways-section__heading {
@@ -1860,8 +1967,9 @@ const works = [
       transform: rotate(-0.4deg);
     }
 
-    .empathy-section__heading,
-    .empathy-section__cards {
+    .empathy-section__content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
       transform: rotate(0.4deg);
     }
 
@@ -1874,17 +1982,13 @@ const works = [
     }
 
     .empathy-section h2 {
-      font-size: clamp(1.7rem, 8vw, 2.15rem);
+      font-size: clamp(1.25rem, 5.8vw, 1.65rem);
     }
 
-    .empathy-section__cards {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-
-    .empathy-section__cards img {
-      height: auto;
-      aspect-ratio: auto;
+    .empathy-section__photo img {
+      max-height: none;
+      aspect-ratio: 4 / 3;
+      object-position: 30% center;
     }
 
     .weekend-hero {
@@ -1922,7 +2026,7 @@ const works = [
       max-width: calc(100% - 2rem);
       padding: 0.48rem 0.58rem 0.52rem;
       border-bottom-width: 2px;
-      font-size: clamp(0.64rem, 2.8vw, 0.72rem);
+      font-size: clamp(0.56rem, 2.45vw, 0.66rem);
       line-height: 1.55;
       letter-spacing: 0;
     }
@@ -2067,17 +2171,16 @@ const works = [
     .activities-section__grid {
       --card-width: 82%;
       gap: 1.75rem;
-      margin-top: 2.5rem;
     }
 
     .ranking-card,
-    .ranking-card--featured {
+    .ranking-card--active {
       width: min(100%, 20rem);
       margin-inline: auto;
       padding: 1.25rem;
     }
 
-    .ranking-card--featured {
+    .ranking-card--active {
       order: 1;
     }
 
@@ -2089,7 +2192,7 @@ const works = [
       order: 3;
     }
 
-    .ranking-card--featured {
+    .ranking-card--active {
       padding: 1.5rem;
     }
 
@@ -2099,12 +2202,10 @@ const works = [
       font-size: 1.15rem;
     }
 
-    .activities-carousel__button--prev {
-      left: 0.25rem;
-    }
-
-    .activities-carousel__button--next {
-      right: 0.25rem;
+    .activities-carousel {
+      grid-template-columns: 2.2rem minmax(0, 1fr) 2.2rem;
+      gap: 0.35rem;
+      margin-top: 2.5rem;
     }
 
     .pathways-section__grid,
