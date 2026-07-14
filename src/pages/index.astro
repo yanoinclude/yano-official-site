@@ -8,6 +8,7 @@ import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.pn
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import yanoKominkaPhoto from "@/assets/images/home/yano-kominka-photo.png";
+import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
 import rankingLemonJuice from "@/assets/images/home/ranking-lemon-juice.jpeg";
 import rankingKominkaEvent from "@/assets/images/home/ranking-kominka-event.jpeg";
 import rankingMarche from "@/assets/images/home/ranking-marche.jpeg";
@@ -19,7 +20,8 @@ const activities = [
   {
     number: "01",
     targetId: "lemon-product",
-    title: "週末移住レモン果汁。",
+    title: "レモン果汁を味見してみよう！",
+    tags: ["#週末移住レモン果汁"],
     body: "耕作放棄地寸前だった農園を譲り受け、管理から販売まで担っています。週末移住の暮らしだからこそ、最低限の管理と愛情を注いでいます。",
     image: rankingLemonJuice.src,
     alt: "週末移住レモン果汁の瓶が並ぶ様子",
@@ -27,7 +29,8 @@ const activities = [
   {
     number: "02",
     targetId: "kominka",
-    title: "古民家をフルリノベ、地域の拠点へ。",
+    title: "2円で買った築100年古民家を見学しよう！",
+    tags: ["#リノベーション", "#クラファン"],
     body: "2円で購入した築100年の古民家をセルフリノベーション。1年8か月、土日を島に捧げ、友人や島の人と一緒に再生しています。今では交流拠点として、島内外から人が集まる場所です。",
     image: rankingKominkaEvent.src,
     alt: "古民家で開かれた交流イベントの様子",
@@ -35,7 +38,8 @@ const activities = [
   {
     number: "03",
     targetId: "events",
-    title: "島の魅力を伝えるイベント。",
+    title: "イベントやマルシェに参加しよう！",
+    tags: ["#お手伝い募集中"],
     body: "マルシェ出店や収穫イベントなどを企画しています。17年続く海掃除をサポートし、不定期でマルシェや収穫イベントを開催。島の雰囲気を島外へ発信しています。",
     image: rankingMarche.src,
     alt: "マルシェでレモン商品を販売する様子",
@@ -406,20 +410,31 @@ const works = [
               <article
                 id={activity.targetId}
                 class:list={{
-                  "ranking-card": true,
-                  "ranking-card--active": index === 0,
-                  "ranking-card--left": index === 2,
-                  "ranking-card--right": index === 1,
+                  "ranking-slide": true,
+                  "is-active": index === 0,
+                  "is-left": index === 2,
+                  "is-right": index === 1,
                 }}
                 data-carousel-item
               >
                 <span class="ranking-card__badge">{activity.number}</span>
-                <figure>
-                  <img src={activity.image} alt={activity.alt} loading="lazy" />
-                </figure>
-                <div>
-                  <h3>{activity.title}</h3>
-                  <p>{activity.body}</p>
+                <div class="ranking-card">
+                  <figure>
+                    <img
+                      src={activity.image}
+                      alt={activity.alt}
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div class="ranking-card__content">
+                    <h3>{activity.title}</h3>
+                    <p class="ranking-card__tags">
+                      {activity.tags.map((tag) => (
+                        <span>{tag}</span>
+                      ))}
+                    </p>
+                    <p>{activity.body}</p>
+                  </div>
                 </div>
               </article>
             ))
@@ -434,22 +449,47 @@ const works = [
       <div class="activities-carousel__dots" aria-hidden="true">
         <span class="is-active"></span><span></span><span></span>
       </div>
+      <div class="message-wordmark" aria-label="週末移住">
+        {
+          Array.from({ length: 6 }, (_, index) => (
+            <span style={`--wordmark-index: ${index}`}>週末移住</span>
+          ))
+        }
+      </div>
     </div>
   </section>
 
-  <section class="concept-section reveal-section">
-    <div class="concept-section__inner content-shell">
-      <div>
-        <p class="section-kicker">CONCEPT</p>
-        <h2>週末移住という、半歩目。</h2>
-      </div>
-      <div class="concept-section__copy">
-        <p>
-          移住しなくても、島は少し味わえる。畑で採れたレモンを搾った果汁。古民家を直す日々。海掃除やマルシェ、収穫イベント。
-        </p>
-        <p>
-          週末ごとに島で受け取ったものを、商品や発信や体験にして届けています。一歩踏み出さなくてもいい。まずは半歩、島の空気を感じてもらえたら。
-        </p>
+  <section class="profile-section reveal-section" id="profile">
+    <div class="content-shell">
+      <header class="profile-section__heading">
+        <p class="section-kicker">PROFILE</p>
+        <p>田舎がもっと身近に感じてもらえるように</p>
+      </header>
+      <div class="profile-section__layout">
+        <figure class="profile-section__photo">
+          <img
+            src={aboutYanoLemonGrove.src}
+            alt="中島のレモン畑で笑顔を見せる矢野諭稔"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="profile-section__details">
+          <article class="profile-section__primary">
+            <h2>矢野諭稔 <span>（週末移住者）</span></h2>
+            <p class="profile-section__name-en">Satoshi Yano</p>
+            <p>
+              平日は広告代理店に勤務。松山・東京の二拠点生活を送りながら、週末は愛媛の離島「中島（なかじま）」に通っています。四季折々に表情を変える田舎の景色が大好きです。
+            </p>
+          </article>
+          <article class="profile-section__secondary">
+            <h3>しとらすすたんどKominKa</h3>
+            <p>
+              築100年古民家の屋号を「しとらすすたんどKominKa」と命名。島の活動拠点として運営しています。不定期でイベントを開催し、週末はメンバーが古民家を管理しています。
+            </p>
+          </article>
+          <a class="profile-section__more" href="/about">MORE</a>
+        </div>
       </div>
     </div>
   </section>
@@ -587,39 +627,30 @@ const works = [
         ...carousel.querySelectorAll(".activities-carousel__dots span"),
       ];
       const cards = [
-        ...track.querySelectorAll<HTMLElement>(".ranking-card"),
-      ].sort((a, b) => a.offsetLeft - b.offsetLeft);
+        ...track.querySelectorAll<HTMLElement>("[data-carousel-item]"),
+      ];
       let activeIndex = 0;
 
-      const showCard = (index: number, behavior: ScrollBehavior = "smooth") => {
+      const showCard = (index: number) => {
         activeIndex = (index + cards.length) % cards.length;
-        const card = cards[activeIndex];
-        const trackRect = track.getBoundingClientRect();
-        const cardRect = card.getBoundingClientRect();
-        track.scrollTo({
-          left:
-            track.scrollLeft +
-            cardRect.left -
-            trackRect.left -
-            (track.clientWidth - cardRect.width) / 2,
-          behavior,
-        });
+        const leftIndex = (activeIndex - 1 + cards.length) % cards.length;
+        const rightIndex = (activeIndex + 1) % cards.length;
+
         dots.forEach((dot, dotIndex) =>
           dot.classList.toggle("is-active", dotIndex === activeIndex),
         );
         cards.forEach((item, cardIndex) => {
           const isActive = cardIndex === activeIndex;
-          item.classList.toggle("ranking-card--active", isActive);
+          item.classList.toggle("is-active", isActive);
+          item.classList.toggle("is-left", cardIndex === leftIndex);
+          item.classList.toggle("is-right", cardIndex === rightIndex);
           item.setAttribute("aria-current", isActive ? "true" : "false");
         });
       };
 
       previous?.addEventListener("click", () => showCard(activeIndex - 1));
       next?.addEventListener("click", () => showCard(activeIndex + 1));
-      const initialIndex = window.matchMedia("(max-width: 640px)").matches
-        ? 0
-        : 1;
-      requestAnimationFrame(() => showCard(initialIndex, "auto"));
+      requestAnimationFrame(() => showCard(0));
     };
 
     initializeActivitiesCarousel();
@@ -1429,6 +1460,127 @@ const works = [
     color: #2e4568;
   }
 
+  .profile-section {
+    padding-block: clamp(4.5rem, 8vw, 7rem);
+    background: #36a9ee;
+    color: #fff;
+  }
+
+  .profile-section__heading {
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    text-align: center;
+  }
+
+  .profile-section__heading .section-kicker {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+
+  .profile-section__heading > p:last-child {
+    margin: 0.85rem 0 0;
+    color: #ffe500;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-weight: 700;
+  }
+
+  .profile-section__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .profile-section__photo {
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+  }
+
+  .profile-section__photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 47% center;
+  }
+
+  .profile-section__details {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.4rem);
+    min-width: 0;
+  }
+
+  .profile-section__primary {
+    padding: clamp(1.6rem, 3vw, 2.5rem);
+    border-radius: 1.4rem;
+    background: #fff;
+    color: #2e4568;
+  }
+
+  .profile-section__primary h2 {
+    margin: 0;
+    color: #2e4568;
+    font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+    line-height: 1.45;
+  }
+
+  .profile-section__primary h2 span {
+    font-size: 0.72em;
+    white-space: nowrap;
+  }
+
+  .profile-section__name-en {
+    margin: 0.2rem 0 1rem;
+    color: #36a9ee;
+    font-weight: 800;
+  }
+
+  .profile-section__primary > p:last-child,
+  .profile-section__secondary p {
+    margin: 0;
+    font-size: clamp(0.88rem, 1.15vw, 1rem);
+    line-height: 1.9;
+  }
+
+  .profile-section__secondary {
+    padding: 0 0 clamp(1.5rem, 3vw, 2rem);
+    border-bottom: 3px dotted rgb(255 255 255 / 70%);
+    color: #fff;
+  }
+
+  .profile-section__secondary h3 {
+    margin: 0 0 0.45rem;
+    color: #fff;
+    font-size: clamp(1.2rem, 2vw, 1.65rem);
+  }
+
+  .profile-section__more {
+    display: inline-grid;
+    min-width: 8.5rem;
+    min-height: 3.2rem;
+    place-items: center;
+    justify-self: end;
+    border: 2px solid #111;
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    box-shadow: 0 0.3rem 0 #111;
+  }
+
+  .profile-section__more:hover,
+  .profile-section__more:focus-visible {
+    background: #ffe500;
+    transform: translateY(-0.1rem);
+  }
+
   .place-section {
     align-items: center;
   }
@@ -1494,77 +1646,141 @@ const works = [
     white-space: nowrap;
   }
 
-  .ranking-card {
-    position: relative;
-    display: flex;
-    min-width: 0;
-    flex-direction: column;
-    padding: clamp(1.7rem, 3vw, 2.4rem) clamp(1.35rem, 2.5vw, 2rem) 2.8rem;
-    border-radius: 50% / 25%;
-    background: rgb(179 221 249 / 82%);
-    color: #2e4568;
-    box-sizing: border-box;
-    opacity: 0.74;
-    transform: scale(0.94);
-    transition:
-      background-color 0.25s ease,
-      opacity 0.25s ease,
-      transform 0.25s ease;
+  .activities-carousel {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr) 3rem minmax(0, 1fr) 3rem
+      minmax(0, 1fr);
+    gap: clamp(0.75rem, 1.6vw, 1.5rem);
+    align-items: center;
+    width: min(100%, 76rem);
+    margin: clamp(2.5rem, 5vw, 4.5rem) auto 0;
+    padding: 1.1rem 0.35rem 0.65rem;
+    overflow: visible;
   }
 
-  .ranking-card--active {
-    padding: clamp(2.1rem, 3.5vw, 3rem) clamp(1.7rem, 3vw, 2.5rem) 3.2rem;
-    border-radius: 50% / 23%;
+  .activities-section__grid {
+    display: contents;
+  }
+
+  .ranking-slide {
+    position: relative;
+    display: none;
+    min-width: 0;
+    height: 100%;
+    padding-top: 0.7rem;
+    overflow: visible;
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s ease;
+  }
+
+  .ranking-slide.is-left,
+  .ranking-slide.is-active,
+  .ranking-slide.is-right {
+    display: block;
+  }
+
+  .ranking-slide.is-left {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .ranking-slide.is-active {
+    grid-column: 3;
+    grid-row: 1;
+    z-index: 2;
+    transform: translateY(-0.65rem);
+  }
+
+  .ranking-slide.is-right {
+    grid-column: 5;
+    grid-row: 1;
+  }
+
+  .ranking-card {
+    display: flex;
+    min-width: 0;
+    min-height: clamp(32rem, 45vw, 36rem);
+    height: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    padding: clamp(2rem, 3vw, 2.5rem) clamp(1.2rem, 2vw, 1.7rem)
+      clamp(2.5rem, 4vw, 3.4rem);
+    overflow: hidden;
+    border-radius: 999px;
+    background: #b3ddf9;
+    color: #2e4568;
+    opacity: 0.72;
+  }
+
+  .ranking-slide.is-active .ranking-card {
     background: #fff;
     opacity: 1;
-    transform: translateY(-0.85rem) scale(1);
   }
 
   .ranking-card figure {
     width: 100%;
     min-height: 0;
     margin: 0;
-    aspect-ratio: 4 / 3;
-    border-radius: 0.15rem;
     overflow: hidden;
+    border-radius: 0.2rem;
+    aspect-ratio: 4 / 3;
   }
 
   .ranking-card img {
     display: block;
     width: 100%;
+    max-width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .ranking-card > div {
-    padding-top: 1.15rem;
+  .ranking-card__content {
+    min-width: 0;
+    padding-top: 1.1rem;
   }
 
   .ranking-card h3 {
     margin: 0;
     color: #2e4568;
-    font-size: clamp(1rem, 1.45vw, 1.22rem);
+    font-size: clamp(0.95rem, 1.35vw, 1.18rem);
     font-weight: 700;
     line-height: 1.5;
-    overflow-wrap: anywhere;
+    line-break: strict;
   }
 
   .ranking-card p {
     margin: 0.7rem 0 0;
     color: #2e4568;
-    font-size: clamp(0.82rem, 1.05vw, 0.98rem);
+    font-size: clamp(0.76rem, 0.95vw, 0.92rem);
     font-weight: 500;
-    line-height: 1.75;
-    overflow-wrap: anywhere;
+    line-height: 1.72;
+    line-break: strict;
+  }
+
+  .ranking-card .ranking-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem 0.55rem;
+    margin-top: 0.45rem;
+    color: #2e4568;
+    font-size: clamp(0.7rem, 0.82vw, 0.82rem);
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .ranking-card__tags span {
+    white-space: nowrap;
   }
 
   .ranking-card__badge {
     position: absolute;
-    z-index: 1;
-    top: 0.8rem;
-    left: 0.8rem;
+    z-index: 5;
+    top: 0;
+    left: 0.55rem;
     display: grid;
-    width: 2.8rem;
+    width: 3.1rem;
     aspect-ratio: 1;
     place-items: center;
     clip-path: polygon(
@@ -1593,39 +1809,13 @@ const works = [
     );
     background: #a7d875;
     color: #2e4568;
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 800;
   }
 
-  .ranking-card--active .ranking-card__badge {
+  .ranking-slide.is-active .ranking-card__badge {
     background: #ff3f9f;
     color: #fff;
-  }
-
-  .activities-section__grid {
-    --card-width: min(72%, 24rem);
-    display: flex;
-    gap: clamp(1rem, 3vw, 2rem);
-    align-items: stretch;
-    width: 100%;
-    padding-inline: calc((100% - var(--card-width)) / 2);
-    overflow-x: auto;
-    margin-top: 0;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-  }
-
-  .activities-section__grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .activities-carousel {
-    display: grid;
-    grid-template-columns: 2.6rem minmax(0, 1fr) 2.6rem;
-    gap: clamp(0.75rem, 2vw, 1.5rem);
-    align-items: center;
-    margin-top: clamp(2.5rem, 5vw, 4.5rem);
   }
 
   .activities-carousel__button {
@@ -1654,28 +1844,13 @@ const works = [
   }
 
   .activities-carousel__button--prev {
-    grid-column: 1;
+    grid-column: 2;
+    grid-row: 1;
   }
 
   .activities-carousel__button--next {
-    grid-column: 3;
-  }
-
-  .ranking-card--left {
-    order: 1;
-  }
-
-  .ranking-card--active {
-    order: 2;
-  }
-
-  .ranking-card--right {
-    order: 3;
-  }
-
-  .ranking-card {
-    flex: 0 0 var(--card-width);
-    scroll-snap-align: center;
+    grid-column: 4;
+    grid-row: 1;
   }
 
   .activities-carousel__dots {
@@ -1695,6 +1870,32 @@ const works = [
   .activities-carousel__dots span.is-active {
     outline: 2px solid #ffe500;
     outline-offset: 2px;
+  }
+
+  .message-wordmark {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: clamp(0.55rem, 1.5vw, 1.25rem);
+    margin-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(1rem, 3vw, 2rem);
+  }
+
+  .message-wordmark span {
+    display: grid;
+    width: clamp(3.5rem, 7vw, 5.8rem);
+    height: clamp(13rem, 22vw, 18rem);
+    place-items: center;
+    background: rgb(255 255 255 / calc(0.12 + var(--wordmark-index) * 0.14));
+    color: #36a9ee;
+    font-size: clamp(1rem, 1.8vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    writing-mode: vertical-rl;
+  }
+
+  .message-wordmark span:last-child {
+    background: #fff;
   }
 
   .pathways-section figure,
@@ -1937,6 +2138,7 @@ const works = [
     }
 
     .concept-section__inner,
+    .profile-section__layout,
     .place-section,
     .pathways-section__heading {
       grid-template-columns: 1fr;
@@ -1944,6 +2146,51 @@ const works = [
 
     .activities-section article {
       grid-template-columns: 1fr;
+    }
+
+    .activities-carousel {
+      grid-template-columns: 2.6rem minmax(0, 1fr) 2.6rem;
+      gap: 0.65rem;
+      width: min(100%, 28rem);
+      padding-inline: 0.1rem;
+    }
+
+    .ranking-slide.is-left,
+    .ranking-slide.is-right {
+      display: none;
+    }
+
+    .ranking-slide.is-active {
+      display: block;
+      grid-column: 2;
+      grid-row: 1;
+      transform: none;
+    }
+
+    .activities-carousel__button--prev {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .activities-carousel__button--next {
+      grid-column: 3;
+      grid-row: 1;
+    }
+
+    .ranking-card {
+      min-height: 0;
+      padding: 2.2rem clamp(1.2rem, 4vw, 1.6rem) 3.2rem;
+    }
+
+    .profile-section__photo {
+      width: min(100%, 34rem);
+      margin-inline: auto;
+      aspect-ratio: 4 / 3;
+    }
+
+    .profile-section__details {
+      width: min(100%, 34rem);
+      margin-inline: auto;
     }
   }
 
@@ -2144,6 +2391,7 @@ const works = [
     }
 
     .empathy-section,
+    .profile-section,
     .place-section,
     .faq-section,
     .works-section,
@@ -2154,7 +2402,7 @@ const works = [
     }
 
     .activities-section article {
-      padding: 0.75rem;
+      padding: 0.7rem 0.15rem 0;
     }
 
     .ranking-section__heading .section-kicker {
@@ -2168,34 +2416,6 @@ const works = [
       line-height: 1.6;
     }
 
-    .activities-section__grid {
-      --card-width: 82%;
-      gap: 1.75rem;
-    }
-
-    .ranking-card,
-    .ranking-card--active {
-      width: min(100%, 20rem);
-      margin-inline: auto;
-      padding: 1.25rem;
-    }
-
-    .ranking-card--active {
-      order: 1;
-    }
-
-    .ranking-card--right {
-      order: 2;
-    }
-
-    .ranking-card--left {
-      order: 3;
-    }
-
-    .ranking-card--active {
-      padding: 1.5rem;
-    }
-
     .activities-carousel__button {
       width: 2.2rem;
       height: 2.2rem;
@@ -2204,8 +2424,62 @@ const works = [
 
     .activities-carousel {
       grid-template-columns: 2.2rem minmax(0, 1fr) 2.2rem;
-      gap: 0.35rem;
+      gap: 0.55rem;
+      width: 100%;
       margin-top: 2.5rem;
+      padding-top: 1.2rem;
+    }
+
+    .ranking-card {
+      width: 100%;
+      margin: 0;
+      padding: 2rem 1rem 2.8rem;
+      border-radius: 999px;
+    }
+
+    .ranking-card__badge {
+      left: 0.25rem;
+      width: 2.8rem;
+    }
+
+    .ranking-card h3 {
+      font-size: 1rem;
+    }
+
+    .ranking-card p {
+      font-size: 0.78rem;
+      line-height: 1.7;
+    }
+
+    .message-wordmark {
+      gap: 0.35rem;
+      margin-top: 3.5rem;
+    }
+
+    .message-wordmark span {
+      width: clamp(2.3rem, 11vw, 3.1rem);
+      height: 10rem;
+      font-size: 0.85rem;
+    }
+
+    .profile-section__heading .section-kicker {
+      font-size: clamp(2.4rem, 14vw, 3.8rem);
+    }
+
+    .profile-section__heading > p:last-child {
+      font-size: 0.78rem;
+    }
+
+    .profile-section__photo {
+      aspect-ratio: 4 / 5;
+    }
+
+    .profile-section__primary {
+      padding: 1.35rem;
+    }
+
+    .profile-section__more {
+      justify-self: center;
     }
 
     .pathways-section__grid,
