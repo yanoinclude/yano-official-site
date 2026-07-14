@@ -157,7 +157,10 @@ const works = [
   <section class="weekend-hero" aria-label="中島での活動マップ">
     <p class="site-name">矢野、週末移住中。</p>
     <p class="hero-introduction">
-      <span>平日は松山で働き、週末は中島へ。</span>
+      <span class="hero-introduction__desktop"
+        >平日は松山で働き、週末は中島へ。</span
+      >
+      <span class="hero-introduction__mobile">平日は松山で働き、</span>
       <span>
         古民家を直し、レモンを育て、島に人が集まるきっかけをつくっています。
       </span>
@@ -294,8 +297,8 @@ const works = [
 
       <a
         class="map-spot map-spot--yano"
-        href="/about"
-        aria-label="ヤノのプロフィールへ"
+        href="#profile"
+        aria-label="ページ内のヤノのプロフィールへ"
       >
         <span class="map-yano" aria-hidden="true">
           <img
@@ -356,26 +359,16 @@ const works = [
       </div>
       <div class="empathy-section__panel">
         <div class="empathy-section__content">
-          <div class="empathy-section__text">
-            <header class="empathy-section__heading">
-              <p class="section-kicker">A SMALL FIRST STEP</p>
-              <h2>
-                <span>田舎暮らし、憧れる。</span>
-                <span>でも踏み出せない。</span>
-              </h2>
-            </header>
+          <header class="empathy-section__heading">
+            <p class="section-kicker">A SMALL FIRST STEP</p>
+            <h2>
+              <span>田舎暮らし、憧れる。</span>
+              <span>でも踏み出せない。</span>
+            </h2>
             <p class="empathy-section__lead">
               島との関わりは、小さな一歩から。
             </p>
-            <div class="empathy-section__copy">
-              <p>
-                いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
-              </p>
-              <p>
-                ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
-              </p>
-            </div>
-          </div>
+          </header>
           <figure class="empathy-section__photo">
             <img
               src={yanoKominkaPhoto.src}
@@ -384,6 +377,14 @@ const works = [
               decoding="async"
             />
           </figure>
+          <div class="empathy-section__copy">
+            <p>
+              いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
+            </p>
+            <p>
+              ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -727,7 +728,7 @@ const works = [
     margin: 0;
     color: #30486e;
     font-family: var(--font-island-body);
-    font-size: clamp(1.9rem, 3vw, 2.65rem);
+    font-size: 2.65rem;
     font-weight: 600;
     line-height: 1.45;
     letter-spacing: 0;
@@ -779,7 +780,7 @@ const works = [
     font-family:
       "Arial Rounded MT Bold", "Hiragino Maru Gothic ProN", "Noto Sans JP",
       sans-serif;
-    font-size: clamp(1.45rem, 1.82vw, 1.75rem);
+    font-size: 1.75rem;
     font-weight: 700;
     line-height: 1.1;
     letter-spacing: 0.04em;
@@ -814,7 +815,7 @@ const works = [
     font-family:
       "Arial Rounded MT Bold", "Hiragino Maru Gothic ProN", "Noto Sans JP",
       sans-serif;
-    font-size: clamp(0.78rem, 0.92vw, 0.9rem);
+    font-size: 0.9rem;
     font-weight: 700;
     line-height: 1.65;
     letter-spacing: 0.02em;
@@ -823,6 +824,10 @@ const works = [
   .hero-introduction span {
     display: block;
     white-space: nowrap;
+  }
+
+  .hero-introduction__mobile {
+    display: none !important;
   }
 
   .recent-section a {
@@ -896,7 +901,7 @@ const works = [
     transform-origin: 50% 70%;
   }
 
-  @media (min-width: 1101px) {
+  @media (min-width: 768px) {
     .island-map__art {
       left: 50%;
       width: min(100vw, 92rem);
@@ -1001,7 +1006,7 @@ const works = [
     padding: 0.35rem;
     border: 0;
     color: #233f61;
-    font-size: clamp(0.72rem, 0.95vw, 0.84rem);
+    font-size: 0.84rem;
     font-weight: 500;
     line-height: 1.35;
     text-align: center;
@@ -1084,7 +1089,7 @@ const works = [
     border-radius: 52% 48% 56% 44% / 46% 52% 48% 54%;
     background: rgb(255 253 248 / 92%);
     color: #233f61;
-    font-size: clamp(0.82rem, 1vw, 0.96rem);
+    font-size: 0.96rem;
     font-weight: 700;
     letter-spacing: 0.05em;
     white-space: nowrap;
@@ -1306,7 +1311,7 @@ const works = [
   .concept-section__copy,
   .place-section__copy {
     color: #2e4568;
-    font-size: clamp(0.98rem, 1.2vw, 1.08rem);
+    font-size: 1.08rem;
     font-weight: 400;
     line-height: 2.15;
   }
@@ -1327,7 +1332,7 @@ const works = [
     width: 100vw;
     max-width: none;
     margin-inline: calc(50% - 50vw);
-    padding: 1.25rem clamp(1.5rem, 6vw, 5rem) clamp(5rem, 8vw, 7rem);
+    padding: 4rem clamp(1.5rem, 6vw, 5rem) clamp(5rem, 8vw, 7rem);
     overflow: hidden;
     background: #36a9ee;
   }
@@ -1369,18 +1374,19 @@ const works = [
 
   .empathy-section__content {
     display: grid;
-    grid-template-columns: minmax(17rem, 0.85fr) minmax(0, 1.15fr);
-    gap: clamp(2.5rem, 6vw, 5rem);
-    align-items: center;
+    grid-template-areas:
+      "heading photo"
+      "copy photo";
+    grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 2rem clamp(3rem, 5vw, 4.5rem);
+    align-items: start;
+    margin-inline: auto;
     transform: rotate(1deg);
   }
 
-  .empathy-section__text {
-    min-width: 0;
-  }
-
   .empathy-section__heading {
-    margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    grid-area: heading;
+    margin: 0;
   }
 
   .empathy-section .section-kicker {
@@ -1399,7 +1405,7 @@ const works = [
   .empathy-section h2 {
     max-width: none;
     color: #ff3f9f;
-    font-size: clamp(1.75rem, 2.7vw, 2.3rem);
+    font-size: 2.3rem;
     font-weight: 800;
     line-height: 1.35;
   }
@@ -1410,21 +1416,22 @@ const works = [
   }
 
   .empathy-section__lead {
-    margin: 0;
+    margin: clamp(1rem, 2vw, 1.5rem) 0 0;
     color: #111;
-    font-size: clamp(1rem, 1.45vw, 1.2rem);
+    font-size: 1.2rem;
     font-weight: 800;
     line-height: 1.65;
   }
 
   .empathy-section__copy {
-    margin-top: 1.25rem;
+    grid-area: copy;
+    margin: 0;
   }
 
   .empathy-section__copy p {
     margin: 0;
     color: #111;
-    font-size: clamp(0.88rem, 1.1vw, 1rem);
+    font-size: 1rem;
     font-weight: 500;
     line-height: 1.95;
   }
@@ -1434,15 +1441,17 @@ const works = [
   }
 
   .empathy-section__photo {
+    grid-area: photo;
     margin: 0;
     overflow: hidden;
+    width: 100%;
   }
 
   .empathy-section__photo img {
     display: block;
     width: 100%;
     height: 100%;
-    max-height: 32rem;
+    max-height: none;
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: 30% center;
@@ -1474,7 +1483,7 @@ const works = [
   .profile-section__heading .section-kicker {
     margin: 0;
     color: #fff;
-    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-size: 5rem;
     font-weight: 800;
     letter-spacing: 0.06em;
     line-height: 1;
@@ -1483,7 +1492,7 @@ const works = [
   .profile-section__heading > p:last-child {
     margin: 0.85rem 0 0;
     color: #ffe500;
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-size: 1.2rem;
     font-weight: 700;
   }
 
@@ -1525,7 +1534,7 @@ const works = [
   .profile-section__primary h2 {
     margin: 0;
     color: #2e4568;
-    font-size: clamp(1.25rem, 2.1vw, 1.8rem);
+    font-size: 1.8rem;
     line-height: 1.45;
   }
 
@@ -1543,7 +1552,7 @@ const works = [
   .profile-section__primary > p:last-child,
   .profile-section__secondary p {
     margin: 0;
-    font-size: clamp(0.88rem, 1.15vw, 1rem);
+    font-size: 1rem;
     line-height: 1.9;
   }
 
@@ -1556,7 +1565,7 @@ const works = [
   .profile-section__secondary h3 {
     margin: 0 0 0.45rem;
     color: #fff;
-    font-size: clamp(1.2rem, 2vw, 1.65rem);
+    font-size: 1.65rem;
   }
 
   .profile-section__more {
@@ -1628,7 +1637,7 @@ const works = [
   .ranking-section__heading .section-kicker {
     margin: 0;
     color: #fff;
-    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-size: 5rem;
     font-weight: 800;
     letter-spacing: 0.06em;
     line-height: 1;
@@ -1637,7 +1646,7 @@ const works = [
   .ranking-section__subtitle {
     margin: 0.85rem 0 0;
     color: #ffe500;
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-size: 1.2rem;
     font-weight: 700;
   }
 
@@ -1744,7 +1753,7 @@ const works = [
   .ranking-card h3 {
     margin: 0;
     color: #2e4568;
-    font-size: clamp(0.95rem, 1.35vw, 1.18rem);
+    font-size: 1.18rem;
     font-weight: 700;
     line-height: 1.5;
     line-break: strict;
@@ -1753,7 +1762,7 @@ const works = [
   .ranking-card p {
     margin: 0.7rem 0 0;
     color: #2e4568;
-    font-size: clamp(0.76rem, 0.95vw, 0.92rem);
+    font-size: 0.92rem;
     font-weight: 500;
     line-height: 1.72;
     line-break: strict;
@@ -1765,7 +1774,7 @@ const works = [
     gap: 0.2rem 0.55rem;
     margin-top: 0.45rem;
     color: #2e4568;
-    font-size: clamp(0.7rem, 0.82vw, 0.82rem);
+    font-size: 0.82rem;
     font-weight: 700;
     line-height: 1.45;
   }
@@ -1888,7 +1897,7 @@ const works = [
     place-items: center;
     background: rgb(255 255 255 / calc(0.12 + var(--wordmark-index) * 0.14));
     color: #36a9ee;
-    font-size: clamp(1rem, 1.8vw, 1.45rem);
+    font-size: 1.45rem;
     font-weight: 700;
     letter-spacing: 0.15em;
     writing-mode: vertical-rl;
@@ -1932,7 +1941,7 @@ const works = [
     min-height: 4.8rem;
     cursor: pointer;
     color: #2e4568;
-    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    font-size: 1.25rem;
     font-weight: 500;
     line-height: 1.45;
     list-style: none;
@@ -2025,7 +2034,7 @@ const works = [
   .works-section h3 {
     margin: 0.45rem 0 0;
     color: #2e4568;
-    font-size: clamp(1.12rem, 1.5vw, 1.35rem);
+    font-size: 1.35rem;
     font-weight: 500;
     line-height: 1.4;
   }
@@ -2102,7 +2111,7 @@ const works = [
     transform: translateY(0);
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 767px) {
     .weekend-hero {
       grid-template-columns: 1fr;
       padding-top: clamp(4rem, 8vw, 6rem);
@@ -2127,7 +2136,7 @@ const works = [
     }
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 767px) {
     .empathy-section__content {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -2194,7 +2203,7 @@ const works = [
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 767px) {
     .back-to-map {
       right: auto;
       left: 1rem;
@@ -2206,7 +2215,7 @@ const works = [
 
     .empathy-section {
       width: 100vw;
-      padding: 1rem 1rem 4rem;
+      padding: 3rem 1rem 4rem;
     }
 
     .empathy-section__panel {
@@ -2215,6 +2224,10 @@ const works = [
     }
 
     .empathy-section__content {
+      grid-template-areas:
+        "heading"
+        "photo"
+        "copy";
       grid-template-columns: 1fr;
       gap: 2rem;
       transform: rotate(0.4deg);
@@ -2229,7 +2242,7 @@ const works = [
     }
 
     .empathy-section h2 {
-      font-size: clamp(1.25rem, 5.8vw, 1.65rem);
+      font-size: 1.5rem;
     }
 
     .empathy-section__photo img {
@@ -2243,8 +2256,8 @@ const works = [
       max-width: none;
       margin: 0 calc(50% - 50vw);
       gap: 1.45rem;
-      min-height: 100svh;
-      padding: 3.75rem 1rem 1.5rem;
+      min-height: 82svh;
+      padding: 3.75rem 1rem 0;
     }
 
     .site-name {
@@ -2253,7 +2266,7 @@ const works = [
       padding: 0.42rem 0.6rem 0.46rem;
       border-width: 2px;
       border-radius: 0.5rem;
-      font-size: clamp(0.78rem, 3.5vw, 0.88rem);
+      font-size: 0.86rem;
       letter-spacing: 0.03em;
       text-shadow: none;
     }
@@ -2273,9 +2286,19 @@ const works = [
       max-width: calc(100% - 2rem);
       padding: 0.48rem 0.58rem 0.52rem;
       border-bottom-width: 2px;
-      font-size: clamp(0.56rem, 2.45vw, 0.66rem);
+      font-size: 0.62rem;
       line-height: 1.55;
       letter-spacing: 0;
+    }
+
+    .hero-introduction__desktop,
+    .hero-introduction__desktop + span + span {
+      display: none;
+    }
+
+    .hero-introduction .hero-introduction__mobile {
+      display: block !important;
+      white-space: nowrap;
     }
 
     .island-map {
@@ -2291,21 +2314,21 @@ const works = [
     .island-map__art {
       position: absolute;
       display: block;
-      top: 44%;
+      top: 57%;
       left: 50%;
-      width: 125%;
+      width: 132%;
       max-width: none;
       height: auto;
-      max-height: 72%;
+      max-height: 60%;
       border-radius: 0;
       object-fit: contain;
       transform: translate(-50%, -50%);
     }
 
     .hero-ferry {
-      top: 18%;
-      left: 6%;
-      width: clamp(7.5rem, 38vw, 9.5rem);
+      top: 22%;
+      left: 8%;
+      width: clamp(7rem, 34vw, 8.75rem);
     }
 
     .island-map__base {
@@ -2387,7 +2410,7 @@ const works = [
     .place-section h2,
     .pathways-section h2,
     .recent-section h2 {
-      font-size: clamp(1.75rem, 7.2vw, 2.2rem);
+      font-size: 2rem;
     }
 
     .empathy-section,
@@ -2406,7 +2429,7 @@ const works = [
     }
 
     .ranking-section__heading .section-kicker {
-      font-size: clamp(2.4rem, 14vw, 3.8rem);
+      font-size: 3.2rem;
     }
 
     .ranking-section__subtitle {
@@ -2463,7 +2486,7 @@ const works = [
     }
 
     .profile-section__heading .section-kicker {
-      font-size: clamp(2.4rem, 14vw, 3.8rem);
+      font-size: 3.2rem;
     }
 
     .profile-section__heading > p:last-child {
