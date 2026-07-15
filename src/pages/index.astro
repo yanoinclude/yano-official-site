@@ -6,6 +6,7 @@ import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
 import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.png";
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
+import yanoLemonCharacter from "@/assets/images/home/yano-lemon-character.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import yanoKominkaPhoto from "@/assets/images/home/yano-kominka-photo.png";
 import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
@@ -347,6 +348,13 @@ const works = [
 
   <section class="empathy-section content-shell reveal-section" id="about">
     <div class="empathy-section__stack">
+      <img
+        class="empathy-section__character"
+        src={yanoLemonCharacter.src}
+        alt="大きなレモンを抱えるヤノのイラスト"
+        loading="lazy"
+        decoding="async"
+      />
       <div
         class="empathy-section__layer empathy-section__layer--black"
         aria-hidden="true"
@@ -1343,6 +1351,17 @@ const works = [
     margin-inline: auto;
   }
 
+  .empathy-section__character {
+    position: absolute;
+    top: -4rem;
+    right: 5%;
+    z-index: 4;
+    width: 8rem;
+    height: auto;
+    pointer-events: none;
+    transform: rotate(3deg);
+  }
+
   .empathy-section__layer {
     position: absolute;
     inset: 0;
@@ -2221,6 +2240,12 @@ const works = [
     .empathy-section__panel {
       padding: 2rem 1.25rem 2.25rem;
       transform: rotate(-0.4deg);
+    }
+
+    .empathy-section__character {
+      top: -3rem;
+      right: 0.5rem;
+      width: 5.5rem;
     }
 
     .empathy-section__content {
