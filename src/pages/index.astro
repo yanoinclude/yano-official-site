@@ -15,7 +15,8 @@ import rankingKominkaEvent from "@/assets/images/home/ranking-kominka-event.jpeg
 import rankingMarche from "@/assets/images/home/ranking-marche.jpeg";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
-import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
+import nakajimaOverlook from "@/assets/images/scenery/nakajima-overlook.jpeg";
+import nakajimaFerry from "@/assets/images/scenery/nakajima-ferry.jpeg";
 
 const activities = [
   {
@@ -106,12 +107,12 @@ const pathways = [
     alt: "瀬戸内海に浮かぶ中島の風景",
   },
   {
-    label: "活動を追いかける",
-    title: "Instagram",
-    body: "畑、古民家、イベントの近況をInstagramで更新中。",
-    href: siteConfig.social.instagram,
-    image: placeholderImages.table,
-    alt: "島の食卓を囲む人たち",
+    label: "活動を映像で見る",
+    title: "No Plan Project",
+    body: "2円で買った築100年の古民家を、仲間と再生していく全9話の記録へ。",
+    href: "/no-plan-project",
+    image: noPlanThumbnail.src,
+    alt: "ヤノッチのNo Plan Project vol.1の動画サムネイル",
   },
 ];
 
@@ -503,26 +504,85 @@ const works = [
     </div>
   </section>
 
-  <section class="place-section content-shell reveal-section" id="nakajima">
-    <div class="place-section__copy">
-      <p class="section-kicker">NAKAJIMA ISLAND</p>
-      <h2>中島ってどこ？</h2>
-      <p>
-        愛媛県松山市の沖にある、瀬戸内海の島。松山の港から船で向かうことができ、柑橘畑、海、古民家、人の暮らしが近くにあります。
-      </p>
-      <ul>
-        <li>松山市の沖にある島</li>
-        <li>船で通える、週末の距離</li>
-        <li>レモンと柑橘、海と古民家のある場所</li>
-      </ul>
+  <section class="place-section reveal-section" id="nakajima">
+    <div class="place-section__intro content-shell">
+      <div class="place-section__copy">
+        <p class="section-kicker">Where is NAKAJIMA?</p>
+        <h2>愛媛と広島の間に浮かぶ離島</h2>
+      </div>
     </div>
-    <figure class="place-section__map">
+
+    <figure class="place-section__hero content-shell">
+      <span class="place-section__hero-white" aria-hidden="true"></span>
       <img
-        src={nakajimaMap.src}
-        alt="愛媛県松山市と中島の位置を示す地図"
+        src={nakajimaOverlook.src}
+        alt="中島の集落と港、瀬戸内海を行くフェリー"
         loading="lazy"
+        decoding="async"
       />
+      <figcaption>島の緑と集落の先に、海と広島が見える。</figcaption>
     </figure>
+
+    <div class="place-section__stories content-shell">
+      <div class="place-section__white-block" aria-hidden="true"></div>
+      <article class="place-story place-story--ferry">
+        <figure>
+          <img
+            src={nakajimaFerry.src}
+            alt="中島の港に停泊するフェリー"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div>
+          <h3>橋のない島へ、船で約1時間。</h3>
+          <p>
+            中島は、松山市の沖に浮かぶ橋のない島です。<br />
+            三津浜港、高浜港、松山観光港の3つの港から、<br />
+            出発時間や航路に合わせて船で渡ることができます。
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div class="place-section__guide">
+      <div class="place-section__guide-copy content-shell">
+        <p>
+          島の玄関口は、<br />
+          大浦港、神浦港（こうのうら）、西中港の3か所。
+        </p>
+        <p>
+          中心となるのは大浦港ですが、<br />
+          私が再生している古民家は神浦港から歩いて約2分の場所にあります。
+        </p>
+        <p>
+          島から望めるのは、<br />
+          西日本最高峰の石鎚山や、海の向こうに連なる広島・山口の山々。
+        </p>
+        <p>
+          温暖な気候と潮風に恵まれた中島では、<br />
+          愛媛らしく柑橘づくりも盛んです。
+        </p>
+        <p>
+          どの港から、どの船で向かうのか。<br />
+          まずはGoogleマップで、中島までの道のりをのぞいてみてください。
+        </p>
+      </div>
+
+      <div class="place-section__map content-shell">
+        <iframe
+          title="Googleマップで見る愛媛県松山市中島と周辺の航路"
+          src="https://www.google.com/maps?q=33.9751781,132.619553&z=11&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <a
+          href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu"
+          target="_blank"
+          rel="noreferrer">Google Mapsで見る ↗</a
+        >
+      </div>
+    </div>
   </section>
 
   <section class="faq-section content-shell reveal-section" id="faq">
@@ -543,7 +603,7 @@ const works = [
   </section>
 
   <section class="pathways-section reveal-section" id="taste">
-    <div class="content-shell">
+    <div class="pathways-section__inner content-shell">
       <header class="pathways-section__heading">
         <p class="section-kicker">NEXT ACTION</p>
         <h2>味見してみる。見に行ってみる。</h2>
@@ -551,23 +611,28 @@ const works = [
           商品を買う、活動を追う、島のことを知る。あなたの生活に近いところから、島との距離を少しだけ縮めてみてください。
         </p>
       </header>
-      <div class="pathways-section__grid">
-        {
-          pathways.map((item) => (
-            <a
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-            >
-              <figure>
-                <img src={item.image} alt={item.alt} loading="lazy" />
-              </figure>
-              <p>{item.label}</p>
-              <h3>{item.title}</h3>
-              <span>{item.body}</span>
-            </a>
-          ))
-        }
+      <div class="pathways-section__content">
+        <div class="pathways-section__grid">
+          {
+            pathways.map((item) => (
+              <a
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+              >
+                <figure>
+                  <img src={item.image} alt={item.alt} loading="lazy" />
+                </figure>
+                <div class="pathways-card__body">
+                  <p>{item.label}</p>
+                  <h3>{item.title}</h3>
+                  <span>{item.body}</span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        <a class="pathways-section__more" href="#works">MORE</a>
       </div>
     </div>
   </section>
@@ -711,6 +776,12 @@ const works = [
   :global(body:has(.weekend-hero) .site-header) {
     display: none;
     color: #2e4568;
+  }
+
+  @media (min-width: 768px) {
+    :global(html:has(.weekend-hero)) {
+      font-size: 80%;
+    }
   }
 
   .content-shell {
@@ -898,7 +969,7 @@ const works = [
 
   .hero-ferry {
     position: absolute;
-    top: 20%;
+    top: 24%;
     left: 8%;
     z-index: 2;
     width: clamp(9rem, 18vw, 17rem);
@@ -1610,36 +1681,216 @@ const works = [
   }
 
   .place-section {
-    align-items: center;
+    position: relative;
+    display: block;
+    width: 100vw;
+    max-width: none;
+    margin-inline: calc(50% - 50vw);
+    padding: clamp(2.5rem, 4.5vw, 4rem) 0 clamp(6rem, 11vw, 10rem);
+    overflow: hidden;
+    background: #36a9ee;
   }
 
-  .place-section__copy ul {
+  .place-section::before {
+    display: none;
+  }
+
+  .place-section__intro {
     display: grid;
-    gap: 0.5rem;
-    margin: 1.5rem 0 0;
-    padding: 0;
-    list-style: none;
+    position: relative;
+    z-index: 1;
+    grid-template-columns: 1fr;
+    padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 4rem) 0;
   }
 
-  .place-section__copy li {
-    padding: 0.8rem 1rem;
-    border-left: 0.45rem solid #ffe500;
-    background: #fffdf6;
-    color: #2e4568;
-    font-weight: 500;
+  .place-section__copy {
+    max-width: none;
+    margin: 0;
+    text-align: left;
+  }
+
+  .place-section__copy .section-kicker {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-island-body);
+    font-size: clamp(3.4rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: 0.025em;
+  }
+
+  .place-section__copy h2 {
+    margin: 1rem 0 0;
+    color: #ffe500;
+    font-family: var(--font-island-body);
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    font-weight: 800;
     line-height: 1.5;
+    letter-spacing: 0.02em;
   }
 
   .place-section__map {
-    margin: 0;
-    padding: clamp(1rem, 3vw, 2rem);
+    display: grid;
+    width: min(calc(100% - 3rem), 75rem);
+    margin: clamp(4rem, 8vw, 7rem) auto 0;
+  }
+
+  .place-section__map iframe {
+    display: block;
+    width: 100%;
+    height: clamp(30rem, 42vw, 35rem);
+    border: 0;
     background: #fffdf6;
   }
 
-  .place-section__map img {
+  .place-section__map a {
+    justify-self: end;
+    margin-top: 0.9rem;
+    color: #171717;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-underline-offset: 0.25rem;
+  }
+
+  .place-section__guide {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
+    padding: clamp(6rem, 11vw, 10rem) 0 clamp(5rem, 9vw, 8rem);
+    background: #36a9ee;
+  }
+
+  .place-section__guide-copy {
+    width: min(calc(100% - 3rem), 47rem);
+    text-align: center;
+  }
+
+  .place-section__guide-copy p {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
+    font-weight: 500;
+    line-height: 2.05;
+  }
+
+  .place-section__guide-copy p + p {
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .place-section__guide .place-section__map {
+    border-top-color: rgb(255 255 255 / 45%);
+  }
+
+  .place-section__guide .place-section__map a {
+    color: #fff;
+  }
+
+  .place-section__hero {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+    margin-block: clamp(2.5rem, 3vw, 3rem) 0;
+  }
+
+  .place-section__hero-white {
+    position: absolute;
+    top: 50%;
+    right: calc((100% - 100vw) / 2);
+    bottom: 0;
+    z-index: -1;
+    width: 72vw;
+    background: #fffdf6;
+  }
+
+  .place-section__hero img {
     display: block;
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 7.5;
+    object-fit: cover;
+    object-position: center 54%;
+  }
+
+  .place-section__hero figcaption {
+    position: absolute;
+    right: clamp(1rem, 3vw, 2.5rem);
+    bottom: clamp(1rem, 3vw, 2rem);
+    max-width: 28rem;
+    padding: 0.55rem 0.75rem;
+    background: rgb(255 253 246 / 88%);
+    color: #2e4568;
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .place-section__stories {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    isolation: isolate;
+    gap: clamp(7rem, 12vw, 12rem);
+    margin-top: clamp(7rem, 12vw, 12rem);
+  }
+
+  .place-section__white-block {
+    position: absolute;
+    top: calc(-1 * clamp(7rem, 12vw, 12rem));
+    right: calc((100% - 100vw) / 2);
+    z-index: -1;
+    width: 72vw;
+    height: calc(75% + clamp(7rem, 12vw, 12rem) + 2px);
+    background: #fffdf6;
+  }
+
+  .place-story {
+    display: grid;
+    align-items: center;
+  }
+
+  .place-story figure {
+    margin: 0;
+  }
+
+  .place-story img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .place-story--ferry {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(3rem, 5vw, 5rem);
+  }
+
+  .place-story--ferry figure {
+    aspect-ratio: 4 / 3;
+  }
+
+  .place-story--ferry > div {
+    align-self: start;
+    max-width: 32rem;
+    padding-top: clamp(2rem, 3vw, 2.65rem);
+  }
+
+  .place-story h3 {
+    margin: 0;
+    color: #171717;
+    font-family: var(--font-island-body);
+    font-size: clamp(1.75rem, 2.4vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  .place-story--ferry h3 {
+    white-space: nowrap;
+  }
+
+  .place-story h3 + p {
+    margin: 1.5rem 0 0;
+    color: #202020;
+    font-size: 1rem;
+    line-height: 2.15;
   }
 
   .activities-section {
@@ -1941,6 +2192,10 @@ const works = [
     transition: transform 0.6s ease;
   }
 
+  .pathways-section img {
+    object-fit: contain;
+  }
+
   .faq-section__list {
     display: grid;
     margin-top: clamp(2rem, 5vw, 4rem);
@@ -1994,21 +2249,132 @@ const works = [
     background: #36a9ee;
   }
 
+  .pathways-section__inner {
+    display: grid;
+    grid-template-columns: minmax(15rem, 0.72fr) minmax(34rem, 1.28fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: start;
+  }
+
   .pathways-section__heading {
     display: grid;
-    grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
-    gap: clamp(2rem, 5vw, 5rem);
-    align-items: end;
+    gap: 0;
+    position: sticky;
+    top: 7rem;
+    padding-top: 0.4rem;
+  }
+
+  .pathways-section__heading h2 {
+    margin-top: clamp(1.6rem, 4vw, 3.5rem);
+    font-size: clamp(2rem, 3.2vw, 3.6rem);
+    line-height: 1.35;
   }
 
   .pathways-section__heading > p:last-child {
-    margin: 0;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
     color: #2e4568;
     font-weight: 400;
     line-height: 2;
   }
 
-  .pathways-section__grid,
+  .pathways-section__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(2rem, 4vw, 4rem);
+    row-gap: clamp(4.5rem, 8vw, 7rem);
+  }
+
+  .pathways-section__grid a {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-width: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pathways-section__grid a:nth-child(even) {
+    transform: translateY(clamp(3.5rem, 7vw, 6.5rem));
+  }
+
+  .pathways-section__grid figure {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f3f0e8;
+  }
+
+  .pathways-card__body {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 9rem;
+    margin: 0;
+    padding: 1.15rem 1.25rem 1.35rem;
+    background: #fffdf8;
+  }
+
+  .pathways-card__body::after {
+    position: absolute;
+    right: 0.35rem;
+    bottom: 0.35rem;
+    width: 0;
+    height: 0;
+    border-bottom: 0.55rem solid #ff3f9f;
+    border-left: 0.55rem solid transparent;
+    content: "";
+  }
+
+  .pathways-card__body > p {
+    margin: 0;
+    color: #50627a;
+    font-size: 0.67rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  .pathways-card__body h3 {
+    margin: 0.38rem 0 0;
+  }
+
+  .pathways-card__body > span {
+    display: block;
+    margin-top: 0.55rem;
+    color: #2e4568;
+    font-size: 0.78rem;
+    line-height: 1.65;
+  }
+
+  .pathways-section a:hover img,
+  .pathways-section a:focus-visible img {
+    transform: none;
+  }
+
+  .pathways-section__more {
+    display: grid;
+    width: 7.2rem;
+    min-height: 2.8rem;
+    place-items: center;
+    margin: clamp(7rem, 12vw, 11rem) 0 0 auto;
+    border: 2px solid #111;
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    box-shadow: 0 0.2rem 0 #111;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease;
+  }
+
+  .pathways-section__more:hover,
+  .pathways-section__more:focus-visible {
+    background: #ffe500;
+    transform: translateY(-0.12rem);
+  }
+
   .works-section__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2016,7 +2382,6 @@ const works = [
     margin-top: clamp(2rem, 5vw, 4rem);
   }
 
-  .pathways-section__grid a,
   .works-section__grid a {
     display: grid;
     align-content: start;
@@ -2028,19 +2393,15 @@ const works = [
     text-decoration: none;
   }
 
-  .pathways-section figure,
   .works-section figure {
     aspect-ratio: 4 / 3;
   }
 
-  .pathways-section a:hover img,
-  .pathways-section a:focus-visible img,
   .works-section a:hover img,
   .works-section a:focus-visible img {
     transform: scale(1.035);
   }
 
-  .pathways-section__grid a > p,
   .works-section__grid a > p {
     margin: 1rem 0 0;
     color: #50627a;
@@ -2058,7 +2419,6 @@ const works = [
     line-height: 1.4;
   }
 
-  .pathways-section a > span,
   .works-section a > span {
     margin-top: 0.8rem;
     color: #2e4568;
@@ -2156,6 +2516,121 @@ const works = [
   }
 
   @media (max-width: 767px) {
+    .place-section {
+      padding-block: 2.25rem 6rem;
+      background: #36a9ee;
+    }
+
+    .place-section::before {
+      top: 37rem;
+      width: 88%;
+    }
+
+    .place-section__intro {
+      grid-template-columns: 1fr;
+      width: calc(100% - 2rem);
+      padding: 1.5rem 0 0;
+    }
+
+    .place-section__copy {
+      max-width: none;
+      text-align: left;
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+    }
+
+    .place-section__copy .section-kicker {
+      font-size: clamp(2.45rem, 12vw, 3.25rem);
+      line-height: 1;
+    }
+
+    .place-section__copy h2 {
+      margin-top: 0.7rem;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .place-section__map {
+      width: calc(100% - 2rem);
+      margin-top: 3rem;
+    }
+
+    .place-section__map iframe {
+      height: clamp(22.5rem, 105vw, 26rem);
+    }
+
+    .place-section__hero {
+      width: calc(100% - 2rem);
+      margin-top: 3rem;
+    }
+
+    .place-section__hero img {
+      aspect-ratio: 4 / 3;
+      object-position: 55% center;
+    }
+
+    .place-section__hero figcaption {
+      position: static;
+      padding: 0.75rem 0 0;
+      background: transparent;
+      color: #52627b;
+    }
+
+    .place-section__stories {
+      gap: 6.5rem;
+      margin-top: 6.5rem;
+    }
+
+    .place-section__white-block {
+      top: -6.5rem;
+      right: -1rem;
+      width: 100vw;
+      height: calc(100% + 6.5rem + 2px);
+    }
+
+    .place-section__hero-white {
+      right: -1rem;
+      width: 88vw;
+    }
+
+    .place-section__guide {
+      margin-top: 0;
+      padding-block: 4.5rem 4rem;
+    }
+
+    .place-section__guide-copy {
+      width: calc(100% - 3rem);
+    }
+
+    .place-section__guide-copy p {
+      font-size: 0.92rem;
+      line-height: 2;
+    }
+
+    .place-section__guide-copy p + p {
+      margin-top: 2.1rem;
+    }
+
+    .place-story--ferry {
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+    }
+
+    .place-story--ferry > div {
+      max-width: none;
+      padding-top: 1.5rem;
+    }
+
+    .place-story h3 {
+      font-size: 1.25rem;
+      line-height: 1.55;
+    }
+
+    .place-story h3 + p {
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+
     .empathy-section__content {
       grid-template-columns: 1fr;
       gap: 2.5rem;
@@ -2318,7 +2793,7 @@ const works = [
 
     .hero-introduction__desktop,
     .hero-introduction__desktop + span + span {
-      display: none;
+      display: none !important;
     }
 
     .hero-introduction .hero-introduction__mobile {
@@ -2351,7 +2826,7 @@ const works = [
     }
 
     .hero-ferry {
-      top: 22%;
+      top: 25%;
       left: 8%;
       width: clamp(7rem, 34vw, 8.75rem);
     }
@@ -2530,9 +3005,110 @@ const works = [
       justify-self: center;
     }
 
-    .pathways-section__grid,
     .works-section__grid {
       grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .pathways-section__inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .pathways-section__heading {
+      position: static;
+      max-width: 42rem;
+      padding-top: 0;
+    }
+
+    .pathways-section__heading h2 {
+      margin-top: 1.35rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .pathways-section {
+      padding-block: 3.75rem 4.5rem;
+    }
+
+    .pathways-section__inner {
+      gap: 2.5rem;
+      width: min(calc(100% - 2rem), var(--content-max));
+    }
+
+    .pathways-section__heading h2 {
+      font-size: clamp(1.8rem, 8.2vw, 2.25rem);
+      line-height: 1.42;
+    }
+
+    .pathways-section__heading > p:last-child {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+
+    .pathways-section__grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .pathways-section__grid a,
+    .pathways-section__grid a:nth-child(even) {
+      display: grid;
+      grid-template-columns: minmax(0, 46%) minmax(0, 54%);
+      grid-template-rows: 1fr;
+      min-height: 9.6rem;
+      padding: 0.95rem;
+      overflow: hidden;
+      border-radius: 0.85rem;
+      background: #fffdf8;
+      transform: none;
+    }
+
+    .pathways-section__grid figure {
+      width: 100%;
+      height: 100%;
+      min-height: 7.7rem;
+      aspect-ratio: auto;
+      background: #f3f0e8;
+    }
+
+    .pathways-card__body {
+      align-self: center;
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 0.25rem 0.15rem 0.5rem 1rem;
+      background: transparent;
+    }
+
+    .pathways-card__body > p {
+      font-size: 0.59rem;
+      letter-spacing: 0.06em;
+    }
+
+    .pathways-card__body h3 {
+      margin-top: 0.28rem;
+      font-size: clamp(1rem, 4.8vw, 1.2rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .pathways-card__body > span {
+      margin-top: 0.42rem;
+      font-size: 0.7rem;
+      line-height: 1.6;
+    }
+
+    .pathways-card__body::after {
+      right: -0.35rem;
+      bottom: -0.6rem;
+    }
+
+    .pathways-section__more {
+      margin-top: 2rem;
+      margin-inline: auto;
     }
   }
 
