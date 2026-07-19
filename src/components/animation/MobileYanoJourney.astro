@@ -2,20 +2,20 @@
   <div class="yano-journey__traveler is-walking" data-yano-traveler>
     <span class="yano-sprite yano-sprite--walk">
       <img
-        src="/images/animation/yano-walk-sprite-8frames.png"
+        src="/images/animation/yano-walk-sprite-15frames.png"
         alt=""
-        width="2172"
-        height="724"
+        width="3900"
+        height="264"
         loading="eager"
         decoding="async"
       />
     </span>
     <span class="yano-sprite yano-sprite--scratch">
       <img
-        src="/images/animation/yano-head-scratch-sprite-4frames.png"
+        src="/images/animation/yano-scratch-sprite-6frames.png"
         alt=""
-        width="1983"
-        height="793"
+        width="1560"
+        height="264"
         loading="eager"
         decoding="async"
       />
@@ -97,75 +97,80 @@
 
 <style>
   .yano-journey {
-    display: none;
+    position: absolute;
+    z-index: 7;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 164px;
+    overflow: hidden;
+    overflow: clip;
+    pointer-events: none;
+    contain: layout paint;
   }
 
   @media (max-width: 767px) {
     .yano-journey {
       position: relative;
-      display: block;
+      z-index: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
       width: 100%;
       height: 164px;
       margin-top: 1.25rem;
-      overflow: hidden;
-      overflow: clip;
-      pointer-events: none;
-      contain: layout paint;
     }
+  }
 
-    .yano-journey__traveler {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 110px;
-      height: 150px;
-      offset-path: path("M -90 153 L 520 153");
-      offset-distance: 0%;
-      offset-rotate: 0deg;
-      offset-anchor: 50% 100%;
-      will-change: offset-distance;
-    }
+  .yano-journey__traveler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 150px;
+    offset-path: path("M -90 153 L 1530 153");
+    offset-distance: 0%;
+    offset-rotate: 0deg;
+    offset-anchor: 50% 100%;
+    will-change: offset-distance;
+  }
 
-    .yano-sprite {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      display: block;
-      height: 140px;
-      overflow: hidden;
-      transform: translateX(-50%);
-    }
+  .yano-sprite {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    display: block;
+    width: 137.879px;
+    height: 140px;
+    overflow: hidden;
+    transform: translateX(-50%);
+  }
 
-    .yano-sprite img {
-      display: block;
-      max-width: none;
-      height: 140px;
-      width: auto;
-      transform: translate3d(0, 0, 0);
-    }
+  .yano-sprite img {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: 140px;
+    transform: translate3d(0, 0, 0);
+  }
 
-    .yano-sprite--walk {
-      width: 52.5px;
-      opacity: 0;
-    }
+  .yano-sprite--walk { opacity: 0; }
 
-    .yano-sprite--walk img {
-      animation: yano-walk-frames 0.9s steps(8) infinite;
-    }
+  .yano-sprite--walk img {
+    animation: yano-walk-frames 1.15s steps(15) infinite;
+  }
 
-    .yano-sprite--scratch {
-      width: 87.5px;
-      opacity: 0;
-    }
+  .yano-sprite--scratch { opacity: 0; }
 
-    .yano-sprite--scratch img {
-      animation: yano-scratch-frames 0.9s steps(4) infinite;
-    }
+  .yano-sprite--scratch img {
+    animation: yano-scratch-frames 1.2s steps(6) infinite;
+  }
 
-    .is-walking .yano-sprite--walk,
-    .is-scratching .yano-sprite--scratch {
-      opacity: 1;
-    }
+  .is-walking .yano-sprite--walk,
+  .is-scratching .yano-sprite--scratch {
+    opacity: 1;
   }
 
   @keyframes yano-walk-frames {

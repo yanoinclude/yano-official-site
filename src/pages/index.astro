@@ -263,21 +263,33 @@ const pathways = [
       </svg>
 
       <a
-        class="map-spot map-spot--yano"
+        class="map-spot map-spot--yano is-walking"
         href="#profile"
         aria-label="ページ内のヤノのプロフィールへ"
         data-island-yano
       >
         <span class="map-yano" aria-hidden="true">
           <span class="map-yano__sprite">
-            <img
-              src="/images/animation/yano-walk-sprite-8frames.png"
-              alt=""
-              width="2172"
-              height="724"
-              loading="eager"
-              decoding="async"
-            />
+            <span class="map-yano__frame map-yano__frame--walk">
+              <img
+                src="/images/animation/yano-walk-sprite-15frames.png"
+                alt=""
+                width="3900"
+                height="264"
+                loading="eager"
+                decoding="async"
+              />
+            </span>
+            <span class="map-yano__frame map-yano__frame--scratch">
+              <img
+                src="/images/animation/yano-scratch-sprite-6frames.png"
+                alt=""
+                width="1560"
+                height="264"
+                loading="eager"
+                decoding="async"
+              />
+            </span>
           </span>
         </span>
         <span>ヤノ</span>
@@ -616,11 +628,72 @@ const pathways = [
       const { width, height } = islandMap.getBoundingClientRect();
       const point = (x: number, y: number) =>
         `${Math.round(width * x)} ${Math.round(height * y)}`;
-      islandYano.style.offsetPath = `path("M ${point(0.28, 0.43)} C ${point(0.34, 0.28)} ${point(0.46, 0.26)} ${point(0.54, 0.36)} C ${point(0.61, 0.46)} ${point(0.66, 0.49)} ${point(0.72, 0.39)} C ${point(0.78, 0.3)} ${point(0.83, 0.37)} ${point(0.76, 0.49)}")`;
+      islandYano.style.offsetPath = `path("M ${point(0.34, 0.6)} C ${point(0.4, 0.56)} ${point(0.47, 0.55)} ${point(0.54, 0.56)} C ${point(0.6, 0.57)} ${point(0.64, 0.54)} ${point(0.68, 0.48)}")`;
     };
     if (islandMap && islandYano) {
       updateIslandYanoPath();
       new ResizeObserver(updateIslandYanoPath).observe(islandMap);
+    }
+
+    const islandReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let islandSequenceId = 0;
+    let islandMotion: Animation | undefined;
+    const waitForIslandYano = (duration: number) =>
+      new Promise((resolve) => window.setTimeout(resolve, duration));
+    const moveIslandYano = async (from: string, to: string) => {
+      if (!islandYano) return;
+      islandMotion = islandYano.animate(
+        [{ offsetDistance: from }, { offsetDistance: to }],
+        { duration: 10500, easing: "linear", fill: "forwards" },
+      );
+      try {
+        await islandMotion.finished;
+      } catch {
+        // Cancellation is expected if reduced-motion changes.
+      }
+    };
+    const setIslandYanoState = (state: "walk" | "scratch") => {
+      if (!islandYano) return;
+      islandYano.classList.toggle("is-walking", state === "walk");
+      islandYano.classList.toggle("is-scratching", state === "scratch");
+    };
+    const playIslandYano = async () => {
+      if (!islandYano || islandReducedMotion.matches) return;
+      const currentSequence = ++islandSequenceId;
+      islandYano.style.offsetDistance = "0%";
+      islandYano.classList.remove("is-returning");
+
+      while (currentSequence === islandSequenceId && !islandReducedMotion.matches) {
+        setIslandYanoState("walk");
+        await moveIslandYano("0%", "100%");
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("scratch");
+        await waitForIslandYano(2400);
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        islandYano.classList.add("is-returning");
+        setIslandYanoState("walk");
+        await moveIslandYano("100%", "0%");
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("scratch");
+        await waitForIslandYano(2400);
+        islandYano.classList.remove("is-returning");
+      }
+    };
+    const handleIslandMotionPreference = () => {
+      islandSequenceId += 1;
+      islandMotion?.cancel();
+      if (!islandYano) return;
+      islandYano.style.offsetDistance = "0%";
+      islandYano.classList.remove("is-returning", "is-scratching");
+      islandYano.classList.add("is-walking");
+      if (!islandReducedMotion.matches) void playIslandYano();
+    };
+    if (islandYano) {
+      islandReducedMotion.addEventListener("change", handleIslandMotionPreference);
+      handleIslandMotionPreference();
     }
 
     const revealTargets = document.querySelectorAll(".reveal-section");
@@ -4480,67 +4553,82 @@ const pathways = [
   .map-spot--yano {
     top: 0;
     left: 0;
-    offset-path: path("M 336 327 C 408 213 552 198 648 274 C 732 350 792 372 864 296 C 936 228 996 281 912 372");
+    offset-path: path("M 408 456 C 480 426 564 418 648 426 C 720 433 768 410 816 365");
     offset-distance: 0%;
     offset-rotate: 0deg;
     offset-anchor: 50% 50%;
-    animation: island-yano-route 36s linear infinite;
+    animation: none;
     will-change: offset-distance;
   }
 
   .map-yano {
     width: auto;
-    height: clamp(8rem, 12vw, 11rem);
-    aspect-ratio: 271.5 / 724;
+    height: clamp(9.5rem, 14vw, 13rem);
+    aspect-ratio: 260 / 264;
     overflow: hidden;
   }
 
   .map-yano::after { display: none; }
 
   .map-yano__sprite {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
     transform-origin: 50% 85%;
-    animation: island-yano-turn 36s steps(1, end) infinite;
+    transition: none;
   }
 
-  .map-yano img,
-  .map-spot--yano:hover .map-yano img,
-  .map-spot--yano:focus-visible .map-yano img,
-  .map-spot--yano:active .map-yano img {
+  .map-spot--yano.is-returning .map-yano__sprite { transform: scaleX(-1); }
+
+  .map-yano__frame {
+    position: absolute;
+    inset: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  .map-spot--yano.is-walking .map-yano__frame--walk,
+  .map-spot--yano.is-scratching .map-yano__frame--scratch { opacity: 1; }
+
+  .map-yano__frame img,
+  .map-spot--yano:hover .map-yano__frame img,
+  .map-spot--yano:focus-visible .map-yano__frame img,
+  .map-spot--yano:active .map-yano__frame img {
     display: block;
     width: auto;
     max-width: none;
     height: 100%;
     filter: none;
     transform-origin: 0 0;
-    animation: island-yano-walk-frames 0.9s steps(8) infinite;
+    transform: translate3d(0, 0, 0);
   }
 
-  @keyframes island-yano-route {
-    0%, 4% { offset-distance: 0%; }
-    46%, 54% { offset-distance: 100%; }
-    96%, 100% { offset-distance: 0%; }
+  .map-yano__frame--walk img {
+    animation: island-yano-walk-frames 1.15s steps(15) infinite;
   }
 
-  @keyframes island-yano-turn {
-    0%, 49.99% { transform: scaleX(1); }
-    50%, 100% { transform: scaleX(-1); }
+  .map-yano__frame--scratch img {
+    animation: island-yano-scratch-frames 1.2s steps(6) 2;
   }
 
   @keyframes island-yano-walk-frames {
     to { transform: translate3d(-100%, 0, 0); }
   }
 
+  @keyframes island-yano-scratch-frames {
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+
   @media (max-width: 767px) {
-    .map-yano { height: 7rem; }
+    .map-yano { height: 8rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .map-spot--yano,
     .map-yano__sprite,
-    .map-yano img { animation: none; }
+    .map-yano__frame img { animation: none; }
   }
 
   /* Shared section-heading scale: ACTIVITIES is the visual baseline. */
