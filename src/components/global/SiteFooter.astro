@@ -5,9 +5,9 @@ const navigationGroups = [
   {
     title: "サイトを見る",
     items: [
-      { label: "ヤノについて", href: "/about" },
-      { label: "できること", href: "/#services" },
-      { label: "手入れしてきたもの", href: "/#works" },
+      { label: "ヤノについて", href: "/#profile" },
+      { label: "島でしていること", href: "/#activities" },
+      { label: "手入れしてきたもの", href: "/#taste" },
       { label: "記録", href: "/columns" },
     ],
   },
@@ -155,29 +155,51 @@ const navigationGroups = [
   }
   @media (max-width: 640px) {
     .site-footer__inner {
-      width: calc(100% - 2rem);
+      width: calc(100% - 40px);
+      gap: 3rem;
       padding-block: 4rem 2rem;
+    }
+    .site-footer__copy {
+      font-size: 1.35rem;
+      line-height: 1.45;
+    }
+    .site-footer__brand > p:not(.site-footer__copy) {
+      margin-top: 0.6rem;
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+    .site-footer__product {
+      width: 100%;
+      min-height: 50px;
+      margin-top: 1.75rem;
+      font-size: 0.9375rem;
     }
     .site-footer__navigation {
       grid-template-columns: 1fr 1fr;
       gap: 2.5rem 1.5rem;
     }
+    .site-footer__navigation nav ul { gap: 0.25rem; }
+    .site-footer__navigation a {
+      min-height: 44px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
     .site-footer__bottom {
       display: grid;
       gap: 0.75rem;
     }
+    .site-footer__bottom > a { min-height: 44px; font-size: 0.875rem; }
     .site-footer__bottom > div {
       justify-content: space-between;
       gap: 1rem;
     }
+    .site-footer__bottom > div a,
+    .site-footer__bottom small { font-size: 0.78rem; line-height: 1.6; }
   }
   @media (max-width: 420px) {
     .site-footer__inner {
       gap: 3rem;
       padding-top: 3.5rem;
-    }
-    .site-footer__copy {
-      font-size: 1.35rem;
     }
     .site-footer__product {
       width: 100%;
@@ -195,7 +217,7 @@ const navigationGroups = [
       gap: 0.7rem;
     }
     .site-footer__navigation a {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
     .site-footer__bottom > div {
       display: grid;

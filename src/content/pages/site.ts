@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "週末移住レモン",
-  title: "週末移住レモン",
-  mainCopy: "週末移住レモン",
-  activityCopy: "島の続きを、手入れする。",
+  name: "矢野、週末移住中。",
+  title: "矢野、週末移住中。",
+  mainCopy: "矢野、週末移住中。",
+  activityCopy: "田舎との関わり方を、もっと自由に。",
   description:
     "愛媛県松山市・中島の風景、古民家、レモン農園、そこに関わる人々の物語を伝える週末移住レモンのサイトです。",
   url:

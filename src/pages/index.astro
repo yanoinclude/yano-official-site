@@ -16,32 +16,36 @@ import rankingMarche from "@/assets/images/home/ranking-marche.jpeg";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaOverlook from "@/assets/images/scenery/nakajima-overlook.jpeg";
+import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
 
 const activities = [
   {
     number: "01",
+    category: "LEMON",
     targetId: "lemon-product",
-    title: "レモン果汁を味見してみよう！",
-    tags: ["#週末移住レモン果汁"],
-    body: "耕作放棄地寸前だった農園を譲り受け、管理から販売まで担っています。週末移住の暮らしだからこそ、最低限の管理と愛情を注いでいます。",
+    title: "レモンを育て、届ける",
+    tags: ["#週末移住レモン"],
+    body: "耕作放棄寸前だったレモン畑を引き継ぎ、週末ごとに手入れをしています。収穫した実は、果汁や商品にして島の外へ届けています。",
     image: rankingLemonJuice.src,
     alt: "週末移住レモン果汁の瓶が並ぶ様子",
   },
   {
     number: "02",
+    category: "KOMINKA",
     targetId: "kominka",
-    title: "築100年のヤノッチHOUSEへ行こう！",
-    tags: ["#リノベーション", "#クラファン"],
-    body: "2円で購入した築100年の古民家をセルフリノベ。1年8か月、週末だけ島に通い、友人や島の人と一緒に古民家再生。今は交流拠点として、島内外から人が集まる場所になっています。",
+    title: "古民家を直し、ひらく",
+    tags: ["#古民家再生", "#クラウドファンディング"],
+    body: "2円で購入した築100年の古民家を、仲間と少しずつ再生しています。島の内と外から、人が集まれる場所を目指しています。",
     image: rankingKominkaEvent.src,
     alt: "古民家で開かれた交流イベントの様子",
   },
   {
     number: "03",
+    category: "COMMUNITY",
     targetId: "events",
-    title: "イベントやマルシェを不定期開催！",
-    tags: ["#お手伝い募集中"],
-    body: "愛媛道後の古湧園様にて、中島マルシェを企画！\n中島で17年続くNPO主催のビーチクリーンをサポート！\nヤノッチが管理するレモン農園で収穫イベント開催！",
+    title: "人が集まるきっかけを作る",
+    tags: ["#イベント", "#お手伝い募集中"],
+    body: "マルシェや収穫イベント、海掃除などに参加しています。島を知り、関わり始める小さなきっかけをつくっています。",
     image: rankingMarche.src,
     alt: "マルシェでレモン商品を販売する様子",
   },
@@ -125,17 +129,9 @@ const pathways = [
   description="平日は松山で働き、週末は中島へ。古民家を直し、レモンを育て、島に人が集まるきっかけをつくる、矢野さとしの活動を紹介します。"
 >
   <section class="weekend-hero" aria-label="中島での活動マップ">
-    <p class="site-name">矢野、週末移住中。</p>
+    <h1 class="site-name">矢野、週末移住中。</h1>
     <p class="hero-introduction">
-      <span class="hero-introduction__desktop"
-        >平日は松山で働き、週末は中島へ。</span
-      >
-      <span class="hero-introduction__mobile"
-        >平日は松山で働き、週末は中島へ。</span
-      >
-      <span class="hero-introduction__body">
-        古民家を直し、レモンを育て、島に人が集まるきっかけをつくっています。
-      </span>
+      平日は働き、週末は船で中島へ。古民家とレモンを手入れしながら、島との新しい関わり方をつくっています。
     </p>
     <div class="island-map" aria-label="中島での活動マップ">
       <img
@@ -347,11 +343,7 @@ const pathways = [
             />
           </figure>
           <h3>今の暮らしを、手放さない。</h3>
-          <p>
-            仕事も、今の暮らしも、無理に手放さなくていい。<br />
-            平日は松山で働き、週末だけ船に乗って中島へ。<br />
-            僕の田舎暮らしは、いきなり移住するのではなく、通うことから始まりました。
-          </p>
+          <p>仕事も、今の暮らしも、無理に手放さなくていい。平日は松山で働き、週末だけ船に乗って中島へ。僕の田舎暮らしは、いきなり移住するのではなく、通うことから始まりました。</p>
         </article>
 
         <article class="weekend-intro__story">
@@ -364,11 +356,7 @@ const pathways = [
             />
           </figure>
           <h3>通ううちに、島も暮らしになった。</h3>
-          <p>
-            古民家を直し、レモンを育て、島の人たちと時間を過ごす。<br />
-            毎日住んでいなくても、少しずつ関わりを重ねることで、<br />
-            島はもうひとつの暮らしの場所になっていきました。
-          </p>
+          <p>古民家を直し、レモンを育て、島の人たちと時間を過ごす。毎日住んでいなくても、少しずつ関わりを重ねることで、島はもうひとつの暮らしの場所になっていきました。</p>
         </article>
       </div>
     </div>
@@ -377,30 +365,17 @@ const pathways = [
   <section class="activities-section reveal-section" id="activities">
     <div class="content-shell">
       <header class="ranking-section__heading">
-        <p class="section-kicker">MESSAGE</p>
-        <p class="ranking-section__subtitle">
-          <span>移住しなくても、島は味わえる。</span>
-          <span>田舎を体感しよう</span>
-        </p>
+        <p class="section-kicker">ACTIVITIES</p>
+        <h2><span class="desktop-copy">島で、手を動かしていること。</span><span class="mobile-copy">島で、手を動かす。</span></h2>
+        <p class="ranking-section__lead"><span class="desktop-copy">古民家とレモン、そして人が集まるきっかけを。週末ごとに、できることを少しずつ続けています。</span><span class="mobile-copy">古民家とレモン、人が集まるきっかけを。週末ごとに、少しずつ続けています。</span></p>
       </header>
-      <div class="activities-carousel">
-        <button
-          class="activities-carousel__button activities-carousel__button--prev"
-          type="button"
-          aria-label="前のメッセージへ">←</button
-        >
+      <div class="activities-list">
         <div class="activities-section__grid">
           {
-            activities.map((activity, index) => (
+            activities.map((activity) => (
               <article
                 id={activity.targetId}
-                class:list={{
-                  "ranking-slide": true,
-                  "is-active": index === 0,
-                  "is-left": index === 2,
-                  "is-right": index === 1,
-                }}
-                data-carousel-item
+                class="ranking-slide"
               >
                 <span class="ranking-card__badge">{activity.number}</span>
                 <div class="ranking-card">
@@ -412,34 +387,20 @@ const pathways = [
                     />
                   </figure>
                   <div class="ranking-card__content">
+                    <p class="ranking-card__category">{activity.category}</p>
                     <h3>{activity.title}</h3>
+                    <p>{activity.body}</p>
                     <p class="ranking-card__tags">
                       {activity.tags.map((tag) => (
                         <span>{tag}</span>
                       ))}
                     </p>
-                    <p>{activity.body}</p>
                   </div>
                 </div>
               </article>
             ))
           }
         </div>
-        <button
-          class="activities-carousel__button activities-carousel__button--next"
-          type="button"
-          aria-label="次のメッセージへ">→</button
-        >
-      </div>
-      <div class="activities-carousel__dots" aria-hidden="true">
-        <span class="is-active"></span><span></span><span></span>
-      </div>
-      <div class="message-wordmark" aria-label="週末移住">
-        {
-          Array.from({ length: 6 }, (_, index) => (
-            <span style={`--wordmark-index: ${index}`}>週末移住</span>
-          ))
-        }
       </div>
     </div>
   </section>
@@ -448,7 +409,7 @@ const pathways = [
     <div class="content-shell">
       <header class="profile-section__heading">
         <p class="section-kicker">PROFILE</p>
-        <p>田舎がもっと身近に感じてもらえるように</p>
+        <p>田舎を、もっと身近な選択肢に。</p>
       </header>
       <div class="profile-section__layout">
         <figure class="profile-section__photo">
@@ -464,7 +425,7 @@ const pathways = [
             <h2>矢野諭稔 <span>（週末移住者）</span></h2>
             <p class="profile-section__name-en">Satoshi Yano</p>
             <p>
-              平日は広告代理店に勤務。松山・東京の二拠点生活を送りながら、週末は愛媛の離島「中島（なかじま）」に通っています。四季折々に表情を変える田舎の景色が大好きです。
+              平日は広告代理店で働きながら、週末は愛媛の離島・中島へ。築100年の古民家と100本のレモンを手入れし、移住だけではない田舎との関わり方を実践しています。
             </p>
           </article>
           <article class="profile-section__secondary">
@@ -482,10 +443,13 @@ const pathways = [
   <section class="place-section reveal-section" id="nakajima">
     <header class="access-section__heading content-shell">
       <h2>ACCESS</h2>
-      <p>アクセス</p>
+      <p>橋のない島へ、船で約1時間。</p>
     </header>
 
     <div class="access-section__map">
+      <a class="access-section__map-mobile" href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu" target="_blank" rel="noreferrer" aria-label="Google Mapsで中島を見る">
+        <img src={nakajimaMap.src} alt="松山市と中島を結ぶ航路の地図" loading="lazy" decoding="async" />
+      </a>
       <iframe
         title="Googleマップで見る愛媛県松山市中島と周辺の航路"
         src="https://www.google.com/maps?q=33.9751781,132.619553&z=11&output=embed"
@@ -493,24 +457,13 @@ const pathways = [
         allowfullscreen
         referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
+    <a class="access-section__link access-section__link--mobile" href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu" target="_blank" rel="noreferrer">Google Mapsで見る ↗</a>
 
     <div class="access-section__details">
       <div class="access-section__details-inner content-shell">
         <div class="access-section__copy">
-          <h3>瀬戸内海に浮かぶ島</h3>
-          <div class="access-section__fact">
-            <p>愛媛県松山市からフェリーで約1時間。</p>
-          </div>
-          <div class="access-section__fact">
-            <p>
-              三津浜港、高浜港、松山観光港の3つの港から、<br
-                class="access-section__sentence-break"
-              />
-              <span class="access-section__fact-line"
-                >出発時間や航路に合わせて船で渡ることができます。</span
-              >
-            </p>
-          </div>
+          <h3>中島は、松山市の沖に浮かぶ離島です。</h3>
+          <p class="access-section__summary">三津浜港、高浜港、松山観光港から船で渡ることができます。<span class="desktop-copy">私が再生している古民家は、神浦港から歩いて約2分の場所にあります。</span><span class="mobile-copy">古民家は、神浦港から歩いて約2分です。</span></p>
           <a
             class="access-section__link"
             href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu"
@@ -529,28 +482,6 @@ const pathways = [
       </div>
     </div>
 
-    <div class="access-section__guide content-shell">
-      <p>
-        島の玄関口は、<br />
-        大浦港、神浦港（こうのうら）、西中港の3か所。
-      </p>
-      <p>
-        中心となるのは大浦港ですが、<br />
-        私が再生している古民家は神浦港から歩いて約2分の場所にあります。
-      </p>
-      <p>
-        島から望めるのは、<br />
-        西日本最高峰の石鎚山や、海の向こうに連なる広島・山口の山々。
-      </p>
-      <p>
-        温暖な気候と潮風に恵まれた中島では、<br />
-        愛媛らしく柑橘づくりも盛んです。
-      </p>
-      <p>
-        どの港から、どの船で向かうのか。<br />
-        まずはGoogleマップで、中島までの道のりをのぞいてみてください。
-      </p>
-    </div>
   </section>
 
   <section class="faq-section content-shell reveal-section" id="faq">
@@ -560,11 +491,11 @@ const pathways = [
     </header>
     <div class="faq-section__list">
       {
-        faqs.map((faq) => (
-          <details>
-            <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
-          </details>
+        faqs.map((faq, index) => (
+          <div class="faq-item">
+            <button type="button" aria-expanded="false" aria-controls={`faq-answer-${index}`}><span>{faq.question}</span><span class="faq-item__icon" aria-hidden="true">＋</span></button>
+            <div id={`faq-answer-${index}`} class="faq-item__answer" hidden><p>{faq.answer}</p></div>
+          </div>
         ))
       }
     </div>
@@ -574,9 +505,9 @@ const pathways = [
     <div class="pathways-section__inner content-shell">
       <header class="pathways-section__heading">
         <p class="section-kicker">NEXT ACTION</p>
-        <h2>味見してみる。見に行ってみる。</h2>
+        <h2><span>あなたの距離から、</span><span>島と関わる。</span></h2>
         <p>
-          商品を買う、活動を追う、島のことを知る。あなたの生活に近いところから、島との距離を少しだけ縮めてみてください。
+          商品を味わう。活動を追う。島のことを知る。今の暮らしに近いところから、中島との距離を少しだけ縮めてみてください。
         </p>
       </header>
       <div class="pathways-section__content">
@@ -611,7 +542,7 @@ const pathways = [
     <div class="recent-section__inner content-shell">
       <div>
         <p class="section-kicker">RECENT YANO</p>
-        <h2>最近のヤノはInstagramで。</h2>
+        <h2><span>最近のヤノは、</span><span>Instagramで。</span></h2>
       </div>
       <p>
         畑の様子、古民家の進み具合、イベントのお知らせはInstagramで更新しています。サイトでは伝えきれない、週末ごとの空気をのぞいてみてください。
@@ -622,57 +553,23 @@ const pathways = [
     </div>
   </section>
 
-  <a class="back-to-map" href="#main-content" aria-label="TOPへ戻る"
-    >TOPへ戻る</a
-  >
+  <a class="back-to-map" href="#main-content" aria-label="TOPへ戻る"><span aria-hidden="true">↑</span><small>TOP</small></a>
 
   <script>
-    const initializeActivitiesCarousel = () => {
-      const carousel = document.querySelector<HTMLElement>(
-        ".activities-carousel",
-      );
-      if (!carousel) return;
+    document.querySelectorAll<HTMLButtonElement>(".faq-item > button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const expanded = button.getAttribute("aria-expanded") === "true";
+        const answerId = button.getAttribute("aria-controls");
+        const answer = answerId ? document.getElementById(answerId) : null;
+        button.setAttribute("aria-expanded", String(!expanded));
+        if (answer) answer.hidden = expanded;
+      });
+    });
 
-      const track = carousel.querySelector<HTMLElement>(
-        ".activities-section__grid",
-      );
-      if (!track) return;
-
-      const previous = carousel.querySelector(
-        ".activities-carousel__button--prev",
-      );
-      const next = carousel.querySelector(".activities-carousel__button--next");
-      const dots = [
-        ...carousel.querySelectorAll(".activities-carousel__dots span"),
-      ];
-      const cards = [
-        ...track.querySelectorAll<HTMLElement>("[data-carousel-item]"),
-      ];
-      let activeIndex = 0;
-
-      const showCard = (index: number) => {
-        activeIndex = (index + cards.length) % cards.length;
-        const leftIndex = (activeIndex - 1 + cards.length) % cards.length;
-        const rightIndex = (activeIndex + 1) % cards.length;
-
-        dots.forEach((dot, dotIndex) =>
-          dot.classList.toggle("is-active", dotIndex === activeIndex),
-        );
-        cards.forEach((item, cardIndex) => {
-          const isActive = cardIndex === activeIndex;
-          item.classList.toggle("is-active", isActive);
-          item.classList.toggle("is-left", cardIndex === leftIndex);
-          item.classList.toggle("is-right", cardIndex === rightIndex);
-          item.setAttribute("aria-current", isActive ? "true" : "false");
-        });
-      };
-
-      previous?.addEventListener("click", () => showCard(activeIndex - 1));
-      next?.addEventListener("click", () => showCard(activeIndex + 1));
-      requestAnimationFrame(() => showCard(0));
-    };
-
-    initializeActivitiesCarousel();
+    const backToTop = document.querySelector<HTMLElement>(".back-to-map");
+    const updateBackToTop = () => backToTop?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.75);
+    window.addEventListener("scroll", updateBackToTop, { passive: true });
+    updateBackToTop();
 
     const revealTargets = document.querySelectorAll(".reveal-section");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1998,19 +1895,6 @@ const pathways = [
     white-space: nowrap;
   }
 
-  .activities-carousel {
-    display: grid;
-    grid-template-columns:
-      minmax(0, 1fr) 3rem minmax(0, 1fr) 3rem
-      minmax(0, 1fr);
-    gap: clamp(0.75rem, 1.6vw, 1.5rem);
-    align-items: center;
-    width: min(100%, 76rem);
-    margin: clamp(2.5rem, 5vw, 4.5rem) auto 0;
-    padding: 1.1rem 0.35rem 0.65rem;
-    overflow: visible;
-  }
-
   .activities-section__grid {
     display: contents;
   }
@@ -2179,60 +2063,6 @@ const pathways = [
   .ranking-slide.is-active .ranking-card__badge {
     background: #ff3f9f;
     color: #fff;
-  }
-
-  .activities-carousel__button {
-    position: relative;
-    z-index: 3;
-    display: grid;
-    width: 2.6rem;
-    height: 2.6rem;
-    place-items: center;
-    border: 2px solid #111;
-    border-radius: 50%;
-    background: #fff;
-    color: #111;
-    cursor: pointer;
-    font-size: 1.45rem;
-    line-height: 1;
-    transition:
-      transform 0.2s ease,
-      background-color 0.2s ease;
-  }
-
-  .activities-carousel__button:hover,
-  .activities-carousel__button:focus-visible {
-    background: #ffe500;
-    transform: scale(1.05);
-  }
-
-  .activities-carousel__button--prev {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .activities-carousel__button--next {
-    grid-column: 4;
-    grid-row: 1;
-  }
-
-  .activities-carousel__dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.55rem;
-    margin-top: 1.35rem;
-  }
-
-  .activities-carousel__dots span {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: #111;
-  }
-
-  .activities-carousel__dots span.is-active {
-    outline: 2px solid #ffe500;
-    outline-offset: 2px;
   }
 
   .message-wordmark {
@@ -2844,13 +2674,6 @@ const pathways = [
       grid-template-columns: 1fr;
     }
 
-    .activities-carousel {
-      grid-template-columns: 2.6rem minmax(0, 1fr) 2.6rem;
-      gap: 0.65rem;
-      width: min(100%, 28rem);
-      padding-inline: 0.1rem;
-    }
-
     .ranking-slide.is-left,
     .ranking-slide.is-right {
       display: none;
@@ -2861,16 +2684,6 @@ const pathways = [
       grid-column: 2;
       grid-row: 1;
       transform: none;
-    }
-
-    .activities-carousel__button--prev {
-      grid-column: 1;
-      grid-row: 1;
-    }
-
-    .activities-carousel__button--next {
-      grid-column: 3;
-      grid-row: 1;
     }
 
     .ranking-card {
@@ -3145,20 +2958,6 @@ const pathways = [
       line-height: 1.6;
     }
 
-    .activities-carousel__button {
-      width: 2.2rem;
-      height: 2.2rem;
-      font-size: 1.15rem;
-    }
-
-    .activities-carousel {
-      grid-template-columns: 2.2rem minmax(0, 1fr) 2.2rem;
-      gap: 0.55rem;
-      width: 100%;
-      margin-top: 2.5rem;
-      padding-top: 1.2rem;
-    }
-
     .ranking-card {
       width: 100%;
       margin: 0;
@@ -3335,5 +3134,477 @@ const pathways = [
     .recent-section a {
       transition: none;
     }
+  }
+
+  /* Personal-branding refresh: resilient typography and content-led sizing. */
+  :global(html:has(.weekend-hero)) { font-size: 100%; overflow-x: clip; }
+  :global(body:has(.weekend-hero)) { overflow-x: clip; }
+  :global(body:has(.weekend-hero) p) { line-break: strict; text-wrap: pretty; }
+  :global(body:has(.weekend-hero) h1),
+  :global(body:has(.weekend-hero) h2),
+  :global(body:has(.weekend-hero) h3) { line-break: strict; text-wrap: balance; }
+
+  .weekend-hero {
+    box-sizing: border-box;
+    width: 100%;
+    margin-inline: 0;
+  }
+  .site-name { font-size: clamp(1.3rem, 2.1vw, 1.8rem); }
+  .hero-introduction {
+    width: min(36rem, calc(100% - 3rem));
+    max-width: 36rem;
+    font-size: clamp(0.95rem, 1.25vw, 1.08rem);
+    line-height: 1.85;
+  }
+
+  .weekend-intro { overflow: clip; }
+  .weekend-intro__grid { align-items: stretch; }
+  .weekend-intro__story { display: grid; grid-template-rows: auto auto 1fr; }
+  .weekend-intro__story figure { width: 100%; aspect-ratio: 16 / 10; }
+  .weekend-intro__story img { width: 100%; height: 100%; object-fit: cover; }
+  .weekend-intro__story h3 { font-size: clamp(1.25rem, 2vw, 1.65rem); }
+  .weekend-intro__story > p { max-width: 42rem; font-size: clamp(0.95rem, 1.15vw, 1rem); line-height: 1.85; }
+
+  .activities-section { padding-block: clamp(5rem, 9vw, 8rem); overflow: clip; }
+  .ranking-section__heading { max-width: 48rem; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .ranking-section__heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.35; }
+  .ranking-section__lead { max-width: 42rem; margin: 1.25rem 0 0; font-size: 1rem; line-height: 1.85; }
+  .activities-list { width: 100%; }
+  .activities-section__grid {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    width: 100%;
+    min-height: 0;
+  }
+  .ranking-slide,
+  .ranking-slide.is-active,
+  .ranking-slide.is-left,
+  .ranking-slide.is-right {
+    position: relative;
+    inset: auto;
+    display: flex;
+    width: auto;
+    max-width: none;
+    min-height: 0;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .ranking-card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid #111;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0.45rem 0.45rem 0 #f8dc42;
+  }
+  .ranking-card__media { width: 100%; aspect-ratio: 4 / 3; border-radius: 0; }
+  .ranking-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .ranking-card__content { display: flex; flex-direction: column; min-height: 0; padding: clamp(1.25rem, 2.2vw, 1.75rem); background: #fff; }
+  .ranking-card__category { margin: 0 0 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; }
+  .ranking-card__content h3 { margin: 0; font-size: clamp(1.25rem, 1.9vw, 1.55rem); line-height: 1.5; }
+  .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) { margin: 1rem 0; font-size: 0.95rem; line-height: 1.8; }
+  .ranking-card__tags { display: flex; flex-wrap: wrap; gap: 0.35rem 0.65rem; margin: auto 0 0; font-size: 0.78rem; }
+  .ranking-card__badge { z-index: 2; top: -0.75rem; left: -0.5rem; }
+
+  @media (min-width: 1200px) {
+    .ranking-card__content h3 {
+      font-size: clamp(1.05rem, 1.42vw, 1.25rem);
+      white-space: nowrap;
+    }
+  }
+
+  .profile-section__heading > p:last-child { font-size: clamp(1.75rem, 3.3vw, 2.75rem); }
+  .profile-section__layout { grid-template-columns: minmax(20rem, 0.9fr) minmax(24rem, 1.1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+  .profile-section__details { width: 100%; max-width: 43rem; }
+  .profile-section__primary > p:last-child, .profile-section__secondary p { font-size: 1rem; line-height: 1.85; }
+  .profile-section__secondary { margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+
+  .place-section { padding-block: clamp(5rem, 8vw, 7rem); }
+  .access-section__heading { padding-bottom: 2rem; }
+  .access-section__heading h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); }
+  .access-section__heading p { font-size: clamp(1.35rem, 2.4vw, 2rem); }
+  .access-section__map { width: min(calc(100% - clamp(2rem, 7vw, 8rem)), 1160px); margin-inline: auto; }
+  .access-section__map iframe { min-height: 24rem; }
+  .access-section__details { padding-block: clamp(2rem, 4vw, 3.5rem); }
+  .access-section__details-inner { align-items: center; }
+  .access-section__copy h3 { font-size: clamp(1.3rem, 2vw, 1.75rem); }
+  .access-section__summary { max-width: 40rem; margin: 1.25rem 0 0; font-size: 1rem; line-height: 1.85; }
+  .access-section__link { margin-top: 1.75rem; }
+
+  .faq-section { padding-block: clamp(5rem, 8vw, 7rem); }
+  .faq-section__list { margin-top: 2.5rem; }
+  .faq-item { border-bottom: 1px solid #2e4568; }
+  .faq-item > button {
+    display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: center;
+    width: 100%; min-height: 4.5rem; padding: 1rem 0; border: 0; border-radius: 0;
+    background: transparent; color: #2e4568; font: inherit; font-size: 1rem; line-height: 1.65; text-align: left; cursor: pointer;
+  }
+  .faq-item > button:focus-visible { outline: 3px solid #f8dc42; outline-offset: 4px; }
+  .faq-item__icon { display: grid; place-items: center; width: 2rem; height: 2rem; font-size: 1.25rem; transition: transform 180ms ease; }
+  .faq-item > button[aria-expanded="true"] .faq-item__icon { transform: rotate(45deg); }
+  .faq-item__answer p { max-width: 50rem; margin: 0; padding: 0 3.5rem 1.5rem 0; font-size: 0.98rem; line-height: 1.85; }
+
+  .pathways-section__heading h2 { font-size: clamp(1.85rem, 3.4vw, 3rem); }
+  .recent-section h2 { max-width: 16em; font-size: clamp(1.8rem, 3.2vw, 2.8rem); }
+  .back-to-map {
+    display: grid; place-items: center; align-content: center; gap: 0;
+    width: 3.6rem; height: 3.6rem; padding: 0; border-radius: 50%;
+    opacity: 0; visibility: hidden; transform: translateY(0.75rem); pointer-events: none;
+    transition: opacity 180ms ease, transform 180ms ease, visibility 180ms;
+  }
+  .back-to-map.is-visible { opacity: 1; visibility: visible; transform: none; pointer-events: auto; }
+  .back-to-map span { font-size: 1.15rem; line-height: 1; }
+  .back-to-map small { font-size: 0.55rem; letter-spacing: 0.08em; }
+
+  @media (max-width: 900px) {
+    .activities-section__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .ranking-card { grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 1.2fr); grid-template-rows: 1fr; }
+    .ranking-card__media { height: 100%; aspect-ratio: auto; }
+    .profile-section__layout { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .content-shell { width: min(calc(100% - 2rem), 1160px); }
+    .weekend-hero { width: 100%; min-height: 44rem; padding-inline: 1rem; }
+    .hero-introduction { width: calc(100% - 2rem); max-width: 24rem; font-size: 0.96rem; line-height: 1.8; }
+    .weekend-intro__grid { grid-template-columns: 1fr; }
+    .ranking-card { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .ranking-card__media { height: auto; aspect-ratio: 4 / 3; }
+    .profile-section__layout { gap: 1.75rem; }
+    .profile-section__photo { min-height: 0; aspect-ratio: 4 / 3; }
+    .profile-section__primary h2 { font-size: 1.45rem; }
+    .access-section__map { width: calc(100% - 2rem); }
+    .access-section__map iframe { min-height: 19rem; }
+    .access-section__details-inner { display: grid; grid-template-columns: 1fr; }
+    .access-section__copy { order: 1; }
+    .access-section__photo { order: 2; margin-top: 1.5rem; }
+    .faq-item > button { min-height: 4rem; gap: 0.75rem; font-size: 0.95rem; }
+    .faq-item__answer p { padding-right: 0; }
+    .pathways-section__heading h2 { max-width: 13em; }
+    .recent-section h2 { max-width: 14em; }
+    .back-to-map { right: 1rem; bottom: max(1rem, env(safe-area-inset-bottom)); width: 3.2rem; height: 3.2rem; }
+  }
+
+  @media (max-width: 340px) {
+    .pathways-section__grid { grid-template-columns: 1fr; }
+    .site-name { font-size: 1.1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(html:has(.weekend-hero)) { scroll-behavior: auto; }
+    .faq-item__icon, .back-to-map { transition: none; }
+  }
+
+  .mobile-copy,
+  .access-section__map-mobile,
+  .access-section__link--mobile { display: none; }
+
+  @media (max-width: 767px) {
+    .desktop-copy { display: none; }
+    .mobile-copy { display: inline; }
+
+    .content-shell { width: calc(100% - 40px); }
+    .section-kicker {
+      margin-bottom: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    .weekend-hero {
+      display: block;
+      min-height: 0;
+      height: auto;
+      padding: 1rem 0 2.5rem;
+      overflow: clip;
+    }
+    .site-name {
+      position: relative;
+      top: auto;
+      left: auto;
+      display: inline-block;
+      max-width: calc(100% - 40px);
+      margin-left: 20px;
+      font-size: clamp(1.5rem, 6.6vw, 1.75rem);
+    }
+    .hero-introduction {
+      position: relative;
+      inset: auto;
+      width: calc(100% - 40px);
+      max-width: 27rem;
+      margin: 1.1rem 20px 0;
+      padding: 0;
+      background: transparent;
+      font-size: 0.9375rem;
+      line-height: 1.72;
+    }
+    .island-map {
+      position: relative;
+      top: auto;
+      left: 50%;
+      width: 140%;
+      max-width: none;
+      height: auto;
+      margin-top: 0.75rem;
+      aspect-ratio: 1200 / 760;
+      transform: translateX(-50%);
+    }
+    .map-spot { min-width: 44px; min-height: 44px; }
+
+    .weekend-intro {
+      width: calc(100% - 24px);
+      margin-inline: auto;
+      padding-block: 0;
+    }
+    .weekend-intro__inner {
+      width: 100%;
+      padding: 4rem 20px 4.5rem;
+    }
+    .weekend-intro__heading h2 {
+      font-size: clamp(1.75rem, 8vw, 2rem);
+      line-height: 1.35;
+    }
+    .weekend-intro__lead {
+      margin-top: 0.8rem;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+    }
+    .weekend-intro__grid { gap: 3.25rem; margin-top: 2.5rem; }
+    .weekend-intro__story { display: block; }
+    .weekend-intro__story figure { aspect-ratio: 16 / 10; }
+    .weekend-intro__story h3 {
+      margin-top: 1.25rem;
+      font-size: clamp(1.25rem, 5.5vw, 1.4rem);
+      line-height: 1.45;
+    }
+    .weekend-intro__story > p {
+      margin-top: 0.75rem;
+      font-size: 0.96875rem;
+      line-height: 1.8;
+    }
+
+    .activities-section,
+    .profile-section,
+    .place-section,
+    .faq-section,
+    .pathways-section,
+    .recent-section { padding-block: 4.5rem; }
+
+    .ranking-section__heading {
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+    .ranking-section__heading .section-kicker {
+      color: #fff;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+    }
+    .ranking-section__heading h2 {
+      color: #fff;
+      font-size: clamp(1.7rem, 7vw, 1.875rem);
+      line-height: 1.38;
+    }
+    .ranking-section__lead {
+      max-width: 24rem;
+      margin-top: 0.85rem;
+      color: #fff;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+    }
+    .activities-section__grid { gap: 1.25rem; }
+    .ranking-card {
+      border-width: 1.5px;
+      border-radius: 0.75rem;
+      box-shadow: 0.25rem 0.25rem 0 #f8dc42;
+    }
+    .ranking-card__media { aspect-ratio: 16 / 9; }
+    .ranking-slide:nth-child(1) .ranking-card__media img { object-position: center 54%; }
+    .ranking-slide:nth-child(2) .ranking-card__media img { object-position: center 45%; }
+    .ranking-slide:nth-child(3) .ranking-card__media img { object-position: center 48%; }
+    .ranking-card__content { padding: 1.1rem 1.125rem 1.2rem; }
+    .ranking-card__category { font-size: 0.75rem; }
+    .ranking-card__content h3 { font-size: 1.25rem; line-height: 1.45; }
+    .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) {
+      margin-block: 0.75rem 1rem;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+    }
+    .ranking-card__tags { font-size: 0.8rem; line-height: 1.6; }
+    .ranking-card__badge { width: 3rem; min-height: 3rem; font-size: 1rem; }
+
+    .profile-section__heading { margin-bottom: 1.75rem; text-align: left; }
+    .profile-section__heading .section-kicker {
+      color: #fff;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+    }
+    .profile-section__heading > p:last-child {
+      max-width: 13em;
+      color: #fff;
+      font-size: clamp(1.7rem, 7vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .profile-section__layout { gap: 1rem; }
+    .profile-section__photo { width: 100%; aspect-ratio: 4 / 3; }
+    .profile-section__details {
+      display: block;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      background: #fff;
+      color: #2e4568;
+    }
+    .profile-section__primary { padding: 0; background: transparent; }
+    .profile-section__primary h2 { font-size: 1.35rem; line-height: 1.5; }
+    .profile-section__name-en { font-size: 0.875rem; }
+    .profile-section__primary > p:last-child,
+    .profile-section__secondary p { font-size: 0.96875rem; line-height: 1.8; }
+    .profile-section__secondary {
+      margin-top: 1.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgb(46 69 104 / 22%);
+      color: #2e4568;
+    }
+    .profile-section__secondary h3 { font-size: 1.2rem; line-height: 1.5; }
+    .profile-section__more {
+      width: 100%;
+      min-height: 46px;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .place-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .access-section__heading {
+      order: 1;
+      width: calc(100% - 40px);
+      padding-bottom: 1.25rem;
+      text-align: left;
+    }
+    .access-section__heading h2 {
+      color: #fff;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      letter-spacing: 0.14em;
+    }
+    .access-section__heading p {
+      max-width: 14em;
+      margin-top: 0.75rem;
+      color: #fff;
+      font-size: clamp(1.7rem, 7vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .access-section__details { order: 2; padding: 0; }
+    .access-section__details-inner {
+      display: grid;
+      width: calc(100% - 40px);
+      grid-template-columns: 1fr;
+    }
+    .access-section__copy { display: contents; }
+    .access-section__copy h3 { order: 1; margin: 0; font-size: 1rem; line-height: 1.65; }
+    .access-section__summary { order: 2; margin: 0.65rem 0 0; font-size: 0.9375rem; line-height: 1.78; }
+    .access-section__photo { order: 3; width: 100%; margin-top: 1.5rem; aspect-ratio: 16 / 10; }
+    .access-section__copy .access-section__link { display: none; }
+    .access-section__link--mobile {
+      order: 4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 48px;
+      width: calc(100% - 40px);
+      margin: 1rem auto 0;
+      border: 2px solid #111;
+      border-radius: 999px;
+      background: #ffe500;
+      color: #111;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .access-section__map {
+      order: 3;
+      width: calc(100% - 40px);
+      margin-top: 1rem;
+      aspect-ratio: 4 / 3;
+      min-height: 240px;
+      overflow: hidden;
+      border: 2px solid #111;
+      background: #f4f0e5;
+    }
+    .access-section__map iframe { display: none; }
+    .access-section__map-mobile { display: block; width: 100%; height: 100%; }
+    .access-section__map-mobile img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+    .faq-section { width: calc(100% - 40px); }
+    .section-heading h2 { font-size: clamp(1.7rem, 7vw, 1.875rem); line-height: 1.4; }
+    .faq-section__list { margin-top: 1.75rem; }
+    .faq-item > button {
+      min-height: 56px;
+      padding: 0.75rem 0.5rem;
+      font-size: 0.96875rem;
+      line-height: 1.6;
+    }
+    .faq-item__icon { width: 2.75rem; height: 2.75rem; font-size: 1.5rem; }
+    .faq-item__answer p { padding: 0 0.5rem 1.25rem; font-size: 0.9375rem; line-height: 1.75; }
+
+    .pathways-section__inner { display: block; width: calc(100% - 40px); }
+    .pathways-section__heading { text-align: left; }
+    .pathways-section__heading .section-kicker { color: #fff; }
+    .pathways-section__heading h2 {
+      max-width: none;
+      color: #fff;
+      font-size: clamp(1.7rem, 7vw, 1.875rem);
+      line-height: 1.4;
+    }
+    .pathways-section__heading h2 span { display: block; }
+    .pathways-section__heading > p:last-child { margin-top: 1rem; color: #fff; font-size: 0.9375rem; line-height: 1.75; }
+    .pathways-section__grid { gap: 1.25rem; margin-top: 2rem; }
+    .pathways-section__grid a,
+    .pathways-section__grid a:nth-child(even) { padding: 0.75rem; }
+    .pathways-card__body { min-height: 0; padding: 1rem 0.25rem 0.4rem; }
+    .pathways-card__meta p,
+    .pathways-card__meta span { font-size: 0.75rem; }
+    .pathways-card__body h3 { font-size: 1.25rem; line-height: 1.45; }
+    .pathways-card__body > span { font-size: 0.9375rem; line-height: 1.7; }
+
+    .recent-section__inner { display: block; width: calc(100% - 40px); }
+    .recent-section h2 {
+      max-width: none;
+      font-size: clamp(1.7rem, 7vw, 1.875rem);
+      line-height: 1.4;
+    }
+    .recent-section h2 span { display: block; }
+    .recent-section__inner > p { margin-top: 1.25rem; font-size: 0.9375rem; line-height: 1.75; }
+    .recent-section__inner > a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 48px;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 340px) {
+    .content-shell,
+    .faq-section,
+    .pathways-section__inner,
+    .recent-section__inner,
+    .access-section__heading,
+    .access-section__details-inner,
+    .access-section__map { width: calc(100% - 32px); }
+    .access-section__link--mobile { width: calc(100% - 32px); }
+    .site-name { max-width: calc(100% - 32px); margin-left: 16px; }
+    .hero-introduction { width: calc(100% - 32px); margin-left: 16px; margin-right: 16px; }
   }
 </style>
