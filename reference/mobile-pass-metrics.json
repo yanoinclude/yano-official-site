@@ -1,0 +1,86 @@
+[
+  {
+    "width": 1440,
+    "innerWidth": 1440,
+    "scrollWidth": 1440,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": false,
+    "faqExpanded": "true",
+    "minCardText": 11.52,
+    "footerHeight": 549,
+    "pageHeight": 8789
+  },
+  {
+    "width": 1024,
+    "innerWidth": 1024,
+    "scrollWidth": 1024,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": false,
+    "faqExpanded": "true",
+    "minCardText": 11.52,
+    "footerHeight": 508,
+    "pageHeight": 8096
+  },
+  {
+    "width": 768,
+    "innerWidth": 768,
+    "scrollWidth": 768,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": false,
+    "faqExpanded": "true",
+    "minCardText": 11.52,
+    "footerHeight": 473,
+    "pageHeight": 9626
+  },
+  {
+    "width": 430,
+    "innerWidth": 430,
+    "scrollWidth": 430,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": true,
+    "faqExpanded": "true",
+    "minCardText": 11.2,
+    "footerHeight": 688,
+    "pageHeight": 9918
+  },
+  {
+    "width": 390,
+    "innerWidth": 390,
+    "scrollWidth": 390,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": true,
+    "faqExpanded": "true",
+    "minCardText": 11.2,
+    "footerHeight": 688,
+    "pageHeight": 9768
+  },
+  {
+    "width": 375,
+    "innerWidth": 375,
+    "scrollWidth": 375,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": true,
+    "faqExpanded": "true",
+    "minCardText": 11.2,
+    "footerHeight": 688,
+    "pageHeight": 9668
+  },
+  {
+    "width": 360,
+    "innerWidth": 360,
+    "scrollWidth": 360,
+    "overflowX": false,
+    "mapVisible": true,
+    "fallbackVisible": true,
+    "faqExpanded": "true",
+    "minCardText": 11.2,
+    "footerHeight": 688,
+    "pageHeight": 9542
+  }
+]

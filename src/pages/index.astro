@@ -1,12 +1,12 @@
 ---
 import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import MobileYanoJourney from "@/components/animation/MobileYanoJourney.astro";
 import islandUserCutout from "@/assets/images/home/island-user-cutout.png";
 import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
 import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.png";
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
-import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
 import nakajimaBiyoriFeature from "@/assets/images/intro-feature/nakajima-biyori-feature.png";
 import weekendLemonFeature from "@/assets/images/intro-feature/weekend-lemon-feature.png";
 import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
@@ -17,6 +17,7 @@ import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaOverlook from "@/assets/images/scenery/nakajima-overlook.jpeg";
 import nakajimaMap from "@/assets/images/scenery/nakajima-map.svg";
+import recentLemon from "@/assets/images/generated/recent-lemon.png";
 
 const activities = [
   {
@@ -43,7 +44,7 @@ const activities = [
     number: "03",
     category: "COMMUNITY",
     targetId: "events",
-    title: "人が集まるきっかけを作る",
+    title: "人が集まるきっかけをつくる",
     tags: ["#イベント", "#お手伝い募集中"],
     body: "マルシェや収穫イベント、海掃除などに参加しています。島を知り、関わり始める小さなきっかけをつくっています。",
     image: rankingMarche.src,
@@ -53,34 +54,32 @@ const activities = [
 
 const faqs = [
   {
-    question: "中島ってどこにある？",
-    answer:
-      "愛媛県松山市の沖にある、瀬戸内海の島です。松山の港から船で向かうことができ、柑橘畑、海、古民家、人の暮らしが近くにあります。",
-  },
-  {
     question: "なぜ古民家を直している？",
     answer:
-      "島で受け取った一軒の家を、もう一度人が集まり、泊まり、手を動かせる場所にしたかったからです。古民家は、島との関わりを始めるための小さな拠点です。",
+      "大学時代に田舎を訪れ、その風景や人の暮らしに魅力を感じる一方、人口減少や高齢化によって、地域の営みが失われていく現実も知りました。地域活性化という大きなことではなく、まずは目の前にある風景と関わり続けたい。そんな思いから、中島で受け取った築100年の古民家を、人が集まり、一緒に手を動かせる場所へ少しずつ直しています。",
   },
   {
-    question: "レモン畑はどう管理している？",
+    question: "なぜレモン畑を管理している？",
     answer:
-      "平日は松山や東京で働き、週末に中島へ通って草刈り、剪定、収穫などを行っています。農家さんや周囲の人に教わりながら、100本の木を少しずつ手入れしています。",
+      "古民家再生でお世話になった近所の農家さんが体調を崩し、管理できなくなった約100本のレモンの木がありました。すべて伐採すると聞き、「この風景を残せるなら」とお願いし、できる範囲で引き継ぐことにしました。農家さんに教わりながら、週末に草刈りや剪定、収穫を続けています。",
   },
   {
-    question: "レモン果汁は買える？",
+    question: "収穫したレモンはどうしている？",
     answer:
-      "はい。週末に手入れして収穫した中島のレモンから、週末移住レモン果汁をつくっています。商品ページから詳細を見ることができます。",
+      "収穫したレモンは、そのまま販売するだけでなく、畑の背景や島での取り組みも一緒に届けたいと考え、果汁などの商品にしています。現在は「週末移住レモン」として商品化し、オンラインショップからご覧いただけます。",
+    link: { label: "週末移住レモンを見る", href: "/product" },
   },
   {
-    question: "島に行くことはできる？",
+    question: "島へ行ってみたいときは？",
     answer:
-      "中島には訪れることができます。島の情報は中島日和、ヤノの活動やイベント案内はInstagramで更新しています。",
+      "中島には、松山の港から船で訪れることができます。古民家やレモン畑、島で活動する人たちに興味がある方は、InstagramのDMからご連絡ください。日程が合えば、島をご案内したり、面白い活動をしている人をご紹介したりします。",
+    link: { label: "Instagramで連絡する", href: siteConfig.social.instagram },
   },
   {
     question: "最新情報はどこで見られる？",
     answer:
-      "日々の活動、畑や古民家の様子、イベント案内はInstagramで更新しています。まずは近況を見るだけでも歓迎です。",
+      "畑や古民家の様子、イベントのお知らせなど、日々の活動はInstagramで更新しています。まずは、週末ごとの島の様子をのぞいてみてください。",
+    link: { label: "Instagramを見る", href: siteConfig.social.instagram },
   },
 ];
 
@@ -133,7 +132,7 @@ const pathways = [
     <p class="hero-introduction">
       平日は働き、週末は船で中島へ。古民家とレモンを手入れしながら、島との新しい関わり方をつくっています。
     </p>
-    <div class="island-map" aria-label="中島での活動マップ">
+    <div class="island-map" aria-label="中島での活動マップ" data-yano-island>
       <img
         class="hero-ferry"
         src={nakajimaFerryCutout.src}
@@ -267,21 +266,26 @@ const pathways = [
         class="map-spot map-spot--yano"
         href="#profile"
         aria-label="ページ内のヤノのプロフィールへ"
+        data-island-yano
       >
         <span class="map-yano" aria-hidden="true">
-          <img
-            src={yanoWalkingCutout.src}
-            alt=""
-            loading="eager"
-            decoding="async"
-          />
+          <span class="map-yano__sprite">
+            <img
+              src="/images/animation/yano-walk-sprite-8frames.png"
+              alt=""
+              width="2172"
+              height="724"
+              loading="eager"
+              decoding="async"
+            />
+          </span>
         </span>
         <span>ヤノ</span>
       </a>
       <a
         class="map-spot map-spot--house"
         href="#kominka"
-        aria-label="古民家再生へ"
+        aria-label="古民家の再生活動を見る"
       >
         <span class="map-landmark" aria-hidden="true">
           <img
@@ -292,12 +296,15 @@ const pathways = [
             decoding="async"
           />
         </span>
-        <span class="map-spot__label">古民家</span>
+        <span class="map-spot__connector" aria-hidden="true"></span>
+        <span class="map-spot__label">
+          <span>古民家をのぞく</span><span class="map-spot__arrow" aria-hidden="true">→</span>
+        </span>
       </a>
       <a
         class="map-spot map-spot--farm"
         href="#lemon-product"
-        aria-label="レモン畑と商品へ"
+        aria-label="レモン畑と週末移住レモンを見る"
       >
         <span class="map-landmark" aria-hidden="true">
           <img
@@ -308,9 +315,17 @@ const pathways = [
             decoding="async"
           />
         </span>
-        <span class="map-spot__label">レモン畑</span>
+        <span class="map-spot__connector" aria-hidden="true"></span>
+        <span class="map-spot__label">
+          <span>レモン畑をのぞく</span><span class="map-spot__arrow" aria-hidden="true">→</span>
+        </span>
       </a>
     </div>
+    <nav class="hero-mobile-actions" aria-label="島での活動を見る">
+      <a href="#kominka"><span>古民家をのぞく</span><span aria-hidden="true">→</span></a>
+      <a href="#lemon-product"><span>レモン畑をのぞく</span><span aria-hidden="true">→</span></a>
+    </nav>
+    <MobileYanoJourney />
   </section>
 
   <section class="weekend-intro reveal-section" id="about">
@@ -324,16 +339,16 @@ const pathways = [
       class="weekend-intro__layer weekend-intro__layer--white"
       aria-hidden="true"></span>
     <div class="weekend-intro__inner content-shell">
-      <header class="weekend-intro__heading">
-        <p class="weekend-intro__label">WHY WEEKEND?</p>
-        <h2>週末移住という暮らし</h2>
-        <p class="weekend-intro__lead">
-          週末だけ島へ通う、僕なりの田舎との関わり方。
-        </p>
-      </header>
-
-      <div class="weekend-intro__grid">
-        <article class="weekend-intro__story">
+      <div class="weekend-intro__paper weekend-intro__paper--first">
+        <div class="weekend-intro__paper-inner">
+          <header class="weekend-intro__heading">
+            <p class="weekend-intro__label">WHY WEEKEND?</p>
+            <h2>週末移住という暮らし</h2>
+            <p class="weekend-intro__lead">
+              週末だけ島へ通う、僕なりの田舎との関わり方。
+            </p>
+          </header>
+          <article class="weekend-intro__story">
           <figure>
             <img
               src={nakajimaBiyoriFeature.src}
@@ -344,9 +359,12 @@ const pathways = [
           </figure>
           <h3>今の暮らしを、手放さない。</h3>
           <p>仕事も、今の暮らしも、無理に手放さなくていい。平日は松山で働き、週末だけ船に乗って中島へ。僕の田舎暮らしは、いきなり移住するのではなく、通うことから始まりました。</p>
-        </article>
-
-        <article class="weekend-intro__story">
+          </article>
+        </div>
+      </div>
+      <div class="weekend-intro__paper weekend-intro__paper--second">
+        <div class="weekend-intro__paper-inner">
+          <article class="weekend-intro__story">
           <figure>
             <img
               src={weekendLemonFeature.src}
@@ -357,7 +375,8 @@ const pathways = [
           </figure>
           <h3>通ううちに、島も暮らしになった。</h3>
           <p>古民家を直し、レモンを育て、島の人たちと時間を過ごす。毎日住んでいなくても、少しずつ関わりを重ねることで、島はもうひとつの暮らしの場所になっていきました。</p>
-        </article>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -366,8 +385,7 @@ const pathways = [
     <div class="content-shell">
       <header class="ranking-section__heading">
         <p class="section-kicker">ACTIVITIES</p>
-        <h2><span class="desktop-copy">島で、手を動かしていること。</span><span class="mobile-copy">島で、手を動かす。</span></h2>
-        <p class="ranking-section__lead"><span class="desktop-copy">古民家とレモン、そして人が集まるきっかけを。週末ごとに、できることを少しずつ続けています。</span><span class="mobile-copy">古民家とレモン、人が集まるきっかけを。週末ごとに、少しずつ続けています。</span></p>
+        <h2>島でしていること</h2>
       </header>
       <div class="activities-list">
         <div class="activities-section__grid">
@@ -447,13 +465,13 @@ const pathways = [
     </header>
 
     <div class="access-section__map">
-      <a class="access-section__map-mobile" href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu" target="_blank" rel="noreferrer" aria-label="Google Mapsで中島を見る">
-        <img src={nakajimaMap.src} alt="松山市と中島を結ぶ航路の地図" loading="lazy" decoding="async" />
-      </a>
+      <div class="access-section__map-fallback">
+        <img src={nakajimaMap.src} alt="四国北西部と中島の位置を示す地図" />
+      </div>
       <iframe
         title="Googleマップで見る愛媛県松山市中島と周辺の航路"
         src="https://www.google.com/maps?q=33.9751781,132.619553&z=11&output=embed"
-        loading="lazy"
+        loading="eager"
         allowfullscreen
         referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
@@ -463,7 +481,10 @@ const pathways = [
       <div class="access-section__details-inner content-shell">
         <div class="access-section__copy">
           <h3>中島は、松山市の沖に浮かぶ離島です。</h3>
-          <p class="access-section__summary">三津浜港、高浜港、松山観光港から船で渡ることができます。<span class="desktop-copy">私が再生している古民家は、神浦港から歩いて約2分の場所にあります。</span><span class="mobile-copy">古民家は、神浦港から歩いて約2分です。</span></p>
+          <div class="access-section__routes">
+            <p class="access-section__route access-section__route--ports">三津浜港、高浜港、松山観光港から船で渡ることができます。</p>
+            <p class="access-section__route access-section__route--house"><span>私が再生している古民家は、</span><span>神浦港から歩いて約2分の場所にあります。</span></p>
+          </div>
           <a
             class="access-section__link"
             href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu"
@@ -485,16 +506,31 @@ const pathways = [
   </section>
 
   <section class="faq-section content-shell reveal-section" id="faq">
-    <header class="section-heading">
-      <p class="section-kicker">QUESTIONS</p>
+    <header class="faq-section__heading">
+      <p class="faq-section__bubble">YANO NI KIKU</p>
+      <p class="faq-section__title-en">QUESTIONS</p>
       <h2>気になること、先に答えます。</h2>
     </header>
     <div class="faq-section__list">
       {
         faqs.map((faq, index) => (
           <div class="faq-item">
-            <button type="button" aria-expanded="false" aria-controls={`faq-answer-${index}`}><span>{faq.question}</span><span class="faq-item__icon" aria-hidden="true">＋</span></button>
-            <div id={`faq-answer-${index}`} class="faq-item__answer" hidden><p>{faq.answer}</p></div>
+            <button id={`faq-question-${index}`} type="button" aria-expanded="false" aria-controls={`faq-answer-${index}`}>
+              <span class="faq-item__number" aria-hidden="true">Q{String(index + 1).padStart(2, "0")}</span>
+              <span class="faq-item__question">{faq.question}</span>
+              <span class="faq-item__icon" aria-hidden="true">＋</span>
+            </button>
+            <div id={`faq-answer-${index}`} class="faq-item__answer" role="region" aria-labelledby={`faq-question-${index}`}>
+              <div class="faq-item__answer-inner">
+                <span class="faq-item__answer-mark" aria-hidden="true">A.</span>
+                <div class="faq-item__answer-body">
+                  <p>{faq.answer}</p>
+                  {faq.link && (
+                    <a class="faq-item__cta" href={faq.link.href} target={faq.link.href.startsWith("http") ? "_blank" : undefined} rel={faq.link.href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={faq.link.label}>{faq.link.label}<span aria-hidden="true">→</span></a>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         ))
       }
@@ -502,13 +538,12 @@ const pathways = [
   </section>
 
   <section class="pathways-section reveal-section" id="taste">
-    <div class="pathways-section__inner content-shell">
+    <div class="pathways-section__paper-stack">
+      <div class="pathways-section__inner">
       <header class="pathways-section__heading">
         <p class="section-kicker">NEXT ACTION</p>
         <h2><span>あなたの距離から、</span><span>島と関わる。</span></h2>
-        <p>
-          商品を味わう。活動を追う。島のことを知る。今の暮らしに近いところから、中島との距離を少しだけ縮めてみてください。
-        </p>
+        <p><span>商品を味わう。活動を追う。島のことを知る。</span><span>今の暮らしに近いところから、中島との距離を少しだけ縮めてみてください。</span></p>
       </header>
       <div class="pathways-section__content">
         <div class="pathways-section__grid">
@@ -529,6 +564,7 @@ const pathways = [
                   </div>
                   <h3>{item.title}</h3>
                   <span>{item.body}</span>
+                  <span class="pathways-card__arrow" aria-hidden="true">→</span>
                 </div>
               </a>
             ))
@@ -536,20 +572,20 @@ const pathways = [
         </div>
       </div>
     </div>
+    </div>
   </section>
 
   <section class="recent-section reveal-section" id="recent">
-    <div class="recent-section__inner content-shell">
-      <div>
+    <div class="recent-section__card content-shell">
+      <img class="recent-section__lemon" src={recentLemon.src} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      <div class="recent-section__intro">
         <p class="section-kicker">RECENT YANO</p>
-        <h2><span>最近のヤノは、</span><span>Instagramで。</span></h2>
+        <h2><span>週末移住の様子は、</span><span>Instagramをチェック</span></h2>
       </div>
-      <p>
-        畑の様子、古民家の進み具合、イベントのお知らせはInstagramで更新しています。サイトでは伝えきれない、週末ごとの空気をのぞいてみてください。
-      </p>
-      <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer"
-        >Instagramを見る</a
-      >
+      <div class="recent-section__content">
+        <p><span>畑の手入れ、古民家再生、イベントのこと。</span><span>サイトに載せきれない週末移住の記録を、Instagramで更新しています。</span></p>
+        <a href={siteConfig.social.instagram} target="_blank" rel="noreferrer">最近の活動を見る <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </section>
 
@@ -559,17 +595,33 @@ const pathways = [
     document.querySelectorAll<HTMLButtonElement>(".faq-item > button").forEach((button) => {
       button.addEventListener("click", () => {
         const expanded = button.getAttribute("aria-expanded") === "true";
-        const answerId = button.getAttribute("aria-controls");
-        const answer = answerId ? document.getElementById(answerId) : null;
         button.setAttribute("aria-expanded", String(!expanded));
-        if (answer) answer.hidden = expanded;
+        button.closest(".faq-item")?.classList.toggle("is-open", !expanded);
       });
     });
+
+    const accessMap = document.querySelector<HTMLElement>(".access-section__map");
+    const accessMapFrame = accessMap?.querySelector<HTMLIFrameElement>("iframe");
+    accessMapFrame?.addEventListener("load", () => accessMap?.classList.add("is-loaded"), { once: true });
 
     const backToTop = document.querySelector<HTMLElement>(".back-to-map");
     const updateBackToTop = () => backToTop?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.75);
     window.addEventListener("scroll", updateBackToTop, { passive: true });
     updateBackToTop();
+
+    const islandMap = document.querySelector<HTMLElement>("[data-yano-island]");
+    const islandYano = islandMap?.querySelector<HTMLElement>("[data-island-yano]");
+    const updateIslandYanoPath = () => {
+      if (!islandMap || !islandYano) return;
+      const { width, height } = islandMap.getBoundingClientRect();
+      const point = (x: number, y: number) =>
+        `${Math.round(width * x)} ${Math.round(height * y)}`;
+      islandYano.style.offsetPath = `path("M ${point(0.28, 0.43)} C ${point(0.34, 0.28)} ${point(0.46, 0.26)} ${point(0.54, 0.36)} C ${point(0.61, 0.46)} ${point(0.66, 0.49)} ${point(0.72, 0.39)} C ${point(0.78, 0.3)} ${point(0.83, 0.37)} ${point(0.76, 0.49)}")`;
+    };
+    if (islandMap && islandYano) {
+      updateIslandYanoPath();
+      new ResizeObserver(updateIslandYanoPath).observe(islandMap);
+    }
 
     const revealTargets = document.querySelectorAll(".reveal-section");
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1338,6 +1390,18 @@ const pathways = [
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(2.5rem, 6vw, 6rem);
     margin-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  @media (min-width: 768px) {
+    .weekend-intro__inner {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 clamp(2.5rem, 6vw, 6rem);
+    }
+    .weekend-intro__paper,
+    .weekend-intro__paper-inner { display: contents; }
+    .weekend-intro__heading { grid-column: 1 / -1; }
+    .weekend-intro__story { margin-top: clamp(3rem, 6vw, 5rem); }
   }
 
   .weekend-intro__story {
@@ -3201,10 +3265,12 @@ const pathways = [
     border-radius: 1rem;
     background: #fff;
     box-shadow: 0.45rem 0.45rem 0 #f8dc42;
+    padding: clamp(1.15rem, 1.8vw, 1.5rem);
   }
   .ranking-card__media { width: 100%; aspect-ratio: 4 / 3; border-radius: 0; }
-  .ranking-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-  .ranking-card__content { display: flex; flex-direction: column; min-height: 0; padding: clamp(1.25rem, 2.2vw, 1.75rem); background: #fff; }
+  .ranking-card__media img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 1; }
+  .ranking-slide:not(.is-active) .ranking-card__media { opacity: 1; }
+  .ranking-card__content { display: flex; flex-direction: column; min-height: 0; padding: clamp(1.25rem, 2.2vw, 1.75rem) 0 0; background: #fff; }
   .ranking-card__category { margin: 0 0 0.6rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; }
   .ranking-card__content h3 { margin: 0; font-size: clamp(1.25rem, 1.9vw, 1.55rem); line-height: 1.5; }
   .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) { margin: 1rem 0; font-size: 0.95rem; line-height: 1.8; }
@@ -3232,9 +3298,52 @@ const pathways = [
   .access-section__map iframe { min-height: 24rem; }
   .access-section__details { padding-block: clamp(2rem, 4vw, 3.5rem); }
   .access-section__details-inner { align-items: center; }
+  .access-section__details-inner {
+    width: min(calc(100% - clamp(2rem, 7vw, 8rem)), 1160px);
+  }
   .access-section__copy h3 { font-size: clamp(1.3rem, 2vw, 1.75rem); }
+  .access-section__copy h3 { margin: 0; }
   .access-section__summary { max-width: 40rem; margin: 1.25rem 0 0; font-size: 1rem; line-height: 1.85; }
-  .access-section__link { margin-top: 1.75rem; }
+  .access-section__routes {
+    display: grid;
+    gap: 0.8rem;
+    max-width: 44rem;
+    margin-top: 1.75rem;
+  }
+  .access-section__routes p {
+    margin: 0;
+    padding-left: 1rem;
+    border-left: 4px solid #ffe500;
+    color: #ff3f9f;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.8;
+  }
+  .access-section__link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    min-width: 13.5rem;
+    min-height: 3.25rem;
+    margin-top: 1.75rem;
+    padding: 0.75rem 1.35rem;
+    border: 2px solid #111;
+    border-radius: 999px;
+    background: #fff;
+    color: #111;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    box-shadow: 0 0.3rem 0 #111;
+    transition: background-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  }
+  .access-section__link:hover,
+  .access-section__link:focus-visible {
+    background: #ffe500;
+    transform: translateY(-0.1rem);
+  }
 
   .faq-section { padding-block: clamp(5rem, 8vw, 7rem); }
   .faq-section__list { margin-top: 2.5rem; }
@@ -3249,7 +3358,8 @@ const pathways = [
   .faq-item > button[aria-expanded="true"] .faq-item__icon { transform: rotate(45deg); }
   .faq-item__answer p { max-width: 50rem; margin: 0; padding: 0 3.5rem 1.5rem 0; font-size: 0.98rem; line-height: 1.85; }
 
-  .pathways-section__heading h2 { font-size: clamp(1.85rem, 3.4vw, 3rem); }
+  .pathways-section__heading h2 { font-size: clamp(1.85rem, 3vw, 2.5rem); }
+  .pathways-section__heading h2 span { display: block; }
   .recent-section h2 { max-width: 16em; font-size: clamp(1.8rem, 3.2vw, 2.8rem); }
   .back-to-map {
     display: grid; place-items: center; align-content: center; gap: 0;
@@ -3302,7 +3412,8 @@ const pathways = [
 
   .mobile-copy,
   .access-section__map-mobile,
-  .access-section__link--mobile { display: none; }
+  .access-section__link--mobile,
+  .hero-mobile-actions { display: none; }
 
   @media (max-width: 767px) {
     .desktop-copy { display: none; }
@@ -3350,11 +3461,44 @@ const pathways = [
       width: 140%;
       max-width: none;
       height: auto;
-      margin-top: 0.75rem;
+      margin-top: 0.4rem;
       aspect-ratio: 1200 / 760;
       transform: translateX(-50%);
     }
     .map-spot { min-width: 44px; min-height: 44px; }
+    .map-spot--house .map-spot__connector,
+    .map-spot--farm .map-spot__connector,
+    .map-spot--house .map-spot__label,
+    .map-spot--farm .map-spot__label { display: none; }
+    .hero-mobile-actions {
+      position: relative;
+      z-index: 12;
+      display: grid;
+      gap: 0.7rem;
+      width: min(calc(100% - 40px), 17.5rem);
+      margin: -0.35rem 20px 0 auto;
+    }
+    .hero-mobile-actions a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 58px;
+      padding: 0.75rem 1.25rem;
+      border: 2.5px solid #1f3659;
+      border-radius: 0.8rem 0.65rem 0.85rem 0.6rem;
+      background: #fffdf8;
+      color: #233f61;
+      font-size: clamp(1rem, 4.4vw, 1.125rem);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
+      box-shadow: 0.32rem 0.38rem 0 #f8dc42;
+    }
+    .hero-mobile-actions a:focus-visible {
+      outline: 4px solid #fffdf8;
+      outline-offset: 3px;
+    }
+    .hero-mobile-actions a span:last-child { font-size: 1.35em; line-height: 1; }
 
     .weekend-intro {
       width: calc(100% - 24px);
@@ -3421,12 +3565,13 @@ const pathways = [
       border-width: 1.5px;
       border-radius: 0.75rem;
       box-shadow: 0.25rem 0.25rem 0 #f8dc42;
+      padding: 1rem;
     }
     .ranking-card__media { aspect-ratio: 16 / 9; }
     .ranking-slide:nth-child(1) .ranking-card__media img { object-position: center 54%; }
     .ranking-slide:nth-child(2) .ranking-card__media img { object-position: center 45%; }
     .ranking-slide:nth-child(3) .ranking-card__media img { object-position: center 48%; }
-    .ranking-card__content { padding: 1.1rem 1.125rem 1.2rem; }
+    .ranking-card__content { padding: 1.1rem 0 0.2rem; }
     .ranking-card__category { font-size: 0.75rem; }
     .ranking-card__content h3 { font-size: 1.25rem; line-height: 1.45; }
     .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) {
@@ -3511,7 +3656,17 @@ const pathways = [
     }
     .access-section__copy { display: contents; }
     .access-section__copy h3 { order: 1; margin: 0; font-size: 1rem; line-height: 1.65; }
-    .access-section__summary { order: 2; margin: 0.65rem 0 0; font-size: 0.9375rem; line-height: 1.78; }
+    .access-section__routes {
+      order: 2;
+      gap: 0.75rem;
+      margin-top: 0.9rem;
+    }
+    .access-section__routes p {
+      padding-left: 0.85rem;
+      border-left-width: 4px;
+      font-size: 0.9375rem;
+      line-height: 1.75;
+    }
     .access-section__photo { order: 3; width: 100%; margin-top: 1.5rem; aspect-ratio: 16 / 10; }
     .access-section__copy .access-section__link { display: none; }
     .access-section__link--mobile {
@@ -3521,14 +3676,15 @@ const pathways = [
       align-items: center;
       width: 100%;
       min-height: 48px;
-      width: calc(100% - 40px);
-      margin: 1rem auto 0;
+      width: min(calc(100% - 40px), 13.5rem);
+      margin: 1.25rem auto 0;
       border: 2px solid #111;
       border-radius: 999px;
-      background: #ffe500;
+      background: #fff;
       color: #111;
       font-size: 0.9rem;
-      font-weight: 700;
+      font-weight: 800;
+      box-shadow: 0 0.3rem 0 #111;
     }
     .access-section__map {
       order: 3;
@@ -3603,8 +3759,1029 @@ const pathways = [
     .access-section__heading,
     .access-section__details-inner,
     .access-section__map { width: calc(100% - 32px); }
-    .access-section__link--mobile { width: calc(100% - 32px); }
+    .access-section__link--mobile { width: min(calc(100% - 32px), 13.5rem); }
     .site-name { max-width: calc(100% - 32px); margin-left: 16px; }
     .hero-introduction { width: calc(100% - 32px); margin-left: 16px; margin-right: 16px; }
+    .hero-mobile-actions { width: min(calc(100% - 32px), 17.5rem); margin-right: 16px; }
+  }
+
+  /* Hero map affordances: the landmark, dotted halo, connector and label form one link. */
+  .map-spot--house,
+  .map-spot--farm {
+    gap: 0;
+    min-width: clamp(13rem, 19vw, 17rem);
+    padding: 1rem;
+    cursor: pointer;
+  }
+
+  .map-spot--house { top: 73%; left: 35%; }
+  .map-spot--farm { top: 66%; left: 61%; }
+
+  .map-spot--house .map-landmark,
+  .map-spot--farm .map-landmark {
+    transition: transform 220ms ease, filter 220ms ease;
+  }
+
+  .map-spot--house .map-landmark::after,
+  .map-spot--farm .map-landmark::after {
+    position: absolute;
+    inset: -9% -12%;
+    z-index: 2;
+    border: 3px dashed #f8dc42;
+    border-radius: 49% 51% 46% 54% / 52% 45% 55% 48%;
+    content: "";
+    pointer-events: none;
+    transform: rotate(-4deg);
+    transition: border-color 220ms ease, filter 220ms ease, transform 220ms ease;
+  }
+
+  .map-spot--farm .map-landmark::after {
+    inset: -7% -10%;
+    transform: rotate(5deg);
+  }
+
+  .map-spot__connector {
+    z-index: 2;
+    display: block;
+    width: 3px;
+    height: clamp(0.65rem, 1.2vw, 1rem);
+    margin-block: -0.08rem -0.05rem;
+    border-radius: 999px;
+    background: #f8dc42;
+    transform: rotate(9deg);
+    transform-origin: center;
+  }
+
+  .map-spot--farm .map-spot__connector { transform: rotate(-12deg); }
+
+  .map-spot--house .map-spot__label,
+  .map-spot--farm .map-spot__label {
+    position: relative;
+    z-index: 3;
+    gap: 0.75rem;
+    min-height: clamp(2.75rem, 3.5vw, 3.2rem);
+    padding: 0.65rem clamp(1.15rem, 1.7vw, 1.55rem);
+    border: 2.5px solid #1f3659;
+    border-radius: 0.75rem 0.62rem 0.8rem 0.58rem;
+    background: #fffdf8;
+    color: #233f61;
+    font-size: clamp(1rem, 1.3vw, 1.125rem);
+    letter-spacing: 0.03em;
+    box-shadow: 0.3rem 0.35rem 0 #f8dc42;
+    transition: background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+  }
+
+  .map-spot__arrow {
+    display: inline-block;
+    font-size: 1.18em;
+    line-height: 1;
+    transition: transform 220ms ease;
+  }
+
+  .map-spot--house:focus-visible,
+  .map-spot--farm:focus-visible {
+    outline: 4px solid #fffdf8;
+    outline-offset: 3px;
+    filter: drop-shadow(0 0 0.15rem #233f61);
+  }
+
+  .map-spot--house:focus-visible .map-spot__label,
+  .map-spot--farm:focus-visible .map-spot__label {
+    background: #fff3a6;
+    box-shadow: 0.42rem 0.48rem 0 #f8dc42;
+    transform: translateY(-3px);
+  }
+
+  .map-spot--house:focus-visible .map-landmark,
+  .map-spot--farm:focus-visible .map-landmark {
+    filter: drop-shadow(0 0 0.28rem #fffdf8) drop-shadow(0 0 0.22rem #f8dc42);
+    transform: scale(1.045);
+  }
+
+  .map-spot--house:focus-visible .map-landmark::after,
+  .map-spot--farm:focus-visible .map-landmark::after {
+    border-color: #ffe449;
+    filter: drop-shadow(0 0 0.2rem rgb(255 228 73 / 60%));
+    transform: rotate(0deg) scale(1.025);
+  }
+
+  .map-spot--house:focus-visible .map-spot__arrow,
+  .map-spot--farm:focus-visible .map-spot__arrow { transform: translateX(4px); }
+
+  @media (hover: hover) and (pointer: fine) {
+    .map-spot--house:hover,
+    .map-spot--farm:hover {
+      outline: 0;
+      filter: none;
+      transform: translate(-50%, -50%) rotate(var(--tilt, 0deg));
+    }
+
+    .map-spot--house:hover .map-spot__label,
+    .map-spot--farm:hover .map-spot__label {
+      background: #fff3a6;
+      box-shadow: 0.42rem 0.48rem 0 #f8dc42;
+      transform: translateY(-3px);
+    }
+
+    .map-spot--house:hover .map-landmark,
+    .map-spot--farm:hover .map-landmark {
+      filter: drop-shadow(0 0 0.25rem #fffdf8) drop-shadow(0 0 0.18rem #f8dc42);
+      transform: scale(1.045);
+    }
+
+    .map-spot--house:hover .map-landmark::after,
+    .map-spot--farm:hover .map-landmark::after {
+      border-color: #ffe449;
+      filter: drop-shadow(0 0 0.2rem rgb(255 228 73 / 60%));
+      transform: rotate(0deg) scale(1.025);
+    }
+
+    .map-spot--house:hover .map-spot__arrow,
+    .map-spot--farm:hover .map-spot__arrow { transform: translateX(4px); }
+  }
+
+  @media (max-width: 767px) {
+    .island-map { margin-top: 0.25rem; }
+    .map-spot--house,
+    .map-spot--farm {
+      min-width: clamp(8.6rem, 38vw, 10.5rem);
+      min-height: 44px;
+      padding: 0.35rem;
+    }
+    .map-spot--house { top: 77%; left: 32%; }
+    .map-spot--farm { top: 68%; left: 69%; }
+    .map-spot--yano { top: 42%; }
+    .map-spot__connector { height: 0.55rem; }
+    .map-spot--house .map-spot__label,
+    .map-spot--farm .map-spot__label {
+      gap: 0.35rem;
+      min-height: 44px;
+      padding: 0.5rem clamp(0.65rem, 2.5vw, 0.85rem);
+      border-width: 2px;
+      border-radius: 0.6rem;
+      font-size: clamp(0.8125rem, 3.1vw, 0.9375rem);
+      box-shadow: 0.22rem 0.26rem 0 #f8dc42;
+    }
+    .map-spot--house .map-landmark::after,
+    .map-spot--farm .map-landmark::after { border-width: 2px; }
+  }
+
+  @media (min-width: 768px) and (max-width: 900px) {
+    .map-spot--house { left: 28%; }
+    .map-spot--farm { left: 72%; }
+  }
+
+  @media (max-width: 350px) {
+    .map-spot--house { left: 31%; }
+    .map-spot--farm { left: 70%; }
+    .map-spot--house .map-spot__label,
+    .map-spot--farm .map-spot__label { font-size: 0.75rem; padding-inline: 0.55rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .map-spot--house .map-landmark,
+    .map-spot--farm .map-landmark,
+    .map-spot--house .map-landmark::after,
+    .map-spot--farm .map-landmark::after,
+    .map-spot--house .map-spot__label,
+    .map-spot--farm .map-spot__label,
+    .map-spot__arrow { transition: none; }
+  }
+
+  /* TOP refinement: stronger type, content-safe cards, and live mobile map. */
+  .weekend-intro__story {
+    grid-template-rows: auto auto;
+  }
+  .weekend-intro__story figure {
+    border-radius: 1.5rem 0.8rem 1.7rem 0.9rem;
+  }
+  .weekend-intro__story h3 {
+    max-width: 24em;
+    margin-inline: auto;
+    color: #233f61;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .activities-section .ranking-section__heading {
+    max-width: none;
+    text-align: center;
+  }
+  .activities-section .ranking-section__heading .section-kicker {
+    color: #fff;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+  .activities-section .ranking-section__heading h2 {
+    margin-top: 0.85rem;
+    color: #ffe500;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 800;
+    line-height: 1.5;
+  }
+  .ranking-card,
+  .ranking-card__content,
+  .ranking-card__media,
+  .ranking-card__media img {
+    opacity: 1;
+    filter: none;
+    mix-blend-mode: normal;
+  }
+  .ranking-card {
+    border-color: #233f61;
+    background: #fffdf8;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+  }
+  .ranking-card__media { overflow: hidden; }
+  .ranking-card__media img { transition: transform 220ms ease; }
+  .ranking-slide:hover .ranking-card,
+  .ranking-slide:focus-within .ranking-card {
+    border-color: #233f61;
+    box-shadow: 0.65rem 0.65rem 0 #f8dc42;
+    transform: translateY(-4px);
+  }
+  .ranking-slide:hover .ranking-card__media img,
+  .ranking-slide:focus-within .ranking-card__media img { transform: scale(1.025); }
+  .ranking-card__content { padding: clamp(1.5rem, 2.2vw, 1.75rem); background: #fffdf8; }
+  .ranking-card__category { font-size: 0.8rem; }
+  .ranking-card__content h3 { font-size: clamp(1.2rem, 1.6vw, 1.4rem); font-weight: 800; }
+  .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) { font-size: 1rem; line-height: 1.75; }
+  .ranking-card__tags { font-size: 0.8rem; }
+
+  .faq-item__answer { padding: 0 0.625rem 1.75rem; }
+  .faq-item__answer p { padding: 0; }
+  .faq-item__answer a {
+    display: inline-flex;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 44px;
+    margin-top: 1.25rem;
+    padding: 0.65rem 1rem;
+    border: 2px solid #233f61;
+    border-radius: 999px;
+    background: #f8dc42;
+    color: #233f61;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .faq-item__answer a:focus-visible { outline: 3px solid #36a9ee; outline-offset: 3px; }
+
+  .pathways-section__grid figure { aspect-ratio: 16 / 8.5; }
+  .pathways-card__body { min-height: 8.5rem; }
+  .pathways-section__heading > p:last-child { font-size: 1rem; font-weight: 600; }
+  .recent-section { padding-block: clamp(4rem, 7vw, 6rem); }
+  .recent-section__inner > p { max-width: 42rem; font-size: 1rem; font-weight: 600; line-height: 1.85; }
+  .recent-section__inner > a { min-height: 48px; padding-inline: 1.4rem; font-size: 0.95rem; font-weight: 700; }
+
+  @media (max-width: 767px) {
+    .access-section__map { aspect-ratio: 4 / 3; min-height: 250px; }
+    .access-section__map iframe { display: block; width: 100%; height: 100%; min-height: 250px; border: 0; }
+    .activities-section .ranking-section__heading { text-align: left; }
+    .activities-section .ranking-section__heading .section-kicker { font-size: clamp(2.6rem, 13vw, 3.4rem); }
+    .activities-section .ranking-section__heading h2 { font-size: 1.25rem; }
+    .faq-item > button { padding-inline: 0.625rem; font-size: 1rem; }
+    .faq-item__answer { padding: 0 0.625rem 1.5rem; }
+    .faq-item__answer p { font-size: 0.96875rem; line-height: 1.8; }
+    .faq-item__answer a { width: fit-content; max-width: 100%; }
+    .pathways-section__grid figure { aspect-ratio: 16 / 9; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ranking-card,
+    .ranking-card__media img { transition: none; }
+  }
+
+  /* FAQ paper-card accordion */
+  .faq-section { width: min(calc(100% - 3rem), 70rem); padding-block: clamp(5rem, 8vw, 7rem); }
+  .faq-section__heading { text-align: left; }
+  .faq-section .faq-section__bubble { position: relative; display: inline-block; margin: 0 0 1.5rem; padding: 0.72rem 1.35rem; border: 4px solid #123b63; border-radius: 0.75rem; background: #fffdf5; color: #102f5b; font-size: clamp(1rem, 1.7vw, 1.2rem); font-weight: 900; line-height: 1; letter-spacing: 0.045em; box-shadow: inset 0 0 0 2px rgb(18 59 99 / 8%), 0 0.18rem 0 rgb(18 59 99 / 24%); }
+  .faq-section .faq-section__bubble::before { position: absolute; right: 2rem; bottom: -1.25rem; width: 0; height: 0; border-top: 1.25rem solid #123b63; border-left: 1rem solid transparent; content: ""; }
+  .faq-section .faq-section__bubble::after { position: absolute; right: 2.22rem; bottom: -0.82rem; width: 0; height: 0; border-top: 0.9rem solid #fffdf5; border-left: 0.72rem solid transparent; background: transparent; content: ""; transform: none; }
+  .faq-section .faq-section__title-en { margin: 0; color: #fff; font-size: clamp(4rem, 7vw, 5rem); font-weight: 900; line-height: 0.95; }
+  .faq-section__heading h2 { margin: 1.25rem 0 0; color: #ffe000; font-size: clamp(1.5rem, 2.4vw, 1.875rem); font-weight: 800; line-height: 1.4; }
+  .faq-section__list { display: grid; gap: 0.9rem; margin-top: clamp(2.5rem, 4vw, 3.5rem); border: 0; }
+  .faq-item { border: 0; }
+  .faq-item > button { position: relative; z-index: 2; display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) 3.75rem; align-items: stretch; width: 100%; min-height: 5rem; padding: 0; overflow: hidden; border: 2px solid #123b63; border-radius: 0.5rem; background: #fffdf5; color: #123b63; text-align: left; box-shadow: 0.35rem 0.4rem 0 #ffe000; cursor: pointer; transition: background-color 200ms ease, box-shadow 200ms ease, transform 200ms ease; }
+  .faq-item__number { display: grid; place-items: center; padding: 0.9rem; background: #ffe000; font-size: clamp(1.4rem, 2.2vw, 1.7rem); font-weight: 900; letter-spacing: 0.03em; transition: background-color 200ms ease; }
+  .faq-item__question { align-self: center; padding: 1rem 2rem; font-size: clamp(1.05rem, 1.55vw, 1.2rem); font-weight: 700; line-height: 1.6; }
+  .faq-item__icon { align-self: center; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 2px solid #123b63; border-radius: 50%; font-size: 1.65rem; line-height: 1; transition: transform 220ms ease, border-width 200ms ease; }
+  .faq-item > button:focus-visible { outline: 4px solid #fff; outline-offset: 4px; background: #fff3a6; transform: translateY(-2px); }
+  .faq-item.is-open > button, .faq-item > button[aria-expanded="true"] { background: #ffe000; box-shadow: 0.4rem 0.46rem 0 #123b63; }
+  .faq-item.is-open .faq-item__icon { transform: rotate(45deg); }
+  @media (hover: hover) and (pointer: fine) {
+    .faq-item:not(.is-open) > button:hover { background: #fff3a6; box-shadow: 0.45rem 0.52rem 0 #ffe000; transform: translateY(-2px); }
+    .faq-item:not(.is-open) > button:hover .faq-item__number { background: #ffd000; }
+    .faq-item:not(.is-open) > button:hover .faq-item__icon { border-width: 3px; transform: rotate(8deg); }
+  }
+  .faq-item__answer { display: grid; grid-template-rows: 0fr; width: calc(100% - 2.5rem); margin: 0 auto; padding: 0; opacity: 0; transition: grid-template-rows 240ms ease, opacity 200ms ease; }
+  .faq-item__answer-inner { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); min-height: 0; padding: 0; overflow: hidden; border: 0 solid #123b63; border-radius: 0 0 0.5rem 0.5rem; background: #fffdf5; box-shadow: 0 0 0 #ffe000; }
+  .faq-item.is-open .faq-item__answer { grid-template-rows: 1fr; opacity: 1; }
+  .faq-item.is-open .faq-item__answer-inner { padding: 2rem 2.25rem; border-width: 0 2px 2px; box-shadow: 0.3rem 0.35rem 0 #ffe000; }
+  .faq-item__answer-mark { color: #ffe000; font-size: clamp(3rem, 5vw, 4rem); font-weight: 900; line-height: 1; }
+  .faq-item__answer-body > p { max-width: 52rem; margin: 0; padding: 0; color: #123b63; font-size: 1rem; line-height: 1.85; }
+  .faq-item__cta { display: inline-flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 3rem; margin-top: 1.4rem; padding: 0.65rem 1.5rem; border: 2px solid #123b63; border-radius: 999px; background: #ffe000; color: #123b63; font-size: 0.95rem; font-weight: 700; text-decoration: none; box-shadow: 0.18rem 0.22rem 0 #123b63; transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; }
+  .faq-item__cta span { transition: transform 200ms ease; }
+  .faq-item__cta:hover, .faq-item__cta:focus-visible { background: #fffdf5; transform: translateY(-2px); box-shadow: 0.28rem 0.34rem 0 #ffe000; }
+  .faq-item__cta:hover span, .faq-item__cta:focus-visible span { transform: translateX(4px); }
+
+  @media (max-width: 767px) {
+    .faq-section { width: calc(100% - 32px); padding-block: 4.5rem; }
+    .faq-section .faq-section__bubble { margin-bottom: 1.35rem; padding: 0.62rem 1rem; border-width: 3px; border-radius: 0.6rem; font-size: 0.875rem; }
+    .faq-section .faq-section__bubble::before { right: 1.35rem; bottom: -1rem; border-top-width: 1rem; border-left-width: 0.8rem; }
+    .faq-section .faq-section__bubble::after { right: 1.53rem; bottom: -0.65rem; border-top-width: 0.7rem; border-left-width: 0.56rem; }
+    .faq-section .faq-section__title-en { font-size: clamp(2.65rem, 13vw, 3.25rem); }
+    .faq-section__heading h2 { margin-top: 0.9rem; font-size: clamp(1.3rem, 6vw, 1.5rem); }
+    .faq-section__list { gap: 0.75rem; margin-top: 2rem; }
+    .faq-item > button { grid-template-columns: 3.75rem minmax(0, 1fr) 3.25rem; min-height: 4rem; padding: 0; font-size: inherit; box-shadow: 0.22rem 0.26rem 0 #ffe000; }
+    .faq-item__number { padding: 0.5rem; font-size: 0.875rem; }
+    .faq-item__question { padding: 0.75rem 0.9rem; font-size: 0.96875rem; line-height: 1.55; }
+    .faq-item__icon { width: 2.35rem; height: 2.35rem; font-size: 1.35rem; }
+    .faq-item__answer { width: calc(100% - 0.75rem); padding: 0; }
+    .faq-item__answer-inner { grid-template-columns: 1fr; }
+    .faq-item.is-open .faq-item__answer-inner { padding: 1.25rem; }
+    .faq-item__answer-mark { font-size: 2.35rem; }
+    .faq-item__answer-body > p { font-size: 0.9375rem; line-height: 1.8; }
+    .faq-item__cta { width: 100%; min-height: 3rem; font-size: 0.9rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item > button, .faq-item__number, .faq-item__icon, .faq-item__answer, .faq-item__cta, .faq-item__cta span { transition: none; }
+  }
+
+  /* Access information card inspired by the supplied shop-profile UI. */
+  .access-section__copy { position: relative; padding: clamp(2.5rem, 3.4vw, 3rem); border: 2px solid #123b63; border-radius: clamp(1.25rem, 2vw, 1.75rem); background: #fffdf5; box-shadow: 0.45rem 0.5rem 0 #ffe000; }
+  .access-section__copy::after { content: none; }
+  .access-section__copy h3 { max-width: none; color: #123b63; }
+  .access-section__copy .access-section__routes { margin-top: 1.5rem; }
+  .access-section__copy .access-section__link { margin-top: 1.75rem; }
+
+  @media (min-width: 768px) {
+    .access-section__copy h3 { font-size: clamp(1.25rem, 1.7vw, 1.5rem); }
+    .access-section__copy .access-section__route { font-size: clamp(0.82rem, 1.08vw, 0.95rem); }
+    .access-section__route--ports { white-space: nowrap; }
+    .access-section__route--house span { display: block; }
+  }
+
+  @media (max-width: 767px) {
+    .access-section__details-inner { display: block; }
+    .access-section__copy { display: block; padding: 1.75rem 1.5rem; border-radius: 1.25rem; }
+    .access-section__copy h3 { max-width: none; color: #123b63; }
+    .access-section__copy .access-section__routes { margin-top: 1.25rem; }
+    .access-section__route--house span { display: inline; }
+    .access-section__copy .access-section__link { display: none; }
+    .access-section__photo { margin-top: 2rem; }
+  }
+
+  /* NEXT ACTION editorial paper stack. */
+  .pathways-section {
+    padding: clamp(5rem, 8vw, 7rem) 0;
+    overflow: clip;
+    background: #36a9ee;
+  }
+  .pathways-section__paper-stack {
+    position: relative;
+    width: min(calc(100% - 4rem), 78rem);
+    margin-inline: auto;
+  }
+  .pathways-section__paper-stack::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border-radius: 0.3rem;
+    background: #ff3b98;
+    content: "";
+    transform: translate(1rem, 1.1rem) rotate(-0.7deg);
+    transform-origin: center;
+  }
+  .pathways-section__inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 34fr) minmax(0, 66fr);
+    gap: clamp(3rem, 5vw, 4rem);
+    align-items: start;
+    width: 100%;
+    padding: clamp(3rem, 4.5vw, 4rem);
+    border: 0;
+    background: #fffdf7;
+  }
+  .pathways-section__heading {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    color: #123b63;
+  }
+  .pathways-section__heading .section-kicker {
+    position: relative;
+    width: fit-content;
+    margin: 0 0 2.6rem;
+    color: #123b63;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+  }
+  .pathways-section__heading .section-kicker::after {
+    position: absolute;
+    bottom: -0.75rem;
+    left: 0;
+    width: 4.5rem;
+    height: 0.28rem;
+    border-radius: 999px;
+    background: #ffe000;
+    content: "";
+  }
+  .pathways-section__heading h2 {
+    max-width: none;
+    margin: 0;
+    color: #123b63;
+    font-size: 2.375rem;
+    font-weight: 800;
+    line-height: 1.35;
+    letter-spacing: 0.01em;
+  }
+  .pathways-section__heading h2 span,
+  .pathways-section__heading > p:last-child span { display: block; }
+  .pathways-section__heading > p:last-child {
+    max-width: 26rem;
+    margin: 2rem 0 0;
+    color: #123b63;
+    font-size: clamp(0.9375rem, 1.2vw, 1rem);
+    font-weight: 500;
+    line-height: 1.95;
+  }
+  .pathways-section__heading > p:last-child::before {
+    display: block;
+    width: min(100%, 22rem);
+    height: 2px;
+    margin-bottom: 1.75rem;
+    background: #123b63;
+    content: "";
+  }
+  .pathways-section__content { min-width: 0; }
+  .pathways-section__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(0.875rem, 1.5vw, 1.25rem);
+  }
+  .pathways-section__grid a,
+  .pathways-section__grid a:nth-child(even) {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-width: 0;
+    min-height: 100%;
+    padding: 0.65rem;
+    overflow: hidden;
+    border: 2px solid #123b63;
+    border-radius: 0.2rem;
+    background: #fffdf7;
+    color: #123b63;
+    text-decoration: none;
+    box-shadow: none;
+    transform: none;
+    transition: transform 190ms ease, background-color 190ms ease;
+  }
+  .pathways-section__grid a:hover,
+  .pathways-section__grid a:focus-visible {
+    background: #fff8c9;
+    box-shadow: none;
+    transform: translateY(-3px);
+  }
+  .pathways-section__grid a:focus-visible { outline: 4px solid #ff3b98; outline-offset: 3px; }
+  .pathways-section__grid figure {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 0;
+    overflow: hidden;
+    background: #f3f0e8;
+  }
+  .pathways-section__grid figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    object-fit: cover;
+    filter: none;
+    transform: none;
+  }
+  .pathways-card__body {
+    position: relative;
+    display: block;
+    min-height: 10.5rem;
+    padding: 0.9rem 0.45rem 1.8rem;
+    background: transparent;
+  }
+  .pathways-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; }
+  .pathways-card__meta p { margin: 0; color: #123b63; font-size: 0.72rem; font-weight: 700; line-height: 1.5; letter-spacing: 0.06em; }
+  .pathways-card__meta span { display: inline-block; padding: 0.22rem 0.55rem; background: #ffe000; color: #123b63; font-size: 0.66rem; font-weight: 900; line-height: 1; letter-spacing: 0.09em; }
+  .pathways-card__body h3 {
+    margin: 0.55rem 0 0;
+    color: #123b63;
+    font-size: clamp(1.4rem, 2vw, 1.7rem);
+    font-weight: 800;
+    line-height: 1.35;
+  }
+  .pathways-card__body > span:not(.pathways-card__arrow) { display: block; margin-top: 0.55rem; padding-right: 1.5rem; color: #123b63; font-size: clamp(0.8125rem, 1.05vw, 0.9rem); line-height: 1.7; }
+  .pathways-card__body::after {
+    position: absolute;
+    right: -0.45rem;
+    bottom: -0.45rem;
+    width: 0;
+    height: 0;
+    border-bottom: 1.5rem solid #ff3b98;
+    border-left: 1.5rem solid transparent;
+    content: "";
+    transition: border-width 190ms ease;
+  }
+  .pathways-card__body > .pathways-card__arrow {
+    position: absolute;
+    right: 1.05rem;
+    bottom: 0.65rem;
+    display: block;
+    margin: 0;
+    color: #ff3b98;
+    font-size: 1.7rem;
+    font-weight: 500;
+    line-height: 1;
+    transition: transform 190ms ease;
+  }
+  .pathways-section__grid a:hover .pathways-card__body > .pathways-card__arrow,
+  .pathways-section__grid a:focus-visible .pathways-card__body > .pathways-card__arrow { transform: translateX(4px); }
+  .pathways-section__grid a:hover .pathways-card__body::after { border-bottom-width: 1.75rem; border-left-width: 1.75rem; }
+
+  @media (max-width: 1099px) {
+    .pathways-section__paper-stack { width: calc(100% - 4rem); }
+    .pathways-section__inner { grid-template-columns: 1fr; gap: 2.5rem; padding: clamp(2rem, 5vw, 2.5rem); }
+    .pathways-section__heading { max-width: 44rem; }
+    .pathways-section__heading .section-kicker { margin-bottom: 2rem; }
+    .pathways-section__heading h2 { font-size: clamp(2.25rem, 5vw, 3rem); }
+    .pathways-section__heading > p:last-child { max-width: 44rem; margin-top: 1.5rem; }
+    .pathways-section__heading > p:last-child::before { margin-bottom: 1.25rem; }
+  }
+
+  @media (max-width: 767px) {
+    .pathways-section { padding: 4rem 0 4.5rem; }
+    .pathways-section__paper-stack { width: calc(100% - 32px); }
+    .pathways-section__paper-stack::before { transform: translate(0.45rem, 0.55rem) rotate(-0.1deg); }
+    .pathways-section__inner { gap: 2rem; padding: 2rem 1.2rem; }
+    .pathways-section__heading .section-kicker { margin-bottom: 1.75rem; font-size: 0.72rem; }
+    .pathways-section__heading h2 { font-size: clamp(1.75rem, 7.8vw, 2.125rem); line-height: 1.35; word-break: normal; overflow-wrap: break-word; line-break: strict; }
+    .pathways-section__heading > p:last-child { margin-top: 1.35rem; font-size: 0.9375rem; line-height: 1.9; }
+    .pathways-section__heading > p:last-child span { display: inline; }
+    .pathways-section__grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    .pathways-section__grid a,
+    .pathways-section__grid a:nth-child(even) { padding: 0.65rem; }
+    .pathways-card__body { min-height: 0; padding: 0.9rem 0.35rem 2rem; }
+    .pathways-card__body h3 { font-size: clamp(1.375rem, 6.5vw, 1.55rem); }
+    .pathways-card__body > span:not(.pathways-card__arrow) { padding-right: 1.2rem; font-size: 0.875rem; }
+    .pathways-card__meta p { font-size: 0.7rem; }
+    .pathways-card__meta span { font-size: 0.66rem; }
+    .pathways-card__arrow { font-size: 1.6rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pathways-section__grid a,
+    .pathways-card__arrow,
+    .pathways-card__body::after { transition: none; }
+  }
+
+  /* Compact Instagram paper card above the navy footer. */
+  .recent-section {
+    padding: clamp(4rem, 7vw, 6rem) 0;
+    background: #36a9ee;
+  }
+  .recent-section__card {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+    gap: clamp(3rem, 5vw, 4rem);
+    align-items: center;
+    width: min(calc(100% - 8rem), 1180px);
+    padding: clamp(3rem, 4vw, 3.5rem) clamp(3.5rem, 5vw, 4rem);
+    border: 2px solid #123b63;
+    border-radius: 1.2rem;
+    background: #fffaf0;
+    box-shadow: 0.55rem 0.6rem 0 #ffe000;
+  }
+  .recent-section__intro,
+  .recent-section__content { min-width: 0; }
+  .recent-section__card .section-kicker {
+    margin: 0 0 1.15rem;
+    color: #123b63;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+  }
+  .recent-section__card h2 {
+    max-width: none;
+    margin: 0;
+    color: #123b63;
+    font-size: clamp(2.25rem, 3.05vw, 2.75rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+  }
+  .recent-section__card h2 span,
+  .recent-section__content p span { display: block; }
+  .recent-section__content > p {
+    max-width: 32.5rem;
+    margin: 0;
+    color: #123b63;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.9;
+  }
+  @media (min-width: 1100px) {
+    .recent-section__card h2 span { white-space: nowrap; }
+    .recent-section__content > p span { white-space: nowrap; }
+  }
+  @media (max-width: 1199px) and (min-width: 1100px) {
+    .recent-section__card { gap: 2rem; padding: 3rem; }
+  }
+  .recent-section__content > a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+    min-height: 3.5rem;
+    margin-top: 1.75rem;
+    padding: 0.75rem 2rem;
+    border: 2px solid #123b63;
+    border-radius: 0.75rem;
+    background: #ffe000;
+    color: #123b63;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0.2rem 0.24rem 0 #123b63;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+  }
+  .recent-section__content > a:hover,
+  .recent-section__content > a:focus-visible {
+    background: #ffe94f;
+    box-shadow: 0.3rem 0.38rem 0 #123b63;
+    transform: translateY(-3px);
+  }
+  .recent-section__content > a:focus-visible { outline: 3px solid #123b63; outline-offset: 4px; }
+  .recent-section__lemon {
+    position: absolute;
+    z-index: -1;
+    top: -3rem;
+    right: 1.75rem;
+    display: block;
+    width: 9rem;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+    clip-path: inset(0 0 50% 0);
+  }
+
+  @media (max-width: 1099px) and (min-width: 768px) {
+    .recent-section__card { grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); width: calc(100% - 4rem); gap: 1.5rem; padding: 2.75rem 2rem; }
+    .recent-section__card h2 { font-size: 1.75rem; }
+    .recent-section__content > p { font-size: 0.875rem; letter-spacing: -0.015em; }
+    .recent-section__content > p span { white-space: nowrap; }
+  }
+
+  @media (max-width: 960px) and (min-width: 768px) {
+    .recent-section__card { grid-template-columns: 1fr; gap: 1.5rem; }
+    .recent-section__content > p { font-size: 0.9375rem; letter-spacing: 0; }
+  }
+
+  @media (max-width: 767px) {
+    .recent-section { padding: 3.5rem 0 4rem; }
+    .recent-section__card {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: calc(100% - 32px);
+      padding: 2rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0.38rem 0.42rem 0 #ffe000;
+    }
+    .recent-section__card .section-kicker { margin-bottom: 0.85rem; font-size: 0.75rem; }
+    .recent-section__card h2 { font-size: clamp(1.75rem, 8vw, 2.125rem); line-height: 1.35; word-break: normal; overflow-wrap: break-word; line-break: strict; }
+    .recent-section__content > p { max-width: none; font-size: 0.9375rem; line-height: 1.85; }
+    .recent-section__content > p span { display: inline; }
+    .recent-section__content > a { display: flex; width: 100%; min-height: 3.5rem; margin-top: 1.5rem; }
+    .recent-section__lemon { top: -2rem; right: 0.65rem; width: 6rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .recent-section__content > a { transition: none; }
+  }
+
+  /* The map character walks the island and turns around at each end. */
+  .map-spot--yano {
+    top: 0;
+    left: 0;
+    offset-path: path("M 336 327 C 408 213 552 198 648 274 C 732 350 792 372 864 296 C 936 228 996 281 912 372");
+    offset-distance: 0%;
+    offset-rotate: 0deg;
+    offset-anchor: 50% 50%;
+    animation: island-yano-route 36s linear infinite;
+    will-change: offset-distance;
+  }
+
+  .map-yano {
+    width: auto;
+    height: clamp(8rem, 12vw, 11rem);
+    aspect-ratio: 271.5 / 724;
+    overflow: hidden;
+  }
+
+  .map-yano::after { display: none; }
+
+  .map-yano__sprite {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 85%;
+    animation: island-yano-turn 36s steps(1, end) infinite;
+  }
+
+  .map-yano img,
+  .map-spot--yano:hover .map-yano img,
+  .map-spot--yano:focus-visible .map-yano img,
+  .map-spot--yano:active .map-yano img {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: 100%;
+    filter: none;
+    transform-origin: 0 0;
+    animation: island-yano-walk-frames 0.9s steps(8) infinite;
+  }
+
+  @keyframes island-yano-route {
+    0%, 4% { offset-distance: 0%; }
+    46%, 54% { offset-distance: 100%; }
+    96%, 100% { offset-distance: 0%; }
+  }
+
+  @keyframes island-yano-turn {
+    0%, 49.99% { transform: scaleX(1); }
+    50%, 100% { transform: scaleX(-1); }
+  }
+
+  @keyframes island-yano-walk-frames {
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+
+  @media (max-width: 767px) {
+    .map-yano { height: 7rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .map-spot--yano,
+    .map-yano__sprite,
+    .map-yano img { animation: none; }
+  }
+
+  /* Shared section-heading scale: ACTIVITIES is the visual baseline. */
+  .activities-section .ranking-section__heading .section-kicker,
+  .profile-section__heading .section-kicker,
+  .access-section__heading h2,
+  .faq-section .faq-section__title-en {
+    color: #fff;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+  }
+  .activities-section .ranking-section__heading h2,
+  .profile-section__heading > p:last-child,
+  .access-section__heading > p,
+  .faq-section__heading h2 {
+    margin-top: 0.85rem;
+    color: #ffe500;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 800;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 767px) {
+    .activities-section .ranking-section__heading .section-kicker,
+    .profile-section__heading .section-kicker,
+    .access-section__heading h2,
+    .faq-section .faq-section__title-en {
+      font-size: clamp(2.6rem, 13vw, 3.4rem);
+    }
+    .activities-section .ranking-section__heading h2,
+    .profile-section__heading > p:last-child,
+    .access-section__heading > p,
+    .faq-section__heading h2 {
+      margin-top: 0.75rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
+    }
+    .profile-section__heading > p:last-child { max-width: none; }
+  }
+
+  /* Final mobile rhythm and readability pass. Keep desktop styling untouched. */
+  .access-section__map { position: relative; }
+  .access-section__map-status {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 1.5rem;
+    background: #fffdf5;
+    color: #123b63;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .access-section__map iframe { position: relative; z-index: 1; }
+  .access-section__map.is-loaded .access-section__map-status { display: none; }
+  .access-section__map-fallback { display: none; }
+
+  @media (max-width: 767px) {
+    :global(html:has(.weekend-hero)),
+    :global(body:has(.weekend-hero)) { max-width: 100%; overflow-x: clip; }
+    .reveal-section { opacity: 1; transform: none; }
+
+    .activities-section,
+    .profile-section,
+    .place-section,
+    .faq-section,
+    .pathways-section,
+    .recent-section { padding-block: clamp(4.5rem, 19vw, 5.5rem); }
+
+    .weekend-hero { padding-bottom: 3.5rem; }
+    .site-name { font-size: clamp(1.25rem, 5.8vw, 1.5rem); }
+    .hero-introduction { margin-top: 0.9rem; font-size: 0.9375rem; line-height: 1.75; }
+    .island-map { margin-top: 0; }
+    .hero-mobile-actions { gap: 0.7rem; margin-top: -0.65rem; }
+    .hero-mobile-actions a { min-height: 50px; padding: 0.65rem 1.1rem; font-size: 1rem; }
+
+    .weekend-intro {
+      display: block;
+      width: 100%;
+      padding: 4.5rem 0;
+      overflow-x: clip;
+      background: #36a9ee;
+    }
+    .weekend-intro__layer { display: none; }
+    .weekend-intro__inner {
+      position: relative;
+      display: grid;
+      grid-area: auto;
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+      width: calc(100% - 40px);
+      padding: 0;
+    }
+    .weekend-intro__paper {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+    }
+    .weekend-intro__paper-inner {
+      position: relative;
+      z-index: 3;
+      display: block;
+      width: 100%;
+      padding: 1.625rem 1.25rem;
+      border: 1.5px solid #123b63;
+      border-radius: 2px;
+      background: #fffdf8;
+    }
+    .weekend-intro__paper::before,
+    .weekend-intro__paper::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+    }
+    .weekend-intro__paper::before {
+      z-index: 1;
+      background: #111;
+      transform: translate(-5px, 4px) rotate(-0.45deg);
+    }
+    .weekend-intro__paper::after {
+      z-index: 2;
+      background: #ffe500;
+      transform: translate(7px, 8px) rotate(0.45deg);
+    }
+    .weekend-intro__paper--first .weekend-intro__story { margin-top: 2rem; }
+    .weekend-intro__paper--second .weekend-intro__story { margin-top: 0; }
+    .weekend-intro__heading h2 { font-size: clamp(1.75rem, 7.8vw, 2rem); }
+    .weekend-intro__lead,
+    .weekend-intro__story > p { font-size: 0.9375rem; line-height: 1.85; }
+    .weekend-intro__story h3 { margin-top: 1.1rem; }
+
+    .ranking-section__heading,
+    .profile-section__heading { margin-bottom: 2rem; text-align: center; }
+    .activities-section .ranking-section__heading .section-kicker,
+    .profile-section__heading .section-kicker,
+    .access-section__heading h2,
+    .faq-section .faq-section__title-en { font-size: clamp(2.625rem, 11.5vw, 3rem); }
+    .activities-section .ranking-section__heading h2,
+    .profile-section__heading > p:last-child,
+    .access-section__heading > p,
+    .faq-section__heading h2 { font-size: clamp(0.9375rem, 4.2vw, 1.0625rem); }
+
+    .activities-section__grid { gap: 1.4rem; }
+    .ranking-card { padding: 1.125rem; }
+    .ranking-card__content { padding-top: 1rem; }
+    .ranking-card__content h3 { font-size: clamp(1.25rem, 5.6vw, 1.375rem); }
+    .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) { font-size: 0.9375rem; line-height: 1.75; }
+    .ranking-card__category,
+    .ranking-card__tags,
+    .ranking-card__tags span { font-size: 0.75rem; }
+    .ranking-card__badge { width: 2.25rem; min-height: 2.25rem; font-size: 0.75rem; }
+
+    .profile-section__layout { gap: 1.25rem; }
+    .profile-section__details { padding: 1.5rem; }
+    .profile-section__primary h2 { font-size: clamp(1.25rem, 5.5vw, 1.375rem); }
+    .profile-section__name-en { font-size: 0.8rem; }
+    .profile-section__primary > p:last-child,
+    .profile-section__secondary p { font-size: 0.9375rem; line-height: 1.85; }
+    .profile-section__more { width: min(100%, 10rem); min-height: 46px; margin: 1.5rem auto 0; font-size: 0.875rem; }
+
+    .place-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .access-section__heading { width: calc(100% - 40px); padding: 0 0 2rem; text-align: center; }
+    .access-section__details-inner { width: calc(100% - 40px); }
+    .access-section__copy { padding: 1.5rem; }
+    .access-section__copy h3 { font-size: 1.125rem; line-height: 1.65; }
+    .access-section__routes p { font-size: 0.9375rem; line-height: 1.8; }
+    .access-section__photo { margin-top: 1.5rem; }
+    .access-section__map {
+      display: block;
+      order: 3;
+      width: calc(100% - 40px);
+      min-height: 0;
+      height: clamp(220px, 62vw, 260px);
+      margin: 2rem auto 0;
+      aspect-ratio: 16 / 10;
+      border: 0;
+      background: #fffdf5;
+    }
+    .access-section__map iframe { display: none; }
+    .access-section__map-fallback { display: block; width: 100%; height: 100%; }
+    .access-section__map-fallback img { display: block; width: 100%; height: 100%; object-fit: cover; background: #fffdf5; }
+    .access-section__link--mobile { min-height: 46px; margin-top: 1rem; font-size: 0.875rem; }
+
+    .faq-section { width: calc(100% - 32px); }
+    .faq-section__heading { text-align: center; }
+    .faq-section .faq-section__bubble { font-size: 0.75rem; }
+    .faq-section__list { gap: 0.7rem; margin-top: 1.875rem; }
+    .faq-item > button { grid-template-columns: 3.5rem minmax(0, 1fr) 3rem; min-height: 58px; }
+    .faq-item__number { font-size: 0.875rem; }
+    .faq-item__question { padding: 0.75rem; font-size: 0.9375rem; line-height: 1.5; }
+    .faq-item__icon { width: 2rem; height: 2rem; font-size: 1.25rem; }
+    .faq-item.is-open .faq-item__answer-inner { padding: 1.25rem; }
+    .faq-item__answer-body > p { font-size: 0.9375rem; line-height: 1.8; }
+    .faq-item__cta { min-height: 46px; font-size: 0.875rem; }
+
+    .pathways-section { padding-block: 4.5rem; }
+    .pathways-section__paper-stack { width: calc(100% - 32px); }
+    .pathways-section__paper-stack::before { transform: translate(6px, 8px) rotate(0.1deg); }
+    .pathways-section__inner { gap: 1.75rem; padding: 1.75rem 1.125rem; }
+    .pathways-section__heading .section-kicker { margin-bottom: 1.25rem; }
+    .pathways-section__heading h2 { font-size: clamp(1.875rem, 8.5vw, 2.125rem); }
+    .pathways-section__heading > p:last-child { font-size: 0.9375rem; line-height: 1.85; }
+    .pathways-section__grid { gap: 1.125rem; margin-top: 0; }
+    .pathways-section__grid a,
+    .pathways-section__grid a:nth-child(even) { padding: 0.65rem; }
+    .pathways-card__body { padding: 0.875rem 0.25rem 1.75rem; }
+    .pathways-card__body h3 { font-size: clamp(1.3125rem, 6vw, 1.5rem); }
+    .pathways-card__body > span:not(.pathways-card__arrow) { font-size: 0.875rem; line-height: 1.75; }
+    .pathways-card__body::after { border-bottom-width: 0.75rem; border-left-width: 0.75rem; }
+
+    .recent-section { padding-block: 4.5rem; }
+    .recent-section__card { gap: 1.35rem; width: calc(100% - 32px); padding: 1.75rem 1.5rem; }
+    .recent-section__card h2 { font-size: clamp(1.75rem, 7.8vw, 2rem); }
+    .recent-section__content > p { font-size: 0.9375rem; line-height: 1.8; }
+    .recent-section__content > a { min-height: 50px; margin-top: 1.25rem; font-size: 0.9375rem; }
+    .recent-section__lemon { top: -1.5rem; right: 0.75rem; width: 4.5rem; }
+
+    main a:focus-visible,
+    main button:focus-visible { outline: 3px solid #ffe000; outline-offset: 3px; }
+  }
+
+  @media (max-width: 374px) {
+    .content-shell,
+    .access-section__heading,
+    .access-section__details-inner,
+    .access-section__map { width: calc(100% - 32px); }
+    .faq-section,
+    .pathways-section__paper-stack,
+    .recent-section__card { width: calc(100% - 24px); }
+    .profile-section__details,
+    .access-section__copy,
+    .recent-section__card { padding-inline: 1.125rem; }
+    .faq-item > button { grid-template-columns: 3.25rem minmax(0, 1fr) 2.75rem; }
+    .faq-item__question { padding-inline: 0.6rem; }
+    .weekend-intro__inner { width: calc(100% - 32px); gap: 2rem; }
+    .weekend-intro__paper-inner { padding-inline: 1.125rem; }
+    .weekend-intro__paper::before { transform: translate(-4px, 4px); }
+    .weekend-intro__paper::after { transform: translate(6px, 7px); }
   }
 </style>
