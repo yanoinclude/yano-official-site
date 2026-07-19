@@ -6,9 +6,9 @@ import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
 import lemonTreeCutout from "@/assets/images/home/lemon-tree-storybook-cutout.png";
 import nakajimaFerryCutout from "@/assets/images/home/nakajima-ferry-cutout.png";
-import yanoLemonCharacter from "@/assets/images/home/yano-lemon-character.png";
 import yanoWalkingCutout from "@/assets/images/home/yano-walking-cutout.png";
-import yanoKominkaPhoto from "@/assets/images/home/yano-kominka-photo.png";
+import nakajimaBiyoriFeature from "@/assets/images/intro-feature/nakajima-biyori-feature.png";
+import weekendLemonFeature from "@/assets/images/intro-feature/weekend-lemon-feature.png";
 import aboutYanoLemonGrove from "@/assets/images/about-yano-lemon-grove.jpg";
 import rankingLemonJuice from "@/assets/images/home/ranking-lemon-juice.jpeg";
 import rankingKominkaEvent from "@/assets/images/home/ranking-kominka-event.jpeg";
@@ -16,7 +16,6 @@ import rankingMarche from "@/assets/images/home/ranking-marche.jpeg";
 import noPlanThumbnail from "@/assets/images/projects/no-plan/vol-1.jpg";
 import crowdfundingThumbnail from "@/assets/images/projects/crowdfunding.webp";
 import nakajimaOverlook from "@/assets/images/scenery/nakajima-overlook.jpeg";
-import nakajimaFerry from "@/assets/images/scenery/nakajima-ferry.jpeg";
 
 const activities = [
   {
@@ -31,18 +30,18 @@ const activities = [
   {
     number: "02",
     targetId: "kominka",
-    title: "2円で買った築100年古民家を見学しよう！",
+    title: "築100年のヤノッチHOUSEへ行こう！",
     tags: ["#リノベーション", "#クラファン"],
-    body: "2円で購入した築100年の古民家をセルフリノベーション。1年8か月、土日を島に捧げ、友人や島の人と一緒に再生しています。今では交流拠点として、島内外から人が集まる場所です。",
+    body: "2円で購入した築100年の古民家をセルフリノベ。1年8か月、週末だけ島に通い、友人や島の人と一緒に古民家再生。今は交流拠点として、島内外から人が集まる場所になっています。",
     image: rankingKominkaEvent.src,
     alt: "古民家で開かれた交流イベントの様子",
   },
   {
     number: "03",
     targetId: "events",
-    title: "イベントやマルシェに参加しよう！",
+    title: "イベントやマルシェを不定期開催！",
     tags: ["#お手伝い募集中"],
-    body: "マルシェ出店や収穫イベントなどを企画しています。17年続く海掃除をサポートし、不定期でマルシェや収穫イベントを開催。島の雰囲気を島外へ発信しています。",
+    body: "愛媛道後の古湧園様にて、中島マルシェを企画！\n中島で17年続くNPO主催のビーチクリーンをサポート！\nヤノッチが管理するレモン農園で収穫イベント開催！",
     image: rankingMarche.src,
     alt: "マルシェでレモン商品を販売する様子",
   },
@@ -84,6 +83,7 @@ const faqs = [
 const pathways = [
   {
     label: "味見してみる",
+    category: "PRODUCT",
     title: "週末移住レモン",
     body: "島の暮らしを少し味わう、レモン果汁と商品ページへ。",
     href: "/product",
@@ -92,6 +92,7 @@ const pathways = [
   },
   {
     label: "直してきた記録を見る",
+    category: "PROJECT",
     title: "古民家再生",
     body: "築100年の古民家を仲間と直してきたクラウドファンディングの記録へ。",
     href: "https://for-good.net/project/1001493/activity",
@@ -100,6 +101,7 @@ const pathways = [
   },
   {
     label: "島のことを知る",
+    category: "WEBSITE",
     title: "中島日和",
     body: "中島の柑橘や島の暮らしを届けるウェブサイトへ。",
     href: "https://nakajima-biyori.com/",
@@ -108,46 +110,12 @@ const pathways = [
   },
   {
     label: "活動を映像で見る",
+    category: "YOUTUBE",
     title: "No Plan Project",
     body: "2円で買った築100年の古民家を、仲間と再生していく全9話の記録へ。",
     href: "/no-plan-project",
     image: noPlanThumbnail.src,
     alt: "ヤノッチのNo Plan Project vol.1の動画サムネイル",
-  },
-];
-
-const works = [
-  {
-    category: "YOUTUBE",
-    title: "ヤノッチのNo Plan Project",
-    body: "2円で買った築100年の古民家を、仲間と一緒に再生していく全9話の記録です。",
-    image: noPlanThumbnail.src,
-    alt: "ヤノッチのNo Plan Project vol.1の動画サムネイル",
-    href: "/no-plan-project",
-  },
-  {
-    category: "CROWDFUNDING",
-    title: "古民家再生クラウドファンディング",
-    body: "世界のアーティストと島の人が交流できる、新しい拠点づくりに挑戦しました。",
-    image: crowdfundingThumbnail.src,
-    alt: "世界のアーティストとまちの人が交流できる新たな拠点をつくるクラウドファンディング",
-    href: "https://for-good.net/project/1001493/activity",
-  },
-  {
-    category: "WEBSITE",
-    title: "中島日和",
-    body: "中島の柑橘や島の暮らしを届けるウェブサイトを制作しました。",
-    image: placeholderImages.island,
-    alt: "瀬戸内海に浮かぶ中島の風景",
-    href: "https://nakajima-biyori.com/",
-  },
-  {
-    category: "PRODUCT",
-    title: "週末移住レモン",
-    body: "週末に島へ通いながら育てたレモンを届ける、商品ブランドとウェブサイトをつくりました。",
-    image: placeholderImages.bottle,
-    alt: "週末移住レモン果汁",
-    href: "/product",
   },
 ];
 ---
@@ -162,8 +130,10 @@ const works = [
       <span class="hero-introduction__desktop"
         >平日は松山で働き、週末は中島へ。</span
       >
-      <span class="hero-introduction__mobile">平日は松山で働き、</span>
-      <span>
+      <span class="hero-introduction__mobile"
+        >平日は松山で働き、週末は中島へ。</span
+      >
+      <span class="hero-introduction__body">
         古民家を直し、レモンを育て、島に人が集まるきっかけをつくっています。
       </span>
     </p>
@@ -347,54 +317,59 @@ const works = [
     </div>
   </section>
 
-  <section class="empathy-section content-shell reveal-section" id="about">
-    <div class="empathy-section__stack">
-      <img
-        class="empathy-section__character"
-        src={yanoLemonCharacter.src}
-        alt="大きなレモンを抱えるヤノのイラスト"
-        loading="lazy"
-        decoding="async"
-      />
-      <div
-        class="empathy-section__layer empathy-section__layer--black"
-        aria-hidden="true"
-      >
-      </div>
-      <div
-        class="empathy-section__layer empathy-section__layer--yellow"
-        aria-hidden="true"
-      >
-      </div>
-      <div class="empathy-section__panel">
-        <div class="empathy-section__content">
-          <header class="empathy-section__heading">
-            <p class="section-kicker">A SMALL FIRST STEP</p>
-            <h2>
-              <span>田舎暮らし、憧れる。</span>
-              <span>でも踏み出せない。</span>
-            </h2>
-            <p class="empathy-section__lead">
-              島との関わりは、小さな一歩から。
-            </p>
-          </header>
-          <figure class="empathy-section__photo">
+  <section class="weekend-intro reveal-section" id="about">
+    <span
+      class="weekend-intro__layer weekend-intro__layer--black"
+      aria-hidden="true"></span>
+    <span
+      class="weekend-intro__layer weekend-intro__layer--yellow"
+      aria-hidden="true"></span>
+    <span
+      class="weekend-intro__layer weekend-intro__layer--white"
+      aria-hidden="true"></span>
+    <div class="weekend-intro__inner content-shell">
+      <header class="weekend-intro__heading">
+        <p class="weekend-intro__label">WHY WEEKEND?</p>
+        <h2>週末移住という暮らし</h2>
+        <p class="weekend-intro__lead">
+          週末だけ島へ通う、僕なりの田舎との関わり方。
+        </p>
+      </header>
+
+      <div class="weekend-intro__grid">
+        <article class="weekend-intro__story">
+          <figure>
             <img
-              src={yanoKominkaPhoto.src}
-              alt="古民家の前に立つヤノ"
+              src={nakajimaBiyoriFeature.src}
+              alt="レモン畑で過ごすヤノと、中島の日々をまとめた特集ビジュアル"
               loading="lazy"
               decoding="async"
             />
           </figure>
-          <div class="empathy-section__copy">
-            <p>
-              いつかは自然の近くで暮らしてみたい。でも、仕事もあるし、家もあるし、いきなり移住はむずかしい。
-            </p>
-            <p>
-              ヤノも最初はそうでした。平日は松山で働き、週末だけ船に乗って中島へ行く。そんな距離感から、島との関わりが始まりました。
-            </p>
-          </div>
-        </div>
+          <h3>今の暮らしを、手放さない。</h3>
+          <p>
+            仕事も、今の暮らしも、無理に手放さなくていい。<br />
+            平日は松山で働き、週末だけ船に乗って中島へ。<br />
+            僕の田舎暮らしは、いきなり移住するのではなく、通うことから始まりました。
+          </p>
+        </article>
+
+        <article class="weekend-intro__story">
+          <figure>
+            <img
+              src={weekendLemonFeature.src}
+              alt="週末移住レモン果汁と、島の古民家から生まれたブランドの特集ビジュアル"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <h3>通ううちに、島も暮らしになった。</h3>
+          <p>
+            古民家を直し、レモンを育て、島の人たちと時間を過ごす。<br />
+            毎日住んでいなくても、少しずつ関わりを重ねることで、<br />
+            島はもうひとつの暮らしの場所になっていきました。
+          </p>
+        </article>
       </div>
     </div>
   </section>
@@ -429,7 +404,7 @@ const works = [
               >
                 <span class="ranking-card__badge">{activity.number}</span>
                 <div class="ranking-card">
-                  <figure>
+                  <figure class="ranking-card__media">
                     <img
                       src={activity.image}
                       alt={activity.alt}
@@ -505,83 +480,76 @@ const works = [
   </section>
 
   <section class="place-section reveal-section" id="nakajima">
-    <div class="place-section__intro content-shell">
-      <div class="place-section__copy">
-        <p class="section-kicker">Where is NAKAJIMA?</p>
-        <h2>愛媛と広島の間に浮かぶ離島</h2>
-      </div>
+    <header class="access-section__heading content-shell">
+      <h2>ACCESS</h2>
+      <p>アクセス</p>
+    </header>
+
+    <div class="access-section__map">
+      <iframe
+        title="Googleマップで見る愛媛県松山市中島と周辺の航路"
+        src="https://www.google.com/maps?q=33.9751781,132.619553&z=11&output=embed"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
 
-    <figure class="place-section__hero content-shell">
-      <span class="place-section__hero-white" aria-hidden="true"></span>
-      <img
-        src={nakajimaOverlook.src}
-        alt="中島の集落と港、瀬戸内海を行くフェリー"
-        loading="lazy"
-        decoding="async"
-      />
-      <figcaption>島の緑と集落の先に、海と広島が見える。</figcaption>
-    </figure>
-
-    <div class="place-section__stories content-shell">
-      <div class="place-section__white-block" aria-hidden="true"></div>
-      <article class="place-story place-story--ferry">
-        <figure>
+    <div class="access-section__details">
+      <div class="access-section__details-inner content-shell">
+        <div class="access-section__copy">
+          <h3>瀬戸内海に浮かぶ島</h3>
+          <div class="access-section__fact">
+            <p>愛媛県松山市からフェリーで約1時間。</p>
+          </div>
+          <div class="access-section__fact">
+            <p>
+              三津浜港、高浜港、松山観光港の3つの港から、<br
+                class="access-section__sentence-break"
+              />
+              <span class="access-section__fact-line"
+                >出発時間や航路に合わせて船で渡ることができます。</span
+              >
+            </p>
+          </div>
+          <a
+            class="access-section__link"
+            href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu"
+            target="_blank"
+            rel="noreferrer">Google Mapsで見る ↗</a
+          >
+        </div>
+        <figure class="access-section__photo">
           <img
-            src={nakajimaFerry.src}
-            alt="中島の港に停泊するフェリー"
+            src={nakajimaOverlook.src}
+            alt="中島の集落と港、瀬戸内海を進むフェリー"
             loading="lazy"
             decoding="async"
           />
         </figure>
-        <div>
-          <h3>橋のない島へ、船で約1時間。</h3>
-          <p>
-            中島は、松山市の沖に浮かぶ橋のない島です。<br />
-            三津浜港、高浜港、松山観光港の3つの港から、<br />
-            出発時間や航路に合わせて船で渡ることができます。
-          </p>
-        </div>
-      </article>
+      </div>
     </div>
 
-    <div class="place-section__guide">
-      <div class="place-section__guide-copy content-shell">
-        <p>
-          島の玄関口は、<br />
-          大浦港、神浦港（こうのうら）、西中港の3か所。
-        </p>
-        <p>
-          中心となるのは大浦港ですが、<br />
-          私が再生している古民家は神浦港から歩いて約2分の場所にあります。
-        </p>
-        <p>
-          島から望めるのは、<br />
-          西日本最高峰の石鎚山や、海の向こうに連なる広島・山口の山々。
-        </p>
-        <p>
-          温暖な気候と潮風に恵まれた中島では、<br />
-          愛媛らしく柑橘づくりも盛んです。
-        </p>
-        <p>
-          どの港から、どの船で向かうのか。<br />
-          まずはGoogleマップで、中島までの道のりをのぞいてみてください。
-        </p>
-      </div>
-
-      <div class="place-section__map content-shell">
-        <iframe
-          title="Googleマップで見る愛媛県松山市中島と周辺の航路"
-          src="https://www.google.com/maps?q=33.9751781,132.619553&z=11&output=embed"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        <a
-          href="https://www.google.co.jp/maps/place/%E4%B8%AD%E5%B3%B6/@33.969458,132.5856205,26200m/data=!3m1!1e3!4m6!3m5!1s0x354ffebbef292855:0x983d5f17cee5a941!8m2!3d33.9751781!4d132.619553!16s%2Fg%2F1216fpc9?entry=ttu"
-          target="_blank"
-          rel="noreferrer">Google Mapsで見る ↗</a
-        >
-      </div>
+    <div class="access-section__guide content-shell">
+      <p>
+        島の玄関口は、<br />
+        大浦港、神浦港（こうのうら）、西中港の3か所。
+      </p>
+      <p>
+        中心となるのは大浦港ですが、<br />
+        私が再生している古民家は神浦港から歩いて約2分の場所にあります。
+      </p>
+      <p>
+        島から望めるのは、<br />
+        西日本最高峰の石鎚山や、海の向こうに連なる広島・山口の山々。
+      </p>
+      <p>
+        温暖な気候と潮風に恵まれた中島では、<br />
+        愛媛らしく柑橘づくりも盛んです。
+      </p>
+      <p>
+        どの港から、どの船で向かうのか。<br />
+        まずはGoogleマップで、中島までの道のりをのぞいてみてください。
+      </p>
     </div>
   </section>
 
@@ -624,7 +592,10 @@ const works = [
                   <img src={item.image} alt={item.alt} loading="lazy" />
                 </figure>
                 <div class="pathways-card__body">
-                  <p>{item.label}</p>
+                  <div class="pathways-card__meta">
+                    <p>{item.label}</p>
+                    <span>{item.category}</span>
+                  </div>
                   <h3>{item.title}</h3>
                   <span>{item.body}</span>
                 </div>
@@ -632,33 +603,7 @@ const works = [
             ))
           }
         </div>
-        <a class="pathways-section__more" href="#works">MORE</a>
       </div>
-    </div>
-  </section>
-
-  <section class="works-section content-shell reveal-section" id="works">
-    <header class="section-heading">
-      <p class="section-kicker">WORKS</p>
-      <h2>てがけてきたこと</h2>
-    </header>
-    <div class="works-section__grid">
-      {
-        works.map((work) => (
-          <a
-            href={work.href}
-            target={work.href.startsWith("http") ? "_blank" : undefined}
-            rel={work.href.startsWith("http") ? "noreferrer" : undefined}
-          >
-            <figure>
-              <img src={work.image} alt={work.alt} loading="lazy" />
-            </figure>
-            <p>{work.category}</p>
-            <h3>{work.title}</h3>
-            <span>{work.body}</span>
-          </a>
-        ))
-      }
     </div>
   </section>
 
@@ -799,7 +744,6 @@ const works = [
   }
 
   .section-heading h2,
-  .empathy-section h2,
   .concept-section h2,
   .place-section h2,
   .pathways-section h2,
@@ -1370,14 +1314,12 @@ const works = [
     }
   }
 
-  .empathy-section,
   .place-section,
   .faq-section,
   .works-section {
     padding-block: clamp(5rem, 10vw, 9rem);
   }
 
-  .empathy-section__grid,
   .concept-section__inner,
   .place-section {
     display: grid;
@@ -1386,7 +1328,6 @@ const works = [
     align-items: start;
   }
 
-  .empathy-section__body,
   .concept-section__copy,
   .place-section__copy {
     color: #2e4568;
@@ -1395,156 +1336,154 @@ const works = [
     line-height: 2.15;
   }
 
-  .empathy-section__body p,
   .concept-section__copy p,
   .place-section__copy p {
     margin: 0;
   }
 
-  .empathy-section__body p + p,
   .concept-section__copy p + p {
     margin-top: 1.15rem;
   }
 
-  .empathy-section {
-    position: relative;
-    width: 100vw;
-    max-width: none;
-    margin-inline: calc(50% - 50vw);
-    padding: 4rem clamp(1.5rem, 6vw, 5rem) clamp(5rem, 8vw, 7rem);
+  .weekend-intro {
+    display: grid;
+    padding-block: clamp(5rem, 9vw, 8rem);
     overflow: hidden;
     background: #36a9ee;
+    color: #111;
   }
 
-  .empathy-section__stack {
-    position: relative;
-    width: min(100%, 68rem);
-    margin-inline: auto;
+  .weekend-intro__layer,
+  .weekend-intro__inner {
+    grid-area: 1 / 1;
   }
 
-  .empathy-section__character {
-    position: absolute;
-    top: -4rem;
-    right: 5%;
-    z-index: 4;
-    width: 8rem;
-    height: auto;
-    pointer-events: none;
-    transform: rotate(3deg);
+  .weekend-intro__layer {
+    align-self: stretch;
+    justify-self: center;
+    width: min(calc(100% - clamp(2rem, 7vw, 8rem)), 1160px);
+    min-height: 100%;
+    transform-origin: center;
   }
 
-  .empathy-section__layer {
-    position: absolute;
-    inset: 0;
-  }
-
-  .empathy-section__layer--black {
+  .weekend-intro__layer--black {
     background: #111;
-    transform: translate(-1rem, 1.35rem) rotate(-2.2deg);
+    transform: translate(-1.25rem, 1.35rem) rotate(-1.4deg);
   }
 
-  .empathy-section__layer--yellow {
+  .weekend-intro__layer--yellow {
     background: #ffe500;
-    transform: translate(0.85rem, 0.7rem) rotate(1.8deg);
+    transform: translate(1.35rem, 0.9rem) rotate(1deg);
   }
 
-  .empathy-section__panel {
+  .weekend-intro__layer--white {
+    background: #fffdf8;
+    transform: rotate(-0.65deg);
+  }
+
+  .weekend-intro__inner {
     position: relative;
     z-index: 1;
-    padding: clamp(2.5rem, 5vw, 4.5rem);
+    padding: clamp(3rem, 5vw, 5rem);
+  }
+
+  .weekend-intro__heading {
+    max-width: 54rem;
+  }
+
+  .weekend-intro__label {
+    display: inline-flex;
+    position: relative;
+    margin: 0 0 1.25rem;
+    padding: 0.38rem 0.75rem;
+    border: 2px solid #111;
+    border-radius: 0.45rem;
     background: #fff;
     color: #111;
-    transform: rotate(-1deg);
-  }
-
-  .empathy-section__panel::before,
-  .empathy-section__panel::after {
-    display: none;
-  }
-
-  .empathy-section__content {
-    display: grid;
-    grid-template-areas:
-      "heading photo"
-      "copy photo";
-    grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
-    gap: 2rem clamp(3rem, 5vw, 4.5rem);
-    align-items: start;
-    margin-inline: auto;
-    transform: rotate(1deg);
-  }
-
-  .empathy-section__heading {
-    grid-area: heading;
-    margin: 0;
-  }
-
-  .empathy-section .section-kicker {
-    display: inline-flex;
-    margin-bottom: 0.85rem;
-    padding: 0.3rem 0.55rem;
-    border: 2px solid #111;
-    border-radius: 0.35rem;
-    color: #111;
-    font-family: "Arial Rounded MT Bold", "Noto Sans JP", sans-serif;
-    font-size: 0.65rem;
-    font-weight: 700;
+    font-size: 0.72rem;
+    font-weight: 800;
     letter-spacing: 0.08em;
+    line-height: 1;
   }
 
-  .empathy-section h2 {
-    max-width: none;
-    color: #ff3f9f;
-    font-size: 2.3rem;
-    font-weight: 800;
-    line-height: 1.35;
+  .weekend-intro__label::after {
+    position: absolute;
+    bottom: -0.42rem;
+    left: 1rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    border-right: 2px solid #111;
+    border-bottom: 2px solid #111;
+    background: #fff;
+    content: "";
+    transform: rotate(45deg);
   }
 
-  .empathy-section h2 span {
-    display: block;
-    white-space: nowrap;
+  .weekend-intro__heading h2 {
+    margin: 0;
+    color: #ff3b9d;
+    font-size: clamp(2.4rem, 4.5vw, 4.1rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.035em;
   }
 
-  .empathy-section__lead {
+  .weekend-intro__lead {
     margin: clamp(1rem, 2vw, 1.5rem) 0 0;
-    color: #111;
-    font-size: 1.2rem;
-    font-weight: 800;
-    line-height: 1.65;
+    color: #2e4568;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1.7;
   }
 
-  .empathy-section__copy {
-    grid-area: copy;
-    margin: 0;
+  .weekend-intro__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2.5rem, 6vw, 6rem);
+    margin-top: clamp(3rem, 6vw, 5rem);
   }
 
-  .empathy-section__copy p {
-    margin: 0;
-    color: #111;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.95;
+  .weekend-intro__story {
+    min-width: 0;
   }
 
-  .empathy-section__copy p + p {
-    margin-top: 1rem;
-  }
-
-  .empathy-section__photo {
-    grid-area: photo;
+  .weekend-intro__story figure {
     margin: 0;
     overflow: hidden;
-    width: 100%;
+    border: 3px solid #111;
+    background: #ffe36a;
+    aspect-ratio: 200 / 141;
   }
 
-  .empathy-section__photo img {
+  .weekend-intro__story:first-child figure {
+    box-shadow: -0.55rem 0.55rem 0 #36a9ee;
+  }
+
+  .weekend-intro__story:last-child figure {
+    box-shadow: 0.55rem 0.55rem 0 #ffe500;
+  }
+
+  .weekend-intro__story img {
     display: block;
     width: 100%;
     height: 100%;
-    max-height: none;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: 30% center;
+    object-fit: contain;
+  }
+
+  .weekend-intro__story h3 {
+    margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+    color: #2e4568;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .weekend-intro__story > p {
+    margin: 0.9rem 0 0;
+    color: #2e4568;
+    font-size: 0.96rem;
+    font-weight: 500;
+    line-height: 1.95;
   }
 
   .concept-section {
@@ -1686,7 +1625,7 @@ const works = [
     width: 100vw;
     max-width: none;
     margin-inline: calc(50% - 50vw);
-    padding: clamp(2.5rem, 4.5vw, 4rem) 0 clamp(6rem, 11vw, 10rem);
+    padding: clamp(2rem, 3vw, 3rem) 0 0;
     overflow: hidden;
     background: #36a9ee;
   }
@@ -1700,7 +1639,7 @@ const works = [
     position: relative;
     z-index: 1;
     grid-template-columns: 1fr;
-    padding: clamp(2.5rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 4rem) 0;
+    padding: clamp(1.25rem, 2vw, 1.75rem) clamp(1.5rem, 4vw, 4rem) 0;
   }
 
   .place-section__copy {
@@ -1713,17 +1652,17 @@ const works = [
     margin: 0;
     color: #fff;
     font-family: var(--font-island-body);
-    font-size: clamp(3.4rem, 6vw, 5.5rem);
+    font-size: clamp(3rem, 5vw, 4.6rem);
     font-weight: 900;
     line-height: 0.95;
     letter-spacing: 0.025em;
   }
 
   .place-section__copy h2 {
-    margin: 1rem 0 0;
+    margin: 0.6rem 0 0;
     color: #ffe500;
     font-family: var(--font-island-body);
-    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    font-size: clamp(0.9rem, 1.2vw, 1.05rem);
     font-weight: 800;
     line-height: 1.5;
     letter-spacing: 0.02em;
@@ -1790,12 +1729,13 @@ const works = [
     position: relative;
     z-index: 1;
     isolation: isolate;
-    margin-block: clamp(2.5rem, 3vw, 3rem) 0;
+    width: min(calc(100% - 3rem), 36rem);
+    margin: clamp(1.25rem, 2vw, 1.75rem) auto 0;
   }
 
   .place-section__hero-white {
     position: absolute;
-    top: 50%;
+    top: 35%;
     right: calc((100% - 100vw) / 2);
     bottom: 0;
     z-index: -1;
@@ -1806,15 +1746,15 @@ const works = [
   .place-section__hero img {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 7.5;
+    aspect-ratio: 16 / 6.4;
     object-fit: cover;
     object-position: center 54%;
   }
 
   .place-section__hero figcaption {
     position: absolute;
-    right: clamp(1rem, 3vw, 2.5rem);
-    bottom: clamp(1rem, 3vw, 2rem);
+    right: 0.6rem;
+    bottom: 0.6rem;
     max-width: 28rem;
     padding: 0.55rem 0.75rem;
     background: rgb(255 253 246 / 88%);
@@ -1828,17 +1768,18 @@ const works = [
     z-index: 1;
     display: grid;
     isolation: isolate;
-    gap: clamp(7rem, 12vw, 12rem);
-    margin-top: clamp(7rem, 12vw, 12rem);
+    gap: 0;
+    width: min(calc(100% - 3rem), 67rem);
+    margin-top: clamp(1.75rem, 3vw, 2.5rem);
   }
 
   .place-section__white-block {
     position: absolute;
-    top: calc(-1 * clamp(7rem, 12vw, 12rem));
+    top: calc(-1 * clamp(1.75rem, 3vw, 2.5rem));
     right: calc((100% - 100vw) / 2);
     z-index: -1;
     width: 72vw;
-    height: calc(75% + clamp(7rem, 12vw, 12rem) + 2px);
+    height: calc(100% + clamp(1.75rem, 3vw, 2.5rem) + 2px);
     background: #fffdf6;
   }
 
@@ -1859,25 +1800,25 @@ const works = [
   }
 
   .place-story--ferry {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(3rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.9fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
   }
 
   .place-story--ferry figure {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
   }
 
   .place-story--ferry > div {
-    align-self: start;
+    align-self: center;
     max-width: 32rem;
-    padding-top: clamp(2rem, 3vw, 2.65rem);
+    padding-top: 0;
   }
 
   .place-story h3 {
     margin: 0;
     color: #171717;
     font-family: var(--font-island-body);
-    font-size: clamp(1.75rem, 2.4vw, 2.15rem);
+    font-size: clamp(1.55rem, 2.2vw, 2rem);
     font-weight: 600;
     line-height: 1.55;
   }
@@ -1887,10 +1828,142 @@ const works = [
   }
 
   .place-story h3 + p {
-    margin: 1.5rem 0 0;
+    margin: 1rem 0 0;
     color: #202020;
     font-size: 1rem;
-    line-height: 2.15;
+    line-height: 1.9;
+  }
+
+  .access-section__heading {
+    padding-block: clamp(2.5rem, 5vw, 4.5rem);
+    text-align: center;
+  }
+
+  .access-section__heading h2 {
+    margin: 0;
+    color: #fff;
+    font-family: var(--font-island-body);
+    font-size: clamp(3.8rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: 0.035em;
+  }
+
+  .access-section__heading p {
+    margin: 0.9rem 0 0;
+    color: #ffe500;
+    font-size: clamp(0.82rem, 1.2vw, 1rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+
+  .access-section__map {
+    width: 100%;
+    background: #e6e7e2;
+  }
+
+  .access-section__map iframe {
+    display: block;
+    width: 100%;
+    height: clamp(27.5rem, 36vw, 32.5rem);
+    border: 0;
+  }
+
+  .access-section__details {
+    padding: clamp(4rem, 8vw, 7rem) 0 0;
+    background: #36a9ee;
+  }
+
+  .access-section__details-inner {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(2.5rem, 5vw, 5rem);
+    align-items: center;
+    width: min(calc(100% - 3rem), 76rem);
+  }
+
+  .access-section__photo {
+    margin: 0;
+  }
+
+  .access-section__photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center 54%;
+  }
+
+  .access-section__details h3 {
+    margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+    color: #fff;
+    font-family: var(--font-island-body);
+    font-size: clamp(2rem, 3.1vw, 2.7rem);
+    font-weight: 800;
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+
+  .access-section__fact {
+    position: relative;
+    max-width: 48rem;
+    padding-left: clamp(1.25rem, 2vw, 1.7rem);
+  }
+
+  .access-section__fact::before {
+    position: absolute;
+    top: 0.18em;
+    bottom: 0.18em;
+    left: 0;
+    width: 4px;
+    border-radius: 999px;
+    background: #ffe500;
+    content: "";
+  }
+
+  .access-section__fact + .access-section__fact {
+    margin-top: clamp(1.8rem, 3vw, 2.6rem);
+  }
+
+  .access-section__fact p {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
+    font-weight: 600;
+    line-height: 1.9;
+  }
+
+  .access-section__fact-line {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .access-section__link {
+    display: inline-block;
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-underline-offset: 0.3rem;
+  }
+
+  .access-section__guide {
+    width: min(calc(100% - 3rem), 50rem);
+    padding-block: clamp(5rem, 9vw, 8rem);
+    text-align: center;
+  }
+
+  .access-section__guide p {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1rem, 1.35vw, 1.18rem);
+    font-weight: 500;
+    line-height: 2.05;
+  }
+
+  .access-section__guide p + p {
+    margin-top: clamp(2rem, 4vw, 3rem);
   }
 
   .activities-section {
@@ -1984,9 +2057,10 @@ const works = [
     height: 100%;
     box-sizing: border-box;
     flex-direction: column;
+    margin-top: 0;
     padding: clamp(2rem, 3vw, 2.5rem) clamp(1.2rem, 2vw, 1.7rem)
       clamp(2.5rem, 4vw, 3.4rem);
-    overflow: hidden;
+    overflow: visible;
     border-radius: 999px;
     background: #b3ddf9;
     color: #2e4568;
@@ -1998,16 +2072,22 @@ const works = [
     opacity: 1;
   }
 
-  .ranking-card figure {
-    width: 100%;
-    min-height: 0;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 0.2rem;
-    aspect-ratio: 4 / 3;
+  .ranking-slide:not(.is-active) .ranking-card__media {
+    opacity: 0.72;
   }
 
-  .ranking-card img {
+  .ranking-card__media {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.55rem;
+    aspect-ratio: 4 / 3;
+    background: #e9eef0;
+  }
+
+  .ranking-card__media img {
     display: block;
     width: 100%;
     max-width: 100%;
@@ -2038,6 +2118,10 @@ const works = [
     line-break: strict;
   }
 
+  .ranking-card__content > p:last-child {
+    white-space: pre-line;
+  }
+
   .ranking-card .ranking-card__tags {
     display: flex;
     flex-wrap: wrap;
@@ -2057,7 +2141,7 @@ const works = [
     position: absolute;
     z-index: 5;
     top: 0;
-    left: 0.55rem;
+    left: 0.2rem;
     display: grid;
     width: 3.1rem;
     aspect-ratio: 1;
@@ -2259,8 +2343,7 @@ const works = [
   .pathways-section__heading {
     display: grid;
     gap: 0;
-    position: sticky;
-    top: 7rem;
+    position: static;
     padding-top: 0.4rem;
   }
 
@@ -2280,8 +2363,7 @@ const works = [
   .pathways-section__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: clamp(2rem, 4vw, 4rem);
-    row-gap: clamp(4.5rem, 8vw, 7rem);
+    gap: clamp(1.25rem, 2.5vw, 2rem);
   }
 
   .pathways-section__grid a {
@@ -2289,12 +2371,24 @@ const works = [
     display: grid;
     grid-template-rows: auto 1fr;
     min-width: 0;
+    min-height: 100%;
+    padding: clamp(0.65rem, 1.1vw, 0.9rem);
+    background: #fffdf8;
     color: inherit;
     text-decoration: none;
+    transition:
+      transform 0.24s ease,
+      box-shadow 0.24s ease;
   }
 
   .pathways-section__grid a:nth-child(even) {
-    transform: translateY(clamp(3.5rem, 7vw, 6.5rem));
+    transform: none;
+  }
+
+  .pathways-section__grid a:hover,
+  .pathways-section__grid a:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 0.75rem 1.6rem rgb(46 69 104 / 14%);
   }
 
   .pathways-section__grid figure {
@@ -2307,9 +2401,9 @@ const works = [
     position: relative;
     z-index: 1;
     width: 100%;
-    min-height: 9rem;
+    min-height: 9.5rem;
     margin: 0;
-    padding: 1.15rem 1.25rem 1.35rem;
+    padding: 1rem 0.25rem 0.5rem;
     background: #fffdf8;
   }
 
@@ -2324,12 +2418,30 @@ const works = [
     content: "";
   }
 
-  .pathways-card__body > p {
+  .pathways-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.7rem;
+    align-items: center;
+  }
+
+  .pathways-card__meta p {
     margin: 0;
     color: #50627a;
     font-size: 0.67rem;
     font-weight: 600;
     letter-spacing: 0.1em;
+  }
+
+  .pathways-card__meta span {
+    display: inline-block;
+    padding: 0.22rem 0.5rem;
+    background: #ffe500;
+    color: #2e4568;
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
   }
 
   .pathways-card__body h3 {
@@ -2354,7 +2466,7 @@ const works = [
     width: 7.2rem;
     min-height: 2.8rem;
     place-items: center;
-    margin: clamp(7rem, 12vw, 11rem) 0 0 auto;
+    margin: clamp(2.5rem, 5vw, 4rem) 0 0 auto;
     border: 2px solid #111;
     border-radius: 999px;
     background: #fff;
@@ -2517,8 +2629,94 @@ const works = [
 
   @media (max-width: 767px) {
     .place-section {
-      padding-block: 2.25rem 6rem;
+      padding-block: 0;
       background: #36a9ee;
+    }
+
+    .access-section__heading {
+      padding-block: 3.5rem 3rem;
+    }
+
+    .access-section__heading h2 {
+      font-size: clamp(3rem, 16vw, 4rem);
+    }
+
+    .access-section__heading p {
+      margin-top: 0.7rem;
+      font-size: 0.78rem;
+    }
+
+    .access-section__map iframe {
+      height: clamp(20rem, 92vw, 23.5rem);
+    }
+
+    .access-section__details {
+      padding: 3.75rem 0 0;
+    }
+
+    .access-section__details-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      width: calc(100% - 3rem);
+    }
+
+    .access-section__photo {
+      grid-row: 2;
+    }
+
+    .access-section__photo img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .access-section__details h3 {
+      margin-bottom: 2.5rem;
+      font-size: clamp(1.75rem, 8vw, 2.2rem);
+      white-space: normal;
+    }
+
+    .access-section__fact {
+      padding-left: 1.15rem;
+    }
+
+    .access-section__fact::before {
+      width: 3px;
+    }
+
+    .access-section__fact p {
+      font-size: 0.94rem;
+      line-height: 1.9;
+    }
+
+    .access-section__fact p br {
+      display: none;
+    }
+
+    .access-section__fact-line {
+      display: inline-block;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .access-section__fact p br.access-section__sentence-break {
+      display: block;
+    }
+
+    .access-section__guide {
+      width: calc(100% - 3rem);
+      padding-block: 4.5rem 5rem;
+    }
+
+    .access-section__guide p {
+      font-size: 0.94rem;
+      line-height: 2;
+    }
+
+    .access-section__guide p + p {
+      margin-top: 2.1rem;
+    }
+
+    .access-section__guide p br {
+      display: none;
     }
 
     .place-section::before {
@@ -2561,11 +2759,11 @@ const works = [
 
     .place-section__hero {
       width: calc(100% - 2rem);
-      margin-top: 3rem;
+      margin-top: 2rem;
     }
 
     .place-section__hero img {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 16 / 9;
       object-position: 55% center;
     }
 
@@ -2577,15 +2775,15 @@ const works = [
     }
 
     .place-section__stories {
-      gap: 6.5rem;
-      margin-top: 6.5rem;
+      gap: 0;
+      margin-top: 2.5rem;
     }
 
     .place-section__white-block {
-      top: -6.5rem;
+      top: -2.5rem;
       right: -1rem;
       width: 100vw;
-      height: calc(100% + 6.5rem + 2px);
+      height: calc(100% + 2.5rem + 2px);
     }
 
     .place-section__hero-white {
@@ -2618,7 +2816,7 @@ const works = [
 
     .place-story--ferry > div {
       max-width: none;
-      padding-top: 1.5rem;
+      padding-top: 0;
     }
 
     .place-story h3 {
@@ -2626,18 +2824,13 @@ const works = [
       line-height: 1.55;
     }
 
+    .place-story--ferry h3 {
+      white-space: normal;
+    }
+
     .place-story h3 + p {
       font-size: 0.95rem;
       line-height: 2;
-    }
-
-    .empathy-section__content {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .empathy-section__photo img {
-      aspect-ratio: 3 / 2;
     }
 
     .concept-section__inner,
@@ -2707,48 +2900,58 @@ const works = [
       width: calc(100% - 2rem);
     }
 
-    .empathy-section {
-      width: 100vw;
-      padding: 3rem 1rem 4rem;
+    .weekend-intro {
+      padding-block: 4rem 4.5rem;
     }
 
-    .empathy-section__panel {
-      padding: 2rem 1.25rem 2.25rem;
-      transform: rotate(-0.4deg);
+    .weekend-intro__layer {
+      width: calc(100% - 2rem);
     }
 
-    .empathy-section__character {
-      top: -3rem;
-      right: 0.5rem;
-      width: 5.5rem;
+    .weekend-intro__layer--black {
+      transform: translate(-0.45rem, 0.75rem) rotate(-1deg);
     }
 
-    .empathy-section__content {
-      grid-template-areas:
-        "heading"
-        "photo"
-        "copy";
+    .weekend-intro__layer--yellow {
+      transform: translate(0.5rem, 0.45rem) rotate(0.8deg);
+    }
+
+    .weekend-intro__layer--white {
+      transform: rotate(-0.45deg);
+    }
+
+    .weekend-intro__inner {
+      padding: 2.25rem 1.25rem 2.75rem;
+    }
+
+    .weekend-intro__heading h2 {
+      font-size: clamp(2rem, 9vw, 2.75rem);
+      line-height: 1.15;
+    }
+
+    .weekend-intro__lead {
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .weekend-intro__grid {
       grid-template-columns: 1fr;
-      gap: 2rem;
-      transform: rotate(0.4deg);
+      gap: 3.5rem;
+      margin-top: 3rem;
     }
 
-    .empathy-section__layer--black {
-      transform: translate(-0.45rem, 0.7rem) rotate(-1deg);
+    .weekend-intro__story h3 {
+      margin-top: 1.5rem;
+      font-size: 1.45rem;
     }
 
-    .empathy-section__layer--yellow {
-      transform: translate(0.4rem, 0.35rem) rotate(0.7deg);
+    .weekend-intro__story > p {
+      font-size: 0.9rem;
+      line-height: 1.9;
     }
 
-    .empathy-section h2 {
-      font-size: 1.5rem;
-    }
-
-    .empathy-section__photo img {
-      max-height: none;
-      aspect-ratio: 4 / 3;
-      object-position: 30% center;
+    .weekend-intro__story > p br {
+      display: none;
     }
 
     .weekend-hero {
@@ -2791,14 +2994,18 @@ const works = [
       letter-spacing: 0;
     }
 
-    .hero-introduction__desktop,
-    .hero-introduction__desktop + span + span {
+    .hero-introduction__desktop {
       display: none !important;
     }
 
     .hero-introduction .hero-introduction__mobile {
       display: block !important;
       white-space: nowrap;
+    }
+
+    .hero-introduction .hero-introduction__body {
+      display: block;
+      white-space: normal;
     }
 
     .island-map {
@@ -2905,7 +3112,6 @@ const works = [
     }
 
     .section-heading h2,
-    .empathy-section h2,
     .concept-section h2,
     .place-section h2,
     .pathways-section h2,
@@ -2913,7 +3119,7 @@ const works = [
       font-size: 2rem;
     }
 
-    .empathy-section,
+    .weekend-intro,
     .profile-section,
     .place-section,
     .faq-section,
@@ -2958,6 +3164,11 @@ const works = [
       margin: 0;
       padding: 2rem 1rem 2.8rem;
       border-radius: 999px;
+    }
+
+    .ranking-card__media {
+      width: 100%;
+      border-radius: 0.45rem;
     }
 
     .ranking-card__badge {
@@ -3056,34 +3267,34 @@ const works = [
     .pathways-section__grid a,
     .pathways-section__grid a:nth-child(even) {
       display: grid;
-      grid-template-columns: minmax(0, 46%) minmax(0, 54%);
-      grid-template-rows: 1fr;
-      min-height: 9.6rem;
-      padding: 0.95rem;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      min-height: 0;
+      padding: 0.75rem;
       overflow: hidden;
-      border-radius: 0.85rem;
+      border-radius: 0.35rem;
       background: #fffdf8;
       transform: none;
     }
 
     .pathways-section__grid figure {
       width: 100%;
-      height: 100%;
-      min-height: 7.7rem;
-      aspect-ratio: auto;
+      height: auto;
+      min-height: 0;
+      aspect-ratio: 16 / 9;
       background: #f3f0e8;
     }
 
     .pathways-card__body {
-      align-self: center;
+      align-self: stretch;
       width: auto;
-      min-height: 0;
+      min-height: 8.8rem;
       margin: 0;
-      padding: 0.25rem 0.15rem 0.5rem 1rem;
+      padding: 0.9rem 0.15rem 0.35rem;
       background: transparent;
     }
 
-    .pathways-card__body > p {
+    .pathways-card__meta p {
       font-size: 0.59rem;
       letter-spacing: 0.06em;
     }
@@ -3102,8 +3313,8 @@ const works = [
     }
 
     .pathways-card__body::after {
-      right: -0.35rem;
-      bottom: -0.6rem;
+      right: 0;
+      bottom: 0;
     }
 
     .pathways-section__more {
