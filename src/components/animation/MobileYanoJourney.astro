@@ -1,148 +1,43 @@
-<div class="yano-journey" aria-hidden="true" data-yano-journey>
-  <div class="yano-journey__traveler is-walking" data-yano-traveler>
-    <span class="yano-sprite yano-sprite--walk">
+<div
+  class="yano-journey"
+  aria-hidden="true"
+  data-yano-journey
+  data-yano-raf
+  data-motion-kind="lane"
+  data-start-position="4"
+>
+  <div class="yano-journey__traveler" data-yano-traveler>
+    <span class="yano-sprite" data-yano-sprite>
       <img
-        src="/images/animation/yano-walk-sprite-12frames-v3.png"
+        src="/images/animation/yano-30frames-v4.png"
         alt=""
-        width="3120"
+        width="4800"
         height="264"
         loading="eager"
         decoding="async"
-      />
-    </span>
-    <span class="yano-sprite yano-sprite--scratch">
-      <img
-        src="/images/animation/yano-scratch-sprite-6frames-v3.png"
-        alt=""
-        width="1560"
-        height="264"
-        loading="eager"
-        decoding="async"
-      />
-    </span>
-    <span class="yano-sprite yano-sprite--settle">
-      <img
-        src="/images/animation/yano-settle-sprite-3frames-v3.png"
-        alt=""
-        width="780"
-        height="264"
-        loading="eager"
-        decoding="async"
-      />
-    </span>
-    <span class="yano-sprite yano-sprite--idle">
-      <img
-        src="/images/animation/yano-idle-v3.png"
-        alt=""
-        width="260"
-        height="264"
-        loading="eager"
-        decoding="async"
+        data-yano-sheet
       />
     </span>
   </div>
 </div>
 
 <script>
+  import { initYanoMotions } from "@/scripts/yanoMotion";
+
   const journey = document.querySelector<HTMLElement>("[data-yano-journey]");
   const traveler = journey?.querySelector<HTMLElement>("[data-yano-traveler]");
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  let sequenceId = 0;
-  let activeAnimation: Animation | undefined;
-
-  const wait = (duration: number) =>
-    new Promise((resolve) => window.setTimeout(resolve, duration));
-
-  const move = async (
-    from: string,
-    to: string,
-    duration: number,
-    easing = "linear",
-  ) => {
-    if (!traveler) return;
-    activeAnimation = traveler.animate(
-      [{ offsetDistance: from }, { offsetDistance: to }],
-      { duration, easing, fill: "forwards" },
-    );
-    try {
-      await activeAnimation.finished;
-    } catch {
-      // Animation cancellation is expected when reduced-motion changes.
-    }
-  };
 
   const setPath = () => {
     if (!journey || !traveler) return;
     const pathEnd = Math.ceil(journey.getBoundingClientRect().width + 90);
-    traveler.style.offsetPath = `path("M -90 153 L ${pathEnd} 153")`;
+    const pathY = Math.max(96, Math.round(journey.getBoundingClientRect().height - 2));
+    traveler.style.offsetPath = `path("M -90 ${pathY} L ${pathEnd} ${pathY}")`;
+    journey.dataset.pathPixels = String(pathEnd + 90);
   };
 
-  const playSequence = async () => {
-    if (!journey || !traveler || reducedMotion.matches) return;
-    const currentSequence = ++sequenceId;
-
-    while (currentSequence === sequenceId && !reducedMotion.matches) {
-      setPath();
-      traveler.style.visibility = "hidden";
-      traveler.style.offsetDistance = "0%";
-      traveler.classList.remove("is-scratching");
-      traveler.classList.remove("is-idle");
-      traveler.classList.remove("is-settling", "is-starting");
-      traveler.classList.add("is-walking");
-      await wait(1400);
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.style.visibility = "visible";
-      const halfDistance = (journey.getBoundingClientRect().width + 180) / 2;
-      const cruiseDuration = Math.min(6000, Math.max(2400, halfDistance / 90 * 1000));
-      const firstCruise = cruiseDuration * 0.86;
-      await move("0%", "43%", firstCruise);
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.classList.remove("is-walking");
-      traveler.classList.add("is-settling");
-      await move("43%", "50%", 650, "cubic-bezier(0.2, 0.7, 0.2, 1)");
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.classList.remove("is-settling");
-      traveler.classList.add("is-idle");
-      await wait(300);
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.classList.remove("is-idle");
-      traveler.classList.add("is-scratching");
-      await wait(1200);
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.classList.remove("is-scratching");
-      traveler.classList.add("is-idle");
-      await wait(800);
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.classList.remove("is-idle");
-      traveler.classList.add("is-starting");
-      await move("50%", "57%", 650, "cubic-bezier(0.55, 0, 0.8, 0.35)");
-      if (currentSequence !== sequenceId || reducedMotion.matches) break;
-
-      traveler.classList.remove("is-starting");
-      traveler.classList.add("is-walking");
-      await move("57%", "100%", firstCruise);
-    }
-  };
-
-  const handleMotionPreference = () => {
-    sequenceId += 1;
-    activeAnimation?.cancel();
-    if (traveler) traveler.style.visibility = "hidden";
-    if (!reducedMotion.matches) void playSequence();
-  };
-
-  if (journey && traveler) {
-    setPath();
-    window.addEventListener("resize", setPath, { passive: true });
-    reducedMotion.addEventListener("change", handleMotionPreference);
-    handleMotionPreference();
-  }
+  setPath();
+  window.addEventListener("resize", setPath, { passive: true });
+  initYanoMotions();
 </script>
 
 <style>
@@ -163,8 +58,17 @@
 
   @media (max-width: 767px) {
     .yano-journey {
-      display: none;
+      position: relative;
+      z-index: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+      display: block;
+      width: 100%;
+      height: 118px;
+      margin-top: 0.5rem;
     }
+
   }
 
   .yano-journey__traveler {
@@ -185,10 +89,12 @@
     bottom: 0;
     left: 50%;
     display: block;
-    width: 137.879px;
+    width: 84.848px;
     height: 140px;
     overflow: hidden;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleX(var(--yano-facing, 1)) translateY(var(--yano-bob, 0));
+    transform-origin: 50% 100%;
+    will-change: transform;
   }
 
   .yano-sprite img {
@@ -197,61 +103,21 @@
     max-width: none;
     height: 140px;
     transform: translate3d(0, 0, 0);
+    will-change: transform;
   }
 
-  .yano-sprite--walk { opacity: 0; }
-
-  .yano-sprite--walk img { animation: none; }
-
-  .yano-sprite--scratch { opacity: 0; }
-
-  .yano-sprite--settle { opacity: 0; }
-
-  .yano-sprite--idle { opacity: 0; }
-
-  .yano-sprite--scratch img,
-  .yano-sprite--settle img { animation: none; }
-
-  .is-walking .yano-sprite--walk,
-  .is-scratching .yano-sprite--scratch,
-  .is-settling .yano-sprite--settle,
-  .is-starting .yano-sprite--settle,
-  .is-idle .yano-sprite--idle {
-    opacity: 1;
-  }
-
-  .is-walking .yano-sprite--walk img {
-    animation: yano-walk-frames 1s steps(12) infinite;
-  }
-
-  .is-scratching .yano-sprite--scratch img {
-    animation: yano-scratch-frames 1.2s steps(6) 1 both;
-  }
-
-  .is-settling .yano-sprite--settle img {
-    animation: yano-settle-frames 0.65s steps(3) 1 both;
-  }
-
-  .is-starting .yano-sprite--settle img {
-    animation: yano-settle-frames 0.65s steps(3) 1 reverse both;
-  }
-
-  @keyframes yano-walk-frames {
-    to {
-      transform: translate3d(-100%, 0, 0);
+  @media (max-width: 767px) {
+    .yano-journey__traveler {
+      width: 90px;
+      height: 110px;
     }
-  }
 
-  @keyframes yano-scratch-frames {
-    to {
-      transform: translate3d(-100%, 0, 0);
+    .yano-sprite {
+      width: 60.606px;
+      height: 100px;
     }
-  }
 
-  @keyframes yano-settle-frames {
-    to {
-      transform: translate3d(-100%, 0, 0);
-    }
+    .yano-sprite img { height: 100px; }
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -44,7 +44,7 @@ const activities = [
     number: "03",
     category: "COMMUNITY",
     targetId: "events",
-    title: "人が集まるきっかけをつくる",
+    title: "人が集まるきっかけを作る",
     tags: ["#イベント", "#お手伝い募集中"],
     body: "マルシェや収穫イベント、海掃除などに参加しています。島を知り、関わり始める小さなきっかけをつくっています。",
     image: rankingMarche.src,
@@ -132,7 +132,14 @@ const pathways = [
     <p class="hero-introduction">
       平日は働き、週末は船で中島へ。古民家とレモンを手入れしながら、島との新しい関わり方をつくっています。
     </p>
-    <div class="island-map" aria-label="中島での活動マップ" data-yano-island>
+    <div
+      class="island-map"
+      aria-label="中島での活動マップ"
+      data-yano-island
+      data-yano-raf
+      data-motion-kind="island"
+      data-start-position="4"
+    >
       <img
         class="hero-ferry"
         src={nakajimaFerryCutout.src}
@@ -263,53 +270,23 @@ const pathways = [
       </svg>
 
       <a
-        class="map-spot map-spot--yano is-walking"
+        class="map-spot map-spot--yano"
         href="#profile"
         aria-label="ページ内のヤノのプロフィールへ"
         data-island-yano
+        data-yano-traveler
       >
-        <span class="map-yano" aria-hidden="true">
-          <span class="map-yano__sprite">
-            <span class="map-yano__frame map-yano__frame--walk">
-              <img
-                src="/images/animation/yano-walk-sprite-12frames-v3.png"
-                alt=""
-                width="3120"
-                height="264"
-                loading="eager"
-                decoding="async"
-              />
-            </span>
-            <span class="map-yano__frame map-yano__frame--scratch">
-              <img
-                src="/images/animation/yano-scratch-sprite-6frames-v3.png"
-                alt=""
-                width="1560"
-                height="264"
-                loading="eager"
-                decoding="async"
-              />
-            </span>
-            <span class="map-yano__frame map-yano__frame--settle">
-              <img
-                src="/images/animation/yano-settle-sprite-3frames-v3.png"
-                alt=""
-                width="780"
-                height="264"
-                loading="eager"
-                decoding="async"
-              />
-            </span>
-            <span class="map-yano__frame map-yano__frame--idle">
-              <img
-                src="/images/animation/yano-idle-v3.png"
-                alt=""
-                width="260"
-                height="264"
-                loading="eager"
-                decoding="async"
-              />
-            </span>
+        <span class="map-yano" aria-hidden="true" data-yano-sprite>
+          <span class="map-yano__frame">
+            <img
+              src="/images/animation/yano-30frames-v4.png"
+              alt=""
+              width="4800"
+              height="264"
+              loading="eager"
+              decoding="async"
+              data-yano-sheet
+            />
           </span>
         </span>
         <span>ヤノ</span>
@@ -649,119 +626,11 @@ const pathways = [
       const point = (x: number, y: number) =>
         `${Math.round(width * x)} ${Math.round(height * y)}`;
       islandYano.style.offsetPath = `path("M ${point(0.34, 0.6)} C ${point(0.4, 0.56)} ${point(0.47, 0.55)} ${point(0.54, 0.56)} C ${point(0.6, 0.57)} ${point(0.64, 0.54)} ${point(0.68, 0.48)}")`;
+      islandMap.dataset.pathPixels = String(Math.round(width * 0.42));
     };
     if (islandMap && islandYano) {
       updateIslandYanoPath();
       new ResizeObserver(updateIslandYanoPath).observe(islandMap);
-    }
-
-    const islandReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let islandSequenceId = 0;
-    let islandMotion: Animation | undefined;
-    const waitForIslandYano = (duration: number) =>
-      new Promise((resolve) => window.setTimeout(resolve, duration));
-    const moveIslandYano = async (
-      from: string,
-      to: string,
-      duration: number,
-      easing = "linear",
-    ) => {
-      if (!islandYano) return;
-      islandMotion = islandYano.animate(
-        [{ offsetDistance: from }, { offsetDistance: to }],
-        { duration, easing, fill: "forwards" },
-      );
-      try {
-        await islandMotion.finished;
-      } catch {
-        // Cancellation is expected if reduced-motion changes.
-      }
-    };
-    const setIslandYanoState = (
-      state: "walk" | "settle" | "start" | "scratch" | "idle",
-    ) => {
-      if (!islandYano) return;
-      islandYano.classList.toggle("is-walking", state === "walk");
-      islandYano.classList.toggle("is-scratching", state === "scratch");
-      islandYano.classList.toggle("is-idle", state === "idle");
-      islandYano.classList.toggle("is-settling", state === "settle");
-      islandYano.classList.toggle("is-starting", state === "start");
-    };
-    const playIslandYano = async () => {
-      if (!islandYano || islandReducedMotion.matches) return;
-      const currentSequence = ++islandSequenceId;
-      islandYano.style.offsetDistance = "0%";
-      islandYano.classList.remove("is-returning");
-      let forwardStart = "0%";
-
-      while (currentSequence === islandSequenceId && !islandReducedMotion.matches) {
-        setIslandYanoState("walk");
-        await moveIslandYano(forwardStart, "90%", forwardStart === "0%" ? 9450 : 8820);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("settle");
-        await moveIslandYano("90%", "100%", 1050, "cubic-bezier(0.2, 0.7, 0.2, 1)");
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("idle");
-        await waitForIslandYano(300);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("scratch");
-        await waitForIslandYano(1200);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("idle");
-        await waitForIslandYano(800);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        islandYano.classList.add("is-returning");
-        setIslandYanoState("start");
-        await moveIslandYano("100%", "94%", 650, "cubic-bezier(0.55, 0, 0.8, 0.35)");
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("walk");
-        await moveIslandYano("94%", "10%", 8820);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("settle");
-        await moveIslandYano("10%", "0%", 1050, "cubic-bezier(0.2, 0.7, 0.2, 1)");
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("idle");
-        await waitForIslandYano(300);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("scratch");
-        await waitForIslandYano(1200);
-        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
-
-        setIslandYanoState("idle");
-        await waitForIslandYano(800);
-        islandYano.classList.remove("is-returning");
-        setIslandYanoState("start");
-        await moveIslandYano("0%", "6%", 650, "cubic-bezier(0.55, 0, 0.8, 0.35)");
-        forwardStart = "6%";
-      }
-    };
-    const handleIslandMotionPreference = () => {
-      islandSequenceId += 1;
-      islandMotion?.cancel();
-      if (!islandYano) return;
-      islandYano.style.offsetDistance = "0%";
-      islandYano.classList.remove(
-        "is-returning",
-        "is-scratching",
-        "is-idle",
-        "is-settling",
-        "is-starting",
-      );
-      islandYano.classList.add("is-walking");
-      if (!islandReducedMotion.matches) void playIslandYano();
-    };
-    if (islandYano) {
-      islandReducedMotion.addEventListener("change", handleIslandMotionPreference);
-      handleIslandMotionPreference();
     }
 
     const revealTargets = document.querySelectorAll(".reveal-section");
@@ -1210,11 +1079,17 @@ const pathways = [
   }
 
   .map-spot--yano > span:last-child {
-    padding: 0.2rem 0.5rem;
+    display: grid;
+    width: 3.15rem;
+    height: 2.5rem;
+    padding: 0;
+    place-items: center;
     border: 1.5px solid #2f5d43;
     border-radius: 52% 48% 56% 44% / 46% 52% 48% 54%;
     background: rgb(255 253 248 / 78%);
+    line-height: 1;
     box-shadow: 0 2px 0 rgb(47 93 67 / 10%);
+    transform: translateY(1.4rem);
   }
 
   .map-spot--yano {
@@ -3051,8 +2926,8 @@ const pathways = [
     }
 
     .hero-ferry {
-      top: 25%;
-      left: 8%;
+      top: 21%;
+      left: 15%;
       width: clamp(7rem, 34vw, 8.75rem);
     }
 
@@ -4225,9 +4100,10 @@ const pathways = [
   .faq-item.is-open .faq-item__answer-inner { padding: 2rem 2.25rem; border-width: 0 2px 2px; box-shadow: 0.3rem 0.35rem 0 #ffe000; }
   .faq-item__answer-mark { color: #ffe000; font-size: clamp(3rem, 5vw, 4rem); font-weight: 900; line-height: 1; }
   .faq-item__answer-body > p { max-width: 52rem; margin: 0; padding: 0; color: #123b63; font-size: 1rem; line-height: 1.85; }
-  .faq-item__cta { display: inline-flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 3rem; margin-top: 1.4rem; padding: 0.65rem 1.5rem; border: 2px solid #123b63; border-radius: 999px; background: #ffe000; color: #123b63; font-size: 0.95rem; font-weight: 700; text-decoration: none; box-shadow: 0.18rem 0.22rem 0 #123b63; transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; }
+  .faq-item__answer .faq-item__cta { display: inline-flex; justify-content: space-between; align-items: center; gap: 1.5rem; min-height: 3rem; margin-top: 1.4rem; padding: 0.65rem 1.5rem; border: 2px solid #123b63; border-radius: 999px; background: #fff; color: #123b63; font-size: 0.95rem; font-weight: 700; text-decoration: none; box-shadow: 0.18rem 0.22rem 0 #123b63; transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease; }
   .faq-item__cta span { transition: transform 200ms ease; }
-  .faq-item__cta:hover, .faq-item__cta:focus-visible { background: #fffdf5; transform: translateY(-2px); box-shadow: 0.28rem 0.34rem 0 #ffe000; }
+  .faq-item__answer .faq-item__cta:hover,
+  .faq-item__answer .faq-item__cta:focus-visible { background: #ffe000; transform: translateY(-2px); box-shadow: 0.28rem 0.34rem 0 #123b63; }
   .faq-item__cta:hover span, .faq-item__cta:focus-visible span { transform: translateX(4px); }
 
   @media (max-width: 767px) {
@@ -4556,7 +4432,7 @@ const pathways = [
     padding: 0.75rem 2rem;
     border: 2px solid #123b63;
     border-radius: 0.75rem;
-    background: #ffe000;
+    background: #fff;
     color: #123b63;
     font-size: 0.95rem;
     font-weight: 800;
@@ -4566,7 +4442,7 @@ const pathways = [
   }
   .recent-section__content > a:hover,
   .recent-section__content > a:focus-visible {
-    background: #ffe94f;
+    background: #ffe000;
     box-shadow: 0.3rem 0.38rem 0 #123b63;
     transform: translateY(-3px);
   }
@@ -4634,36 +4510,22 @@ const pathways = [
   .map-yano {
     width: auto;
     height: clamp(9.5rem, 14vw, 13rem);
-    aspect-ratio: 260 / 264;
+    aspect-ratio: 160 / 264;
     overflow: hidden;
+    transform: translateX(-50%) scaleX(var(--yano-facing, 1)) translateY(var(--yano-bob, 0));
+    transform-origin: 50% 100%;
+    will-change: transform;
   }
 
   .map-yano::after { display: none; }
-
-  .map-yano__sprite {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    transform-origin: 50% 85%;
-    transition: none;
-  }
-
-  .map-spot--yano.is-returning .map-yano__sprite { transform: scaleX(-1); }
 
   .map-yano__frame {
     position: absolute;
     inset: 0;
     display: block;
     overflow: hidden;
-    opacity: 0;
+    opacity: 1;
   }
-
-  .map-spot--yano.is-walking .map-yano__frame--walk,
-  .map-spot--yano.is-scratching .map-yano__frame--scratch,
-  .map-spot--yano.is-settling .map-yano__frame--settle,
-  .map-spot--yano.is-starting .map-yano__frame--settle,
-  .map-spot--yano.is-idle .map-yano__frame--idle { opacity: 1; }
 
   .map-yano__frame img,
   .map-spot--yano:hover .map-yano__frame img,
@@ -4673,41 +4535,12 @@ const pathways = [
     width: auto;
     max-width: none;
     height: 100%;
+    animation: none;
     filter: none;
+    transition: none;
     transform-origin: 0 0;
     transform: translate3d(0, 0, 0);
-  }
-
-  .map-yano__frame--walk img,
-  .map-yano__frame--scratch img,
-  .map-yano__frame--settle img { animation: none; }
-
-  .map-spot--yano.is-walking .map-yano__frame--walk img {
-    animation: island-yano-walk-frames 1s steps(12) infinite;
-  }
-
-  .map-spot--yano.is-scratching .map-yano__frame--scratch img {
-    animation: island-yano-scratch-frames 1.2s steps(6) 1 both;
-  }
-
-  .map-spot--yano.is-settling .map-yano__frame--settle img {
-    animation: island-yano-settle-frames 1.05s steps(3) 1 both;
-  }
-
-  .map-spot--yano.is-starting .map-yano__frame--settle img {
-    animation: island-yano-settle-frames 0.65s steps(3) 1 reverse both;
-  }
-
-  @keyframes island-yano-walk-frames {
-    to { transform: translate3d(-100%, 0, 0); }
-  }
-
-  @keyframes island-yano-scratch-frames {
-    to { transform: translate3d(-100%, 0, 0); }
-  }
-
-  @keyframes island-yano-settle-frames {
-    to { transform: translate3d(-100%, 0, 0); }
+    will-change: transform;
   }
 
   @media (max-width: 767px) {
@@ -4716,7 +4549,6 @@ const pathways = [
 
   @media (prefers-reduced-motion: reduce) {
     .map-spot--yano,
-    .map-yano__sprite,
     .map-yano__frame img { animation: none; }
   }
 
@@ -4797,7 +4629,7 @@ const pathways = [
     .hero-mobile-actions {
       gap: 0.7rem;
       width: min(calc(100% - 40px), 15rem);
-      margin: -0.65rem auto 0;
+      margin: 0.85rem auto 0;
     }
     .hero-mobile-actions a {
       justify-content: center;
@@ -4810,7 +4642,7 @@ const pathways = [
     .weekend-intro {
       display: block;
       width: 100%;
-      padding: 4.5rem 0;
+      padding: 0 0 4.5rem;
       overflow-x: clip;
       background: #36a9ee;
     }
@@ -4880,6 +4712,12 @@ const pathways = [
     .profile-section__heading > p:last-child,
     .access-section__heading > p,
     .faq-section__heading h2 { font-size: clamp(0.9375rem, 4.2vw, 1.0625rem); }
+    .access-section__heading > p {
+      max-width: none;
+      margin-inline: auto;
+      text-align: center;
+      white-space: nowrap;
+    }
 
     .activities-section__grid { gap: 1.4rem; }
     .ranking-card { padding: 1.125rem; }
@@ -4896,11 +4734,28 @@ const pathways = [
     .ranking-card__badge { width: 2.25rem; min-height: 2.25rem; font-size: 0.75rem; }
 
     .profile-section__layout { gap: 1.25rem; }
-    .profile-section__details { padding: 1.5rem; }
+    .profile-section__details {
+      padding: 0;
+      background: transparent;
+      color: #fff;
+    }
+    .profile-section__primary {
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      background: #fff;
+    }
     .profile-section__primary h2 { font-size: clamp(1.25rem, 5.5vw, 1.375rem); }
     .profile-section__name-en { font-size: 0.8rem; }
     .profile-section__primary > p:last-child,
     .profile-section__secondary p { font-size: 0.9375rem; line-height: 1.85; }
+    .profile-section__secondary {
+      margin-top: 1.75rem;
+      padding: 0 0 1.5rem;
+      border-top: 0;
+      border-bottom: 3px dotted rgb(255 255 255 / 70%);
+      color: #fff;
+    }
+    .profile-section__secondary h3 { color: #fff; }
     .profile-section__more { width: min(100%, 10rem); min-height: 46px; margin: 1.5rem auto 0; font-size: 0.875rem; }
 
     .place-section { padding-top: 4.5rem; padding-bottom: 4.5rem; }
@@ -4921,9 +4776,14 @@ const pathways = [
       border: 0;
       background: #fffdf5;
     }
-    .access-section__map iframe { display: none; }
-    .access-section__map-fallback { display: block; width: 100%; height: 100%; }
-    .access-section__map-fallback img { display: block; width: 100%; height: 100%; object-fit: cover; background: #fffdf5; }
+    .access-section__map iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 250px;
+      border: 0;
+    }
+    .access-section__map-fallback { display: none; }
     .access-section__link--mobile { min-height: 46px; margin-top: 1rem; font-size: 0.875rem; }
 
     .faq-section { width: calc(100% - 32px); }
