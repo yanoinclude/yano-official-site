@@ -272,9 +272,9 @@ const pathways = [
           <span class="map-yano__sprite">
             <span class="map-yano__frame map-yano__frame--walk">
               <img
-                src="/images/animation/yano-walk-sprite-15frames.png"
+                src="/images/animation/yano-walk-sprite-12frames-v3.png"
                 alt=""
-                width="3900"
+                width="3120"
                 height="264"
                 loading="eager"
                 decoding="async"
@@ -282,9 +282,29 @@ const pathways = [
             </span>
             <span class="map-yano__frame map-yano__frame--scratch">
               <img
-                src="/images/animation/yano-scratch-sprite-6frames.png"
+                src="/images/animation/yano-scratch-sprite-6frames-v3.png"
                 alt=""
                 width="1560"
+                height="264"
+                loading="eager"
+                decoding="async"
+              />
+            </span>
+            <span class="map-yano__frame map-yano__frame--settle">
+              <img
+                src="/images/animation/yano-settle-sprite-3frames-v3.png"
+                alt=""
+                width="780"
+                height="264"
+                loading="eager"
+                decoding="async"
+              />
+            </span>
+            <span class="map-yano__frame map-yano__frame--idle">
+              <img
+                src="/images/animation/yano-idle-v3.png"
+                alt=""
+                width="260"
                 height="264"
                 loading="eager"
                 decoding="async"
@@ -357,7 +377,7 @@ const pathways = [
             <p class="weekend-intro__label">WHY WEEKEND?</p>
             <h2>週末移住という暮らし</h2>
             <p class="weekend-intro__lead">
-              週末だけ島へ通う、僕なりの田舎との関わり方。
+              週末だけ島へ通う、僕なりの田舎との関わり方
             </p>
           </header>
           <article class="weekend-intro__story">
@@ -385,7 +405,7 @@ const pathways = [
               decoding="async"
             />
           </figure>
-          <h3>通ううちに、島も暮らしになった。</h3>
+          <h3>島も、暮らしの一部になった</h3>
           <p>古民家を直し、レモンを育て、島の人たちと時間を過ごす。毎日住んでいなくても、少しずつ関わりを重ねることで、島はもうひとつの暮らしの場所になっていきました。</p>
           </article>
         </div>
@@ -640,11 +660,16 @@ const pathways = [
     let islandMotion: Animation | undefined;
     const waitForIslandYano = (duration: number) =>
       new Promise((resolve) => window.setTimeout(resolve, duration));
-    const moveIslandYano = async (from: string, to: string) => {
+    const moveIslandYano = async (
+      from: string,
+      to: string,
+      duration: number,
+      easing = "linear",
+    ) => {
       if (!islandYano) return;
       islandMotion = islandYano.animate(
         [{ offsetDistance: from }, { offsetDistance: to }],
-        { duration: 10500, easing: "linear", fill: "forwards" },
+        { duration, easing, fill: "forwards" },
       );
       try {
         await islandMotion.finished;
@@ -652,34 +677,71 @@ const pathways = [
         // Cancellation is expected if reduced-motion changes.
       }
     };
-    const setIslandYanoState = (state: "walk" | "scratch") => {
+    const setIslandYanoState = (
+      state: "walk" | "settle" | "start" | "scratch" | "idle",
+    ) => {
       if (!islandYano) return;
       islandYano.classList.toggle("is-walking", state === "walk");
       islandYano.classList.toggle("is-scratching", state === "scratch");
+      islandYano.classList.toggle("is-idle", state === "idle");
+      islandYano.classList.toggle("is-settling", state === "settle");
+      islandYano.classList.toggle("is-starting", state === "start");
     };
     const playIslandYano = async () => {
       if (!islandYano || islandReducedMotion.matches) return;
       const currentSequence = ++islandSequenceId;
       islandYano.style.offsetDistance = "0%";
       islandYano.classList.remove("is-returning");
+      let forwardStart = "0%";
 
       while (currentSequence === islandSequenceId && !islandReducedMotion.matches) {
         setIslandYanoState("walk");
-        await moveIslandYano("0%", "100%");
+        await moveIslandYano(forwardStart, "90%", forwardStart === "0%" ? 9450 : 8820);
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("settle");
+        await moveIslandYano("90%", "100%", 1050, "cubic-bezier(0.2, 0.7, 0.2, 1)");
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("idle");
+        await waitForIslandYano(300);
         if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
 
         setIslandYanoState("scratch");
-        await waitForIslandYano(2400);
+        await waitForIslandYano(1200);
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("idle");
+        await waitForIslandYano(800);
         if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
 
         islandYano.classList.add("is-returning");
+        setIslandYanoState("start");
+        await moveIslandYano("100%", "94%", 650, "cubic-bezier(0.55, 0, 0.8, 0.35)");
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
         setIslandYanoState("walk");
-        await moveIslandYano("100%", "0%");
+        await moveIslandYano("94%", "10%", 8820);
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("settle");
+        await moveIslandYano("10%", "0%", 1050, "cubic-bezier(0.2, 0.7, 0.2, 1)");
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("idle");
+        await waitForIslandYano(300);
         if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
 
         setIslandYanoState("scratch");
-        await waitForIslandYano(2400);
+        await waitForIslandYano(1200);
+        if (currentSequence !== islandSequenceId || islandReducedMotion.matches) break;
+
+        setIslandYanoState("idle");
+        await waitForIslandYano(800);
         islandYano.classList.remove("is-returning");
+        setIslandYanoState("start");
+        await moveIslandYano("0%", "6%", 650, "cubic-bezier(0.55, 0, 0.8, 0.35)");
+        forwardStart = "6%";
       }
     };
     const handleIslandMotionPreference = () => {
@@ -687,7 +749,13 @@ const pathways = [
       islandMotion?.cancel();
       if (!islandYano) return;
       islandYano.style.offsetDistance = "0%";
-      islandYano.classList.remove("is-returning", "is-scratching");
+      islandYano.classList.remove(
+        "is-returning",
+        "is-scratching",
+        "is-idle",
+        "is-settling",
+        "is-starting",
+      );
       islandYano.classList.add("is-walking");
       if (!islandReducedMotion.matches) void playIslandYano();
     };
@@ -3519,11 +3587,13 @@ const pathways = [
     .hero-introduction {
       position: relative;
       inset: auto;
-      width: calc(100% - 40px);
+      width: fit-content;
       max-width: 27rem;
       margin: 1.1rem 20px 0;
-      padding: 0;
-      background: transparent;
+      padding: 0.62rem 0.78rem 0.68rem;
+      border-bottom: 3px solid #111;
+      background: #fff;
+      color: #111;
       font-size: 0.9375rem;
       line-height: 1.72;
     }
@@ -4590,7 +4660,10 @@ const pathways = [
   }
 
   .map-spot--yano.is-walking .map-yano__frame--walk,
-  .map-spot--yano.is-scratching .map-yano__frame--scratch { opacity: 1; }
+  .map-spot--yano.is-scratching .map-yano__frame--scratch,
+  .map-spot--yano.is-settling .map-yano__frame--settle,
+  .map-spot--yano.is-starting .map-yano__frame--settle,
+  .map-spot--yano.is-idle .map-yano__frame--idle { opacity: 1; }
 
   .map-yano__frame img,
   .map-spot--yano:hover .map-yano__frame img,
@@ -4605,12 +4678,24 @@ const pathways = [
     transform: translate3d(0, 0, 0);
   }
 
-  .map-yano__frame--walk img {
-    animation: island-yano-walk-frames 1.15s steps(15) infinite;
+  .map-yano__frame--walk img,
+  .map-yano__frame--scratch img,
+  .map-yano__frame--settle img { animation: none; }
+
+  .map-spot--yano.is-walking .map-yano__frame--walk img {
+    animation: island-yano-walk-frames 1s steps(12) infinite;
   }
 
-  .map-yano__frame--scratch img {
-    animation: island-yano-scratch-frames 1.2s steps(6) 2;
+  .map-spot--yano.is-scratching .map-yano__frame--scratch img {
+    animation: island-yano-scratch-frames 1.2s steps(6) 1 both;
+  }
+
+  .map-spot--yano.is-settling .map-yano__frame--settle img {
+    animation: island-yano-settle-frames 1.05s steps(3) 1 both;
+  }
+
+  .map-spot--yano.is-starting .map-yano__frame--settle img {
+    animation: island-yano-settle-frames 0.65s steps(3) 1 reverse both;
   }
 
   @keyframes island-yano-walk-frames {
@@ -4618,6 +4703,10 @@ const pathways = [
   }
 
   @keyframes island-yano-scratch-frames {
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+
+  @keyframes island-yano-settle-frames {
     to { transform: translate3d(-100%, 0, 0); }
   }
 
@@ -4701,12 +4790,22 @@ const pathways = [
     .pathways-section,
     .recent-section { padding-block: clamp(4.5rem, 19vw, 5.5rem); }
 
-    .weekend-hero { padding-bottom: 3.5rem; }
+    .weekend-hero { padding-bottom: 1.25rem; }
     .site-name { font-size: clamp(1.25rem, 5.8vw, 1.5rem); }
     .hero-introduction { margin-top: 0.9rem; font-size: 0.9375rem; line-height: 1.75; }
     .island-map { margin-top: 0; }
-    .hero-mobile-actions { gap: 0.7rem; margin-top: -0.65rem; }
-    .hero-mobile-actions a { min-height: 50px; padding: 0.65rem 1.1rem; font-size: 1rem; }
+    .hero-mobile-actions {
+      gap: 0.7rem;
+      width: min(calc(100% - 40px), 15rem);
+      margin: -0.65rem auto 0;
+    }
+    .hero-mobile-actions a {
+      justify-content: center;
+      gap: 1.15rem;
+      min-height: 50px;
+      padding: 0.65rem 1rem;
+      font-size: 1rem;
+    }
 
     .weekend-intro {
       display: block;
@@ -4760,9 +4859,16 @@ const pathways = [
     .weekend-intro__paper--first .weekend-intro__story { margin-top: 2rem; }
     .weekend-intro__paper--second .weekend-intro__story { margin-top: 0; }
     .weekend-intro__heading h2 { font-size: clamp(1.75rem, 7.8vw, 2rem); }
-    .weekend-intro__lead,
+    .weekend-intro__lead {
+      font-size: clamp(0.8125rem, 3.5vw, 0.9375rem);
+      line-height: 1.85;
+      white-space: nowrap;
+    }
     .weekend-intro__story > p { font-size: 0.9375rem; line-height: 1.85; }
-    .weekend-intro__story h3 { margin-top: 1.1rem; }
+    .weekend-intro__story h3 {
+      margin-top: 1.1rem;
+      white-space: nowrap;
+    }
 
     .ranking-section__heading,
     .profile-section__heading { margin-bottom: 2rem; text-align: center; }
@@ -4779,6 +4885,10 @@ const pathways = [
     .ranking-card { padding: 1.125rem; }
     .ranking-card__content { padding-top: 1rem; }
     .ranking-card__content h3 { font-size: clamp(1.25rem, 5.6vw, 1.375rem); }
+    #events .ranking-card__content h3 {
+      font-size: clamp(1.125rem, 4.7vw, 1.25rem);
+      white-space: nowrap;
+    }
     .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) { font-size: 0.9375rem; line-height: 1.75; }
     .ranking-card__category,
     .ranking-card__tags,
