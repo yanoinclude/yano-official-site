@@ -1,0 +1,190 @@
+<div class="yano-brand" data-yano-brand>
+  <a class="yano-brand__bubble" href="/">矢野、週末移住中。</a>
+  <span class="yano-brand__character" data-yano-brand-sprite aria-hidden="true">
+    <img
+      src="/images/animation/yano-30frames-v4.png"
+      alt=""
+      width="4800"
+      height="264"
+      loading="eager"
+      decoding="async"
+      data-yano-brand-sheet
+    />
+  </span>
+</div>
+
+<script>
+  const FRAME_COUNT = 30;
+  const IDLE_FRAME = 17;
+  const phases = [
+    { frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], times: Array(12).fill(105), loops: 2, name: "walking" },
+    { frames: [12, 13, 14, 15, 16, 17], times: [100, 110, 120, 140, 180, 280], loops: 1, name: "slowing" },
+    { frames: [17], times: [1200], loops: 1, name: "idle" },
+    { frames: [24, 25, 26, 27, 26, 27, 26, 25, 24], times: [220, 180, 170, 190, 170, 190, 170, 200, 240], loops: 1, name: "scratching" },
+    { frames: [17], times: [800], loops: 1, name: "idle" },
+    { frames: [17, 15, 14, 13, 12, 0], times: [180, 140, 120, 110, 100, 90], loops: 1, name: "restarting" },
+  ];
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  document.querySelectorAll<HTMLElement>("[data-yano-brand]").forEach((root) => {
+    if (root.dataset.motionReady === "true") return;
+    root.dataset.motionReady = "true";
+    const sprite = root.querySelector<HTMLElement>("[data-yano-brand-sprite]");
+    const sheet = root.querySelector<HTMLImageElement>("[data-yano-brand-sheet]");
+    if (!sprite || !sheet) return;
+
+    let phaseIndex = 0;
+    let frameIndex = 0;
+    let loopIndex = 0;
+    let elapsed = 0;
+    let previous = 0;
+    let animationFrame = 0;
+    let visible = true;
+
+    const showFrame = (frame: number, bob = 0) => {
+      sheet.style.transform = `translate3d(${-(frame / FRAME_COUNT) * 100}%, 0, 0)`;
+      sprite.style.setProperty("--brand-yano-bob", `${bob}px`);
+    };
+
+    const reset = () => {
+      phaseIndex = 0;
+      frameIndex = 0;
+      loopIndex = 0;
+      elapsed = 0;
+      previous = 0;
+    };
+
+    const tick = (time: number) => {
+      if (!visible || reducedMotion.matches || document.hidden) {
+        animationFrame = 0;
+        previous = 0;
+        return;
+      }
+      const delta = previous ? Math.min(50, time - previous) : 0;
+      previous = time;
+      const phase = phases[phaseIndex];
+      elapsed += delta;
+      if (elapsed >= phase.times[frameIndex]) {
+        elapsed -= phase.times[frameIndex];
+        frameIndex += 1;
+        if (frameIndex >= phase.frames.length) {
+          frameIndex = 0;
+          loopIndex += 1;
+          if (loopIndex >= phase.loops) {
+            loopIndex = 0;
+            phaseIndex = (phaseIndex + 1) % phases.length;
+          }
+        }
+      }
+      const current = phases[phaseIndex];
+      root.dataset.motionState = current.name;
+      const bob = current.name === "walking" ? Math.sin(time / 105 * Math.PI) * 1 : 0;
+      showFrame(current.frames[frameIndex], Number(bob.toFixed(2)));
+      animationFrame = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (animationFrame || !visible || reducedMotion.matches || document.hidden) return;
+      previous = 0;
+      animationFrame = requestAnimationFrame(tick);
+    };
+
+    const updateMotionPreference = () => {
+      if (reducedMotion.matches) {
+        if (animationFrame) cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+        reset();
+        root.dataset.motionState = "idle";
+        showFrame(IDLE_FRAME);
+      } else {
+        start();
+      }
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      if (visible) start();
+    }, { rootMargin: "80px 0px" });
+    observer.observe(root);
+    document.addEventListener("visibilitychange", start);
+    reducedMotion.addEventListener("change", updateMotionPreference);
+    sheet.addEventListener("load", updateMotionPreference, { once: true });
+    showFrame(IDLE_FRAME);
+    if (sheet.complete) updateMotionPreference();
+  });
+</script>
+
+<style>
+  .yano-brand {
+    position: absolute;
+    top: clamp(1.25rem, 3vw, 2.5rem);
+    left: clamp(1.25rem, 3vw, 3rem);
+    z-index: 12;
+    width: max-content;
+    pointer-events: none;
+  }
+
+  .yano-brand__bubble {
+    position: relative;
+    display: block;
+    padding: 0.58rem 0.9rem 0.64rem;
+    border: 3px solid #111;
+    border-radius: 0.65rem;
+    background: #fff;
+    color: #111;
+    font-family: "Arial Rounded MT Bold", "Hiragino Maru Gothic ProN", "Noto Sans JP", sans-serif;
+    font-size: clamp(1.3rem, 2.1vw, 1.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    box-shadow: 0 0.22rem 0 rgb(17 17 17 / 18%);
+    pointer-events: auto;
+  }
+
+  .yano-brand__bubble::after {
+    position: absolute;
+    bottom: -0.56rem;
+    left: 2rem;
+    width: 0.95rem;
+    height: 0.95rem;
+    border-right: 3px solid #111;
+    border-bottom: 3px solid #111;
+    background: #fff;
+    content: "";
+    transform: rotate(45deg);
+  }
+
+  .yano-brand__character {
+    --brand-yano-height: 94px;
+    position: absolute;
+    top: calc(100% + 0.65rem);
+    left: calc(2.48rem - ((var(--brand-yano-height) * 0.60606) / 2));
+    display: block;
+    width: calc(var(--brand-yano-height) * 0.60606);
+    height: var(--brand-yano-height);
+    overflow: hidden;
+    transform: translateY(var(--brand-yano-bob, 0));
+    transform-origin: 50% 100%;
+  }
+
+  .yano-brand__character img {
+    display: block;
+    width: auto;
+    max-width: none;
+    height: var(--brand-yano-height);
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+
+  @media (max-width: 600px) {
+    .yano-brand { left: 1rem; }
+    .yano-brand__bubble { font-size: 1.1rem; }
+    .yano-brand__character { --brand-yano-height: 78px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .yano-brand__character img { will-change: auto; }
+  }
+</style>

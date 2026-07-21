@@ -1,0 +1,208 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
+import aboutYano from "@/assets/images/about-yano-lemon-grove.jpg";
+import islandSea from "@/assets/images/scenery/nakajima-overlook.jpeg";
+import kominkaBefore from "@/assets/images/scenery/scenery-kominka.jpg";
+import kominkaWork from "@/assets/images/projects/no-plan/vol-6.jpg";
+import lemonGrove from "@/assets/images/scenery/scenery-lemon-orchard.jpg";
+
+const timeline = [
+  {
+    date: "2023.02",
+    label: "MEETING THE ISLAND",
+    title: "船に乗って、中島へ。",
+    body: "2022年に愛媛・松山へIターン。田舎の暮らしに関わりたいという思いを抱えながら、翌年、中島を訪れました。橋のない島へ船で渡り、人や風景に出会ったことから、週末ごとに島へ通う日々が始まりました。",
+    image: islandSea,
+    alt: "瀬戸内海に浮かぶ中島の風景",
+  },
+  {
+    date: "2023.12",
+    label: "A HOUSE FOR TWO YEN",
+    title: "築100年の家を、2円で受け取る。",
+    body: "島で出会った一軒の古民家を譲り受けました。立派な計画があったわけではありません。ただ、長く残ってきたこの家にもう一度風を通し、人が集まれる場所にしたい。その気持ちを頼りに、できることから始めました。",
+    image: kominkaBefore,
+    alt: "手を入れる前の中島の古民家",
+  },
+  {
+    date: "2024.06 — 2025.08",
+    label: "RENOVATION",
+    title: "仲間と手を動かし、家を直す。",
+    body: "瓦を下ろし、屋根を張り替え、電気を通し、漆喰を塗る。分からないことは島の人や職人に教わり、仲間と少しずつ進めました。クラウドファンディングにも支えられ、2025年8月、古民家は人を迎えられる場所になりました。",
+    image: kominkaWork,
+    alt: "仲間と進めた古民家再生の作業風景",
+  },
+  {
+    date: "2025.10",
+    label: "100 LEMON TREES",
+    title: "切られるはずだった、100本のレモン。",
+    body: "古民家再生でお世話になった農家さんが、斜面の畑を管理できなくなりました。「木を切る」と聞き、この風景を残したいと手入れを引き受けることに。草を刈り、枝を見て、実を収穫する週末が始まりました。",
+    image: lemonGrove,
+    alt: "中島の斜面に広がるレモン畑",
+  },
+  {
+    date: "2026 / NOW",
+    label: "WEEKEND MIGRATION",
+    title: "暮らしを変えすぎず、関わり続ける。",
+    body: "平日は松山や東京で広告の仕事をし、時間が許す週末に中島へ。古民家と畑を行き来しながら、島の人や仲間と手を動かしています。移住するか、しないかだけではない。自分にできる距離から地域と関わる、その一つの形を続けています。",
+    image: aboutYano,
+    alt: "中島のレモン畑で笑顔を見せる矢野諭稔",
+  },
+];
+---
+
+<BaseLayout
+  title="矢野諭稔について｜矢野、週末移住中。"
+  description="平日は広告の仕事、週末は中島へ。古民家再生と100本のレモン畑に関わる矢野諭稔の歩みを紹介します。"
+>
+  <article class="about-page">
+    <YanoSpeechBubble />
+    <header class="about-hero">
+      <div class="about-shell about-hero__grid">
+        <div class="about-hero__copy">
+          <p class="about-kicker">PROFILE / SATOSHI YANO</p>
+          <h1>田舎を、もっと身近な選択肢に。</h1>
+          <p class="about-hero__lead">
+            平日は広告の仕事をしながら、週末は愛媛の離島・中島へ。<br />
+            古民家とレモン畑を手入れする、週末移住者です。
+          </p>
+          <div class="about-hero__name">
+            <strong>矢野諭稔</strong>
+            <span>Satoshi Yano</span>
+          </div>
+        </div>
+        <figure class="about-hero__portrait">
+          <img src={aboutYano.src} alt="中島のレモン畑で笑顔を見せる矢野諭稔" loading="eager" decoding="async" />
+          <figcaption>NAKAJIMA, EHIME / 2026</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <section class="about-intro" aria-labelledby="about-intro-title">
+      <div class="about-shell about-intro__grid">
+        <p class="about-kicker">WHY I GO</p>
+        <div>
+          <h2 id="about-intro-title">何かしたい。でも、何をしたらいいか分からなかった。</h2>
+          <p>学生時代に地域で活動するなかで、田舎の風景や人の暮らしに惹かれる一方、その営みが少しずつ失われていく現実も知りました。</p>
+          <p>大きなことを掲げるより、まずは目の前の風景と関わり続けること。島の人に教わりながら、昨日より少し手を動かすこと。その積み重ねが、今の活動になっています。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-story" aria-labelledby="about-story-title">
+      <div class="about-shell">
+        <header class="about-story__header">
+          <p class="about-kicker">MY STORY</p>
+          <h2 id="about-story-title">島と出会ってから、現在まで。</h2>
+          <p>最初からできたことは、ひとつもありませんでした。</p>
+        </header>
+        <ol class="timeline">
+          {timeline.map((item, index) => (
+            <li class="timeline__item">
+              <div class="timeline__rail" aria-hidden="true">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <figure class="timeline__image">
+                <img src={item.image.src} alt={item.alt} loading="eager" decoding="async" />
+              </figure>
+              <div class="timeline__card">
+                <div class="timeline__meta"><time>{item.date}</time><span>{item.label}</span></div>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section class="about-now" aria-labelledby="about-now-title">
+      <div class="about-shell about-now__card">
+        <p class="about-kicker">WHAT I VALUE</p>
+        <h2 id="about-now-title">ゆるっと、でも軸を持って。</h2>
+        <p>暮らしや仕事を投げ出すのではなく、今の自分にできる範囲で地域と関わり続ける。時間の許す限り、島の人や風景との関係を手入れしていきたいと思っています。</p>
+        <div class="about-now__links">
+          <a href="/">トップへ戻る <span aria-hidden="true">→</span></a>
+          <a href="/story">これまでの記録を見る <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  :global(body) { background: #36a8e5; color: #18395e; }
+  :global(body:has(.about-page) .site-header) { display: none; }
+  .about-page { position: relative; overflow: clip; background: #36a8e5; font-family: "Noto Sans JP", sans-serif; }
+  .about-shell { width: min(1160px, calc(100% - clamp(2rem, 7vw, 8rem))); margin-inline: auto; }
+  .about-kicker { margin: 0; color: #ffe13b; font-size: .75rem; font-weight: 700; letter-spacing: .16em; }
+  .about-hero { position: relative; padding: clamp(10rem, 14vw, 12rem) 0 clamp(5rem, 8vw, 7rem); }
+  .about-hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(24rem, 1.1fr); gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
+  .about-hero h1 { max-width: 9em; margin: 1.15rem 0 1.6rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2.7rem, 4.7vw, 4.6rem); font-weight: 500; line-height: 1.35; letter-spacing: .01em; text-wrap: balance; }
+  .about-hero__lead { max-width: 38rem; margin: 0; color: #fff; font-size: clamp(.95rem, 1.15vw, 1rem); line-height: 1.85; }
+  .about-hero__name { display: flex; gap: 1rem; align-items: baseline; margin-top: 2.25rem; color: #fff; }
+  .about-hero__name strong { font-family: "Noto Serif JP", serif; font-size: 1.45rem; font-weight: 500; }
+  .about-hero__name span { font-size: .72rem; letter-spacing: .13em; opacity: .75; }
+  .about-hero__portrait { position: relative; margin: 0; padding: .65rem .65rem 2rem; background: #fffdf8; box-shadow: .75rem .8rem 0 #ffe13b; transform: rotate(1.5deg); }
+  .about-hero__portrait img { display: block; width: 100%; height: auto; object-fit: contain; }
+  .about-hero__portrait figcaption { position: absolute; right: 1rem; bottom: .55rem; color: #657387; font-size: .62rem; letter-spacing: .12em; }
+  .about-intro { padding: clamp(4rem, 8vw, 7rem) 0; background: #fffdf8; }
+  .about-intro__grid { display: grid; grid-template-columns: minmax(10rem, .55fr) minmax(0, 1.45fr); gap: clamp(2rem, 6vw, 6rem); }
+  .about-intro .about-kicker { color: #2e95cf; }
+  .about-intro h2 { max-width: 19em; margin: -.25rem 0 2rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 500; line-height: 1.5; text-wrap: balance; }
+  .about-intro div div > p { max-width: 43rem; margin: 0 0 1rem; color: #4c5f74; font-size: 1rem; line-height: 2; }
+  .about-story { padding: clamp(5rem, 9vw, 8.5rem) 0; }
+  .about-story__header { margin-bottom: clamp(3rem, 6vw, 5.5rem); }
+  .about-story__header h2 { margin: .9rem 0 1rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; line-height: 1.4; }
+  .about-story__header > p:last-child { margin: 0; color: rgb(255 255 255 / 78%); }
+  .timeline { display: grid; gap: clamp(3rem, 6vw, 5.5rem); margin: 0; padding: 0; list-style: none; }
+  .timeline__item { position: relative; display: grid; grid-template-columns: 4rem minmax(0, .95fr) minmax(20rem, 1.05fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+  .timeline__rail { align-self: stretch; position: relative; display: flex; justify-content: center; padding-top: .2rem; }
+  .timeline__rail::after { position: absolute; top: 2.9rem; bottom: calc(-5.5rem - 1px); left: 50%; width: 1px; background: rgb(255 255 255 / 40%); content: ""; }
+  .timeline__item:last-child .timeline__rail::after { display: none; }
+  .timeline__rail span { z-index: 1; display: grid; place-items: center; width: 3.1rem; height: 3.1rem; border: 2px solid #fff; border-radius: 50%; background: #36a8e5; color: #fff; font-size: .72rem; letter-spacing: .08em; }
+  .timeline__image { margin: 0; padding: .45rem; background: #fffdf8; box-shadow: .55rem .6rem 0 rgb(20 78 119 / 18%); transform: rotate(-1deg); }
+  .timeline__item:nth-child(even) .timeline__image { transform: rotate(1deg); }
+  .timeline__image img { display: block; width: 100%; height: auto; object-fit: contain; }
+  .timeline__card { padding: clamp(1.6rem, 3vw, 2.6rem); border-radius: .2rem; background: #fffdf8; box-shadow: .55rem .6rem 0 #ffe13b; }
+  .timeline__meta { display: flex; flex-wrap: wrap; gap: .55rem 1rem; align-items: center; margin-bottom: 1rem; color: #2d88bc; font-size: .68rem; letter-spacing: .11em; }
+  .timeline__meta time { padding: .3rem .55rem; background: #ffe13b; color: #234a75; font-weight: 500; }
+  .timeline__card h3 { margin: 0 0 1rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(1.3rem, 2vw, 1.75rem); font-weight: 500; line-height: 1.55; }
+  .timeline__card p { margin: 0; color: #4c5f74; font-size: .95rem; line-height: 1.95; }
+  .about-now { padding: 0 0 clamp(6rem, 10vw, 10rem); }
+  .about-now__card { box-sizing: border-box; padding: clamp(2.5rem, 6vw, 5.5rem); background: #234a75; box-shadow: .8rem .85rem 0 #ffe13b; }
+  .about-now__card h2 { margin: 1rem 0 1.4rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 3.7vw, 3.25rem); font-weight: 500; line-height: 1.4; }
+  .about-now__card > p:nth-of-type(2) { max-width: 46rem; margin: 0; color: rgb(255 255 255 / 82%); line-height: 2; }
+  .about-now__links { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.5rem; }
+  .about-now__links a { display: flex; justify-content: space-between; gap: 2rem; min-width: 15rem; padding: .85rem 1rem; border: 2px solid #fff; background: #fffdf8; color: #234a75; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+  .about-now__links a:hover, .about-now__links a:focus-visible { box-shadow: .28rem .32rem 0 #ffe13b; transform: translate(-.12rem, -.12rem); }
+  @media (max-width: 900px) {
+    .about-hero { padding-top: 12.25rem; }
+    .about-hero__grid { grid-template-columns: 1fr; }
+    .about-hero__portrait { width: min(100%, 38rem); }
+    .timeline__item { grid-template-columns: 3.5rem 1fr; }
+    .timeline__image, .timeline__card { grid-column: 2; }
+    .timeline__image { grid-row: 1; }
+    .timeline__card { grid-row: 2; }
+    .timeline__rail { grid-row: 1 / 3; }
+  }
+  @media (max-width: 600px) {
+    .about-shell { width: min(100% - 32px, 1180px); }
+    .about-hero { padding-top: 11.5rem; }
+    .about-hero h1 { max-width: 11em; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1.4; }
+    .about-hero__lead br { display: none; }
+    .about-intro__grid { grid-template-columns: 1fr; gap: 1.4rem; }
+    .about-intro h2 { margin-top: 0; font-size: 1.75rem; }
+    .timeline__item { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; }
+    .timeline__rail span { width: 2.35rem; height: 2.35rem; font-size: .6rem; }
+    .timeline__rail::after { top: 2.3rem; }
+    .timeline__card { padding: 1.35rem; }
+    .timeline__card h3 { font-size: 1.4rem; }
+    .about-now__card { width: calc(100% - 32px); }
+    .about-now__links { display: grid; }
+    .about-now__links a { box-sizing: border-box; min-width: 0; width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .about-now__links a { transition: none; }
+  }
+</style>

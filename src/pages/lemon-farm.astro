@@ -1,0 +1,188 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
+import heroLemonGrove from "@/assets/images/hero-user-lemon-grove.jpg";
+import yanoInGrove from "@/assets/images/intro/yano-in-lemon-grove.jpeg";
+import lemonTreeUser from "@/assets/images/activities/activity-lemon-tree-user.jpeg";
+import lemonBasket from "@/assets/images/scenery/nakajima-lemon-basket.jpeg";
+import weekendLemonJuice from "@/assets/images/product/weekend-lemon-juice.png";
+import lemonTasting from "@/assets/images/lemon-farm/lemon-tasting.jpeg";
+import youngLemon from "@/assets/images/lemon-farm/young-lemon.jpeg";
+import harvestBoy from "@/assets/images/lemon-farm/harvest-boy.jpeg";
+import lemonBlossom from "@/assets/images/lemon-farm/lemon-blossom.jpeg";
+import harvestFriends from "@/assets/images/lemon-farm/harvest-friends.jpeg";
+import orchardGroup from "@/assets/images/lemon-farm/orchard-group.jpeg";
+import harvestCrates from "@/assets/images/lemon-farm/harvest-crates.jpeg";
+import orchardRest from "@/assets/images/lemon-farm/orchard-rest.jpeg";
+
+const seasons = [
+  {
+    number: "01",
+    title: "畑に通う",
+    body: "週末、中島へ渡ってレモンの木に会いに行きます。斜面の畑を歩き、一本ずつ表情を見ながら、その日の仕事を決めます。",
+    image: yanoInGrove,
+    alt: "レモン畑に立つヤノ",
+  },
+  {
+    number: "02",
+    title: "手を入れる",
+    body: "枝葉の混み具合を見て整え、草を刈り、実に光と風が届く環境をつくります。小さな変化を見落とさないことも、畑仕事のひとつです。",
+    image: lemonTreeUser,
+    alt: "レモンの木を手入れする様子",
+  },
+  {
+    number: "03",
+    title: "実りを収穫する",
+    body: "季節を越えて育った実を、ひとつずつ手で収穫します。大きさや形が少しずつ違うのも、島の畑で育ったレモンの個性です。",
+    image: lemonBasket,
+    alt: "収穫したレモンが入ったかご",
+  },
+];
+
+const farmScenes = [
+  { image: harvestFriends, alt: "レモン畑で収穫かごを持つ仲間たち", caption: "仲間と迎えた、収穫の日。" },
+  { image: lemonBlossom, alt: "葉の間で咲く白いレモンの花", caption: "春、白い花がひらく。" },
+  { image: youngLemon, alt: "枝に実った小さな緑色のレモン", caption: "花のあとに生まれた、小さな実。" },
+  { image: orchardGroup, alt: "レモン畑に集まった収穫メンバー", caption: "斜面の畑に、笑い声が増える。" },
+  { image: harvestCrates, alt: "収穫したレモンを黄色いかごへ運ぶ様子", caption: "ひとつずつ、かごへ。" },
+  { image: harvestBoy, alt: "収穫した大きなレモンを見せる少年", caption: "形も大きさも、それぞれ。" },
+  { image: orchardRest, alt: "収穫したレモンを囲んで畑で休む二人", caption: "木陰で、ひと休み。" },
+  { image: lemonTasting, alt: "畑で採れたレモンを味見する男性", caption: "採れたてを、その場で味わう。" },
+];
+---
+
+<BaseLayout
+  title="レモン農園｜矢野、週末移住中。"
+  description="中島のレモン畑で続ける、手入れから収穫、商品になるまでの週末の営みを紹介します。"
+>
+  <article class="farm-page">
+    <YanoSpeechBubble />
+    <header class="farm-hero">
+      <div class="farm-hero__copy">
+        <p class="eyebrow">LEMON FARM</p>
+        <h1>島の風と光で、レモンを育てる。</h1>
+        <p class="farm-hero__lead">
+          中島の斜面に広がるレモン畑。<br />週末ごとに木と向き合い、季節の変化を手で確かめています。
+        </p>
+      </div>
+      <figure class="farm-hero__image">
+        <img src={heroLemonGrove.src} alt="中島のレモン畑に立つヤノ" />
+        <figcaption>NAKAJIMA, EHIME</figcaption>
+      </figure>
+    </header>
+
+    <section class="farm-intro" aria-labelledby="farm-intro-title">
+      <div>
+        <p class="eyebrow">WEEKEND FARMING</p>
+        <h2 id="farm-intro-title">急がず、少しずつ。木と一緒に畑を整える。</h2>
+      </div>
+      <p>
+        毎週できることは、決して多くありません。それでも畑へ通い、枝を見て、土に触れ、草を刈る。その積み重ねが、次の季節の実りへつながっていきます。暮らしと仕事のあいだにある、もうひとつの大切な時間です。
+      </p>
+    </section>
+
+    <section class="farm-process" aria-label="レモン農園の一年">
+      {seasons.map((item) => (
+        <article class="process-card">
+          <figure><img src={item.image.src} alt={item.alt} loading="eager" /></figure>
+          <div class="process-card__copy">
+            <span>{item.number}</span>
+            <h2>{item.title}</h2>
+            <p>{item.body}</p>
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <section class="farm-gallery" aria-labelledby="gallery-title">
+      <div class="farm-gallery__heading">
+        <p class="eyebrow">SCENES FROM THE FARM</p>
+        <h2 id="gallery-title">畑の景色</h2>
+      </div>
+      <p class="gallery-note">潮風、斜面の日差し、木々の間を抜ける風。花が咲き、実が育ち、人が集まる。畑には、訪れるたびに違う景色があります。</p>
+      <div class="farm-gallery__grid">
+        {farmScenes.map((scene, index) => (
+          <figure class:list={["gallery-scene", { "gallery-scene--wide": index === 0 || index === 3 }]}> 
+            <img src={scene.image.src} alt={scene.alt} loading="eager" decoding="async" />
+            <figcaption>{scene.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="farm-product" aria-labelledby="product-title">
+      <div class="farm-product__copy">
+        <p class="eyebrow">FROM FARM TO BOTTLE</p>
+        <h2 id="product-title">育てたレモンを、次の楽しみへ。</h2>
+        <p>収穫したレモンは、週末移住の時間を届ける商品へ。畑で感じた香りや島の空気まで、暮らしの中で楽しんでもらえる形を考えています。</p>
+        <a href="/#lemon-product">週末移住レモンを見る <span aria-hidden="true">→</span></a>
+      </div>
+      <figure><img src={weekendLemonJuice.src} alt="週末移住レモンの商品" loading="eager" /></figure>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  :global(body) { background: #36a9ee; }
+  :global(body:has(.farm-page) .site-header) { display: none; }
+  .farm-page { position: relative; overflow: clip; background: #36a9ee; color: #fff; }
+  .eyebrow { margin: 0 0 1rem; color: #ffe000; font-size: .75rem; font-weight: 800; letter-spacing: .16em; }
+  .farm-hero { position: relative; display: grid; grid-template-columns: minmax(20rem, .82fr) minmax(0, 1.18fr); gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; min-height: 100svh; padding: clamp(10rem, 14vw, 12rem) max(5vw, calc((100vw - 1160px) / 2)) clamp(5rem, 8vw, 7rem); }
+  .farm-hero h1, .farm-intro h2, .farm-gallery h2, .farm-product h2 { margin: 0; color: #fff; font-weight: 700; letter-spacing: .01em; text-wrap: balance; }
+  .farm-hero h1 { max-width: 9em; font-size: clamp(2.7rem, 4.7vw, 4.6rem); line-height: 1.35; }
+  .farm-hero__lead { max-width: 34rem; margin: 1.6rem 0 0; font-size: clamp(.95rem, 1.15vw, 1rem); font-weight: 500; line-height: 1.85; }
+  .farm-hero__image { position: relative; margin: 0; padding: .75rem; background: #fffaf0; box-shadow: .65rem .7rem 0 #ffe000; transform: rotate(1.2deg); }
+  .farm-hero__image img { display: block; width: 100%; height: auto; object-fit: contain; }
+  .farm-hero__image figcaption { padding: .75rem .25rem .15rem; color: #21466a; font-size: .68rem; font-weight: 800; letter-spacing: .18em; }
+  .farm-intro { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(3rem, 8vw, 8rem); width: min(calc(100% - 4rem), 1120px); margin: 0 auto; padding: clamp(6rem, 10vw, 10rem) 0; border-top: 1px solid rgb(255 255 255 / 48%); }
+  .farm-intro h2, .farm-gallery h2, .farm-product h2 { max-width: 18em; font-size: clamp(1.8rem, 3vw, 2.75rem); line-height: 1.5; }
+  .farm-intro > p { align-self: end; margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.9; }
+  .farm-process { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); width: min(calc(100% - 4rem), 1180px); margin: 0 auto; padding-bottom: clamp(7rem, 12vw, 11rem); }
+  .process-card { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 26rem; overflow: hidden; border: 2px solid #143d62; border-radius: 1.2rem; background: #fffaf0; color: #143d62; box-shadow: .5rem .55rem 0 #ffe000; }
+  .process-card:nth-child(even) figure { order: 2; }
+  .process-card figure { display: grid; place-items: center; margin: 0; overflow: hidden; background: #f4efe5; }
+  .process-card figure img { display: block; width: 100%; height: auto; max-height: 34rem; object-fit: contain; transition: transform .5s ease; }
+  .process-card__copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem, 5vw, 4.5rem); }
+  .process-card__copy > span { color: #e2b900; font-size: .82rem; font-weight: 900; letter-spacing: .18em; }
+  .process-card h2 { margin: 1rem 0 1.5rem; font-size: clamp(1.3rem, 2vw, 1.75rem); line-height: 1.5; }
+  .process-card p { max-width: 28rem; margin: 0; font-size: .96rem; font-weight: 500; line-height: 1.9; }
+  .farm-gallery { width: min(calc(100% - 4rem), 1180px); margin: 0 auto; padding-bottom: clamp(7rem, 11vw, 10rem); }
+  .farm-gallery__heading { margin-bottom: 1rem; }
+  .gallery-note { max-width: 42rem; margin: 1.25rem 0 clamp(2.5rem, 5vw, 4rem); font-size: .95rem; line-height: 1.9; }
+  .farm-gallery__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.2rem, 2.5vw, 2rem); align-items: start; }
+  .gallery-scene { grid-column: span 4; margin: 0; padding: .55rem .55rem 1rem; background: #fffaf0; color: #143d62; box-shadow: .4rem .45rem 0 #ffe000; }
+  .gallery-scene:nth-child(even) { transform: rotate(.55deg); }
+  .gallery-scene:nth-child(odd) { transform: rotate(-.45deg); }
+  .gallery-scene--wide { grid-column: span 6; }
+  .gallery-scene img { display: block; width: 100%; height: auto; object-fit: contain; }
+  .gallery-scene figcaption { padding: .8rem .35rem 0; font-size: .78rem; font-weight: 700; line-height: 1.65; }
+  .farm-product { display: grid; grid-template-columns: 1fr .8fr; align-items: center; width: min(calc(100% - 4rem), 1120px); margin: 0 auto clamp(6rem, 10vw, 9rem); padding: clamp(2.5rem, 6vw, 5rem); border: 2px solid #143d62; border-radius: 1.2rem; background: #fffaf0; color: #143d62; box-shadow: .65rem .7rem 0 #ffe000; }
+  .farm-product .eyebrow { color: #c7a300; }
+  .farm-product h2 { color: #143d62; }
+  .farm-product__copy > p:last-of-type { max-width: 32rem; margin: 1.5rem 0 2rem; font-size: .96rem; line-height: 2; }
+  .farm-product a { display: inline-flex; gap: 2rem; align-items: center; padding: .9rem 1.2rem; border: 2px solid #143d62; border-radius: .55rem; background: #ffe000; color: #143d62; font-size: .9rem; font-weight: 800; text-decoration: none; }
+  .farm-product figure { display: flex; justify-content: center; margin: 0; }
+  .farm-product img { display: block; width: min(100%, 21rem); max-height: 30rem; object-fit: contain; }
+  @media (hover: hover) { .process-card:hover figure img { transform: scale(1.025); } .farm-product a:hover { background: #143d62; color: #fff; } }
+  @media (max-width: 767px) {
+    .farm-hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; padding: 11.5rem 20px 5rem; }
+    .farm-hero h1 { max-width: 11em; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1.4; }
+    .farm-hero__lead br { display: none; }
+    .farm-hero__image { margin-top: 1rem; padding: .45rem; box-shadow: .4rem .45rem 0 #ffe000; }
+    .farm-intro { grid-template-columns: 1fr; gap: 2rem; width: calc(100% - 40px); padding: 5.5rem 0; }
+    .farm-intro h2, .farm-gallery h2, .farm-product h2 { font-size: 1.75rem; }
+    .farm-process { width: calc(100% - 40px); padding-bottom: 6rem; }
+    .process-card { grid-template-columns: 1fr; min-height: 0; box-shadow: .35rem .4rem 0 #ffe000; }
+    .process-card:nth-child(even) figure { order: 0; }
+    .process-card figure { aspect-ratio: auto; }
+    .process-card__copy { padding: 2rem 1.4rem 2.25rem; }
+    .farm-gallery { width: calc(100% - 40px); }
+    .farm-gallery__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .gallery-scene, .gallery-scene--wide { grid-column: auto; }
+    .gallery-note { margin: 1rem 0; }
+    .farm-product { grid-template-columns: 1fr; width: calc(100% - 40px); padding: 2.25rem 1.4rem; box-shadow: .4rem .45rem 0 #ffe000; }
+    .farm-product figure { margin-top: 2rem; }
+    .farm-product a { justify-content: space-between; width: 100%; min-height: 52px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .process-card figure img { transition: none; } }
+</style>
