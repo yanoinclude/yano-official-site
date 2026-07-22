@@ -1,8 +1,11 @@
 ---
 import TextLink from "@/components/ui/TextLink.astro";
+import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
 import { homeContent } from "@/content/pages/home";
 import { siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import productBottle from "@/assets/images/product/weekend-lemon-juice.png";
+import lemonGrove from "@/assets/images/hero-user-lemon-grove.jpg";
 
 const farm = homeContent.currentActivities.lemonFarm;
 const product = homeContent.product;
@@ -41,9 +44,10 @@ const farmOffers = [
   description="古民家のお隣さんから100本のレモンの木の手入れを任されたことから生まれた、週末移住レモン果汁の物語。"
 >
   <article class="lemon-product-page">
+    <YanoSpeechBubble />
     <section class="lemon-product-hero">
       <figure>
-        <img src={product.image} alt={product.imageAlt} />
+        <img src={productBottle.src} alt={product.imageAlt} />
       </figure>
       <div>
         <p class="section-title__en">{product.eyebrow}</p>
@@ -81,7 +85,7 @@ const farmOffers = [
         </p>
       </div>
       <figure>
-        <img src={farm.image} alt={farm.imageAlt} loading="lazy" />
+        <img src={lemonGrove.src} alt={farm.imageAlt} loading="eager" />
       </figure>
     </section>
 
@@ -120,3 +124,191 @@ const farmOffers = [
     </TextLink>
   </article>
 </BaseLayout>
+
+<style>
+  :global(body) { background: #36a9ee; }
+  :global(body:has(.lemon-product-page) .site-header) { display: none; }
+  .lemon-product-page {
+    position: relative;
+    overflow: clip;
+    padding: clamp(10rem, 14vw, 12rem) max(5vw, calc((100vw - 1180px) / 2)) clamp(6rem, 10vw, 9rem);
+    background: #36a9ee;
+    color: #fff;
+  }
+  .section-title__en {
+    margin: 0 0 1rem;
+    color: #ffe000;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+  }
+  .lemon-product-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(20rem, .95fr);
+    gap: clamp(3rem, 7vw, 6rem);
+    align-items: center;
+    min-height: calc(100svh - clamp(10rem, 14vw, 12rem));
+    padding-bottom: clamp(6rem, 10vw, 9rem);
+  }
+  .lemon-product-hero figure {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: clamp(1.2rem, 3vw, 2.2rem);
+    border: 2px solid #143d62;
+    border-radius: 1.2rem;
+    background: #fffaf0;
+    box-shadow: .65rem .7rem 0 #ffe000;
+  }
+  .lemon-product-hero img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 37rem;
+    object-fit: contain;
+  }
+  .lemon-product-hero h1,
+  .lemon-story h2,
+  .farm-offers h2 {
+    margin: 0;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .01em;
+    text-wrap: balance;
+  }
+  .lemon-product-hero h1 {
+    max-width: 9em;
+    font-size: clamp(2.7rem, 4.7vw, 4.6rem);
+    line-height: 1.35;
+  }
+  .lemon-product-hero__lead {
+    margin: 1.6rem 0 .65rem;
+    color: #ffe000;
+    font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+    font-weight: 800;
+  }
+  .lemon-product-hero > div > p:not(.section-title__en) {
+    max-width: 36rem;
+    line-height: 1.9;
+  }
+  .lemon-product-hero .text-link { margin-top: 1.5rem; }
+  .lemon-story,
+  .farm-offers {
+    padding-block: clamp(6rem, 10vw, 9rem);
+    border-top: 1px solid rgb(255 255 255 / 48%);
+  }
+  .lemon-story {
+    display: grid;
+    grid-template-columns: minmax(16rem, .72fr) minmax(20rem, 1.08fr);
+    column-gap: clamp(3rem, 8vw, 7rem);
+  }
+  .lemon-story h2,
+  .farm-offers h2 {
+    max-width: 18em;
+    font-size: clamp(1.8rem, 3vw, 2.75rem);
+    line-height: 1.5;
+  }
+  .lemon-story__body { padding-top: .5rem; }
+  .lemon-story__body p {
+    margin: 0 0 1.5rem;
+    font-size: .96rem;
+    font-weight: 500;
+    line-height: 1.95;
+  }
+  .lemon-story figure {
+    grid-column: 1 / -1;
+    margin: clamp(3rem, 6vw, 5rem) 0 0;
+    padding: .75rem;
+    background: #fffaf0;
+    box-shadow: .65rem .7rem 0 #ffe000;
+    transform: rotate(-.45deg);
+  }
+  .lemon-story figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .farm-offers > header {
+    display: grid;
+    grid-template-columns: minmax(17rem, .8fr) minmax(20rem, 1.2fr);
+    gap: clamp(2.5rem, 7vw, 6rem);
+    align-items: end;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+  .farm-offers > header .section-title__en,
+  .farm-offers > header h2 { grid-column: 1; }
+  .farm-offers > header > p:last-child {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    margin: 0;
+    font-size: .96rem;
+    line-height: 1.95;
+  }
+  .farm-offers ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid rgb(255 255 255 / 48%);
+  }
+  .farm-offers li {
+    display: grid;
+    grid-template-columns: 4rem minmax(13rem, .7fr) minmax(20rem, 1.3fr);
+    gap: 2rem;
+    align-items: start;
+    padding-block: 1.8rem;
+    border-bottom: 1px solid rgb(255 255 255 / 48%);
+  }
+  .farm-offers li > span {
+    color: #ffe000;
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+  }
+  .farm-offers li h3,
+  .farm-offers li p { margin: 0; }
+  .farm-offers li h3 {
+    color: #fff;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+  }
+  .farm-offers li p {
+    color: rgb(255 255 255 / 88%);
+    font-size: .9rem;
+    line-height: 1.9;
+  }
+  .farm-offers__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 3rem;
+    margin-top: 2.5rem;
+  }
+  .lemon-product-page > .text-link:last-child { margin-top: 1rem; }
+  @media (max-width: 900px) {
+    .lemon-product-hero,
+    .lemon-story,
+    .farm-offers > header { grid-template-columns: 1fr; }
+    .lemon-product-hero { min-height: 0; }
+    .lemon-product-hero figure { order: 2; }
+    .farm-offers > header .section-title__en,
+    .farm-offers > header h2,
+    .farm-offers > header > p:last-child { grid-column: 1; grid-row: auto; }
+    .lemon-story figure { grid-column: 1; }
+    .farm-offers li { grid-template-columns: 3rem minmax(12rem, .8fr) minmax(0, 1.2fr); gap: 1.25rem; }
+  }
+  @media (max-width: 767px) {
+    .lemon-product-page { padding: 11.5rem 20px 5.5rem; }
+    .lemon-product-hero { gap: 2.25rem; padding-bottom: 5.5rem; }
+    .lemon-product-hero h1 { max-width: 11em; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1.4; }
+    .lemon-product-hero figure { padding: .65rem; box-shadow: .4rem .45rem 0 #ffe000; }
+    .lemon-story,
+    .farm-offers { padding-block: 5.5rem; }
+    .lemon-story h2,
+    .farm-offers h2 { font-size: 1.75rem; }
+    .lemon-story figure { padding: .45rem; box-shadow: .4rem .45rem 0 #ffe000; }
+    .farm-offers > header { gap: 1.5rem; }
+    .farm-offers li { grid-template-columns: 2.5rem minmax(0, 1fr); }
+    .farm-offers li p { grid-column: 2; }
+    .farm-offers__links { display: grid; gap: 1.25rem; }
+  }
+</style>

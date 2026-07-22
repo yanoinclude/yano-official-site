@@ -1,0 +1,71 @@
+<div class="yano-mowing" aria-hidden="true" data-yano-mowing></div>
+
+<style>
+  .yano-mowing {
+    width: var(--yano-mowing-size, 200px);
+    aspect-ratio: 1;
+    background-image: url("/images/animation/yano-mowing-6frames.png");
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 600% 100%;
+    contain: layout paint;
+    pointer-events: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .yano-mowing { background-position: 0 0 !important; }
+  }
+</style>
+
+<script>
+  const mowingSequence = [0, 1, 2, 3, 4, 5, 4, 3, 2, 1];
+  const mowingDurations = [220, 125, 125, 140, 150, 240, 150, 140, 125, 125];
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll<HTMLElement>("[data-yano-mowing]").forEach((sprite) => {
+    if (reduceMotion) return;
+
+    let sequenceIndex = 0;
+    let elapsed = 0;
+    let previousTime = 0;
+    let isVisible = false;
+    let animationFrame = 0;
+
+    const showFrame = (frame: number) => {
+      sprite.style.backgroundPosition = `${frame * 20}% 0`;
+    };
+
+    const animate = (time: number) => {
+      if (!isVisible || document.hidden) {
+        previousTime = time;
+        animationFrame = requestAnimationFrame(animate);
+        return;
+      }
+
+      if (!previousTime) previousTime = time;
+      elapsed += Math.min(time - previousTime, 50);
+      previousTime = time;
+
+      if (elapsed >= mowingDurations[sequenceIndex]) {
+        elapsed = 0;
+        sequenceIndex = (sequenceIndex + 1) % mowingSequence.length;
+        showFrame(mowingSequence[sequenceIndex]);
+      }
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible = entry.isIntersecting;
+    }, { rootMargin: "100px" });
+
+    showFrame(mowingSequence[0]);
+    observer.observe(sprite);
+    animationFrame = requestAnimationFrame(animate);
+
+    document.addEventListener("astro:before-swap", () => {
+      observer.disconnect();
+      cancelAnimationFrame(animationFrame);
+    }, { once: true });
+  });
+</script>

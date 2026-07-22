@@ -8,6 +8,9 @@ import interiorImage from "@/assets/images/concept-user-kominka-interior.jpeg";
 import boardImage from "@/assets/images/concept-user-kominka-board.jpeg";
 import tableImage from "@/assets/images/scenery/nakajima-kominka-table.jpeg";
 import exteriorImage from "@/assets/images/scenery/scenery-kominka.jpg";
+import clearingRoomImage from "@/assets/images/kominka/process/01-clearing-room.jpeg";
+import rebuildingTogetherImage from "@/assets/images/kominka/process/02-rebuilding-together.jpeg";
+import welcomingPeopleImage from "@/assets/images/kominka/process/03-welcoming-people.jpeg";
 
 const gallery = [
   {
@@ -96,25 +99,34 @@ const gallery = [
       </header>
       <ol class="process-list">
         <li class="paper-card">
-          <span>01</span>
-          <h3>まず、片づける</h3>
-          <p>
-            長く積もったものを運び出し、床や壁の状態を確かめるところから始めました。
-          </p>
+          <figure><img src={clearingRoomImage.src} alt="片づけと解体を始めた古民家の室内" loading="eager" /></figure>
+          <div class="process-list__copy">
+            <span>01</span>
+            <h3>まず、片づける</h3>
+            <p>
+              長く積もったものを運び出し、床や壁の状態を確かめるところから始めました。
+            </p>
+          </div>
         </li>
         <li class="paper-card">
-          <span>02</span>
-          <h3>教わりながら直す</h3>
-          <p>
-            屋根、天井、キッチン。島の人や職人、仲間の力を借りて、ひとつずつ手を入れています。
-          </p>
+          <figure><img src={rebuildingTogetherImage.src} alt="古民家の室内で仲間と修繕作業を進める様子" loading="eager" /></figure>
+          <div class="process-list__copy">
+            <span>02</span>
+            <h3>教わりながら直す</h3>
+            <p>
+              屋根、天井、キッチン。島の人や職人、仲間の力を借りて、ひとつずつ手を入れています。
+            </p>
+          </div>
         </li>
         <li class="paper-card">
-          <span>03</span>
-          <h3>人を迎える</h3>
-          <p>
-            作業の日も、食卓を囲む日も。家に人が集まり、新しい思い出が重なっています。
-          </p>
+          <figure><img src={welcomingPeopleImage.src} alt="KominKaの前に集まった島内外の仲間たち" loading="eager" /></figure>
+          <div class="process-list__copy">
+            <span>03</span>
+            <h3>人を迎える</h3>
+            <p>
+              作業の日も、食卓を囲む日も。家に人が集まり、新しい思い出が重なっています。
+            </p>
+          </div>
         </li>
       </ol>
     </section>
@@ -199,6 +211,7 @@ const gallery = [
 
   .eyebrow {
     margin: 0 0 1rem;
+    color: var(--yellow);
     font-family: "Noto Sans", sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
@@ -280,22 +293,27 @@ const gallery = [
 
   .story-section {
     padding-block: clamp(5rem, 10vw, 10rem);
-    display: grid;
-    grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.28fr);
-    align-items: start;
-    gap: clamp(3rem, 8vw, 8rem);
+    display: block;
   }
 
   .section-heading h2,
   .gallery-section h2,
   .now-section h2 {
-    max-width: 19em;
+    max-width: none;
     font-size: clamp(1.8rem, 3vw, 2.75rem);
     line-height: 1.5;
     text-wrap: balance;
   }
 
+  .story-section > .section-heading,
+  .process-section > .section-heading,
+  .gallery-section__heading {
+    text-align: left;
+  }
+
   .story-card {
+    max-width: 58rem;
+    margin: clamp(2.5rem, 5vw, 4.5rem) 0 0;
     padding: clamp(2rem, 5vw, 4.5rem);
     transform: rotate(-0.45deg);
   }
@@ -317,13 +335,14 @@ const gallery = [
   }
 
   .section-heading--center {
-    max-width: 760px;
-    margin-inline: auto;
-    text-align: center;
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
   }
 
   .section-heading--center > p:last-child,
   .gallery-section__heading > p:last-child {
+    max-width: 46rem;
     margin: 1.5rem 0 0;
     line-height: 1.9;
   }
@@ -338,8 +357,32 @@ const gallery = [
   }
 
   .process-list li {
-    min-height: 19rem;
-    padding: clamp(1.8rem, 3vw, 2.8rem);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .process-list figure {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-bottom: 2px solid var(--navy);
+    background: #eee9dc;
+  }
+
+  .process-list figure img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .process-list__copy {
+    padding: clamp(1.6rem, 2.6vw, 2.35rem);
   }
 
   .process-list li:nth-child(2) {
@@ -349,7 +392,7 @@ const gallery = [
     transform: rotate(-0.4deg);
   }
 
-  .process-list span {
+  .process-list__copy > span {
     display: grid;
     place-items: center;
     width: 3.25rem;
@@ -362,7 +405,7 @@ const gallery = [
   }
 
   .process-list h3 {
-    margin: 2rem 0 1rem;
+    margin: 1.5rem 0 1rem;
     font-family: "Noto Serif JP", serif;
     font-size: clamp(1.3rem, 2vw, 1.75rem);
     font-weight: 500;
@@ -379,15 +422,8 @@ const gallery = [
   }
 
   .gallery-section__heading {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.55fr);
-    gap: 1rem 5rem;
-    align-items: end;
+    display: block;
     margin-bottom: clamp(3rem, 7vw, 6rem);
-  }
-
-  .gallery-section__heading .eyebrow {
-    grid-column: 1 / -1;
   }
 
   .gallery-grid {
@@ -495,9 +531,6 @@ const gallery = [
     .story-section {
       gap: 3rem;
     }
-    .section-heading h2 {
-      max-width: 12em;
-    }
     .process-list {
       grid-template-columns: 1fr;
     }
@@ -508,7 +541,7 @@ const gallery = [
       transform: rotate(0.4deg);
     }
     .gallery-section__heading {
-      grid-template-columns: 1fr;
+      display: block;
     }
     .gallery-card,
     .gallery-card--wide,

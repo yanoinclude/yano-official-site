@@ -3,7 +3,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
 import aboutYano from "@/assets/images/about-yano-lemon-grove.jpg";
 import islandSea from "@/assets/images/scenery/nakajima-overlook.jpeg";
-import kominkaBefore from "@/assets/images/scenery/scenery-kominka.jpg";
+import kominkaBefore from "@/assets/images/about/yano-kominka-interior.jpeg";
 import kominkaWork from "@/assets/images/projects/no-plan/vol-6.jpg";
 import lemonGrove from "@/assets/images/scenery/scenery-lemon-orchard.jpg";
 
@@ -22,7 +22,7 @@ const timeline = [
     title: "築100年の家を、2円で受け取る。",
     body: "島で出会った一軒の古民家を譲り受けました。立派な計画があったわけではありません。ただ、長く残ってきたこの家にもう一度風を通し、人が集まれる場所にしたい。その気持ちを頼りに、できることから始めました。",
     image: kominkaBefore,
-    alt: "手を入れる前の中島の古民家",
+    alt: "再生した中島の古民家の室内に座る矢野諭稔",
   },
   {
     date: "2024.06 — 2025.08",
@@ -80,10 +80,12 @@ const timeline = [
 
     <section class="about-intro" aria-labelledby="about-intro-title">
       <div class="about-shell about-intro__grid">
-        <p class="about-kicker">WHY I GO</p>
-        <div>
-          <h2 id="about-intro-title">何かしたい。でも、何をしたらいいか分からなかった。</h2>
+        <div class="about-intro__aside">
+          <p class="about-kicker">WHY I GO</p>
           <p>学生時代に地域で活動するなかで、田舎の風景や人の暮らしに惹かれる一方、その営みが少しずつ失われていく現実も知りました。</p>
+        </div>
+        <div class="about-intro__main">
+          <h2 id="about-intro-title">何かしたい。でも、何をしたらいいか分からなかった。</h2>
           <p>大きなことを掲げるより、まずは目の前の風景と関わり続けること。島の人に教わりながら、昨日より少し手を動かすこと。その積み重ねが、今の活動になっています。</p>
         </div>
       </div>
@@ -149,8 +151,10 @@ const timeline = [
   .about-intro { padding: clamp(4rem, 8vw, 7rem) 0; background: #fffdf8; }
   .about-intro__grid { display: grid; grid-template-columns: minmax(10rem, .55fr) minmax(0, 1.45fr); gap: clamp(2rem, 6vw, 6rem); }
   .about-intro .about-kicker { color: #2e95cf; }
+  .about-intro__aside { display: flex; flex-direction: column; gap: 2rem; }
+  .about-intro__aside > p:last-child { max-width: 18rem; margin: 0; color: #657387; font-size: .9rem; line-height: 1.95; }
   .about-intro h2 { max-width: 19em; margin: -.25rem 0 2rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 500; line-height: 1.5; text-wrap: balance; }
-  .about-intro div div > p { max-width: 43rem; margin: 0 0 1rem; color: #4c5f74; font-size: 1rem; line-height: 2; }
+  .about-intro__main > p { max-width: 43rem; margin: 0 0 1rem; color: #4c5f74; font-size: 1rem; line-height: 2; }
   .about-story { padding: clamp(5rem, 9vw, 8.5rem) 0; }
   .about-story__header { margin-bottom: clamp(3rem, 6vw, 5.5rem); }
   .about-story__header h2 { margin: .9rem 0 1rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; line-height: 1.4; }
@@ -192,6 +196,8 @@ const timeline = [
     .about-hero h1 { max-width: 11em; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1.4; }
     .about-hero__lead br { display: none; }
     .about-intro__grid { grid-template-columns: 1fr; gap: 1.4rem; }
+    .about-intro__aside { gap: 1rem; }
+    .about-intro__aside > p:last-child { max-width: 100%; }
     .about-intro h2 { margin-top: 0; font-size: 1.75rem; }
     .timeline__item { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; }
     .timeline__rail span { width: 2.35rem; height: 2.35rem; font-size: .6rem; }
