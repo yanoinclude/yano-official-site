@@ -127,17 +127,17 @@ const recentInstagramPosts = [
   {
     title: "中島のレモンの日",
     href: "https://www.instagram.com/p/DVQIBMikpXm/",
-    embedUrl: "https://www.instagram.com/p/DVQIBMikpXm/embed/captioned/",
+    embedUrl: "https://www.instagram.com/p/DVQIBMikpXm/embed/",
   },
   {
     title: "海掃除",
     href: "https://www.instagram.com/p/DXy3hGTh_VD/",
-    embedUrl: "https://www.instagram.com/p/DXy3hGTh_VD/embed/captioned/",
+    embedUrl: "https://www.instagram.com/p/DXy3hGTh_VD/embed/",
   },
   {
     title: "ユウヤケバル in 道後",
     href: "https://www.instagram.com/p/DZD6QxLSGjN/",
-    embedUrl: "https://www.instagram.com/p/DZD6QxLSGjN/embed/captioned/",
+    embedUrl: "https://www.instagram.com/p/DZD6QxLSGjN/embed/",
   },
 ];
 ---
@@ -620,13 +620,15 @@ const recentInstagramPosts = [
       <div class="recent-section__feed" aria-label="Instagramの最近の投稿">
         {recentInstagramPosts.map((post) => (
           <article class="recent-post">
-            <iframe
-              src={post.embedUrl}
-              title={`Instagram投稿：${post.title}`}
-              loading="lazy"
-              allowtransparency="true"
-            ></iframe>
-            <a href={post.href} target="_blank" rel="noopener noreferrer">Instagramで投稿を見る <span aria-hidden="true">↗</span></a>
+            <div class="recent-post__preview">
+              <iframe
+                src={post.embedUrl}
+                title={`Instagram投稿：${post.title}`}
+                loading="lazy"
+                allowtransparency="true"
+              ></iframe>
+              <a href={post.href} target="_blank" rel="noopener noreferrer" aria-label={`Instagramで「${post.title}」の投稿を見る`}></a>
+            </div>
           </article>
         ))}
       </div>
@@ -4499,26 +4501,25 @@ const recentInstagramPosts = [
     background: #fff;
     box-shadow: 0.28rem 0.32rem 0 #ffe000;
   }
-  .recent-post iframe {
-    display: block;
-    width: 100%;
-    height: 620px;
-    border: 0;
+  .recent-post__preview {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
     background: #fff;
   }
-  .recent-post > a {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.9rem 1rem;
-    border-top: 1px solid rgb(18 59 99 / 18%);
-    color: #123b63;
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-decoration: none;
+  .recent-post iframe {
+    position: absolute;
+    top: -76px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: calc(100% + 190px);
+    border: 0;
+    background: #fff;
+    pointer-events: none;
   }
-  .recent-post > a:hover,
-  .recent-post > a:focus-visible { background: #ffe000; }
+  .recent-post__preview > a { position: absolute; inset: 0; z-index: 2; }
+  .recent-post__preview > a:focus-visible { outline: 4px solid #ffe000; outline-offset: -5px; }
   .recent-section__lemon {
     position: absolute;
     z-index: -1;
@@ -4562,7 +4563,7 @@ const recentInstagramPosts = [
     .recent-section__content > p span { display: inline; }
     .recent-section__content > a { display: flex; width: 100%; min-height: 3.5rem; margin-top: 1.5rem; }
     .recent-section__feed { grid-template-columns: 1fr; margin-top: 0.25rem; padding-top: 2rem; }
-    .recent-post iframe { height: 640px; }
+    .recent-post iframe { top: -70px; height: calc(100% + 180px); }
     .recent-section__lemon { top: -2rem; right: 0.65rem; width: 6rem; }
   }
 
