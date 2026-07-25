@@ -1,16 +1,43 @@
-<div class="yano-brand" data-yano-brand>
+---
+import YanoMowing from "@/components/animation/YanoMowing.astro";
+
+interface Props {
+  character?: "default" | "mowing";
+  size?: "default" | "map";
+  scale?: number;
+}
+
+const { character = "default", size = "default", scale = 1 } = Astro.props;
+const desktopHeight =
+  size === "map" ? "clamp(152px, 14vw, 208px)" : `${94 * scale}px`;
+const mobileHeight = size === "map" ? "128px" : `${78 * scale}px`;
+---
+
+<div
+  class:list={["yano-brand", { "yano-brand--map": size === "map" }]}
+  data-yano-brand
+  style={`--brand-yano-height-desktop:${desktopHeight};--brand-yano-height-mobile:${mobileHeight};`}
+>
   <a class="yano-brand__bubble" href="/">矢野、週末移住中。</a>
-  <span class="yano-brand__character" data-yano-brand-sprite aria-hidden="true">
-    <img
-      src="/images/animation/yano-30frames-v4.png"
-      alt=""
-      width="4800"
-      height="264"
-      loading="eager"
-      decoding="async"
-      data-yano-brand-sheet
-    />
-  </span>
+  {
+    character === "mowing" ? (
+      <span class="yano-brand__character yano-brand__character--mowing" aria-hidden="true">
+        <YanoMowing />
+      </span>
+    ) : (
+      <span class="yano-brand__character" data-yano-brand-sprite aria-hidden="true">
+        <img
+          src="/images/animation/yano-30frames-v4.png"
+          alt=""
+          width="4800"
+          height="264"
+          loading="eager"
+          decoding="async"
+          data-yano-brand-sheet
+        />
+      </span>
+    )
+  }
 </div>
 
 <script>
@@ -157,7 +184,7 @@
   }
 
   .yano-brand__character {
-    --brand-yano-height: 94px;
+    --brand-yano-height: var(--brand-yano-height-desktop, 94px);
     position: absolute;
     top: calc(100% + 0.65rem);
     left: calc(2.48rem - ((var(--brand-yano-height) * 0.60606) / 2));
@@ -178,10 +205,25 @@
     will-change: transform;
   }
 
-  @media (max-width: 600px) {
+  .yano-brand__character--mowing {
+    left: calc(2.48rem - (var(--brand-yano-height) / 2));
+    width: var(--brand-yano-height);
+    overflow: visible;
+  }
+
+  .yano-brand__character--mowing :global(.yano-mowing) {
+    --yano-mowing-size: var(--brand-yano-height);
+  }
+
+  .yano-brand--map {
+    left: clamp(4rem, 5vw, 5rem);
+  }
+
+  @media (max-width: 767px) {
     .yano-brand { left: 1rem; }
+    .yano-brand--map { left: 2rem; }
     .yano-brand__bubble { font-size: 1.1rem; }
-    .yano-brand__character { --brand-yano-height: 78px; }
+    .yano-brand__character { --brand-yano-height: var(--brand-yano-height-mobile, 78px); }
   }
 
   @media (prefers-reduced-motion: reduce) {

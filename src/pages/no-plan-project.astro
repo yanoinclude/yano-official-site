@@ -192,13 +192,15 @@ const videos = [
 
 <style>
   :global(body) { background: #36a9ee; }
+  :global(body:has(.playlist-page) .site-frame),
+  :global(body:has(.playlist-page) .site-frame > main) { background: #36a9ee; }
   :global(body:has(.playlist-page) .site-header) { display: none; }
   .playlist-page {
     position: relative;
     overflow: clip;
     width: min(calc(100% - 8rem), 1240px);
     margin-inline: auto;
-    padding-block: clamp(10rem, 14vw, 12rem) clamp(6rem, 10vw, 9rem);
+    padding-block: clamp(12rem, 16vw, 14rem) clamp(6rem, 10vw, 9rem);
     color: #fff;
   }
 

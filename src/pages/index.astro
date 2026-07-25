@@ -461,13 +461,21 @@ const recentInstagramPosts = [
         <YanoMowing />
       </div>
       <div class="profile-section__layout">
-        <figure class="profile-section__photo">
+        <figure class="profile-section__photo" data-profile-photo data-profile-photo-state="loading">
           <img
             src={aboutYanoLemonGrove.src}
             alt="中島のレモン畑で笑顔を見せる矢野諭稔"
             loading="lazy"
             decoding="async"
+            data-profile-photo-image
           />
+          <div class="profile-photo-loader" aria-live="polite">
+            <span class="profile-photo-loader__bubble">読み込み中</span>
+            <YanoMowing />
+          </div>
+          <p class="profile-photo-fallback" role="status">
+            プロフィール写真を表示できませんでした。
+          </p>
         </figure>
         <div class="profile-section__details">
           <article class="profile-section__primary">
@@ -488,6 +496,57 @@ const recentInstagramPosts = [
       </div>
     </div>
   </section>
+
+  <script>
+    document.querySelectorAll<HTMLElement>("[data-profile-photo]").forEach((photo) => {
+      const image = photo.querySelector<HTMLImageElement>("[data-profile-photo-image]");
+      if (!image || photo.dataset.profilePhotoReady === "true") return;
+      photo.dataset.profilePhotoReady = "true";
+
+      let minimumDelayComplete = false;
+      let imageComplete = image.complete && image.naturalWidth > 0;
+      let delayStarted = false;
+
+      const showPhotoWhenReady = () => {
+        if (!minimumDelayComplete || !imageComplete) return;
+        photo.dataset.profilePhotoState = "ready";
+      };
+
+      const startMinimumDelay = () => {
+        if (delayStarted) return;
+        delayStarted = true;
+        window.setTimeout(() => {
+          minimumDelayComplete = true;
+          showPhotoWhenReady();
+        }, 2000);
+      };
+
+      image.addEventListener("load", () => {
+        imageComplete = true;
+        showPhotoWhenReady();
+      }, { once: true });
+
+      image.addEventListener("error", () => {
+        photo.dataset.profilePhotoState = "error";
+      }, { once: true });
+
+      if (image.complete && image.naturalWidth === 0) {
+        photo.dataset.profilePhotoState = "error";
+        return;
+      }
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(([entry]) => {
+          if (!entry.isIntersecting) return;
+          startMinimumDelay();
+          observer.disconnect();
+        }, { rootMargin: "120px 0px" });
+        observer.observe(photo);
+      } else {
+        startMinimumDelay();
+      }
+    });
+  </script>
 
   <section class="place-section reveal-section" id="nakajima">
     <header class="access-section__heading content-shell">
@@ -1547,6 +1606,7 @@ const recentInstagramPosts = [
   }
 
   .profile-section__photo {
+    position: relative;
     min-width: 0;
     margin: 0;
     overflow: hidden;
@@ -1559,6 +1619,11 @@ const recentInstagramPosts = [
     height: 100%;
     object-fit: cover;
     object-position: 47% center;
+  }
+
+  .profile-photo-loader,
+  .profile-photo-fallback {
+    display: none;
   }
 
   .profile-section__details {
@@ -4796,20 +4861,111 @@ const recentInstagramPosts = [
     }
 
     .activities-section__grid { gap: 1.4rem; }
-    .ranking-card { padding: 1.125rem; }
-    .ranking-card__content { padding-top: 1rem; }
-    .ranking-card__content h3 { font-size: clamp(1.25rem, 5.6vw, 1.375rem); }
-    #events .ranking-card__content h3 {
-      font-size: clamp(1.125rem, 4.7vw, 1.25rem);
-      white-space: nowrap;
+    .ranking-card {
+      padding: 1.125rem;
+      overflow: visible;
+    }
+    .ranking-card__content {
+      box-sizing: border-box;
+      width: 100%;
+      min-width: 0;
+      padding: 1rem 1.5rem 1.5rem;
+    }
+    .ranking-card__content h3 {
+      font-size: clamp(1.2rem, 5.3vw, 1.375rem);
+      white-space: normal;
     }
     .ranking-card__content > p:not(.ranking-card__category):not(.ranking-card__tags) { font-size: 0.9375rem; line-height: 1.75; }
     .ranking-card__category,
     .ranking-card__tags,
     .ranking-card__tags span { font-size: 0.75rem; }
     .ranking-card__badge { width: 2.25rem; min-height: 2.25rem; font-size: 0.75rem; }
+    .back-to-map {
+      right: 0.5rem;
+      left: auto;
+      width: 2.75rem;
+      height: 2.75rem;
+    }
 
     .profile-section__layout { gap: 1.25rem; }
+    .profile-section__photo {
+      isolation: isolate;
+      background: #fffdf8;
+    }
+    .profile-section__photo img {
+      opacity: 0;
+      transition: opacity 480ms ease;
+    }
+    .profile-photo-loader {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: #fffdf8;
+      color: #111;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 240ms ease, visibility 240ms ease;
+    }
+    .profile-photo-loader :global(.yano-mowing) {
+      --yano-mowing-size: clamp(108px, 34vw, 132px);
+    }
+    .profile-photo-loader__bubble {
+      position: absolute;
+      z-index: 1;
+      top: 1.75rem;
+      left: calc(50% + 1.25rem);
+      width: max-content;
+      padding: 0.45rem 0.7rem 0.5rem;
+      border: 3px solid #111;
+      border-radius: 0.65rem;
+      background: #fff;
+      color: #111;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0.2rem 0 rgb(17 17 17 / 18%);
+    }
+    .profile-photo-loader__bubble::after {
+      position: absolute;
+      bottom: -0.48rem;
+      left: 0.75rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-right: 3px solid #111;
+      border-bottom: 3px solid #111;
+      background: #fff;
+      content: "";
+      transform: rotate(45deg);
+    }
+    .profile-photo-fallback {
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      margin: 0;
+      padding: 2rem;
+      place-items: center;
+      background: #fffdf8;
+      color: #2e4568;
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.8;
+      text-align: center;
+    }
+    .profile-section__photo[data-profile-photo-state="ready"] img {
+      opacity: 1;
+    }
+    .profile-section__photo[data-profile-photo-state="ready"] .profile-photo-loader,
+    .profile-section__photo[data-profile-photo-state="error"] .profile-photo-loader {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .profile-section__photo[data-profile-photo-state="error"] .profile-photo-fallback {
+      display: grid;
+    }
     .profile-section__details {
       padding: 0;
       background: transparent;
@@ -4935,16 +5091,14 @@ const recentInstagramPosts = [
 
   @media (max-width: 640px) {
     .profile-section__mowing {
-      position: relative;
-      top: auto;
-      right: auto;
-      display: flex;
-      justify-content: flex-start;
-      width: 100%;
-      margin: -1rem 0 0.5rem;
+      display: none;
     }
-    .profile-section__mowing :global(.yano-mowing) {
-      --yano-mowing-size: clamp(118px, 34vw, 142px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .profile-section__photo img,
+    .profile-photo-loader {
+      transition: none;
     }
   }
 </style>
