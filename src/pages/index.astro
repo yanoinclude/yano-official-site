@@ -719,8 +719,9 @@ const recentInstagramPosts = [
     const updateIslandYanoPath = () => {
       if (!islandMap || !islandYano) return;
       const { width, height } = islandMap.getBoundingClientRect();
+      const yanoPathDrop = Math.min(54, Math.max(24, height * 0.06));
       const point = (x: number, y: number) =>
-        `${Math.round(width * x)} ${Math.round(height * y)}`;
+        `${Math.round(width * x)} ${Math.round(height * y + yanoPathDrop)}`;
       islandYano.style.offsetPath = `path("M ${point(0.34, 0.6)} C ${point(0.4, 0.56)} ${point(0.47, 0.55)} ${point(0.54, 0.56)} C ${point(0.6, 0.57)} ${point(0.64, 0.54)} ${point(0.68, 0.48)}")`;
       islandMap.dataset.pathPixels = String(Math.round(width * 0.42));
     };
@@ -4640,7 +4641,7 @@ const recentInstagramPosts = [
   .map-spot--yano {
     top: 0;
     left: 0;
-    offset-path: path("M 408 456 C 480 426 564 418 648 426 C 720 433 768 410 816 365");
+    offset-path: path("M 408 501 C 480 471 564 463 648 471 C 720 478 768 455 816 410");
     offset-distance: 0%;
     offset-rotate: 0deg;
     offset-anchor: 50% 50%;
