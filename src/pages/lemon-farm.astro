@@ -45,6 +45,9 @@ const freshLemon = {
   url: "",
 };
 
+const weekendLemonJuiceUrl =
+  "https://weekend-island-shop.square.site/product/-1-150ml/5LMEMCNOIEPUQVKJZFIYI3M2?cs=true&cst=custom";
+
 const farmScenes = [
   { image: harvestFriends, alt: "レモン畑で収穫かごを持つ仲間たち", caption: "仲間と迎えた、収穫の日。" },
   { image: lemonBlossom, alt: "葉の間で咲く白いレモンの花", caption: "春、白い花がひらく。" },
@@ -72,16 +75,12 @@ const farmScenes = [
         </p>
         <a class="farm-hero__cta" href="#farm-intro-title">レモン畑をのぞく <span aria-hidden="true">→</span></a>
       </div>
-      <div class="farm-stage" aria-label="レモンの光の中で畑を手入れする矢野">
-        <svg class="farm-stage__lamp" viewBox="0 0 120 90" aria-hidden="true">
-          <path class="farm-stage__leaf" d="M77 19c8-12 20-12 29-6-7 11-18 15-29 9Z" />
-          <path class="farm-stage__lemon" d="M70 16c21 1 34 18 28 38S70 87 48 77 20 47 31 29c8-13 22-17 39-13Z" />
-          <path class="farm-stage__shine" d="M47 31c-7 6-10 13-9 21" />
-        </svg>
-        <span class="farm-stage__beam" aria-hidden="true"></span>
-        <span class="farm-stage__pool" aria-hidden="true"></span>
-        <img class="farm-stage__shadow" src="/images/lemon-farm/yano-lemon-tree.png" alt="" aria-hidden="true" />
-        <img class="farm-stage__art" src="/images/lemon-farm/yano-lemon-tree.png" alt="草刈機を持つ矢野と実をつけたレモンの木のイラスト" />
+      <div class="farm-stage" aria-label="島の自然光の中で畑を手入れする矢野">
+        <span class="farm-stage__ground-light" aria-hidden="true"></span>
+        <span class="farm-stage__shadow farm-stage__shadow--person" aria-hidden="true"></span>
+        <span class="farm-stage__shadow farm-stage__shadow--tool" aria-hidden="true"></span>
+        <span class="farm-stage__shadow farm-stage__shadow--tree" aria-hidden="true"></span>
+        <img class="farm-stage__art" src="/images/lemon-farm/yano-lemon-tree-cropped.png" alt="草刈機を持つ矢野と実をつけたレモンの木のイラスト" />
       </div>
     </header>
 
@@ -150,26 +149,18 @@ const farmScenes = [
       </div>
     </section>
 
-    <section class="farm-to-bottle" aria-labelledby="farm-to-bottle-title">
-      <header>
-        <p class="eyebrow">FROM FARM TO BOTTLE</p>
-        <h2 id="farm-to-bottle-title">畑の続きを、<br />一本に。</h2>
-        <p>草を刈り、枝を整え、季節を越えて実ったレモン。収穫した実は、果汁や生果など、暮らしの中で島を楽しんでもらえる形へつなげています。</p>
-        <p>商品をつくることも、この畑を次の季節へ残していくための手入れのひとつです。</p>
-      </header>
-      <ol aria-label="畑から商品になるまで">
-        {["育てる", "収穫する", "搾る", "瓶に詰める", "届ける"].map((step, index) => (
-          <li><span>{String(index + 1).padStart(2, "0")}</span><b>{step}</b></li>
-        ))}
-      </ol>
-    </section>
-
     <section class="farm-product" aria-labelledby="product-title">
+      <header class="farm-product__heading">
+        <p class="farm-product__label">WEEKEND LEMON</p>
+        <h2 id="product-title">週末移住レモン果汁</h2>
+        <p class="farm-product__lead">島との関係が始まる、小さな一本。</p>
+      </header>
+      <figure>
+        <img src={weekendLemonJuice.src} alt="週末移住レモン果汁の瓶と古民家の風景" loading="eager" />
+      </figure>
       <div class="farm-product__copy">
-        <p class="eyebrow">WEEKEND LEMON</p>
-        <h2 id="product-title">島との関係が始まる、<br />小さな一本。</h2>
+        <h3>中島のレモンを、日常の一杯に。</h3>
         <p>愛媛・中島のレモンから生まれた、100％レモン果汁です。炭酸割り、料理、お酒、お風呂上がりの一杯に。日常の中で、島の果実を気軽に楽しんでいただけます。</p>
-        <h3>週末移住レモン果汁</h3>
         <dl>
           <div><dt>内容量</dt><dd>150ml</dd></div>
           <div><dt>原材料名</dt><dd>レモン</dd></div>
@@ -177,9 +168,8 @@ const farmScenes = [
           <div><dt>保存方法</dt><dd>直射日光を避け、常温で保存</dd></div>
         </dl>
         <p class="farm-product__note">開栓後は10℃以下で保存し、早めに使用してください。商品の売上は、レモン畑の手入れや次の季節の活動につながります。</p>
-        <a href="/product/">週末移住レモン果汁を見る <span aria-hidden="true">→</span></a>
+        <a href={weekendLemonJuiceUrl} target="_blank" rel="noreferrer">週末移住レモン果汁を見る <span aria-hidden="true">↗</span></a>
       </div>
-      <figure><img src={weekendLemonJuice.src} alt="週末移住レモンの商品" loading="eager" /></figure>
     </section>
 
     <section class="fresh-lemon" aria-labelledby="fresh-lemon-title">
@@ -197,22 +187,6 @@ const farmScenes = [
       </div>
     </section>
 
-    <section class="join-farm" aria-labelledby="join-farm-title">
-      <p class="eyebrow">JOIN THE FARM</p>
-      <h2 id="join-farm-title">畑をのぞく。<br />収穫する。<br />一緒に手を動かす。</h2>
-      <p>レモンの収穫や畑の見学など、季節と作業状況に合わせて、中島のレモンに触れる機会をつくっています。開催時期や内容は、Instagramでお知らせします。</p>
-      <a href="https://www.instagram.com/kominka.lemon/" target="_blank" rel="noreferrer">Instagramで活動を見る <span aria-hidden="true">↗</span></a>
-    </section>
-
-    <section class="farm-final" aria-labelledby="farm-final-title">
-      <p class="eyebrow">FROM NAKAJIMA TO YOUR TABLE</p>
-      <h2 id="farm-final-title">この畑の続きを、<br />食卓へ。</h2>
-      <p>週末ごとに手を入れながら育てた、中島のレモン。一本の果汁から、島との関係を始めてみませんか。</p>
-      <div>
-        <a href="/product/">週末移住レモン果汁を見る <span aria-hidden="true">→</span></a>
-        <a href="https://www.instagram.com/kominka.lemon/" target="_blank" rel="noreferrer">Instagramで畑の様子を見る <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
   </article>
 </BaseLayout>
 
@@ -242,7 +216,11 @@ const farmScenes = [
   .process-card__copy > span { color: #e2b900; font-size: .82rem; font-weight: 900; letter-spacing: .18em; }
   .process-card h2 { margin: 1rem 0 1.25rem; font-family: "Noto Sans JP", sans-serif; font-size: clamp(1.375rem, 1.65vw, 1.5rem); font-weight: 500; line-height: 1.5; }
   .process-card p { max-width: 30rem; margin: 0; font-size: 1rem; font-weight: 500; line-height: 1.9; }
-  .farm-gallery { width: min(calc(100% - 5rem), 1180px); margin: 0 auto; padding-bottom: clamp(5rem, 6.5vw, 6rem); }
+  .farm-gallery {
+    width: min(calc(100% - 5rem), 1180px);
+    margin: 0 auto;
+    padding-block: clamp(5rem, 6.5vw, 6rem);
+  }
   .farm-gallery__heading { margin-bottom: 1rem; }
   .gallery-note { max-width: 42rem; margin: 1.25rem 0 clamp(2.5rem, 4vw, 3rem); font-size: 1rem; line-height: 1.9; }
   .farm-gallery__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.2rem, 2vw, 1.75rem); align-items: start; }
@@ -278,7 +256,10 @@ const farmScenes = [
     .process-card__copy { padding: 1.75rem 1.4rem 2rem; }
     .process-card h2 { font-size: 1.3125rem; }
     .process-card p { font-size: .95rem; }
-    .farm-gallery { width: calc(100% - 40px); padding-bottom: 4rem; }
+    .farm-gallery {
+      width: calc(100% - 40px);
+      padding-block: 4rem;
+    }
     .farm-gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
     .gallery-scene, .gallery-scene--wide { grid-column: span 1; grid-row: auto; }
     .gallery-scene--wide, .gallery-scene:last-child { grid-column: 1 / -1; }
@@ -289,35 +270,59 @@ const farmScenes = [
   }
   @media (prefers-reduced-motion: reduce) { .process-card figure img { transition: none; } }
 
-  /* Lemon spotlight hero. */
+  /* Lemon farm hero with soft island light. */
   .farm-page {
     border-top: 4px solid #ffe000;
   }
 
   .farm-hero {
     box-sizing: border-box;
-    grid-template-columns: minmax(22rem, 0.75fr) minmax(36rem, 1.25fr);
-    min-height: calc(100svh - 4px);
-    padding: clamp(9.5rem, 13vh, 11rem) clamp(3rem, 7vw, 7rem) clamp(4rem, 7vh, 6rem);
-    gap: clamp(2rem, 4vw, 5rem);
+    isolation: isolate;
+    grid-template-columns: minmax(23rem, 0.88fr) minmax(0, 1.12fr);
+    min-height: clamp(38rem, 78svh, 44rem);
+    padding: clamp(6.5rem, 9vh, 7.5rem) clamp(3rem, 5vw, 5.5rem) clamp(4rem, 6vh, 5rem) clamp(5rem, 8vw, 8rem);
+    gap: clamp(1rem, 2vw, 2.5rem);
     overflow: hidden;
+  }
+
+  .farm-hero::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(
+        ellipse 72% 88% at 94% 13%,
+        rgb(255 235 145 / 22%) 0%,
+        rgb(255 235 145 / 11%) 34%,
+        rgb(255 235 145 / 4%) 52%,
+        transparent 71%
+      );
+    content: "";
+    opacity: 0.92;
+    pointer-events: none;
+    transition: opacity 360ms ease;
   }
 
   .farm-hero__copy {
     position: relative;
     z-index: 8;
     align-self: center;
+    transform: translateY(-1.75rem);
   }
 
   .farm-hero h1 {
     max-width: 11em;
-    font-size: clamp(3rem, 4vw, 3.6rem);
+    font-size: clamp(2.55rem, 3.35vw, 3.1rem);
     line-height: 1.5;
     letter-spacing: 0.045em;
   }
 
   .farm-hero__lead {
+    max-width: 32rem;
     margin-top: 2rem;
+    font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+    line-height: 1.95;
+    text-wrap: pretty;
   }
 
   .farm-hero__cta {
@@ -341,7 +346,8 @@ const farmScenes = [
     height: 3px;
     background: #ffe000;
     content: "";
-    transition: right 300ms ease;
+    transform-origin: left center;
+    transition: right 300ms ease, transform 300ms ease;
   }
 
   .farm-hero__cta span {
@@ -350,111 +356,93 @@ const farmScenes = [
 
   .farm-stage {
     position: relative;
-    align-self: stretch;
-    min-height: min(67vw, 47rem);
+    z-index: 2;
+    align-self: center;
+    justify-self: end;
+    width: min(45vw, 46rem);
+    max-width: 100%;
+    min-height: 0;
+    aspect-ratio: 3 / 2;
     isolation: isolate;
+    transform: translateY(-0.75rem);
   }
 
-  .farm-stage__lamp {
-    position: absolute;
-    z-index: 6;
-    top: 1%;
-    right: 0;
-    width: clamp(4.5rem, 7vw, 6.5rem);
-    overflow: visible;
-    filter: drop-shadow(0 4px 0 rgb(20 61 98 / 22%));
-    transform: translateY(-16px) rotate(-4deg);
-    opacity: 0;
-    animation: lamp-arrive 500ms 180ms ease-out forwards;
-    transform-origin: 50% 50%;
-  }
-
-  .farm-stage__lemon {
-    fill: #ffe000;
-    stroke: #143d62;
-    stroke-linejoin: round;
-    stroke-width: 5;
-  }
-
-  .farm-stage__leaf {
-    fill: #5e8b45;
-    stroke: #143d62;
-    stroke-linejoin: round;
-    stroke-width: 4;
-  }
-
-  .farm-stage__shine {
-    fill: none;
-    stroke: #fff7ad;
-    stroke-linecap: round;
-    stroke-width: 5;
-  }
-
-  .farm-stage__beam {
+  .farm-stage__ground-light {
     position: absolute;
     z-index: 1;
-    top: 8%;
-    right: 2%;
-    width: 86%;
-    height: 77%;
-    background:
-      linear-gradient(150deg, rgb(255 246 161 / 3%) 3%, rgb(255 240 113 / 23%) 67%, rgb(255 235 76 / 14%));
-    clip-path: polygon(93% 0, 100% 2%, 87% 100%, 2% 100%);
-    filter: blur(1.5px);
-    transform: scaleX(0.08);
-    transform-origin: 96% 0;
-    animation: beam-open 760ms 470ms cubic-bezier(.2, .7, .2, 1) forwards;
-  }
-
-  .farm-stage__pool {
-    position: absolute;
-    z-index: 2;
-    right: 1%;
-    bottom: 4%;
+    right: 0;
+    bottom: 0;
     width: 96%;
     height: 23%;
-    border-radius: 50%;
-    background: rgb(255 237 120 / 58%);
-    filter: blur(1px);
-    opacity: 0;
-    animation: pool-arrive 500ms 850ms ease-out forwards;
+    background:
+      radial-gradient(ellipse 48% 63% at 30% 59%, rgb(255 231 125 / 16%) 0%, rgb(255 231 125 / 8%) 46%, transparent 76%),
+      radial-gradient(ellipse 58% 72% at 72% 48%, rgb(255 239 174 / 15%) 0%, rgb(255 231 125 / 7%) 45%, transparent 78%);
+    filter: blur(26px);
+    transform: rotate(-2deg);
+    pointer-events: none;
   }
 
-  .farm-stage__art,
   .farm-stage__shadow {
     position: absolute;
-    right: -1%;
-    bottom: 5%;
-    width: min(100%, 56rem);
-    height: 81%;
-    object-fit: contain;
-    object-position: right bottom;
+    z-index: 2;
+    filter: blur(3px);
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .farm-stage__shadow--person {
+    left: 0;
+    bottom: 0;
+    width: 32%;
+    height: 12%;
+    background: radial-gradient(ellipse at 94% 76%, #174568 0 11%, rgb(23 69 104 / 75%) 30%, transparent 74%);
+    opacity: 0.2;
+    transform: rotate(-4deg);
+    transform-origin: 94% 76%;
+  }
+
+  .farm-stage__shadow--tool {
+    left: 22%;
+    bottom: 0;
+    width: 25%;
+    height: 7%;
+    background: radial-gradient(ellipse at 96% 88%, #174568 0 10%, rgb(23 69 104 / 62%) 31%, transparent 76%);
+    transform: rotate(-5deg);
+    transform-origin: 96% 88%;
+  }
+
+  .farm-stage__shadow--tree {
+    left: 29%;
+    bottom: 0.5%;
+    width: 43%;
+    height: 15%;
+    background:
+      radial-gradient(ellipse 72% 80% at 92% 72%, #174568 0 8%, rgb(23 69 104 / 70%) 31%, transparent 76%),
+      radial-gradient(ellipse 42% 64% at 52% 78%, rgb(23 69 104 / 52%) 0%, transparent 74%);
+    opacity: 0.22;
+    transform: rotate(-3deg);
+    transform-origin: 92% 72%;
   }
 
   .farm-stage__art {
-    z-index: 5;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    display: block;
+    width: auto;
+    height: 108%;
+    object-fit: contain;
+    object-position: center;
     opacity: 0;
-    transform: translateY(10px);
-    animation: art-arrive 560ms 760ms ease-out forwards;
+    transform: translate(-50%, calc(-50% + 8px));
+    transform-origin: center center;
+    animation: art-arrive 560ms 220ms ease-out forwards;
   }
 
-  .farm-stage__shadow {
-    z-index: 3;
-    filter: brightness(0) saturate(100%) invert(19%) sepia(25%) saturate(1692%) hue-rotate(171deg) brightness(83%) blur(1.5px);
-    opacity: 0;
-    transform: translate(-22%, 25%) scaleY(0.25) skewX(34deg);
-    transform-origin: 55% 96%;
-    animation: shadow-grow 620ms 980ms ease-out forwards;
-  }
-
-  .farm-hero:has(.farm-hero__cta:hover) .farm-stage__beam,
-  .farm-hero:has(.farm-hero__cta:focus-visible) .farm-stage__beam {
-    filter: brightness(1.12) blur(1px);
-  }
-
-  .farm-hero:has(.farm-hero__cta:hover) .farm-stage__lamp,
-  .farm-hero:has(.farm-hero__cta:focus-visible) .farm-stage__lamp {
-    transform: rotate(2deg);
+  .farm-hero:has(.farm-hero__cta:hover)::before,
+  .farm-hero:has(.farm-hero__cta:focus-visible)::before {
+    opacity: 1;
   }
 
   .farm-hero__cta:hover span,
@@ -465,6 +453,7 @@ const farmScenes = [
   .farm-hero__cta:hover::after,
   .farm-hero__cta:focus-visible::after {
     right: -0.75rem;
+    transform: scaleX(1.04);
   }
 
   :global(.farm-page > .yano-brand) {
@@ -480,30 +469,36 @@ const farmScenes = [
     display: none;
   }
 
-  @keyframes lamp-arrive {
-    to { opacity: 1; transform: translateY(0) rotate(-2deg); }
-  }
-
-  @keyframes beam-open {
-    to { transform: scaleX(1); }
-  }
-
-  @keyframes pool-arrive {
-    to { opacity: 1; }
-  }
-
   @keyframes art-arrive {
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes shadow-grow {
-    to { opacity: 0.28; transform: translate(-22%, 25%) scaleY(0.25) skewX(34deg); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
   }
 
   @media (max-width: 900px) {
     .farm-hero {
-      grid-template-columns: minmax(18rem, 0.78fr) minmax(27rem, 1.22fr);
-      padding-inline: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      min-height: auto;
+      padding: 8.5rem 2.5rem 5rem;
+      gap: 0;
+    }
+
+    .farm-hero__copy {
+      max-width: 42rem;
+      transform: none;
+    }
+
+    .farm-stage {
+      align-self: center;
+      width: min(92vw, 44rem);
+      margin-top: 2.75rem;
+      transform: none;
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1100px) {
+    .farm-hero__lead {
+      max-width: 20em;
     }
   }
 
@@ -514,8 +509,8 @@ const farmScenes = [
 
     .farm-hero {
       display: flex;
-      min-height: 820px;
-      padding: 8.75rem 1.25rem 3rem;
+      min-height: 0;
+      padding: 8.5rem 1.25rem 4.25rem;
     }
 
     .farm-hero h1 {
@@ -524,12 +519,13 @@ const farmScenes = [
     }
 
     .farm-hero__copy {
-      position: static;
+      position: relative;
     }
 
     .farm-hero__lead {
       margin-top: 1.25rem;
       font-size: 0.95rem;
+      line-height: 1.9;
     }
 
     .farm-hero__lead br {
@@ -537,50 +533,51 @@ const farmScenes = [
     }
 
     .farm-stage {
-      width: 100%;
-      min-height: 25rem;
-      margin-top: 0.75rem;
+      width: 105%;
+      max-width: none;
+      min-height: 0;
+      margin: 2.5rem -2.5% 0;
     }
 
-    .farm-stage__lamp {
-      top: 0;
-      right: 1%;
-      width: 4.35rem;
-    }
-
-    .farm-stage__beam {
-      top: 8%;
-      right: -2%;
-      width: 98%;
-      height: 78%;
-      clip-path: polygon(91% 0, 100% 2%, 97% 100%, 0 100%);
-    }
-
-    .farm-stage__pool {
-      right: -6%;
-      bottom: 3%;
-      width: 108%;
-      height: 20%;
-    }
-
-    .farm-stage__art,
-    .farm-stage__shadow {
-      right: -9%;
-      bottom: 4%;
-      width: 112%;
-      height: 78%;
-    }
-
-    .farm-stage__shadow {
-      transform: translate(-10%, 18%) scaleY(0.2) skewX(26deg);
+    .farm-hero::before {
+      background:
+        radial-gradient(
+          ellipse 92% 48% at 100% 48%,
+          rgb(255 235 145 / 19%) 0%,
+          rgb(255 235 145 / 9%) 38%,
+          transparent 72%
+        );
     }
 
     .farm-hero__cta {
-      position: absolute;
-      z-index: 10;
-      bottom: 1.25rem;
-      left: 1.25rem;
-      margin: 0;
+      position: relative;
+      z-index: 8;
+      margin-top: 2rem;
+    }
+
+    .farm-stage__ground-light {
+      right: -2%;
+      width: 104%;
+      height: 22%;
+      filter: blur(20px);
+    }
+
+    .farm-stage__shadow--person {
+      left: 0;
+      width: 32%;
+      height: 10%;
+    }
+
+    .farm-stage__shadow--tool {
+      left: 20%;
+      width: 27%;
+      height: 6%;
+    }
+
+    .farm-stage__shadow--tree {
+      left: 29%;
+      width: 42%;
+      height: 12%;
     }
 
     :global(.farm-page > .yano-brand) {
@@ -590,39 +587,25 @@ const farmScenes = [
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .farm-stage__lamp,
-    .farm-stage__beam,
-    .farm-stage__pool,
-    .farm-stage__art,
-    .farm-stage__shadow {
+    .farm-stage__art {
       animation: none;
     }
 
-    .farm-stage__lamp { opacity: 1; transform: none; }
-    .farm-stage__beam { transform: none; }
-    .farm-stage__pool { opacity: 1; }
-    .farm-stage__art { opacity: 1; transform: none; }
-    .farm-stage__shadow { opacity: 0.28; }
+    .farm-stage__art { opacity: 1; transform: translate(-50%, -50%); }
   }
 
-  /* The farm story continues below the unchanged spotlight hero. */
+  /* The farm story continues below the hero. */
   .farm-story,
   .farm-facts,
   .farm-seasons,
-  .farm-to-bottle,
-  .fresh-lemon,
-  .join-farm,
-  .farm-final {
+  .fresh-lemon {
     box-sizing: border-box;
   }
 
   .farm-story h2,
   .farm-facts h2,
   .farm-seasons h2,
-  .farm-to-bottle h2,
-  .fresh-lemon h2,
-  .join-farm h2,
-  .farm-final h2 {
+  .fresh-lemon h2 {
     margin: 0;
     font-family: "Noto Serif JP", serif;
     font-size: clamp(2.125rem, 2.8vw, 2.5rem);
@@ -635,12 +618,12 @@ const farmScenes = [
   .farm-story {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(24rem, 1.1fr);
+    grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.82fr);
     grid-template-areas: "heading photo" "body photo";
     align-items: center;
     gap: 2rem clamp(3rem, 6vw, 6rem);
     width: 100%;
-    padding: clamp(6.5rem, 8vw, 8rem) max(2.5rem, calc((100vw - 1180px) / 2));
+    padding: clamp(5.5rem, 7vw, 6.5rem) max(2.5rem, calc((100vw - 1060px) / 2));
     background: #fffdf5;
     color: #143d62;
   }
@@ -650,13 +633,19 @@ const farmScenes = [
     top: 0;
     left: 0;
     width: 100%;
-    height: clamp(2rem, 3vw, 2.75rem);
-    background: url("/images/decor/kominka-wave-divider.svg") repeat-x center / auto 100%;
+    height: clamp(3.5rem, 4.5vw, 4rem);
+    background: url("/images/decor/kominka-wave-divider-wide.svg") repeat-x center / auto 100%;
     content: "";
+    transform: translateY(-100%);
   }
 
   .farm-story__heading { grid-area: heading; align-self: end; }
-  .farm-story__photo { grid-area: photo; margin: 0; }
+  .farm-story__photo {
+    grid-area: photo;
+    justify-self: end;
+    width: min(100%, 25rem);
+    margin: 0;
+  }
   .farm-story__body { grid-area: body; align-self: start; max-width: 38rem; }
 
   .farm-story__photo img {
@@ -825,99 +814,106 @@ const farmScenes = [
     line-height: 1.85;
   }
 
-  .farm-to-bottle {
-    padding: clamp(5rem, 7vw, 6.5rem) max(2.5rem, calc((100vw - 1180px) / 2));
-    background: #ffe66a;
-    color: #143d62;
-  }
-
-  .farm-to-bottle header {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    gap: 0.75rem clamp(3rem, 6vw, 6rem);
-  }
-
-  .farm-to-bottle header .eyebrow,
-  .farm-to-bottle header h2 {
-    grid-column: 1;
-  }
-
-  .farm-to-bottle header > p {
-    grid-column: 2;
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.9;
-  }
-
-  .farm-to-bottle header > p:first-of-type {
-    grid-row: 1 / span 2;
-    align-self: end;
-  }
-
-  .farm-to-bottle header > p:last-of-type {
-    margin-top: 0.75rem;
-  }
-
-  .farm-to-bottle .eyebrow {
-    color: #143d62;
-  }
-
-  .farm-to-bottle ol {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 2.3rem;
-    margin: 3.5rem 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .farm-to-bottle li {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 7.5rem;
-    border: 2px solid #143d62;
-    border-radius: 50%;
-    background: #fffdf5;
-    text-align: center;
-  }
-
-  .farm-to-bottle li:not(:last-child)::after {
-    position: absolute;
-    left: calc(100% + 0.55rem);
-    content: "→";
-    font-size: 1.5rem;
-  }
-
-  .farm-to-bottle li span {
-    font-size: 0.65rem;
-    font-weight: 900;
-    letter-spacing: 0.12em;
-  }
-
-  .farm-to-bottle li b {
-    font-size: 0.95rem;
-  }
-
   .farm-product {
-    grid-template-columns: 1.08fr 0.92fr;
+    position: relative;
+    isolation: isolate;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    grid-template-areas:
+      "heading heading"
+      "media copy";
+    gap: clamp(2.5rem, 4vw, 4rem) clamp(3rem, 6vw, 6rem);
     width: min(calc(100% - 5rem), 1120px);
     margin: clamp(5rem, 7vw, 6.5rem) auto;
-    padding: clamp(2.5rem, 4vw, 4rem);
+    padding: clamp(3.5rem, 5vw, 5rem);
+    border: 0;
+    border-radius: 0;
+    background: #fffdf7;
+    box-shadow:
+      -1rem 1.25rem 0 #101820,
+      1rem 1rem 0 #ffe000;
+    transform: rotate(-0.35deg);
   }
 
-  .farm-product__copy > p:nth-of-type(2) {
+  .farm-product::before,
+  .farm-product::after {
+    content: none;
+  }
+
+  .farm-product__heading {
+    grid-area: heading;
+  }
+
+  .farm-product__label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 1.75rem;
+    margin: 0 0 1.15rem;
+    padding: 0.15rem 0.65rem;
+    border: 1.5px solid #143d62;
+    border-radius: 0.4rem;
+    color: #143d62;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+  }
+
+  .farm-product__heading h2 {
+    max-width: none;
+    color: #ff3d94;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: clamp(3rem, 5vw, 4.4rem);
+    font-weight: 900;
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+  }
+
+  .farm-product__lead {
+    margin: 1rem 0 0;
+    color: #143d62;
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    font-weight: 800;
+    line-height: 1.7;
+  }
+
+  .farm-product figure {
+    grid-area: media;
+    align-self: start;
+    margin: 0;
+    padding: 0.45rem;
+    border: 2px solid #143d62;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0.45rem 0.5rem 0 #ffe000;
+    transform: rotate(0.7deg);
+  }
+
+  .farm-product img {
+    width: 100%;
+    max-height: none;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center 46%;
+    border-radius: 0.65rem;
+  }
+
+  .farm-product__copy {
+    grid-area: copy;
+    align-self: center;
+  }
+
+  .farm-product__copy > p:first-of-type {
     max-width: 36rem;
-    margin: 1.5rem 0 0;
+    margin: 0 0 1.5rem;
     font-size: 1rem;
     line-height: 1.9;
   }
 
   .farm-product h3 {
-    margin: 2rem 0 1rem;
+    margin: 0 0 1rem;
     font-family: "Noto Serif JP", serif;
-    font-size: 1.45rem;
+    font-size: clamp(1.45rem, 2vw, 1.8rem);
     font-weight: 600;
+    line-height: 1.55;
   }
 
   .farm-product dl {
@@ -997,71 +993,46 @@ const farmScenes = [
     font-weight: 800;
   }
 
-  .join-farm {
-    width: min(calc(100% - 5rem), 1120px);
-    margin: 0 auto;
-    padding: clamp(5rem, 7vw, 6.5rem) 0;
-  }
+  @media (min-width: 768px) and (max-width: 900px) {
+    .farm-hero {
+      padding-bottom: 4rem;
+    }
 
-  .join-farm h2 {
-    max-width: 16em;
-  }
+    .farm-stage {
+      width: min(76vw, 36rem);
+      margin-top: 2rem;
+    }
 
-  .join-farm > p:not(.eyebrow) {
-    max-width: 45rem;
-    margin: 1.5rem 0 2rem;
-    font-size: 1rem;
-    line-height: 1.9;
-  }
+    .farm-story {
+      grid-template-columns: 1fr;
+      grid-template-areas: "heading" "photo" "body";
+      gap: 2.25rem;
+      padding: 5.5rem 2.5rem 5rem;
+    }
 
-  .join-farm > a {
-    display: inline-flex;
-    gap: 1.5rem;
-    align-items: center;
-    min-height: 50px;
-    padding: 0.65rem 1.1rem;
-    border: 2px solid #fff;
-    background: #fffdf5;
-    color: #143d62;
-    font-weight: 800;
-    text-decoration: none;
-  }
+    .farm-story__photo {
+      justify-self: center;
+      width: min(100%, 38rem);
+    }
 
-  .farm-final {
-    padding: clamp(5rem, 7vw, 6.5rem) max(2.5rem, calc((100vw - 1120px) / 2));
-    background: #143d62;
-    color: #fff;
-  }
+    .farm-story__photo img {
+      aspect-ratio: 4 / 3;
+    }
 
-  .farm-final > p:not(.eyebrow) {
-    max-width: 42rem;
-    margin: 1.5rem 0 2rem;
-    font-size: 1rem;
-    line-height: 1.9;
-  }
+    .farm-product {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "heading"
+        "media"
+        "copy";
+      gap: 2.5rem;
+      width: min(calc(100% - 5rem), 42rem);
+    }
 
-  .farm-final div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .farm-final a {
-    display: inline-flex;
-    gap: 1.5rem;
-    align-items: center;
-    min-height: 52px;
-    padding: 0.65rem 1.1rem;
-    border: 2px solid #fff;
-    color: #fff;
-    font-weight: 800;
-    text-decoration: none;
-  }
-
-  .farm-final a:first-child {
-    border-color: #ffe000;
-    background: #ffe000;
-    color: #143d62;
+    .farm-product figure {
+      width: min(100%, 36rem);
+      justify-self: center;
+    }
   }
 
   @media (max-width: 767px) {
@@ -1083,10 +1054,7 @@ const farmScenes = [
     .farm-story h2,
     .farm-facts h2,
     .farm-seasons h2,
-    .farm-to-bottle h2,
-    .fresh-lemon h2,
-    .join-farm h2,
-    .farm-final h2 {
+    .fresh-lemon h2 {
       font-size: 1.75rem;
     }
 
@@ -1111,19 +1079,15 @@ const farmScenes = [
     }
 
     .farm-seasons,
-    .farm-to-bottle,
-    .fresh-lemon,
-    .farm-final {
+    .fresh-lemon {
       padding: 4rem 1.25rem;
     }
 
-    .farm-seasons header,
-    .farm-to-bottle header {
+    .farm-seasons header {
       display: block;
     }
 
-    .farm-seasons header > p:last-child,
-    .farm-to-bottle header > p {
+    .farm-seasons header > p:last-child {
       margin-top: 1.5rem;
     }
 
@@ -1154,25 +1118,42 @@ const farmScenes = [
       grid-column: 2;
     }
 
-    .farm-to-bottle ol {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
-
-    .farm-to-bottle li {
-      min-height: 7rem;
-    }
-
-    .farm-to-bottle li:not(:last-child)::after {
-      display: none;
+    .farm-product {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "heading"
+        "media"
+        "copy";
+      gap: 2rem;
+      width: calc(100% - 40px);
+      margin: 4rem auto;
+      padding: 2.25rem 1.25rem 2.5rem;
+      transform: none;
     }
 
     .farm-product {
-      grid-template-columns: 1fr;
-      width: calc(100% - 40px);
-      margin: 4rem auto;
-      padding: 2rem 1.25rem;
+      box-shadow:
+        -0.4rem 0.65rem 0 #101820,
+        0.45rem 0.55rem 0 #ffe000;
+    }
+
+    .farm-product__heading h2 {
+      font-size: clamp(2.15rem, 10vw, 2.65rem);
+      line-height: 1.25;
+    }
+
+    .farm-product__lead {
+      margin-top: 0.8rem;
+      font-size: 0.95rem;
+    }
+
+    .farm-product figure {
+      margin: 0;
+      transform: rotate(0.4deg);
+    }
+
+    .farm-product h3 {
+      font-size: 1.4rem;
     }
 
     .farm-product dl {
@@ -1184,20 +1165,5 @@ const farmScenes = [
       gap: 2rem;
     }
 
-    .join-farm {
-      width: calc(100% - 40px);
-      padding: 4rem 0;
-    }
-
-    .join-farm > a,
-    .farm-final a {
-      box-sizing: border-box;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .farm-final div {
-      display: grid;
-    }
   }
 </style>

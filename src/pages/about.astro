@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
-import aboutYano from "@/assets/images/about-yano-lemon-grove.jpg";
 import islandSea from "@/assets/images/scenery/nakajima-overlook.jpeg";
-import kominkaBefore from "@/assets/images/about/yano-kominka-interior.jpeg";
-import kominkaWork from "@/assets/images/projects/no-plan/vol-6.jpg";
+import kominkaBefore from "@/assets/images/about/kominka-exterior-before.jpeg";
+import kominkaWork from "@/assets/images/about/kominka-renovation-floor.jpeg";
 import lemonGrove from "@/assets/images/scenery/scenery-lemon-orchard.jpg";
+import weekendMigration from "@/assets/images/about/weekend-migration-lemon-harvest.jpeg";
 
 const timeline = [
   {
@@ -22,7 +22,8 @@ const timeline = [
     title: "築100年の家を、2円で受け取る。",
     body: "島で出会った一軒の古民家を譲り受けました。立派な計画があったわけではありません。ただ、長く残ってきたこの家にもう一度風を通し、人が集まれる場所にしたい。その気持ちを頼りに、できることから始めました。",
     image: kominkaBefore,
-    alt: "再生した中島の古民家の室内に座る矢野諭稔",
+    alt: "譲り受けた当時の中島の古民家外観",
+    imagePosition: "50% 58%",
   },
   {
     date: "2024.06 — 2025.08",
@@ -30,7 +31,8 @@ const timeline = [
     title: "仲間と手を動かし、家を直す。",
     body: "瓦を下ろし、屋根を張り替え、電気を通し、漆喰を塗る。分からないことは島の人や職人に教わり、仲間と少しずつ進めました。クラウドファンディングにも支えられ、2025年8月、古民家は人を迎えられる場所になりました。",
     image: kominkaWork,
-    alt: "仲間と進めた古民家再生の作業風景",
+    alt: "床板を外し、仲間と進めた古民家再生の作業風景",
+    imagePosition: "50% 50%",
   },
   {
     date: "2025.10",
@@ -45,8 +47,9 @@ const timeline = [
     label: "WEEKEND MIGRATION",
     title: "暮らしを変えすぎず、関わり続ける。",
     body: "平日は松山や東京で広告の仕事をし、時間が許す週末に中島へ。古民家と畑を行き来しながら、島の人や仲間と手を動かしています。移住するか、しないかだけではない。自分にできる距離から地域と関わる、その一つの形を続けています。",
-    image: aboutYano,
-    alt: "中島のレモン畑で笑顔を見せる矢野諭稔",
+    image: weekendMigration,
+    alt: "中島のレモン畑で収穫を終えた仲間たち",
+    imagePosition: "50% 48%",
   },
 ];
 ---
@@ -59,22 +62,19 @@ const timeline = [
     <YanoSpeechBubble size="map" />
     <header class="about-hero">
       <div class="about-shell about-hero__grid">
-        <div class="about-hero__copy">
-          <p class="about-kicker">PROFILE / SATOSHI YANO</p>
-          <h1>田舎を、もっと身近な選択肢に。</h1>
-          <p class="about-hero__lead">
-            平日は広告の仕事をしながら、週末は愛媛の離島・中島へ。<br />
-            古民家とレモン畑を手入れする、週末移住者です。
-          </p>
-          <div class="about-hero__name">
-            <strong>矢野諭稔</strong>
-            <span>Satoshi Yano</span>
+        <div class="about-hero__label" aria-hidden="true">
+          <p class="about-hero__display">PROFILE</p>
+          <p class="about-hero__byline">SATOSHI YANO</p>
+        </div>
+        <div class="about-hero__circle">
+          <div class="about-hero__circle-content">
+            <h1>田舎を、もっと身近な選択肢に。</h1>
+            <p class="about-hero__lead">
+              <span>平日は広告の仕事をしながら、週末は愛媛の離島・中島へ。</span>
+              <span>古民家とレモン畑を手入れする、週末移住者です。</span>
+            </p>
           </div>
         </div>
-        <figure class="about-hero__portrait">
-          <img src={aboutYano.src} alt="中島のレモン畑で笑顔を見せる矢野諭稔" loading="eager" decoding="async" />
-          <figcaption>NAKAJIMA, EHIME / 2026</figcaption>
-        </figure>
       </div>
     </header>
 
@@ -105,7 +105,13 @@ const timeline = [
                 <span>{String(index + 1).padStart(2, "0")}</span>
               </div>
               <figure class="timeline__image">
-                <img src={item.image.src} alt={item.alt} loading="eager" decoding="async" />
+                <img
+                  src={item.image.src}
+                  alt={item.alt}
+                  loading="eager"
+                  decoding="async"
+                  style={item.imagePosition ? `object-position: ${item.imagePosition}` : undefined}
+                />
               </figure>
               <div class="timeline__card">
                 <div class="timeline__meta"><time>{item.date}</time><span>{item.label}</span></div>
@@ -125,7 +131,6 @@ const timeline = [
         <p>暮らしや仕事を投げ出すのではなく、今の自分にできる範囲で地域と関わり続ける。時間の許す限り、島の人や風景との関係を手入れしていきたいと思っています。</p>
         <div class="about-now__links">
           <a href="/">トップへ戻る <span aria-hidden="true">→</span></a>
-          <a href="/story">これまでの記録を見る <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>
@@ -139,16 +144,16 @@ const timeline = [
   .about-page { position: relative; overflow: clip; background: #36a8e5; font-family: "Noto Sans JP", sans-serif; }
   .about-shell { width: min(1160px, calc(100% - clamp(2.5rem, 6vw, 5rem))); margin-inline: auto; }
   .about-kicker { margin: 0; color: #ffe13b; font-size: .78rem; font-weight: 700; line-height: 1.4; letter-spacing: .16em; }
-  .about-hero { position: relative; padding: clamp(20rem, 23vw, 22rem) 0 clamp(5rem, 6.5vw, 6rem); }
-  .about-hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(24rem, 1.1fr); gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; }
-  .about-hero h1 { max-width: 11em; margin: 1.15rem 0 1.5rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(3rem, 3.75vw, 3.375rem); font-weight: 500; line-height: 1.4; letter-spacing: .01em; text-wrap: balance; }
-  .about-hero__lead { max-width: 38rem; margin: 0; color: #fff; font-size: 1rem; line-height: 1.9; }
-  .about-hero__name { display: flex; gap: 1rem; align-items: baseline; margin-top: 2.25rem; color: #fff; }
-  .about-hero__name strong { font-family: "Noto Serif JP", serif; font-size: 1.45rem; font-weight: 500; }
-  .about-hero__name span { font-size: .72rem; letter-spacing: .13em; opacity: .75; }
-  .about-hero__portrait { position: relative; margin: 0; padding: .65rem .65rem 2rem; background: #fffdf8; box-shadow: .75rem .8rem 0 #ffe13b; transform: rotate(1.5deg); }
-  .about-hero__portrait img { display: block; width: 100%; height: auto; object-fit: contain; }
-  .about-hero__portrait figcaption { position: absolute; right: 1rem; bottom: .55rem; color: #657387; font-size: .62rem; letter-spacing: .12em; }
+  .about-hero { position: relative; display: grid; min-height: clamp(48rem, 64vw, 56rem); padding: clamp(6rem, 8vw, 8rem) 0 clamp(4rem, 6vw, 5rem); }
+  .about-hero__grid { display: grid; grid-template-columns: minmax(17rem, .7fr) minmax(32rem, 1.3fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .about-hero__label { align-self: center; padding-top: clamp(5rem, 8vw, 7rem); }
+  .about-hero__display { margin: 0 0 1rem; color: #fff; font-size: clamp(4.5rem, 7vw, 6.75rem); font-weight: 800; line-height: .92; letter-spacing: -.045em; }
+  .about-hero__byline { margin: 0; color: #ffe13b; font-size: 1rem; font-weight: 800; line-height: 1.4; letter-spacing: .16em; text-shadow: 0 1px 0 #234a75; }
+  .about-hero__circle { box-sizing: border-box; display: grid; place-items: center; justify-self: end; width: min(100%, clamp(32rem, 47vw, 42rem)); aspect-ratio: 1; padding: clamp(4.25rem, 7vw, 6.5rem); border-radius: 50%; background: #050505; transform: translateY(-1.5rem); }
+  .about-hero__circle-content { width: min(100%, 31rem); color: #fff; text-align: center; }
+  .about-hero h1 { max-width: 12em; margin: 0 auto 1.75rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 500; line-height: 1.5; letter-spacing: .01em; text-wrap: balance; }
+  .about-hero__lead { max-width: 34rem; margin: 0 auto; color: rgb(255 255 255 / 88%); font-size: clamp(.9375rem, 1.1vw, 1rem); line-height: 2; text-align: center; }
+  .about-hero__lead span { display: block; }
   .about-intro { padding: clamp(5rem, 6.5vw, 6rem) 0; background: #fffdf8; }
   .about-intro__grid { display: grid; grid-template-columns: minmax(15rem, .65fr) minmax(0, 1.35fr); gap: clamp(3rem, 5vw, 4.5rem); }
   .about-intro .about-kicker { color: #2e95cf; }
@@ -182,9 +187,10 @@ const timeline = [
   .about-now__links a { box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; gap: 2rem; min-width: 15rem; min-height: 52px; padding: .65rem 1.1rem; border: 2px solid #fff; background: #fffdf8; color: #234a75; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
   .about-now__links a:hover, .about-now__links a:focus-visible { box-shadow: .28rem .32rem 0 #ffe13b; transform: translate(-.12rem, -.12rem); }
   @media (max-width: 900px) {
-    .about-hero { padding: 20rem 0 4.5rem; }
+    .about-hero { min-height: 0; padding: 15.5rem 0 4.5rem; }
     .about-hero__grid { grid-template-columns: 1fr; }
-    .about-hero__portrait { width: min(100%, 38rem); }
+    .about-hero__label { padding-top: 0; }
+    .about-hero__circle { justify-self: center; width: min(100%, 38rem); transform: none; }
     .timeline__item { grid-template-columns: 3.5rem 1fr; }
     .timeline__image, .timeline__card { grid-column: 2; }
     .timeline__image { grid-row: 1; }
@@ -195,10 +201,14 @@ const timeline = [
     :global(body:has(.about-page)) { --site-frame-space: 5px; }
     .about-shell { width: min(100% - 40px, 1180px); }
     .about-kicker { font-size: .72rem; }
-    .about-hero { padding: 14.5rem 0 4rem; }
-    .about-hero h1 { max-width: 11em; font-size: 2.25rem; line-height: 1.45; }
-    .about-hero__lead br { display: none; }
-    .about-hero__lead { font-size: .95rem; }
+    .about-hero { padding: 13.75rem 0 3.75rem; }
+    .about-hero__grid { gap: 2rem; }
+    .about-hero__display { font-size: clamp(3.4rem, 17vw, 4.5rem); }
+    .about-hero__byline { font-size: .9375rem; }
+    .about-hero__circle { padding: clamp(2.5rem, 11vw, 3.75rem) clamp(2rem, 9vw, 3.5rem); }
+    .about-hero h1 { max-width: 10.5em; margin-bottom: 1.2rem; font-size: clamp(1.65rem, 7.4vw, 1.9rem); line-height: 1.55; }
+    .about-hero__lead { font-size: .9rem; line-height: 1.9; }
+    .about-hero__lead span { display: inline; }
     .about-intro, .about-story { padding-block: 4rem; }
     .about-intro__grid { grid-template-columns: 1fr; gap: 1.4rem; }
     .about-intro__aside { gap: 1rem; }

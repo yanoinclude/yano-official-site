@@ -127,16 +127,19 @@ const recentInstagramPosts = [
   {
     title: "中島のレモンの日",
     href: "https://www.instagram.com/p/DVQIBMikpXm/",
+    videoUrl: "/videos/recent/recent-1.m4v",
     image: "/images/instagram/recent-1.jpg",
   },
   {
     title: "海掃除",
     href: "https://www.instagram.com/p/DXy3hGTh_VD/",
+    videoUrl: "/videos/recent/recent-2.m4v",
     image: "/images/instagram/recent-2.jpg",
   },
   {
     title: "ユウヤケバル in 道後",
     href: "https://www.instagram.com/p/DZD6QxLSGjN/",
+    videoUrl: "/videos/recent/recent-3.m4v",
     image: "/images/instagram/recent-3.jpg",
   },
 ];
@@ -686,7 +689,18 @@ const recentInstagramPosts = [
                 loading="lazy"
                 decoding="async"
               />
-              <a href={post.href} target="_blank" rel="noopener noreferrer" aria-label={`Instagramで「${post.title}」の投稿を見る`}></a>
+              <button
+                class="recent-post__play"
+                type="button"
+                data-recent-post-play
+                data-video-url={post.videoUrl}
+                data-post-title={post.title}
+                aria-label={`「${post.title}」をサイト上で再生する`}
+              ></button>
+              <span class="recent-post__loading" role="status" aria-live="polite">動画を読み込んでいます</span>
+              <noscript>
+                <a href={post.href} target="_blank" rel="noopener noreferrer">Instagramで投稿を見る</a>
+              </noscript>
             </div>
           </article>
         ))}
@@ -713,6 +727,40 @@ const recentInstagramPosts = [
     const updateBackToTop = () => backToTop?.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.75);
     window.addEventListener("scroll", updateBackToTop, { passive: true });
     updateBackToTop();
+
+    document.querySelectorAll<HTMLButtonElement>("[data-recent-post-play]").forEach((button) => {
+      if (button.dataset.playerReady === "true") return;
+      button.dataset.playerReady = "true";
+
+      button.addEventListener("click", () => {
+        const preview = button.closest<HTMLElement>(".recent-post__preview");
+        const videoUrl = button.dataset.videoUrl;
+        const title = button.dataset.postTitle ?? "Instagram動画";
+        if (!preview || !videoUrl || preview.classList.contains("is-playing")) return;
+
+        preview.classList.add("is-loading");
+        button.disabled = true;
+
+        const video = document.createElement("video");
+        video.className = "recent-post__player";
+        video.src = videoUrl;
+        video.poster = preview.querySelector<HTMLImageElement>("img")?.currentSrc ?? "";
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+        video.setAttribute("aria-label", `${title}の動画`);
+
+        const showPlayer = () => {
+          preview.classList.remove("is-loading");
+          preview.classList.add("is-playing");
+        };
+        video.addEventListener("playing", showPlayer, { once: true });
+        video.addEventListener("error", showPlayer, { once: true });
+        preview.append(video);
+        void video.play().catch(showPlayer);
+      });
+    });
 
     const islandMap = document.querySelector<HTMLElement>("[data-yano-island]");
     const islandYano = islandMap?.querySelector<HTMLElement>("[data-island-yano]");
@@ -4580,14 +4628,75 @@ const recentInstagramPosts = [
     object-fit: cover;
     object-position: center;
   }
-  .recent-post__preview > a {
+  .recent-post__play {
     position: absolute;
     inset: 0;
     z-index: 2;
+    width: 100%;
+    padding: 0;
+    border: 0;
     background: transparent;
     box-shadow: none;
+    cursor: pointer;
   }
-  .recent-post__preview > a:focus-visible { outline: 4px solid #ffe000; outline-offset: -5px; }
+  .recent-post__play::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3.75rem;
+    height: 3.75rem;
+    border: 2px solid rgb(255 255 255 / 78%);
+    border-radius: 50%;
+    background: rgb(18 59 99 / 12%);
+    content: "";
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+  .recent-post__play:hover::after,
+  .recent-post__play:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .recent-post__play:focus-visible { outline: 4px solid #ffe000; outline-offset: -5px; }
+  .recent-post__loading {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    z-index: 4;
+    display: none;
+    width: max-content;
+    max-width: calc(100% - 2rem);
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    background: rgb(18 59 99 / 88%);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    transform: translateX(-50%);
+  }
+  .recent-post__preview.is-loading .recent-post__loading { display: block; }
+  .recent-post__preview.is-playing > img,
+  .recent-post__preview.is-playing .recent-post__play,
+  .recent-post__preview.is-playing .recent-post__loading {
+    visibility: hidden;
+  }
+  .recent-post__player {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #102f4d;
+    object-fit: contain;
+  }
+  .recent-post__preview noscript a {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
   .recent-section__lemon {
     position: absolute;
     z-index: -1;
