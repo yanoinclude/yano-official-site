@@ -134,54 +134,55 @@ const timeline = [
 
 <style>
   :global(body) { background: #36a8e5; color: #18395e; }
+  :global(body:has(.about-page)) { --site-frame-space: clamp(8px, .7vw, 10px); }
   :global(body:has(.about-page) .site-header) { display: none; }
   .about-page { position: relative; overflow: clip; background: #36a8e5; font-family: "Noto Sans JP", sans-serif; }
-  .about-shell { width: min(1160px, calc(100% - clamp(2rem, 7vw, 8rem))); margin-inline: auto; }
-  .about-kicker { margin: 0; color: #ffe13b; font-size: .75rem; font-weight: 700; letter-spacing: .16em; }
-  .about-hero { position: relative; padding: clamp(21rem, 24vw, 23rem) 0 clamp(5rem, 8vw, 7rem); }
-  .about-hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(24rem, 1.1fr); gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center; }
-  .about-hero h1 { max-width: 9em; margin: 1.15rem 0 1.6rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2.7rem, 4.7vw, 4.6rem); font-weight: 500; line-height: 1.35; letter-spacing: .01em; text-wrap: balance; }
-  .about-hero__lead { max-width: 38rem; margin: 0; color: #fff; font-size: clamp(.95rem, 1.15vw, 1rem); line-height: 1.85; }
+  .about-shell { width: min(1160px, calc(100% - clamp(2.5rem, 6vw, 5rem))); margin-inline: auto; }
+  .about-kicker { margin: 0; color: #ffe13b; font-size: .78rem; font-weight: 700; line-height: 1.4; letter-spacing: .16em; }
+  .about-hero { position: relative; padding: clamp(20rem, 23vw, 22rem) 0 clamp(5rem, 6.5vw, 6rem); }
+  .about-hero__grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(24rem, 1.1fr); gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; }
+  .about-hero h1 { max-width: 11em; margin: 1.15rem 0 1.5rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(3rem, 3.75vw, 3.375rem); font-weight: 500; line-height: 1.4; letter-spacing: .01em; text-wrap: balance; }
+  .about-hero__lead { max-width: 38rem; margin: 0; color: #fff; font-size: 1rem; line-height: 1.9; }
   .about-hero__name { display: flex; gap: 1rem; align-items: baseline; margin-top: 2.25rem; color: #fff; }
   .about-hero__name strong { font-family: "Noto Serif JP", serif; font-size: 1.45rem; font-weight: 500; }
   .about-hero__name span { font-size: .72rem; letter-spacing: .13em; opacity: .75; }
   .about-hero__portrait { position: relative; margin: 0; padding: .65rem .65rem 2rem; background: #fffdf8; box-shadow: .75rem .8rem 0 #ffe13b; transform: rotate(1.5deg); }
   .about-hero__portrait img { display: block; width: 100%; height: auto; object-fit: contain; }
   .about-hero__portrait figcaption { position: absolute; right: 1rem; bottom: .55rem; color: #657387; font-size: .62rem; letter-spacing: .12em; }
-  .about-intro { padding: clamp(4rem, 8vw, 7rem) 0; background: #fffdf8; }
-  .about-intro__grid { display: grid; grid-template-columns: minmax(10rem, .55fr) minmax(0, 1.45fr); gap: clamp(2rem, 6vw, 6rem); }
+  .about-intro { padding: clamp(5rem, 6.5vw, 6rem) 0; background: #fffdf8; }
+  .about-intro__grid { display: grid; grid-template-columns: minmax(15rem, .65fr) minmax(0, 1.35fr); gap: clamp(3rem, 5vw, 4.5rem); }
   .about-intro .about-kicker { color: #2e95cf; }
   .about-intro__aside { display: flex; flex-direction: column; gap: 2rem; }
-  .about-intro__aside > p:last-child { max-width: 18rem; margin: 0; color: #657387; font-size: .9rem; line-height: 1.95; }
-  .about-intro h2 { max-width: 19em; margin: -.25rem 0 2rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(1.8rem, 3vw, 2.75rem); font-weight: 500; line-height: 1.5; text-wrap: balance; }
+  .about-intro__aside > p:last-child { max-width: 20rem; margin: 0; color: #657387; font-size: 1rem; line-height: 1.9; }
+  .about-intro h2 { max-width: 19em; margin: -.25rem 0 1.75rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(2.125rem, 2.5vw, 2.25rem); font-weight: 500; line-height: 1.45; text-wrap: balance; }
   .about-intro__main > p { max-width: 43rem; margin: 0 0 1rem; color: #4c5f74; font-size: 1rem; line-height: 2; }
-  .about-story { padding: clamp(5rem, 9vw, 8.5rem) 0; }
-  .about-story__header { margin-bottom: clamp(3rem, 6vw, 5.5rem); }
-  .about-story__header h2 { margin: .9rem 0 1rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 500; line-height: 1.4; }
+  .about-story { padding: clamp(5rem, 6.5vw, 6rem) 0; }
+  .about-story__header { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
+  .about-story__header h2 { margin: .9rem 0 1rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 2.5vw, 2.375rem); font-weight: 500; line-height: 1.45; text-wrap: balance; }
   .about-story__header > p:last-child { margin: 0; color: rgb(255 255 255 / 78%); }
-  .timeline { display: grid; gap: clamp(3rem, 6vw, 5.5rem); margin: 0; padding: 0; list-style: none; }
-  .timeline__item { position: relative; display: grid; grid-template-columns: 4rem minmax(0, .95fr) minmax(20rem, 1.05fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+  .timeline { display: grid; gap: clamp(2.5rem, 3.5vw, 3rem); margin: 0; padding: 0; list-style: none; }
+  .timeline__item { position: relative; display: grid; grid-template-columns: 3.5rem minmax(0, .9fr) minmax(20rem, 1.1fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: stretch; }
   .timeline__rail { align-self: stretch; position: relative; display: flex; justify-content: center; padding-top: .2rem; }
-  .timeline__rail::after { position: absolute; top: 2.9rem; bottom: calc(-5.5rem - 1px); left: 50%; width: 1px; background: rgb(255 255 255 / 40%); content: ""; }
+  .timeline__rail::after { position: absolute; top: 2.9rem; bottom: calc(-3rem - 1px); left: 50%; width: 1px; background: rgb(255 255 255 / 40%); content: ""; }
   .timeline__item:last-child .timeline__rail::after { display: none; }
   .timeline__rail span { z-index: 1; display: grid; place-items: center; width: 3.1rem; height: 3.1rem; border: 2px solid #fff; border-radius: 50%; background: #36a8e5; color: #fff; font-size: .72rem; letter-spacing: .08em; }
   .timeline__image { margin: 0; padding: .45rem; background: #fffdf8; box-shadow: .55rem .6rem 0 rgb(20 78 119 / 18%); transform: rotate(-1deg); }
   .timeline__item:nth-child(even) .timeline__image { transform: rotate(1deg); }
-  .timeline__image img { display: block; width: 100%; height: auto; object-fit: contain; }
-  .timeline__card { padding: clamp(1.6rem, 3vw, 2.6rem); border-radius: .2rem; background: #fffdf8; box-shadow: .55rem .6rem 0 #ffe13b; }
+  .timeline__image img { display: block; width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+  .timeline__card { display: flex; flex-direction: column; justify-content: center; min-height: 100%; padding: clamp(1.75rem, 2.5vw, 2.5rem); border-radius: .2rem; background: #fffdf8; box-shadow: .55rem .6rem 0 #ffe13b; }
   .timeline__meta { display: flex; flex-wrap: wrap; gap: .55rem 1rem; align-items: center; margin-bottom: 1rem; color: #2d88bc; font-size: .68rem; letter-spacing: .11em; }
   .timeline__meta time { padding: .3rem .55rem; background: #ffe13b; color: #234a75; font-weight: 500; }
-  .timeline__card h3 { margin: 0 0 1rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(1.3rem, 2vw, 1.75rem); font-weight: 500; line-height: 1.55; }
-  .timeline__card p { margin: 0; color: #4c5f74; font-size: .95rem; line-height: 1.95; }
-  .about-now { padding: 0 0 clamp(6rem, 10vw, 10rem); }
-  .about-now__card { box-sizing: border-box; padding: clamp(2.5rem, 6vw, 5.5rem); background: #234a75; box-shadow: .8rem .85rem 0 #ffe13b; }
-  .about-now__card h2 { margin: 1rem 0 1.4rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 3.7vw, 3.25rem); font-weight: 500; line-height: 1.4; }
+  .timeline__card h3 { margin: 0 0 1rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(1.375rem, 1.65vw, 1.5rem); font-weight: 500; line-height: 1.5; text-wrap: pretty; }
+  .timeline__card p { max-width: 31rem; margin: 0; color: #4c5f74; font-size: 1rem; line-height: 1.9; }
+  .about-now { padding: 0 0 clamp(5rem, 6.5vw, 6rem); }
+  .about-now__card { box-sizing: border-box; padding: clamp(3rem, 4vw, 4rem); background: #234a75; box-shadow: .8rem .85rem 0 #ffe13b; }
+  .about-now__card h2 { margin: 1rem 0 1.4rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 2.5vw, 2.375rem); font-weight: 500; line-height: 1.45; text-wrap: balance; }
   .about-now__card > p:nth-of-type(2) { max-width: 46rem; margin: 0; color: rgb(255 255 255 / 82%); line-height: 2; }
   .about-now__links { display: flex; flex-wrap: wrap; gap: .9rem; margin-top: 2.5rem; }
-  .about-now__links a { display: flex; justify-content: space-between; gap: 2rem; min-width: 15rem; padding: .85rem 1rem; border: 2px solid #fff; background: #fffdf8; color: #234a75; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+  .about-now__links a { box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; gap: 2rem; min-width: 15rem; min-height: 52px; padding: .65rem 1.1rem; border: 2px solid #fff; background: #fffdf8; color: #234a75; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
   .about-now__links a:hover, .about-now__links a:focus-visible { box-shadow: .28rem .32rem 0 #ffe13b; transform: translate(-.12rem, -.12rem); }
   @media (max-width: 900px) {
-    .about-hero { padding-top: 21rem; }
+    .about-hero { padding: 20rem 0 4.5rem; }
     .about-hero__grid { grid-template-columns: 1fr; }
     .about-hero__portrait { width: min(100%, 38rem); }
     .timeline__item { grid-template-columns: 3.5rem 1fr; }
@@ -191,20 +192,30 @@ const timeline = [
     .timeline__rail { grid-row: 1 / 3; }
   }
   @media (max-width: 600px) {
-    .about-shell { width: min(100% - 32px, 1180px); }
-    .about-hero { padding-top: 14.5rem; }
-    .about-hero h1 { max-width: 11em; font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1.4; }
+    :global(body:has(.about-page)) { --site-frame-space: 5px; }
+    .about-shell { width: min(100% - 40px, 1180px); }
+    .about-kicker { font-size: .72rem; }
+    .about-hero { padding: 14.5rem 0 4rem; }
+    .about-hero h1 { max-width: 11em; font-size: 2.25rem; line-height: 1.45; }
     .about-hero__lead br { display: none; }
+    .about-hero__lead { font-size: .95rem; }
+    .about-intro, .about-story { padding-block: 4rem; }
     .about-intro__grid { grid-template-columns: 1fr; gap: 1.4rem; }
     .about-intro__aside { gap: 1rem; }
     .about-intro__aside > p:last-child { max-width: 100%; }
-    .about-intro h2 { margin-top: 0; font-size: 1.75rem; }
+    .about-intro h2, .about-story__header h2, .about-now__card h2 { margin-top: 0; font-size: 1.75rem; line-height: 1.5; }
+    .about-intro__aside > p:last-child, .about-intro__main > p { font-size: .95rem; }
+    .about-story__header { margin-bottom: 2.5rem; }
+    .timeline { gap: 2.5rem; }
     .timeline__item { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; }
     .timeline__rail span { width: 2.35rem; height: 2.35rem; font-size: .6rem; }
-    .timeline__rail::after { top: 2.3rem; }
+    .timeline__rail::after { top: 2.3rem; bottom: calc(-2.5rem - 1px); }
     .timeline__card { padding: 1.35rem; }
-    .timeline__card h3 { font-size: 1.4rem; }
-    .about-now__card { width: calc(100% - 32px); }
+    .timeline__card h3 { font-size: 1.25rem; word-break: auto-phrase; }
+    .timeline__card p { font-size: .95rem; }
+    .about-story__header > p:last-child { font-size: .95rem; }
+    .about-now { padding-bottom: 4rem; }
+    .about-now__card { width: calc(100% - 40px); padding: 2rem 1.35rem; }
     .about-now__links { display: grid; }
     .about-now__links a { box-sizing: border-box; min-width: 0; width: 100%; }
   }
