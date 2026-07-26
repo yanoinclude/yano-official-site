@@ -6425,3 +6425,14 @@ body {
     font-size: 93.75%;
   }
 }
+
+/* Keep every page edge clean; yellow remains an accent within the content. */
+body {
+  --site-frame-space: 0px !important;
+  background: var(--island-surface);
+}
+
+.site-frame {
+  padding: 0;
+  background: var(--island-surface);
+}

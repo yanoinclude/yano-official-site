@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
-import heroLemonGrove from "@/assets/images/hero-user-lemon-grove.jpg";
 import yanoInGrove from "@/assets/images/intro/yano-in-lemon-grove.jpeg";
 import lemonTreeUser from "@/assets/images/activities/activity-lemon-tree-user.jpeg";
 import lemonBasket from "@/assets/images/scenery/nakajima-lemon-basket.jpeg";
@@ -60,15 +59,23 @@ const farmScenes = [
     <header class="farm-hero">
       <div class="farm-hero__copy">
         <p class="eyebrow">LEMON FARM</p>
-        <h1>島の風と光で、<span class="word-keep">レモン</span>を育てる。</h1>
+        <h1>島の風と光で、<br /><span class="word-keep">レモンを育てる。</span></h1>
         <p class="farm-hero__lead">
           中島の斜面に広がるレモン畑。<br />週末ごとに木と向き合い、季節の変化を手で確かめています。
         </p>
+        <a class="farm-hero__cta" href="#farm-intro-title">レモン畑をのぞく <span aria-hidden="true">→</span></a>
       </div>
-      <figure class="farm-hero__image">
-        <img src={heroLemonGrove.src} alt="中島のレモン畑に立つヤノ" />
-        <figcaption>NAKAJIMA, EHIME</figcaption>
-      </figure>
+      <div class="farm-stage" aria-label="レモンの光の中で畑を手入れする矢野">
+        <svg class="farm-stage__lamp" viewBox="0 0 120 90" aria-hidden="true">
+          <path class="farm-stage__leaf" d="M77 19c8-12 20-12 29-6-7 11-18 15-29 9Z" />
+          <path class="farm-stage__lemon" d="M70 16c21 1 34 18 28 38S70 87 48 77 20 47 31 29c8-13 22-17 39-13Z" />
+          <path class="farm-stage__shine" d="M47 31c-7 6-10 13-9 21" />
+        </svg>
+        <span class="farm-stage__beam" aria-hidden="true"></span>
+        <span class="farm-stage__pool" aria-hidden="true"></span>
+        <img class="farm-stage__shadow" src="/images/lemon-farm/yano-lemon-tree.png" alt="" aria-hidden="true" />
+        <img class="farm-stage__art" src="/images/lemon-farm/yano-lemon-tree.png" alt="草刈機を持つ矢野と実をつけたレモンの木のイラスト" />
+      </div>
     </header>
 
     <section class="farm-intro" aria-labelledby="farm-intro-title">
@@ -194,4 +201,320 @@ const farmScenes = [
     .farm-product a { justify-content: space-between; width: 100%; min-height: 52px; }
   }
   @media (prefers-reduced-motion: reduce) { .process-card figure img { transition: none; } }
+
+  /* Lemon spotlight hero. */
+  .farm-page {
+    border-top: 4px solid #ffe000;
+  }
+
+  .farm-hero {
+    box-sizing: border-box;
+    grid-template-columns: minmax(22rem, 0.75fr) minmax(36rem, 1.25fr);
+    min-height: calc(100svh - 4px);
+    padding: clamp(9.5rem, 13vh, 11rem) clamp(3rem, 7vw, 7rem) clamp(4rem, 7vh, 6rem);
+    gap: clamp(2rem, 4vw, 5rem);
+    overflow: hidden;
+  }
+
+  .farm-hero__copy {
+    position: relative;
+    z-index: 8;
+    align-self: center;
+  }
+
+  .farm-hero h1 {
+    max-width: 11em;
+    font-size: clamp(3rem, 4vw, 3.6rem);
+    line-height: 1.5;
+    letter-spacing: 0.045em;
+  }
+
+  .farm-hero__lead {
+    margin-top: 2rem;
+  }
+
+  .farm-hero__cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.4rem;
+    min-height: 48px;
+    margin-top: 2.4rem;
+    color: #fff;
+    font-size: 0.96rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .farm-hero__cta::after {
+    position: absolute;
+    right: 0;
+    bottom: 0.2rem;
+    left: 0;
+    height: 3px;
+    background: #ffe000;
+    content: "";
+    transition: right 300ms ease;
+  }
+
+  .farm-hero__cta span {
+    transition: transform 300ms ease;
+  }
+
+  .farm-stage {
+    position: relative;
+    align-self: stretch;
+    min-height: min(67vw, 47rem);
+    isolation: isolate;
+  }
+
+  .farm-stage__lamp {
+    position: absolute;
+    z-index: 6;
+    top: 1%;
+    right: 0;
+    width: clamp(4.5rem, 7vw, 6.5rem);
+    overflow: visible;
+    filter: drop-shadow(0 4px 0 rgb(20 61 98 / 22%));
+    transform: translateY(-16px) rotate(-4deg);
+    opacity: 0;
+    animation: lamp-arrive 500ms 180ms ease-out forwards;
+    transform-origin: 50% 50%;
+  }
+
+  .farm-stage__lemon {
+    fill: #ffe000;
+    stroke: #143d62;
+    stroke-linejoin: round;
+    stroke-width: 5;
+  }
+
+  .farm-stage__leaf {
+    fill: #5e8b45;
+    stroke: #143d62;
+    stroke-linejoin: round;
+    stroke-width: 4;
+  }
+
+  .farm-stage__shine {
+    fill: none;
+    stroke: #fff7ad;
+    stroke-linecap: round;
+    stroke-width: 5;
+  }
+
+  .farm-stage__beam {
+    position: absolute;
+    z-index: 1;
+    top: 8%;
+    right: 2%;
+    width: 86%;
+    height: 77%;
+    background:
+      linear-gradient(150deg, rgb(255 246 161 / 3%) 3%, rgb(255 240 113 / 23%) 67%, rgb(255 235 76 / 14%));
+    clip-path: polygon(93% 0, 100% 2%, 87% 100%, 2% 100%);
+    filter: blur(1.5px);
+    transform: scaleX(0.08);
+    transform-origin: 96% 0;
+    animation: beam-open 760ms 470ms cubic-bezier(.2, .7, .2, 1) forwards;
+  }
+
+  .farm-stage__pool {
+    position: absolute;
+    z-index: 2;
+    right: 1%;
+    bottom: 4%;
+    width: 96%;
+    height: 23%;
+    border-radius: 50%;
+    background: rgb(255 237 120 / 58%);
+    filter: blur(1px);
+    opacity: 0;
+    animation: pool-arrive 500ms 850ms ease-out forwards;
+  }
+
+  .farm-stage__art,
+  .farm-stage__shadow {
+    position: absolute;
+    right: -1%;
+    bottom: 5%;
+    width: min(100%, 56rem);
+    height: 81%;
+    object-fit: contain;
+    object-position: right bottom;
+  }
+
+  .farm-stage__art {
+    z-index: 5;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: art-arrive 560ms 760ms ease-out forwards;
+  }
+
+  .farm-stage__shadow {
+    z-index: 3;
+    filter: brightness(0) saturate(100%) invert(19%) sepia(25%) saturate(1692%) hue-rotate(171deg) brightness(83%) blur(1.5px);
+    opacity: 0;
+    transform: translate(-22%, 25%) scaleY(0.25) skewX(34deg);
+    transform-origin: 55% 96%;
+    animation: shadow-grow 620ms 980ms ease-out forwards;
+  }
+
+  .farm-hero:has(.farm-hero__cta:hover) .farm-stage__beam,
+  .farm-hero:has(.farm-hero__cta:focus-visible) .farm-stage__beam {
+    filter: brightness(1.12) blur(1px);
+  }
+
+  .farm-hero:has(.farm-hero__cta:hover) .farm-stage__lamp,
+  .farm-hero:has(.farm-hero__cta:focus-visible) .farm-stage__lamp {
+    transform: rotate(2deg);
+  }
+
+  .farm-hero__cta:hover span,
+  .farm-hero__cta:focus-visible span {
+    transform: translateX(6px);
+  }
+
+  .farm-hero__cta:hover::after,
+  .farm-hero__cta:focus-visible::after {
+    right: -0.75rem;
+  }
+
+  :global(.farm-page > .yano-brand) {
+    top: 2rem;
+    left: clamp(3rem, 6vw, 6rem);
+  }
+
+  :global(.farm-page > .yano-brand .yano-brand__bubble) {
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  }
+
+  :global(.farm-page > .yano-brand .yano-brand__character) {
+    display: none;
+  }
+
+  @keyframes lamp-arrive {
+    to { opacity: 1; transform: translateY(0) rotate(-2deg); }
+  }
+
+  @keyframes beam-open {
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes pool-arrive {
+    to { opacity: 1; }
+  }
+
+  @keyframes art-arrive {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes shadow-grow {
+    to { opacity: 0.28; transform: translate(-22%, 25%) scaleY(0.25) skewX(34deg); }
+  }
+
+  @media (max-width: 900px) {
+    .farm-hero {
+      grid-template-columns: minmax(18rem, 0.78fr) minmax(27rem, 1.22fr);
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .farm-page {
+      border-top-width: 3px;
+    }
+
+    .farm-hero {
+      display: flex;
+      min-height: 820px;
+      padding: 8.75rem 1.25rem 3rem;
+    }
+
+    .farm-hero h1 {
+      font-size: clamp(2rem, 9.3vw, 2.35rem);
+      line-height: 1.5;
+    }
+
+    .farm-hero__copy {
+      position: static;
+    }
+
+    .farm-hero__lead {
+      margin-top: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .farm-hero__lead br {
+      display: none;
+    }
+
+    .farm-stage {
+      width: 100%;
+      min-height: 25rem;
+      margin-top: 0.75rem;
+    }
+
+    .farm-stage__lamp {
+      top: 0;
+      right: 1%;
+      width: 4.35rem;
+    }
+
+    .farm-stage__beam {
+      top: 8%;
+      right: -2%;
+      width: 98%;
+      height: 78%;
+      clip-path: polygon(91% 0, 100% 2%, 97% 100%, 0 100%);
+    }
+
+    .farm-stage__pool {
+      right: -6%;
+      bottom: 3%;
+      width: 108%;
+      height: 20%;
+    }
+
+    .farm-stage__art,
+    .farm-stage__shadow {
+      right: -9%;
+      bottom: 4%;
+      width: 112%;
+      height: 78%;
+    }
+
+    .farm-stage__shadow {
+      transform: translate(-10%, 18%) scaleY(0.2) skewX(26deg);
+    }
+
+    .farm-hero__cta {
+      position: absolute;
+      z-index: 10;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      margin: 0;
+    }
+
+    :global(.farm-page > .yano-brand) {
+      top: 1rem;
+      left: 1rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .farm-stage__lamp,
+    .farm-stage__beam,
+    .farm-stage__pool,
+    .farm-stage__art,
+    .farm-stage__shadow {
+      animation: none;
+    }
+
+    .farm-stage__lamp { opacity: 1; transform: none; }
+    .farm-stage__beam { transform: none; }
+    .farm-stage__pool { opacity: 1; }
+    .farm-stage__art { opacity: 1; transform: none; }
+    .farm-stage__shadow { opacity: 0.28; }
+  }
 </style>

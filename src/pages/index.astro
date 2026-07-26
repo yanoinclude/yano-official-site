@@ -127,17 +127,17 @@ const recentInstagramPosts = [
   {
     title: "中島のレモンの日",
     href: "https://www.instagram.com/p/DVQIBMikpXm/",
-    embedUrl: "https://www.instagram.com/p/DVQIBMikpXm/embed/",
+    image: "/images/instagram/recent-1.jpg",
   },
   {
     title: "海掃除",
     href: "https://www.instagram.com/p/DXy3hGTh_VD/",
-    embedUrl: "https://www.instagram.com/p/DXy3hGTh_VD/embed/",
+    image: "/images/instagram/recent-2.jpg",
   },
   {
     title: "ユウヤケバル in 道後",
     href: "https://www.instagram.com/p/DZD6QxLSGjN/",
-    embedUrl: "https://www.instagram.com/p/DZD6QxLSGjN/embed/",
+    image: "/images/instagram/recent-3.jpg",
   },
 ];
 ---
@@ -680,12 +680,12 @@ const recentInstagramPosts = [
         {recentInstagramPosts.map((post) => (
           <article class="recent-post">
             <div class="recent-post__preview">
-              <iframe
-                src={post.embedUrl}
-                title={`Instagram投稿：${post.title}`}
+              <img
+                src={post.image}
+                alt={`Instagram投稿：${post.title}`}
                 loading="lazy"
-                allowtransparency="true"
-              ></iframe>
+                decoding="async"
+              />
               <a href={post.href} target="_blank" rel="noopener noreferrer" aria-label={`Instagramで「${post.title}」の投稿を見る`}></a>
             </div>
           </article>
@@ -4573,18 +4573,20 @@ const recentInstagramPosts = [
     aspect-ratio: 4 / 5;
     background: #fff;
   }
-  .recent-post iframe {
-    position: absolute;
-    top: -76px;
-    left: 0;
+  .recent-post__preview img {
     display: block;
     width: 100%;
-    height: calc(100% + 190px);
-    border: 0;
-    background: #fff;
-    pointer-events: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
-  .recent-post__preview > a { position: absolute; inset: 0; z-index: 2; }
+  .recent-post__preview > a {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: transparent;
+    box-shadow: none;
+  }
   .recent-post__preview > a:focus-visible { outline: 4px solid #ffe000; outline-offset: -5px; }
   .recent-section__lemon {
     position: absolute;
@@ -4629,7 +4631,6 @@ const recentInstagramPosts = [
     .recent-section__content > p span { display: inline; }
     .recent-section__content > a { display: flex; width: 100%; min-height: 3.5rem; margin-top: 1.5rem; }
     .recent-section__feed { grid-template-columns: 1fr; margin-top: 0.25rem; padding-top: 2rem; }
-    .recent-post iframe { top: -70px; height: calc(100% + 180px); }
     .recent-section__lemon { top: -2rem; right: 0.65rem; width: 6rem; }
   }
 

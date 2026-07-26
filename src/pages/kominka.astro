@@ -1,16 +1,16 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
-import heroImage from "@/assets/images/home/yano-kominka-photo.png";
 import roofImage from "@/assets/images/home/kominka-roof-restoration.webp";
-import workImage from "@/assets/images/activities/activity-kominka-user.jpeg";
 import interiorImage from "@/assets/images/concept-user-kominka-interior.jpeg";
-import boardImage from "@/assets/images/concept-user-kominka-board.jpeg";
 import tableImage from "@/assets/images/scenery/nakajima-kominka-table.jpeg";
-import exteriorImage from "@/assets/images/scenery/scenery-kominka.jpg";
 import clearingRoomImage from "@/assets/images/kominka/process/01-clearing-room.jpeg";
 import rebuildingTogetherImage from "@/assets/images/kominka/process/02-rebuilding-together.jpeg";
 import welcomingPeopleImage from "@/assets/images/kominka/process/03-welcoming-people.jpeg";
+
+const rebuildGalleryImage = { src: "/images/kominka/gallery/rebuild-together.png" };
+const welcomingGalleryImage = { src: "/images/kominka/gallery/welcoming-place.png" };
+const activityBaseImage = { src: "/images/kominka/gallery/activity-base.jpeg" };
 
 const gallery = [
   {
@@ -20,8 +20,8 @@ const gallery = [
     className: "gallery-card--wide",
   },
   {
-    image: workImage,
-    alt: "古民家の室内で仲間と再生作業を進める様子",
+    image: rebuildGalleryImage,
+    alt: "仲間と古民家の屋根瓦を下ろしている様子",
     caption: "ひとりではできないことを、みんなで。",
     className: "gallery-card--portrait",
   },
@@ -32,8 +32,8 @@ const gallery = [
     className: "",
   },
   {
-    image: boardImage,
-    alt: "古民家で開かれた催しの案内板",
+    image: welcomingGalleryImage,
+    alt: "仲間と古民家の室内を直している様子",
     caption: "直すだけでなく、人が訪れるきっかけを。",
     className: "",
   },
@@ -44,8 +44,8 @@ const gallery = [
     className: "gallery-card--portrait",
   },
   {
-    image: exteriorImage,
-    alt: "島の道沿いに建つ古民家の外観",
+    image: activityBaseImage,
+    alt: "古民家で開かれた催しに人が集まっている様子",
     caption: "神浦港から歩いて約2分。島での活動拠点です。",
     className: "gallery-card--tall",
   },
@@ -61,33 +61,42 @@ const gallery = [
     <header class="kominka-hero">
       <div class="kominka-hero__copy">
         <p class="eyebrow">KOMINKA PROJECT / NAKAJIMA</p>
-        <h1>古民家を直し、<span class="word-keep">人が集まる場所へ。</span></h1>
+        <h1>扉の向こうに、<br /><span class="word-keep">もうひとつの暮らし。</span></h1>
         <p class="kominka-hero__lead">
           2円で受け取った築100年の家。<br />
-          答えを急がず、週末ごとに手を入れています。
+          週末ごとに手を入れています。
         </p>
       </div>
-      <figure class="kominka-hero__photo paper-photo">
-        <img src={heroImage.src} alt="再生中の古民家の前に立つ矢野" />
-        <figcaption>しとらすすたんど KominKa</figcaption>
-      </figure>
+      <a class="kominka-door" href="#story-title" data-kominka-door>
+        <span class="kominka-door__light" aria-hidden="true"></span>
+        <span class="kominka-door__photo">
+          <img src={interiorImage.src} alt="扉の向こうに見える古民家の室内" />
+        </span>
+        <img class="kominka-door__frame" src="/images/kominka/door-frame.png" alt="" aria-hidden="true" />
+        <span class="kominka-door__cta">古民家をのぞく <b aria-hidden="true">→</b></span>
+      </a>
     </header>
 
     <section class="story-section" aria-labelledby="story-title">
-      <div class="section-heading">
-        <p class="eyebrow">THE BEGINNING</p>
-        <h2 id="story-title">残したい風景に、自分の手で関わってみる。</h2>
-      </div>
-      <div class="story-card paper-card">
-        <p>
-          大学時代に田舎を訪れ、その風景や人の暮らしに惹かれました。一方で、人口が減り、使われなくなった家や地域の営みが少しずつ失われていく現実も知りました。
-        </p>
-        <p>
-          大きな言葉で地域を変えるのではなく、まずは目の前にある風景と関わり続けたい。そんな思いから、中島で出会った築100年の古民家を受け取りました。
-        </p>
-        <p>
-          建築の専門家でも、DIYの達人でもありません。分からないことは島の人や仲間に教わり、壊して、迷って、また直す。週末ごとの小さな積み重ねが、家との関係をつくっています。
-        </p>
+      <figure class="story-section__photo">
+        <img src="/images/kominka/story-roof-work.png" alt="雨の中で古民家の屋根瓦を下ろした作業日の記念写真" />
+      </figure>
+      <div class="story-section__copy">
+        <div class="section-heading">
+          <p class="eyebrow">THE BEGINNING</p>
+          <h2 id="story-title">残したい風景に、自分の手で関わってみる。</h2>
+        </div>
+        <div class="story-card">
+          <p>
+            大学時代に田舎を訪れ、その風景や人の暮らしに惹かれました。一方で、人口が減り、使われなくなった家や地域の営みが少しずつ失われていく現実も知りました。
+          </p>
+          <p>
+            大きな言葉で地域を変えるのではなく、まずは目の前にある風景と関わり続けたい。そんな思いから、中島で出会った築100年の古民家を受け取りました。
+          </p>
+          <p>
+            建築の専門家でも、DIYの達人でもありません。分からないことは島の人や仲間に教わり、壊して、迷って、また直す。週末ごとの小さな積み重ねが、家との関係をつくっています。
+          </p>
+        </div>
       </div>
     </section>
 
@@ -101,8 +110,7 @@ const gallery = [
         <li class="paper-card">
           <figure><img src={clearingRoomImage.src} alt="片づけと解体を始めた古民家の室内" loading="eager" /></figure>
           <div class="process-list__copy">
-            <span>01</span>
-            <h3>まず、片づける</h3>
+            <div class="process-list__heading"><span>01</span><h3>まず、片づける</h3></div>
             <p>
               長く積もったものを運び出し、床や壁の状態を確かめるところから始めました。
             </p>
@@ -111,8 +119,7 @@ const gallery = [
         <li class="paper-card">
           <figure><img src={rebuildingTogetherImage.src} alt="古民家の室内で仲間と修繕作業を進める様子" loading="eager" /></figure>
           <div class="process-list__copy">
-            <span>02</span>
-            <h3>教わりながら直す</h3>
+            <div class="process-list__heading"><span>02</span><h3>教わりながら直す</h3></div>
             <p>
               屋根、天井、キッチン。島の人や職人、仲間の力を借りて、ひとつずつ手を入れています。
             </p>
@@ -121,8 +128,7 @@ const gallery = [
         <li class="paper-card">
           <figure><img src={welcomingPeopleImage.src} alt="KominKaの前に集まった島内外の仲間たち" loading="eager" /></figure>
           <div class="process-list__copy">
-            <span>03</span>
-            <h3>人を迎える</h3>
+            <div class="process-list__heading"><span>03</span><h3>人を迎える</h3></div>
             <p>
               作業の日も、食卓を囲む日も。家に人が集まり、新しい思い出が重なっています。
             </p>
@@ -178,6 +184,27 @@ const gallery = [
       </nav>
     </section>
   </article>
+
+  <script>
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    document.querySelectorAll<HTMLAnchorElement>("[data-kominka-door]").forEach((door) => {
+      door.addEventListener("click", (event) => {
+        if (reducedMotion.matches || door.classList.contains("is-entering")) return;
+        event.preventDefault();
+        door.classList.add("is-entering");
+        window.setTimeout(() => {
+          window.location.href = door.href;
+        }, 950);
+      });
+    });
+
+    window.addEventListener("pageshow", () => {
+      document.querySelectorAll("[data-kominka-door].is-entering").forEach((door) => {
+        door.classList.remove("is-entering");
+      });
+    });
+  </script>
 </BaseLayout>
 
 <style>
@@ -301,12 +328,40 @@ const gallery = [
   }
 
   .story-section {
+    position: relative;
     padding-block: clamp(5rem, 6.5vw, 6rem);
     display: block;
     color: var(--navy);
     background: var(--paper);
     box-shadow: 0 0 0 100vmax var(--paper);
     clip-path: inset(0 -100vmax);
+  }
+
+  .story-section::before,
+  .story-section::after {
+    position: absolute;
+    left: 50%;
+    z-index: 1;
+    width: 100vw;
+    height: clamp(2rem, 3vw, 2.75rem);
+    background: url("/images/decor/kominka-wave-divider.svg") repeat-x center / auto 100%;
+    content: "";
+    pointer-events: none;
+  }
+
+  .story-section::before {
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .story-section::after {
+    bottom: 0;
+    transform: translateX(-50%) rotate(180deg);
+  }
+
+  .story-section > * {
+    position: relative;
+    z-index: 2;
   }
 
   .section-heading h2,
@@ -674,6 +729,379 @@ const gallery = [
 
     .now-section__links a {
       transition: none;
+    }
+  }
+
+  /* Story-like entrance: an open kominka door leading into the existing page. */
+  .kominka-page {
+    border-top: 4px solid var(--yellow);
+  }
+
+  .kominka-hero {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100svh - 4px);
+    padding: clamp(9.5rem, 13vh, 11rem) clamp(3rem, 7vw, 7rem) clamp(5rem, 8vh, 7rem);
+    grid-template-columns: minmax(22rem, 0.78fr) minmax(34rem, 1.22fr);
+    gap: clamp(2rem, 4vw, 5rem);
+    overflow: hidden;
+  }
+
+  .kominka-hero__copy {
+    position: relative;
+    z-index: 4;
+    align-self: center;
+    padding-bottom: clamp(7rem, 16vh, 11rem);
+  }
+
+  .kominka-hero h1 {
+    max-width: 12em;
+    font-size: clamp(3rem, 4.1vw, 3.8rem);
+    line-height: 1.48;
+    letter-spacing: 0.055em;
+  }
+
+  .kominka-hero__lead {
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+
+  .kominka-door {
+    position: relative;
+    z-index: 2;
+    display: block;
+    align-self: center;
+    width: min(100%, 58rem);
+    aspect-ratio: 3 / 2;
+    margin-top: clamp(2rem, 7vh, 5rem);
+    color: var(--navy);
+    text-decoration: none;
+    isolation: isolate;
+  }
+
+  .kominka-door__photo {
+    position: absolute;
+    z-index: 1;
+    top: 29.3%;
+    left: 29.8%;
+    width: 39.6%;
+    height: 64.2%;
+    overflow: hidden;
+    background: #e7dcc4;
+  }
+
+  .kominka-door__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 48% 54%;
+    transition: transform 420ms ease;
+  }
+
+  .kominka-door__frame {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 420ms ease;
+    transform-origin: 70% 75%;
+  }
+
+  .kominka-door__light {
+    position: absolute;
+    z-index: 0;
+    top: 71%;
+    left: -63%;
+    width: 145%;
+    height: 54%;
+    background:
+      radial-gradient(circle at 30% 50%, rgb(255 255 255 / 18%) 0 1px, transparent 2px) 0 0 / 13px 13px,
+      var(--yellow);
+    clip-path: polygon(67% 0, 98% 0, 50% 100%, 0 86%);
+    opacity: 0.95;
+    transition: width 420ms ease, transform 420ms ease;
+    transform-origin: 100% 0;
+  }
+
+  .kominka-door__cta {
+    position: absolute;
+    z-index: 5;
+    right: 15%;
+    bottom: 3.5%;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 48px;
+    padding: 0.55rem 1.1rem;
+    border: 2px solid var(--navy);
+    border-radius: 0.75rem 0.65rem 0.8rem 0.6rem;
+    background: #fff;
+    color: var(--navy);
+    font: 700 0.92rem/1.3 "Noto Sans JP", sans-serif;
+    box-shadow: 4px 5px 0 rgb(20 61 98 / 18%);
+  }
+
+  .kominka-door__cta b {
+    transition: transform 300ms ease;
+  }
+
+  .kominka-door:hover .kominka-door__frame,
+  .kominka-door:focus-visible .kominka-door__frame {
+    transform: scaleX(1.012) translateX(0.35rem);
+  }
+
+  .kominka-door:hover .kominka-door__photo img,
+  .kominka-door:focus-visible .kominka-door__photo img {
+    transform: scale(1.035);
+  }
+
+  .kominka-door:hover .kominka-door__light,
+  .kominka-door:focus-visible .kominka-door__light {
+    width: 151%;
+    transform: scaleY(1.04);
+  }
+
+  .kominka-door:hover .kominka-door__cta b,
+  .kominka-door:focus-visible .kominka-door__cta b {
+    transform: translateX(5px);
+  }
+
+  .kominka-door:focus-visible {
+    outline: 4px solid #fff;
+    outline-offset: 4px;
+  }
+
+  .kominka-door.is-entering {
+    z-index: 20;
+  }
+
+  .kominka-door.is-entering .kominka-door__light {
+    width: 190%;
+    transform: scale(1.28);
+  }
+
+  .kominka-door.is-entering .kominka-door__frame {
+    transform: translateX(-22vw) scale(1.32);
+  }
+
+  .kominka-door.is-entering .kominka-door__photo {
+    z-index: 6;
+    transition: transform 850ms ease;
+    transform: translateX(-22vw) scale(2.7);
+  }
+
+  :global(.kominka-page > .yano-brand) {
+    top: 2rem;
+    left: clamp(3rem, 6vw, 6rem);
+  }
+
+  :global(.kominka-page > .yano-brand .yano-brand__bubble) {
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  }
+
+  :global(.kominka-page > .yano-brand .yano-brand__character) {
+    top: clamp(28rem, 55vh, 35rem);
+    left: clamp(8rem, 25vw, 22rem);
+    z-index: 8;
+    transform: translateY(var(--brand-yano-bob, 0)) scaleX(-1);
+  }
+
+  /* White story spread with the supplied roof-work photograph. */
+  .story-section {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    width: 100%;
+    padding-inline: max(clamp(2.5rem, 6vw, 5rem), calc((100vw - 1320px) / 2));
+    padding-block: clamp(5rem, 7vw, 7rem);
+    background: #fff;
+    box-shadow: none;
+    clip-path: none;
+    color: #1c2430;
+  }
+
+  .story-section__photo {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .story-section__photo img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .story-section__copy {
+    max-width: 44rem;
+  }
+
+  .story-section .section-heading h2 {
+    max-width: 15em;
+    color: #171b22;
+    font-weight: 700;
+    line-height: 1.45;
+    text-wrap: pretty;
+  }
+
+  .story-section .eyebrow {
+    color: #a88200;
+  }
+
+  .story-card {
+    max-width: 43rem;
+    margin: 2rem 0 0;
+    padding: 0;
+    color: #202833;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .process-list__copy {
+    padding: clamp(1.25rem, 1.8vw, 1.6rem);
+  }
+
+  .process-list__heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .process-list__heading > span {
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--yellow);
+    font: 500 0.75rem/1 "Noto Sans", sans-serif;
+  }
+
+  .process-list__heading h3 {
+    margin: 0;
+  }
+
+  .process-list__copy > p {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .kominka-hero {
+      grid-template-columns: minmax(18rem, 0.8fr) minmax(26rem, 1.2fr);
+      padding-inline: 2.5rem;
+    }
+
+    .story-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kominka-page {
+      border-top-width: 3px;
+    }
+
+    .kominka-hero {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 780px;
+      padding: 9rem 1.25rem 10.5rem;
+      gap: 0;
+    }
+
+    .kominka-hero__copy {
+      width: 100%;
+      padding: 0;
+    }
+
+    .kominka-hero h1 {
+      max-width: 10.5em;
+      font-size: clamp(2rem, 9.2vw, 2.35rem);
+      line-height: 1.5;
+      letter-spacing: 0.035em;
+    }
+
+    .kominka-hero__lead {
+      margin-top: 1.4rem;
+      font-size: 0.95rem;
+    }
+
+    .kominka-door {
+      align-self: flex-end;
+      width: min(88vw, 29rem);
+      margin: 1.75rem -1rem 0 0;
+    }
+
+    .kominka-door__light {
+      top: 72%;
+      left: -48%;
+      width: 130%;
+      height: 58%;
+    }
+
+    .kominka-door__cta {
+      right: 9%;
+      bottom: 0;
+      min-height: 46px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.82rem;
+    }
+
+    :global(.kominka-page > .yano-brand) {
+      top: 1rem;
+      left: 1rem;
+    }
+
+    :global(.kominka-page > .yano-brand .yano-brand__character) {
+      top: 650px;
+      left: 1.5rem;
+    }
+
+    .story-section {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      width: 100%;
+      padding: 4.5rem 1.25rem;
+    }
+
+    .story-section__photo img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .story-section .section-heading h2 {
+      font-size: 1.75rem;
+    }
+
+    .story-card {
+      margin-top: 1.5rem;
+    }
+
+    .process-list__copy {
+      padding: 1.25rem;
+    }
+
+    .process-list__heading {
+      gap: 0.8rem;
+    }
+
+    .process-list__heading > span {
+      width: 2.35rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kominka-door *,
+    .kominka-door {
+      transition: none !important;
     }
   }
 </style>
