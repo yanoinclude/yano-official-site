@@ -6418,3 +6418,10 @@ body {
     grid-row: auto;
   }
 }
+
+/* Reduce the desktop type-and-spacing scale without changing tablet or mobile. */
+@media (min-width: 1024px) {
+  html {
+    font-size: 93.75%;
+  }
+}
