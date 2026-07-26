@@ -447,7 +447,7 @@ export const homeContent = {
     body: "強く売り込むための商品ではなく、食卓から中島を気に留めてもらうための入口です。畑で受け取った季節を、できるだけそのまま瓶に閉じ込めます。",
     image: placeholderImages.bottle,
     imageAlt: "古民家の棚に置かれた週末移住レモン果汁の瓶",
-    href: "https://www.instagram.com/kominka.lemon/",
+    href: "https://weekend-island-shop.square.site/",
     cta: "週末移住レモン果汁を見る",
   },
   experience: {
