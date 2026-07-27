@@ -728,37 +728,147 @@ const recentInstagramPosts = [
     window.addEventListener("scroll", updateBackToTop, { passive: true });
     updateBackToTop();
 
-    document.querySelectorAll<HTMLButtonElement>("[data-recent-post-play]").forEach((button) => {
+    const recentPostButtons = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-recent-post-play]"),
+    );
+
+    const updateRecentPostButton = (
+      button: HTMLButtonElement,
+      isPlaying: boolean,
+    ) => {
+      const title = button.dataset.postTitle ?? "Instagram動画";
+      button.setAttribute("aria-pressed", String(isPlaying));
+      button.setAttribute(
+        "aria-label",
+        `${title}の動画を${isPlaying ? "一時停止する" : "再生する"}`,
+      );
+    };
+
+    recentPostButtons.forEach((button) => {
       if (button.dataset.playerReady === "true") return;
       button.dataset.playerReady = "true";
+      updateRecentPostButton(button, false);
 
-      button.addEventListener("click", () => {
+      button.addEventListener("click", async () => {
         const preview = button.closest<HTMLElement>(".recent-post__preview");
         const videoUrl = button.dataset.videoUrl;
         const title = button.dataset.postTitle ?? "Instagram動画";
-        if (!preview || !videoUrl || preview.classList.contains("is-playing")) return;
+        if (!preview || !videoUrl) return;
 
+        let video = preview.querySelector<HTMLVideoElement>(".recent-post__player");
+
+        if (!video) {
+          video = document.createElement("video");
+          video.className = "recent-post__player";
+          video.src = videoUrl;
+          video.poster = preview.querySelector<HTMLImageElement>("img")?.currentSrc ?? "";
+          video.playsInline = true;
+          video.preload = "metadata";
+          video.setAttribute("aria-label", `${title}の動画`);
+
+          const playerFrame = document.createElement("canvas");
+          playerFrame.className = "recent-post__player-frame";
+          playerFrame.setAttribute("aria-hidden", "true");
+          playerFrame.width = 640;
+          playerFrame.height = 800;
+          const playerFrameContext = playerFrame.getContext("2d");
+          let frameRequest = 0;
+          const drawVideoFrame = () => {
+            if (
+              playerFrameContext &&
+              video &&
+              video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA &&
+              video.videoWidth > 0 &&
+              video.videoHeight > 0
+            ) {
+              const targetRatio = playerFrame.width / playerFrame.height;
+              const sourceRatio = video.videoWidth / video.videoHeight;
+              let sourceX = 0;
+              let sourceY = 0;
+              let sourceWidth = video.videoWidth;
+              let sourceHeight = video.videoHeight;
+
+              if (sourceRatio < targetRatio) {
+                sourceHeight = video.videoWidth / targetRatio;
+                sourceY = (video.videoHeight - sourceHeight) / 2;
+              } else {
+                sourceWidth = video.videoHeight * targetRatio;
+                sourceX = (video.videoWidth - sourceWidth) / 2;
+              }
+
+              playerFrameContext.drawImage(
+                video,
+                sourceX,
+                sourceY,
+                sourceWidth,
+                sourceHeight,
+                0,
+                0,
+                playerFrame.width,
+                playerFrame.height,
+              );
+            }
+            if (video && !video.paused && !video.ended) {
+              frameRequest = window.requestAnimationFrame(drawVideoFrame);
+            }
+          };
+          const startDrawingVideo = () => {
+            window.cancelAnimationFrame(frameRequest);
+            drawVideoFrame();
+          };
+
+          video.addEventListener("playing", () => {
+            preview.classList.remove("is-loading", "is-paused");
+            preview.classList.add("has-player", "is-playing");
+            updateRecentPostButton(button, true);
+            startDrawingVideo();
+          });
+          video.addEventListener("pause", () => {
+            window.cancelAnimationFrame(frameRequest);
+            drawVideoFrame();
+            preview.classList.remove("is-loading", "is-playing");
+            preview.classList.add("has-player", "is-paused");
+            updateRecentPostButton(button, false);
+          });
+          video.addEventListener("ended", () => {
+            if (!video) return;
+            window.cancelAnimationFrame(frameRequest);
+            video.currentTime = 0;
+            preview.classList.remove("is-loading", "is-playing");
+            preview.classList.add("has-player", "is-paused");
+            updateRecentPostButton(button, false);
+          });
+          video.addEventListener("error", () => {
+            window.cancelAnimationFrame(frameRequest);
+            preview.classList.remove("is-loading", "is-playing", "has-player");
+            preview.classList.add("has-error");
+            updateRecentPostButton(button, false);
+          });
+          preview.append(video, playerFrame);
+        }
+
+        if (!video.paused && !video.ended) {
+          video.pause();
+          return;
+        }
+
+        recentPostButtons.forEach((otherButton) => {
+          if (otherButton === button) return;
+          const otherVideo = otherButton
+            .closest<HTMLElement>(".recent-post__preview")
+            ?.querySelector<HTMLVideoElement>(".recent-post__player");
+          if (otherVideo && !otherVideo.paused) otherVideo.pause();
+        });
+
+        preview.classList.remove("has-error");
         preview.classList.add("is-loading");
-        button.disabled = true;
-
-        const video = document.createElement("video");
-        video.className = "recent-post__player";
-        video.src = videoUrl;
-        video.poster = preview.querySelector<HTMLImageElement>("img")?.currentSrc ?? "";
-        video.controls = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        video.preload = "metadata";
-        video.setAttribute("aria-label", `${title}の動画`);
-
-        const showPlayer = () => {
-          preview.classList.remove("is-loading");
-          preview.classList.add("is-playing");
-        };
-        video.addEventListener("playing", showPlayer, { once: true });
-        video.addEventListener("error", showPlayer, { once: true });
-        preview.append(video);
-        void video.play().catch(showPlayer);
+        try {
+          await video.play();
+        } catch {
+          preview.classList.remove("is-loading", "is-playing", "has-player");
+          preview.classList.add("has-error");
+          updateRecentPostButton(button, false);
+        }
       });
     });
 
@@ -4631,13 +4741,28 @@ const recentInstagramPosts = [
   .recent-post__play {
     position: absolute;
     inset: 0;
-    z-index: 2;
+    z-index: 4;
     width: 100%;
     padding: 0;
     border: 0;
     background: transparent;
     box-shadow: none;
     cursor: pointer;
+  }
+  .recent-post__play::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-top: 0.72rem solid transparent;
+    border-bottom: 0.72rem solid transparent;
+    border-left: 1.08rem solid #fff;
+    content: "";
+    filter: drop-shadow(0 1px 2px rgb(18 59 99 / 42%));
+    transform: translate(-38%, -50%);
+    transition: opacity 180ms ease, transform 180ms ease;
   }
   .recent-post__play::after {
     position: absolute;
@@ -4647,16 +4772,39 @@ const recentInstagramPosts = [
     height: 3.75rem;
     border: 2px solid rgb(255 255 255 / 78%);
     border-radius: 50%;
-    background: rgb(18 59 99 / 12%);
+    background: rgb(18 59 99 / 28%);
     content: "";
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.82);
-    transition: opacity 180ms ease, transform 180ms ease;
-  }
-  .recent-post__play:hover::after,
-  .recent-post__play:focus-visible::after {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+  .recent-post__play[aria-pressed="true"]::before {
+    width: 1rem;
+    height: 1.45rem;
+    border: 0;
+    background:
+      linear-gradient(
+        90deg,
+        #fff 0 34%,
+        transparent 34% 66%,
+        #fff 66% 100%
+      );
+    transform: translate(-50%, -50%);
+  }
+  .recent-post__preview.is-playing .recent-post__play::before,
+  .recent-post__preview.is-playing .recent-post__play::after {
+    opacity: 0;
+  }
+  .recent-post__play:hover::after,
+  .recent-post__play:focus-visible::after,
+  .recent-post__preview.is-playing .recent-post__play:hover::after,
+  .recent-post__preview.is-playing .recent-post__play:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  .recent-post__preview.is-playing .recent-post__play:hover::before,
+  .recent-post__preview.is-playing .recent-post__play:focus-visible::before {
+    opacity: 1;
   }
   .recent-post__play:focus-visible { outline: 4px solid #ffe000; outline-offset: -5px; }
   .recent-post__loading {
@@ -4676,21 +4824,36 @@ const recentInstagramPosts = [
     transform: translateX(-50%);
   }
   .recent-post__preview.is-loading .recent-post__loading { display: block; }
-  .recent-post__preview.is-playing > img,
-  .recent-post__preview.is-playing .recent-post__play,
+  .recent-post__preview.has-player > img,
   .recent-post__preview.is-playing .recent-post__loading {
     visibility: hidden;
   }
   .recent-post__player {
     position: absolute;
     inset: 0;
-    z-index: 3;
+    z-index: 2;
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
     background: #102f4d;
-    object-fit: contain;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .recent-post__player-frame {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #102f4d;
+    pointer-events: none;
+  }
+  .recent-post__preview.has-error .recent-post__player,
+  .recent-post__preview.has-error .recent-post__player-frame {
+    display: none;
   }
   .recent-post__preview noscript a {
     position: absolute;

@@ -6,6 +6,7 @@ import kominkaBefore from "@/assets/images/about/kominka-exterior-before.jpeg";
 import kominkaWork from "@/assets/images/about/kominka-renovation-floor.jpeg";
 import lemonGrove from "@/assets/images/scenery/scenery-lemon-orchard.jpg";
 import weekendMigration from "@/assets/images/about/weekend-migration-lemon-harvest.jpeg";
+import aboutHeroPhoto from "@/assets/images/about/about-hero-lemon-tree.jpeg";
 
 const timeline = [
   {
@@ -61,32 +62,53 @@ const timeline = [
   <article class="about-page">
     <YanoSpeechBubble size="map" />
     <header class="about-hero">
-      <div class="about-shell about-hero__grid">
+      <div class="about-shell about-hero__title-band">
         <div class="about-hero__label" aria-hidden="true">
           <p class="about-hero__display">PROFILE</p>
           <p class="about-hero__byline">SATOSHI YANO</p>
         </div>
-        <div class="about-hero__circle">
-          <div class="about-hero__circle-content">
-            <h1>田舎を、もっと身近な選択肢に。</h1>
-            <p class="about-hero__lead">
-              <span>平日は広告の仕事をしながら、週末は愛媛の離島・中島へ。</span>
-              <span>古民家とレモン畑を手入れする、週末移住者です。</span>
-            </p>
+      </div>
+      <div class="about-hero__panel">
+        <div class="about-shell about-hero__grid">
+          <figure class="about-hero__photo">
+            <img src={aboutHeroPhoto.src} alt="中島のレモン畑で木の手入れをする矢野諭稔" loading="eager" decoding="async" />
+          </figure>
+          <div class="about-hero__circle">
+            <div class="about-hero__circle-content">
+              <h1><span>田舎を、もっと</span><span>身近な選択肢に。</span></h1>
+              <p class="about-hero__lead">
+                <span class="about-hero__lead-line"><span>平日は広告の仕事をしながら、</span><span>週末は愛媛の離島・中島へ。</span></span>
+                <span class="about-hero__lead-line"><span>古民家とレモン畑を手入れする、</span><span>週末移住者です。</span></span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </header>
 
     <section class="about-intro" aria-labelledby="about-intro-title">
-      <div class="about-shell about-intro__grid">
-        <div class="about-intro__aside">
+      <span class="about-intro__decor about-intro__decor--left" aria-hidden="true"></span>
+      <span class="about-intro__decor about-intro__decor--right" aria-hidden="true"></span>
+      <div class="about-shell">
+        <div class="about-intro__story">
           <p class="about-kicker">WHY I GO</p>
-          <p>学生時代に地域で活動するなかで、田舎の風景や人の暮らしに惹かれる一方、その営みが少しずつ失われていく現実も知りました。</p>
-        </div>
-        <div class="about-intro__main">
-          <h2 id="about-intro-title">何かしたい。でも、何をしたらいいか分からなかった。</h2>
-          <p>大きなことを掲げるより、まずは目の前の風景と関わり続けること。島の人に教わりながら、昨日より少し手を動かすこと。その積み重ねが、今の活動になっています。</p>
+
+          <p class="about-intro__opening">
+            学生時代に地域で活動するなかで、田舎の風景や人の暮らしに惹かれる一方、その営みが少しずつ失われていく現実も知りました。
+          </p>
+
+          <div class="about-intro__emphasis">
+            <h2 id="about-intro-title">何かしたい。</h2>
+            <p><span>でも、何をしたら</span><span>いいか分からなかった。</span></p>
+          </div>
+
+          <div class="about-intro__body">
+            <p><span>大きなことを掲げるより、</span><span>まずは目の前の風景と関わり続けること。</span></p>
+            <p><span>島の人に教わりながら、</span><span>昨日より少し手を動かすこと。</span></p>
+            <p><span>その積み重ねが、</span><span>今の活動になっています。</span></p>
+          </div>
+
+          <p class="about-intro__conclusion">昨日より、<span>少し手を動かす。</span></p>
         </div>
       </div>
     </section>
@@ -144,23 +166,39 @@ const timeline = [
   .about-page { position: relative; overflow: clip; background: #36a8e5; font-family: "Noto Sans JP", sans-serif; }
   .about-shell { width: min(1160px, calc(100% - clamp(2.5rem, 6vw, 5rem))); margin-inline: auto; }
   .about-kicker { margin: 0; color: #ffe13b; font-size: .78rem; font-weight: 700; line-height: 1.4; letter-spacing: .16em; }
-  .about-hero { position: relative; display: grid; min-height: clamp(48rem, 64vw, 56rem); padding: clamp(6rem, 8vw, 8rem) 0 clamp(4rem, 6vw, 5rem); }
-  .about-hero__grid { display: grid; grid-template-columns: minmax(17rem, .7fr) minmax(32rem, 1.3fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
-  .about-hero__label { align-self: center; padding-top: clamp(5rem, 8vw, 7rem); }
-  .about-hero__display { margin: 0 0 1rem; color: #fff; font-size: clamp(4.5rem, 7vw, 6.75rem); font-weight: 800; line-height: .92; letter-spacing: -.045em; }
+  .about-hero { position: relative; display: block; min-height: 0; padding: 0; background: #36a8e5; }
+  .about-hero__title-band { box-sizing: border-box; padding: clamp(9.5rem, 15vw, 12rem) 0 clamp(3.75rem, 6vw, 5rem); }
+  .about-hero__label { text-align: center; }
+  .about-hero__display { margin: 0 0 1rem; color: #fff; font-size: clamp(4.75rem, 8vw, 7.25rem); font-weight: 800; line-height: .92; letter-spacing: -.045em; }
   .about-hero__byline { margin: 0; color: #ffe13b; font-size: 1rem; font-weight: 800; line-height: 1.4; letter-spacing: .16em; text-shadow: 0 1px 0 #234a75; }
-  .about-hero__circle { box-sizing: border-box; display: grid; place-items: center; justify-self: end; width: min(100%, clamp(32rem, 47vw, 42rem)); aspect-ratio: 1; padding: clamp(4.25rem, 7vw, 6.5rem); border-radius: 50%; background: #050505; transform: translateY(-1.5rem); }
+  .about-hero__panel { padding: clamp(3rem, 5vw, 4.25rem) 0 clamp(4.5rem, 7vw, 6rem); background: #36a8e5; }
+  .about-hero__grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: clamp(3rem, 5vw, 4rem); align-items: center; }
+  .about-hero__photo { position: relative; z-index: 0; justify-self: center; width: 100%; max-width: 32rem; aspect-ratio: 4 / 3; margin: 0; }
+  .about-hero__photo::before { position: absolute; z-index: -1; inset: 1.5rem 2.5rem -1.5rem -1.5rem; background: #ffe13b; content: ""; }
+  .about-hero__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+  .about-hero__circle { box-sizing: border-box; display: grid; place-items: center; justify-self: center; width: min(100%, 34rem); min-height: 0; aspect-ratio: 1; padding: clamp(3.5rem, 4.5vw, 4.5rem); border-radius: 50%; background: #050505; }
   .about-hero__circle-content { width: min(100%, 31rem); color: #fff; text-align: center; }
-  .about-hero h1 { max-width: 12em; margin: 0 auto 1.75rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 500; line-height: 1.5; letter-spacing: .01em; text-wrap: balance; }
-  .about-hero__lead { max-width: 34rem; margin: 0 auto; color: rgb(255 255 255 / 88%); font-size: clamp(.9375rem, 1.1vw, 1rem); line-height: 2; text-align: center; }
-  .about-hero__lead span { display: block; }
-  .about-intro { padding: clamp(5rem, 6.5vw, 6rem) 0; background: #fffdf8; }
-  .about-intro__grid { display: grid; grid-template-columns: minmax(15rem, .65fr) minmax(0, 1.35fr); gap: clamp(3rem, 5vw, 4.5rem); }
-  .about-intro .about-kicker { color: #2e95cf; }
-  .about-intro__aside { display: flex; flex-direction: column; gap: 2rem; }
-  .about-intro__aside > p:last-child { max-width: 20rem; margin: 0; color: #657387; font-size: 1rem; line-height: 1.9; }
-  .about-intro h2 { max-width: 19em; margin: -.25rem 0 1.75rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(2.125rem, 2.5vw, 2.25rem); font-weight: 500; line-height: 1.45; text-wrap: balance; }
-  .about-intro__main > p { max-width: 43rem; margin: 0 0 1rem; color: #4c5f74; font-size: 1rem; line-height: 2; }
+  .about-hero h1 { max-width: 12em; margin: 0 auto 1.5rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(1.85rem, 2.6vw, 2.35rem); font-weight: 500; line-height: 1.5; letter-spacing: .01em; text-wrap: balance; }
+  .about-hero h1 span { display: block; }
+  .about-hero__lead { max-width: 34rem; margin: 0 auto; color: rgb(255 255 255 / 88%); font-size: clamp(.875rem, 1vw, .9rem); line-height: 2; text-align: center; }
+  .about-hero__lead > .about-hero__lead-line { display: block; }
+  .about-intro { position: relative; overflow: hidden; padding: clamp(8rem, 12vw, 11rem) 0 clamp(9rem, 13vw, 12rem); background: #fffdf8; }
+  .about-intro__story { position: relative; z-index: 1; width: min(100%, 40rem); margin: 0 auto; color: #4c5f74; text-align: center; }
+  .about-intro .about-kicker { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); color: #2e95cf; }
+  .about-intro__opening, .about-intro__body p { margin: 0; font-size: clamp(1rem, 1.25vw, 1.0625rem); line-height: 2; letter-spacing: .025em; }
+  .about-intro__opening { text-wrap: pretty; }
+  .about-intro__emphasis { margin: clamp(4.5rem, 7vw, 6.5rem) auto; padding: clamp(2.75rem, 4.5vw, 3.75rem) 1.5rem; border-block: 1px solid rgb(46 149 207 / 34%); }
+  .about-intro__emphasis h2 { margin: 0 0 1.25rem; color: #234a75; font-family: "Noto Serif JP", serif; font-size: clamp(2.125rem, 3.2vw, 2.5rem); font-weight: 500; line-height: 1.45; letter-spacing: .025em; }
+  .about-intro__emphasis p { margin: 0; color: #2e7ca8; font-family: "Noto Serif JP", serif; font-size: clamp(1.5rem, 2.25vw, 1.75rem); font-weight: 400; line-height: 1.7; text-wrap: balance; }
+  .about-intro__body { display: grid; gap: clamp(2rem, 3.5vw, 2.75rem); }
+  .about-intro__body p { text-wrap: balance; }
+  .about-intro__conclusion { position: relative; width: fit-content; max-width: 100%; margin: clamp(6.5rem, 10vw, 9rem) auto 0; color: #172f50; font-family: "Noto Serif JP", serif; font-size: clamp(2.375rem, 3.65vw, 2.875rem); font-weight: 500; line-height: 1.5; letter-spacing: .015em; text-wrap: balance; }
+  .about-intro__conclusion::after { position: absolute; z-index: -1; right: -.2em; bottom: .18em; left: -.2em; height: .34em; border-radius: 999px; background: #ffe13b; content: ""; opacity: .88; transform: rotate(-1deg); }
+  .about-intro__decor { position: absolute; pointer-events: none; }
+  .about-intro__decor--left { top: 20%; left: max(2rem, calc(50% - 36rem)); width: 4.5rem; height: 1rem; border-radius: 999px; background: #ffe13b; transform: rotate(-16deg); }
+  .about-intro__decor--left::after { position: absolute; top: 2.25rem; left: 2.8rem; width: 1.1rem; aspect-ratio: 1; border: 3px solid #234a75; border-radius: 50%; content: ""; }
+  .about-intro__decor--right { right: max(2rem, calc(50% - 36rem)); bottom: 24%; width: 3.2rem; aspect-ratio: 1; border: 3px solid #234a75; border-radius: 50%; background: #f4a8b8; }
+  .about-intro__decor--right::after { position: absolute; top: -1.55rem; left: -1.8rem; width: .85rem; aspect-ratio: 1; border-radius: 50%; background: #2e95cf; content: ""; }
   .about-story { padding: clamp(5rem, 6.5vw, 6rem) 0; }
   .about-story__header { margin-bottom: clamp(2.5rem, 4vw, 3.5rem); }
   .about-story__header h2 { margin: .9rem 0 1rem; color: #fff; font-family: "Noto Serif JP", serif; font-size: clamp(2rem, 2.5vw, 2.375rem); font-weight: 500; line-height: 1.45; text-wrap: balance; }
@@ -187,10 +225,12 @@ const timeline = [
   .about-now__links a { box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; gap: 2rem; min-width: 15rem; min-height: 52px; padding: .65rem 1.1rem; border: 2px solid #fff; background: #fffdf8; color: #234a75; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
   .about-now__links a:hover, .about-now__links a:focus-visible { box-shadow: .28rem .32rem 0 #ffe13b; transform: translate(-.12rem, -.12rem); }
   @media (max-width: 900px) {
-    .about-hero { min-height: 0; padding: 15.5rem 0 4.5rem; }
+    .about-hero__title-band { padding: 12rem 0 3.75rem; }
     .about-hero__grid { grid-template-columns: 1fr; }
-    .about-hero__label { padding-top: 0; }
-    .about-hero__circle { justify-self: center; width: min(100%, 38rem); transform: none; }
+    .about-hero__photo { max-width: 38rem; }
+    .about-hero__circle { width: min(100%, 34rem); }
+    .about-intro__decor--left { top: 7%; left: 1rem; }
+    .about-intro__decor--right { right: 1rem; bottom: 3.5%; }
     .timeline__item { grid-template-columns: 3.5rem 1fr; }
     .timeline__image, .timeline__card { grid-column: 2; }
     .timeline__image { grid-row: 1; }
@@ -201,20 +241,32 @@ const timeline = [
     :global(body:has(.about-page)) { --site-frame-space: 5px; }
     .about-shell { width: min(100% - 40px, 1180px); }
     .about-kicker { font-size: .72rem; }
-    .about-hero { padding: 13.75rem 0 3.75rem; }
-    .about-hero__grid { gap: 2rem; }
+    .about-hero__title-band { padding: 13.5rem 0 2.75rem; }
+    .about-hero__panel { padding: 2rem 0 4rem; }
+    .about-hero__grid { gap: 3rem; }
     .about-hero__display { font-size: clamp(3.4rem, 17vw, 4.5rem); }
     .about-hero__byline { font-size: .9375rem; }
-    .about-hero__circle { padding: clamp(2.5rem, 11vw, 3.75rem) clamp(2rem, 9vw, 3.5rem); }
+    .about-hero__photo { width: calc(100% - 20px); max-width: 20rem; }
+    .about-hero__photo::before { inset: .75rem .75rem -.75rem -.75rem; }
+    .about-hero__circle { width: min(calc(100% - 20px), 20rem); padding: 2.5rem 2rem; }
     .about-hero h1 { max-width: 10.5em; margin-bottom: 1.2rem; font-size: clamp(1.65rem, 7.4vw, 1.9rem); line-height: 1.55; }
     .about-hero__lead { font-size: .9rem; line-height: 1.9; }
-    .about-hero__lead span { display: inline; }
-    .about-intro, .about-story { padding-block: 4rem; }
-    .about-intro__grid { grid-template-columns: 1fr; gap: 1.4rem; }
-    .about-intro__aside { gap: 1rem; }
-    .about-intro__aside > p:last-child { max-width: 100%; }
-    .about-intro h2, .about-story__header h2, .about-now__card h2 { margin-top: 0; font-size: 1.75rem; line-height: 1.5; }
-    .about-intro__aside > p:last-child, .about-intro__main > p { font-size: .95rem; }
+    .about-hero__lead-line > span { display: block; }
+    .about-intro { padding-block: 6.5rem 7.5rem; }
+    .about-intro__story { width: min(100%, 34rem); }
+    .about-intro__opening, .about-intro__body p { font-size: .9375rem; }
+    .about-intro__emphasis { margin-block: 4rem; padding: 2.5rem .25rem; }
+    .about-intro__emphasis h2 { margin-top: 0; font-size: clamp(1.625rem, 7.4vw, 1.875rem); line-height: 1.5; }
+    .about-intro__emphasis p { font-size: clamp(1.25rem, 5.4vw, 1.375rem); }
+    .about-intro__emphasis p span, .about-intro__body p span, .about-intro__conclusion span { display: block; }
+    .about-intro__body { gap: 2rem; }
+    .about-intro__conclusion { margin-top: 5.5rem; font-size: clamp(1.75rem, 7.8vw, 2.125rem); }
+    .about-intro__decor--left { top: 8%; left: .75rem; width: 2.75rem; height: .65rem; }
+    .about-intro__decor--left::after { top: 1.6rem; left: 1.85rem; width: .75rem; border-width: 2px; }
+    .about-intro__decor--right { right: .7rem; bottom: 3%; width: 2rem; border-width: 2px; }
+    .about-intro__decor--right::after { top: -1rem; left: -1.15rem; width: .55rem; }
+    .about-story { padding-block: 4rem; }
+    .about-story__header h2, .about-now__card h2 { margin-top: 0; font-size: 1.75rem; line-height: 1.5; }
     .about-story__header { margin-bottom: 2.5rem; }
     .timeline { gap: 2.5rem; }
     .timeline__item { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; }
