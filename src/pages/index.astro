@@ -763,88 +763,32 @@ const recentInstagramPosts = [
           video.src = videoUrl;
           video.poster = preview.querySelector<HTMLImageElement>("img")?.currentSrc ?? "";
           video.playsInline = true;
-          video.preload = "metadata";
+          video.preload = "auto";
           video.setAttribute("aria-label", `${title}の動画`);
-
-          const playerFrame = document.createElement("canvas");
-          playerFrame.className = "recent-post__player-frame";
-          playerFrame.setAttribute("aria-hidden", "true");
-          playerFrame.width = 640;
-          playerFrame.height = 800;
-          const playerFrameContext = playerFrame.getContext("2d");
-          let frameRequest = 0;
-          const drawVideoFrame = () => {
-            if (
-              playerFrameContext &&
-              video &&
-              video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA &&
-              video.videoWidth > 0 &&
-              video.videoHeight > 0
-            ) {
-              const targetRatio = playerFrame.width / playerFrame.height;
-              const sourceRatio = video.videoWidth / video.videoHeight;
-              let sourceX = 0;
-              let sourceY = 0;
-              let sourceWidth = video.videoWidth;
-              let sourceHeight = video.videoHeight;
-
-              if (sourceRatio < targetRatio) {
-                sourceHeight = video.videoWidth / targetRatio;
-                sourceY = (video.videoHeight - sourceHeight) / 2;
-              } else {
-                sourceWidth = video.videoHeight * targetRatio;
-                sourceX = (video.videoWidth - sourceWidth) / 2;
-              }
-
-              playerFrameContext.drawImage(
-                video,
-                sourceX,
-                sourceY,
-                sourceWidth,
-                sourceHeight,
-                0,
-                0,
-                playerFrame.width,
-                playerFrame.height,
-              );
-            }
-            if (video && !video.paused && !video.ended) {
-              frameRequest = window.requestAnimationFrame(drawVideoFrame);
-            }
-          };
-          const startDrawingVideo = () => {
-            window.cancelAnimationFrame(frameRequest);
-            drawVideoFrame();
-          };
 
           video.addEventListener("playing", () => {
             preview.classList.remove("is-loading", "is-paused");
             preview.classList.add("has-player", "is-playing");
             updateRecentPostButton(button, true);
-            startDrawingVideo();
           });
           video.addEventListener("pause", () => {
-            window.cancelAnimationFrame(frameRequest);
-            drawVideoFrame();
             preview.classList.remove("is-loading", "is-playing");
             preview.classList.add("has-player", "is-paused");
             updateRecentPostButton(button, false);
           });
           video.addEventListener("ended", () => {
             if (!video) return;
-            window.cancelAnimationFrame(frameRequest);
             video.currentTime = 0;
             preview.classList.remove("is-loading", "is-playing");
             preview.classList.add("has-player", "is-paused");
             updateRecentPostButton(button, false);
           });
           video.addEventListener("error", () => {
-            window.cancelAnimationFrame(frameRequest);
             preview.classList.remove("is-loading", "is-playing", "has-player");
             preview.classList.add("has-error");
             updateRecentPostButton(button, false);
           });
-          preview.append(video, playerFrame);
+          preview.append(video);
         }
 
         if (!video.paused && !video.ended) {
@@ -4828,7 +4772,7 @@ const recentInstagramPosts = [
   .recent-post__preview.is-playing .recent-post__loading {
     visibility: hidden;
   }
-  .recent-post__player {
+  :global(.recent-post__player) {
     position: absolute;
     inset: 0;
     z-index: 2;
@@ -4838,21 +4782,9 @@ const recentInstagramPosts = [
     border: 0;
     background: #102f4d;
     object-fit: cover;
-    opacity: 0;
     pointer-events: none;
   }
-  .recent-post__player-frame {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background: #102f4d;
-    pointer-events: none;
-  }
-  .recent-post__preview.has-error .recent-post__player,
-  .recent-post__preview.has-error .recent-post__player-frame {
+  .recent-post__preview.has-error :global(.recent-post__player) {
     display: none;
   }
   .recent-post__preview noscript a {

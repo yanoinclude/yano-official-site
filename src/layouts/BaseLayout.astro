@@ -5,9 +5,12 @@ import { resolveMetadata, type PageMetadata } from "@/lib/seo/metadata";
 import "@/styles/globals.css";
 import "@/styles/refinements.css";
 
-type Props = PageMetadata;
+type Props = PageMetadata & {
+  preloadImages?: string[];
+};
 
 const metadata = resolveMetadata(Astro.props);
+const preloadImages = Astro.props.preloadImages ?? [];
 ---
 
 <!doctype html>
@@ -28,6 +31,7 @@ const metadata = resolveMetadata(Astro.props);
     <meta name="twitter:title" content={metadata.title} />
     <meta name="twitter:description" content={metadata.description} />
     <meta name="twitter:image" content={metadata.ogImage} />
+    {preloadImages.map((href) => <link rel="preload" as="image" href={href} />)}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
