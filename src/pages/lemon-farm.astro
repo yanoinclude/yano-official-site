@@ -17,25 +17,21 @@ const seasons = [
   {
     label: "SPRING",
     title: "春",
-    mark: "花",
     body: "花が咲き、新しい枝が伸びる季節。木の状態を確認しながら、枝や葉の混み具合を整えます。",
   },
   {
     label: "SUMMER",
     title: "夏",
-    mark: "草",
     body: "草が大きく伸びる季節。草を刈り、木の足元を整え、レモンに光と風が届く環境をつくります。",
   },
   {
     label: "AUTUMN",
     title: "秋",
-    mark: "実",
     body: "少しずつ実が大きくなる季節。色や形、枝の状態を見ながら、収穫までの変化を見守ります。",
   },
   {
     label: "WINTER",
     title: "冬",
-    mark: "収",
     body: "黄色く色づいたレモンを、ひとつずつ手で収穫します。収穫した実は、生果や果汁など、次の楽しみへつなげます。",
   },
 ];
@@ -116,13 +112,13 @@ const farmScenes = [
     <section class="farm-facts" aria-labelledby="farm-facts-title">
       <header>
         <p class="eyebrow">ABOUT THE FARM</p>
-        <h2 id="farm-facts-title">週末ごとに向き合う、<br />中島のレモン畑。</h2>
+        <h2 id="farm-facts-title"><span class="farm-facts__title-line">週末ごとに向き合う、</span><br />中島のレモン畑。</h2>
       </header>
       <dl>
-        <div><dt>LOCATION</dt><dd>愛媛県松山市・中島</dd><span aria-hidden="true">船</span></div>
-        <div><dt>LEMON TREES</dt><dd><b>約100本</b></dd><span aria-hidden="true">木</span></div>
-        <div><dt>WEEKEND FARMING</dt><dd>週末ごとに手入れ</dd><span aria-hidden="true">刈</span></div>
-        <div><dt>HARVEST</dt><dd>冬を中心に収穫</dd><span aria-hidden="true">実</span></div>
+        <div><dt>LOCATION</dt><dd>愛媛県松山市・中島（神浦地区）</dd></div>
+        <div><dt>LEMON TREES</dt><dd><b>約100本、12年生</b></dd></div>
+        <div><dt>WEEKEND FARMING</dt><dd>無農薬栽培</dd></div>
+        <div><dt>HARVEST</dt><dd>11月頃〜翌年5月頃まで</dd></div>
       </dl>
     </section>
 
@@ -135,9 +131,8 @@ const farmScenes = [
       <ol>
         {seasons.map((season) => (
           <li>
-            <span class="farm-seasons__mark" aria-hidden="true">{season.mark}</span>
+            <span class="farm-seasons__mark">{season.title}</span>
             <small>{season.label}</small>
-            <h3>{season.title}</h3>
             <p>{season.body}</p>
           </li>
         ))}
@@ -401,7 +396,7 @@ const farmScenes = [
     min-height: 0;
     aspect-ratio: 3 / 2;
     isolation: isolate;
-    transform: translateY(-0.75rem);
+    transform: translateY(-2.25rem);
     transition: opacity 720ms ease;
   }
 
@@ -529,7 +524,7 @@ const farmScenes = [
     .farm-stage {
       align-self: center;
       width: min(74vw, 34rem);
-      margin-top: 2rem;
+      margin: 2rem auto 3rem;
       transform: none;
     }
   }
@@ -575,7 +570,7 @@ const farmScenes = [
       width: 93.5vw;
       max-width: none;
       min-height: 0;
-      margin: 2.25rem auto 0;
+      margin: 2.25rem auto 2.5rem;
     }
 
     .farm-hero::before {
@@ -676,11 +671,12 @@ const farmScenes = [
 
   .farm-story::before {
     position: absolute;
-    top: 0;
+    top: 1px;
     left: 0;
     width: 100%;
-    height: clamp(3.5rem, 4.5vw, 4rem);
-    background: url("/images/decor/kominka-wave-divider-wide.svg") repeat-x center / auto 100%;
+    height: calc(clamp(3.5rem, 4.5vw, 4rem) + 2px);
+    background: url("/images/decor/lemon-wave-divider-wide.svg") repeat-x center / auto 100%;
+    box-shadow: inset 0 -2px 0 #fffdf5;
     content: "";
     transform: translateY(-100%);
   }
@@ -758,7 +754,7 @@ const farmScenes = [
   }
 
   .farm-facts dd {
-    max-width: 12rem;
+    max-width: none;
     margin: 1rem 0 0;
     font-size: 1.05rem;
     font-weight: 700;
@@ -767,21 +763,6 @@ const farmScenes = [
 
   .farm-facts dd b {
     font-size: 1.55rem;
-  }
-
-  .farm-facts dl span {
-    position: absolute;
-    right: 1rem;
-    bottom: 0.8rem;
-    display: grid;
-    place-items: center;
-    width: 2.8rem;
-    aspect-ratio: 1;
-    border: 2px solid #143d62;
-    border-radius: 50%;
-    background: #ffe000;
-    font-size: 0.75rem;
-    font-weight: 900;
   }
 
   .farm-seasons {
@@ -841,17 +822,12 @@ const farmScenes = [
   }
 
   .farm-seasons small {
+    display: block;
+    margin-bottom: 0.8rem;
     color: #947b00;
     font-size: 0.7rem;
     font-weight: 900;
     letter-spacing: 0.13em;
-  }
-
-  .farm-seasons h3 {
-    margin: 0.45rem 0 0.8rem;
-    font-family: "Noto Serif JP", serif;
-    font-size: 1.45rem;
-    font-weight: 500;
   }
 
   .farm-seasons li p {
@@ -1039,6 +1015,17 @@ const farmScenes = [
     font-weight: 800;
   }
 
+  @media (min-width: 901px) {
+    .farm-facts {
+      grid-template-columns: minmax(25rem, 0.8fr) minmax(0, 1.2fr);
+      gap: clamp(2.5rem, 5vw, 5rem);
+    }
+
+    .farm-facts__title-line {
+      white-space: nowrap;
+    }
+  }
+
   @media (min-width: 768px) and (max-width: 900px) {
     .farm-story {
       grid-template-columns: 1fr;
@@ -1145,12 +1132,11 @@ const farmScenes = [
     }
 
     .farm-seasons__mark {
-      grid-row: 1 / span 3;
+      grid-row: 1 / span 2;
       margin: 0;
     }
 
     .farm-seasons li small,
-    .farm-seasons li h3,
     .farm-seasons li p {
       grid-column: 2;
     }
