@@ -1,29 +1,15 @@
 ---
 import { siteConfig } from "@/content/pages/site";
+import { footerNavigation } from "@/content/pages/navigation";
 
 const navigationGroups = [
   {
     title: "サイトを見る",
-    items: [
-      { label: "週末移住について", href: "/#about" },
-      { label: "島でしていること", href: "/#activities" },
-      { label: "ヤノについて", href: "/#profile" },
-      { label: "中島へのアクセス", href: "/#nakajima" },
-      { label: "島との関わり方", href: "/#taste" },
-      { label: "記録", href: "/columns" },
-    ],
+    items: footerNavigation.slice(0, 4),
   },
   {
     title: "ヤノとつながる",
-    items: [
-      { label: "お問い合わせ", href: "/contact" },
-      {
-        label: "Instagram",
-        href: siteConfig.social.instagram,
-        external: true,
-      },
-      { label: "note", href: siteConfig.social.note, external: true },
-    ],
+    items: footerNavigation.slice(4),
   },
 ] as const;
 ---
@@ -33,7 +19,7 @@ const navigationGroups = [
     <div class="site-footer__brand">
       <p class="site-footer__copy">{siteConfig.mainCopy}</p>
       <p>平日は働き、週末は船で中島へ。</p>
-      <a class="site-footer__product" href="/product">
+      <a class="site-footer__product" href="/product/">
         <span>週末移住レモンを見る</span>
         <span aria-hidden="true">→</span>
       </a>
@@ -50,19 +36,19 @@ const navigationGroups = [
                   <a
                     href={item.href}
                     class:list={{
-                      "site-footer__accent": "accent" in item && item.accent,
+                      "site-footer__accent": item.accent,
                     }}
                     target={
-                      "external" in item && item.external ? "_blank" : undefined
+                      item.external ? "_blank" : undefined
                     }
                     rel={
-                      "external" in item && item.external
+                      item.external
                         ? "noopener noreferrer"
                         : undefined
                     }
                   >
                     {item.label}
-                    {"external" in item && item.external && (
+                    {item.external && (
                       <span aria-hidden="true">↗</span>
                     )}
                   </a>
@@ -79,7 +65,7 @@ const navigationGroups = [
         {siteConfig.contact.email}
       </a>
       <div>
-        <a href="/privacy">プライバシーポリシー</a>
+        <a href="/privacy/">プライバシーポリシー</a>
         <small>&copy; {new Date().getFullYear()} 週末移住レモン</small>
       </div>
     </div>

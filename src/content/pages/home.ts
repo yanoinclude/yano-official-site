@@ -415,14 +415,14 @@ export const homeContent = {
         body: "長く使われてきた家にもう一度風を通し、人が集まれる場所へ。できるところから、少しずつ手を入れています。",
         image: placeholderImages.house,
         alt: "古民家の外壁を塗る矢野さとし",
-        href: "/kominka",
+        href: "/kominka/",
       },
       {
         title: "100本のレモン農園",
         body: "任された畑に通い、草を刈り、木の状態を見ながら、島の季節と向き合っています。",
         image: placeholderImages.farm,
         alt: "レモンの木を手入れする矢野さとし",
-        href: "/lemon-farm",
+        href: "/lemon-farm/",
       },
     ],
   },
@@ -460,7 +460,7 @@ export const homeContent = {
       {
         title: "レモンを味わう",
         body: "中島の畑から生まれたレモン果汁を、食卓で味わう。",
-        href: "/product",
+        href: "/product/",
       },
       {
         title: "記録を読む",
@@ -529,12 +529,12 @@ export const homeContent = {
       {
         title: "レモン果汁の準備状況を更新しました",
         date: "2026.05.24",
-        href: "/product",
+        href: "/product/",
       },
       {
         title: "古民家改修の記録を整理しています",
         date: "2026.05.08",
-        href: "/kominka",
+        href: "/kominka/",
       },
     ],
   },

@@ -249,3 +249,18 @@
     text-align: center;
   }
 }
+html[data-menu-open],
+html[data-menu-open] body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+#activities {
+  scroll-margin-top: 116px;
+}
+
+@media (max-width: 1120px) {
+  #activities {
+    scroll-margin-top: 104px;
+  }
+}

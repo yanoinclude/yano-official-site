@@ -68,7 +68,7 @@ const faqs = [
     question: "収穫したレモンはどうしている？",
     answer:
       "収穫したレモンは、そのまま販売するだけでなく、畑の背景や島での取り組みも一緒に届けたいと考え、果汁などの商品にしています。現在は「週末移住レモン」として商品化し、オンラインショップからご覧いただけます。",
-    link: { label: "週末移住レモンを見る", href: "/product" },
+    link: { label: "週末移住レモンを見る", href: "/product/" },
   },
   {
     question: "島へ行ってみたいときは？",
@@ -90,7 +90,7 @@ const pathways = [
     category: "PRODUCT",
     title: "週末移住レモン",
     body: "島の暮らしを少し味わう、レモン果汁と商品ページへ。",
-    href: "/product",
+    href: "/product/",
     image: lemonJuiceDisplay.src,
     alt: "レモンと一緒に並ぶ週末移住レモン果汁",
   },
@@ -315,7 +315,7 @@ const recentInstagramPosts = [
       </a>
       <a
         class="map-spot map-spot--house"
-        href="/kominka"
+        href="/kominka/"
         aria-label="古民家の再生活動を見る"
       >
         <span class="map-landmark" aria-hidden="true">
@@ -334,7 +334,7 @@ const recentInstagramPosts = [
       </a>
       <a
         class="map-spot map-spot--farm"
-        href="/lemon-farm"
+        href="/lemon-farm/"
         aria-label="レモン畑と週末移住レモンを見る"
       >
         <span class="map-landmark" aria-hidden="true">
@@ -353,8 +353,8 @@ const recentInstagramPosts = [
       </a>
     </div>
     <nav class="hero-mobile-actions" aria-label="島での活動を見る">
-      <a href="/kominka"><span>古民家をのぞく</span><span aria-hidden="true">→</span></a>
-      <a href="/lemon-farm"><span>レモン畑をのぞく</span><span aria-hidden="true">→</span></a>
+      <a href="/kominka/"><span>古民家をのぞく</span><span aria-hidden="true">→</span></a>
+      <a href="/lemon-farm/"><span>レモン畑をのぞく</span><span aria-hidden="true">→</span></a>
     </nav>
     <MobileYanoJourney />
   </section>
@@ -494,7 +494,7 @@ const recentInstagramPosts = [
               築100年古民家の屋号を「しとらすすたんどKominKa」と命名。島の活動拠点として運営しています。不定期でイベントを開催し、週末はメンバーが古民家を管理しています。
             </p>
           </article>
-          <a class="profile-section__more" href="/about">MORE</a>
+          <a class="profile-section__more" href="/about/">MORE</a>
         </div>
       </div>
     </div>
@@ -876,10 +876,7 @@ const recentInstagramPosts = [
     background: #36a9ee;
   }
 
-  :global(body:has(.weekend-hero) .site-header) {
-    display: none;
-    color: #2e4568;
-  }
+  :global(body:has(.weekend-hero) .site-header) { color: #2e4568; }
 
   @media (min-width: 768px) {
     :global(html:has(.weekend-hero)) {
