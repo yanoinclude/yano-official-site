@@ -249,6 +249,11 @@
     text-align: center;
   }
 }
+html,
+body {
+  overflow-x: clip;
+}
+
 html[data-menu-open],
 html[data-menu-open] body {
   overflow: hidden;
