@@ -269,3 +269,114 @@ html[data-menu-open] body {
     scroll-margin-top: 104px;
   }
 }
+
+/* Final product-page layout controls. Keep these after the legacy product rules. */
+.site-frame .lemon-product-page {
+  box-sizing: border-box;
+  width: min(calc(100% - clamp(3rem, 8vw, 8rem)), 1180px);
+  padding-inline: 0;
+  padding-top: clamp(15rem, 19vw, 17rem);
+}
+
+.site-frame .lemon-product-hero {
+  grid-template-columns: minmax(0, 460px) minmax(500px, 540px);
+  gap: clamp(3rem, 4.5vw, 4.5rem);
+  align-items: start;
+  justify-content: center;
+}
+
+.site-frame .lemon-product-hero figure {
+  width: 92%;
+  justify-self: end;
+}
+
+.site-frame .lemon-product-hero__copy {
+  width: 100%;
+  padding: clamp(2.5rem, 3.2vw, 3rem);
+}
+
+.site-frame .lemon-product-hero h1 {
+  max-width: none;
+  font-size: clamp(3rem, 3.65vw, 3.5rem);
+  line-height: 1.42;
+}
+
+.site-frame .lemon-story {
+  grid-template-columns: minmax(0, 38fr) minmax(0, 56fr);
+  gap: clamp(3.5rem, 5vw, 5rem);
+  padding: clamp(4rem, 5vw, 4.75rem) clamp(3rem, 5vw, 5rem) clamp(4.5rem, 6vw, 5.5rem);
+  border: 2px solid #143d62;
+}
+
+.site-frame .lemon-story h2 {
+  font-size: clamp(2.25rem, 2.5vw, 2.375rem);
+}
+
+.site-frame .lemon-story .heading-line {
+  white-space: nowrap;
+}
+
+.site-frame .farm-offers > header h2 {
+  font-size: clamp(2.375rem, 3vw, 2.875rem);
+}
+
+.site-frame .farm-offers {
+  padding: 3.5rem clamp(3rem, 5vw, 5rem) 5.5rem;
+  border: 2px solid #143d62;
+}
+
+.site-frame .farm-offers > header {
+  grid-template-columns: minmax(0, 36fr) minmax(0, 58fr);
+  column-gap: clamp(3.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+@media (max-width: 1120px) {
+  .site-frame .lemon-product-page {
+    width: min(calc(100% - 3rem), 44rem);
+  }
+
+  .site-frame .lemon-product-hero,
+  .site-frame .lemon-story,
+  .site-frame .farm-offers > header {
+    grid-template-columns: 1fr;
+  }
+
+  .site-frame .lemon-story .heading-line {
+    white-space: normal;
+  }
+
+  .site-frame .lemon-product-hero figure,
+  .site-frame .lemon-product-hero__copy {
+    width: min(100%, 34rem);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-frame .lemon-product-page {
+    width: calc(100% - 2rem);
+    padding-top: 14rem;
+  }
+
+  .site-frame .lemon-product-hero h1 {
+    font-size: clamp(2rem, 9vw, 2.55rem);
+  }
+
+  .site-frame .lemon-product-hero__copy {
+    padding: 2rem 1.35rem;
+  }
+
+  .site-frame .lemon-story {
+    padding: 2.5rem 1.35rem 3.5rem;
+  }
+
+  .site-frame .farm-offers {
+    padding: 2.5rem 1.35rem 4rem;
+  }
+
+  .site-frame .lemon-story h2,
+  .site-frame .farm-offers > header h2 {
+    font-size: clamp(1.65rem, 7.5vw, 1.9rem);
+  }
+}

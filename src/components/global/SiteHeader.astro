@@ -70,6 +70,10 @@ const currentPath = Astro.url.pathname;
       ? Array.from(nav.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"))
       : [];
 
+  const focusWithoutScrolling = (element: HTMLElement | undefined) => {
+    element?.focus({ preventScroll: true });
+  };
+
   const setMenu = (open: boolean, restoreFocus = true) => {
     if (!(button instanceof HTMLButtonElement)) return;
 
@@ -83,9 +87,11 @@ const currentPath = Astro.url.pathname;
     document.documentElement.toggleAttribute("data-menu-open", open);
 
     if (open) {
-      window.setTimeout(() => getFocusableItems()[0]?.focus(), 280);
+      window.setTimeout(() => focusWithoutScrolling(getFocusableItems()[0]), 280);
     } else if (restoreFocus) {
-      (previouslyFocused instanceof HTMLElement ? previouslyFocused : button).focus();
+      focusWithoutScrolling(
+        previouslyFocused instanceof HTMLElement ? previouslyFocused : button,
+      );
     }
   };
 

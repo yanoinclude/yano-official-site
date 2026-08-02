@@ -3615,7 +3615,7 @@ const recentInstagramPosts = [
     .faq-item__answer p { padding-right: 0; }
     .pathways-section__heading h2 { max-width: 13em; }
     .recent-section h2 { max-width: 14em; }
-    .back-to-map { right: 1rem; bottom: max(1rem, env(safe-area-inset-bottom)); width: 3.2rem; height: 3.2rem; }
+    .back-to-map { right: auto; left: max(1rem, env(safe-area-inset-left)); bottom: max(1rem, env(safe-area-inset-bottom)); width: 3.2rem; height: 3.2rem; }
   }
 
   @media (max-width: 340px) {
@@ -5084,8 +5084,8 @@ const recentInstagramPosts = [
     .ranking-card__tags span { font-size: 0.75rem; }
     .ranking-card__badge { width: 2.25rem; min-height: 2.25rem; font-size: 0.75rem; }
     .back-to-map {
-      right: 0.5rem;
-      left: auto;
+      right: auto;
+      left: max(0.75rem, env(safe-area-inset-left));
       width: 2.75rem;
       height: 2.75rem;
     }
