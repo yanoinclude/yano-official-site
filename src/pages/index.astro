@@ -3,6 +3,7 @@ import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import YanoMowing from "@/components/animation/YanoMowing.astro";
 import MobileYanoJourney from "@/components/animation/MobileYanoJourney.astro";
+import HomeEventBadge from "@/components/sections/HomeEventBadge.astro";
 import islandUserCutout from "@/assets/images/home/island-user-cutout.png";
 import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
 import lemonJuiceDisplay from "@/assets/images/home/lemon-juice-display.webp";
@@ -177,6 +178,7 @@ const recentInstagramPosts = [
         loading="eager"
         decoding="async"
       />
+      <HomeEventBadge />
       <svg class="island-map__base" viewBox="0 0 1200 760" aria-hidden="true">
         <defs>
           <filter id="roughLine">
