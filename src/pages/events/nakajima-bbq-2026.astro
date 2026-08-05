@@ -263,6 +263,7 @@ const returnFerries = [
             <h2 id="ferry-title">行きのフェリー</h2>
           </div>
           <div class="bbq-access__intro">
+            <p class="bbq-access__fare">フェリー代：片道910円</p>
             <p>10:00に神浦港へ着く②の便がおすすめです。</p>
             <p>
               フェリーを降りたあとの移動もご安心ください。神浦港からは徒歩、大浦港には軽トラで迎えに行きます。
@@ -1552,6 +1553,14 @@ const returnFerries = [
   .bbq-access__intro {
     display: grid;
     gap: 0.65rem;
+  }
+  .bbq-access__fare {
+    display: inline-block;
+    margin: 0 0 0.85rem;
+    padding: 0.45rem 0.75rem;
+    background: var(--yellow);
+    font-weight: 700;
+    letter-spacing: 0.03em;
   }
 
   .bbq-access__intro p {
