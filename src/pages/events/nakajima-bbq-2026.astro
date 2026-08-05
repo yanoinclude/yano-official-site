@@ -107,7 +107,9 @@ const returnFerries = [
       <div class="bbq-marquee" aria-hidden="true">
         <span>BBQ</span><i>●</i><span>BEACH FLAGS</span><i>●</i><span
           >WATERMELON</span
-        ><i>●</i><span>NAKAJIMA</span>
+        ><i>●</i><span>NAKAJIMA</span><i>●</i><span>LEMON</span><i>●</i><span
+          >KOMINKA</span
+        >
       </div>
     </section>
 
@@ -738,7 +740,7 @@ const returnFerries = [
     font-size: 0.55em;
   }
   .bbq-marquee span:first-child {
-    margin-left: -1rem;
+    margin-left: clamp(1.25rem, 5vw, 4.5rem);
   }
   .bbq-info {
     padding: var(--island-section) 0;
