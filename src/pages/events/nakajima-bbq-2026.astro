@@ -6,6 +6,10 @@ import ferryImage from "@/assets/images/home/nakajima-ferry-cutout.png";
 import yanoImage from "@/assets/images/home/yano-walking-cutout.png";
 import nakajimaAerialImage from "@/assets/images/events/nakajima-bbq-2026/nakajima-aerial.jpg";
 import watermelonBeachImage from "@/assets/images/events/nakajima-bbq-2026/watermelon-beach.jpg";
+import ferryTerminalImage from "@/assets/images/events/nakajima-bbq-2026/ferry-terminal.jpg";
+import islandFerryViewImage from "@/assets/images/events/nakajima-bbq-2026/island-ferry-view.jpg";
+import lemonBasketImage from "@/assets/images/events/nakajima-bbq-2026/lemon-basket.jpg";
+import lemonGroveWorkImage from "@/assets/images/events/nakajima-bbq-2026/lemon-grove-work.jpg";
 
 const outboundFerries = [
   {
@@ -141,6 +145,39 @@ const returnFerries = [
           <p>
             レモン畑で島の仕事を少し体験して、海辺で思いっきり走ったあと、みんなでBBQを楽しみます。
           </p>
+          <div
+            class="bbq-schedule__collage"
+            aria-label="中島で過ごす一日の風景"
+          >
+            <figure>
+              <img
+                src={ferryTerminalImage.src}
+                alt="中島行きフェリーの乗り場"
+                loading="lazy"
+              />
+            </figure>
+            <figure>
+              <img
+                src={islandFerryViewImage.src}
+                alt="中島の港へ向かうフェリー"
+                loading="lazy"
+              />
+            </figure>
+            <figure>
+              <img
+                src={lemonBasketImage.src}
+                alt="畑で集めたレモンのかご"
+                loading="lazy"
+              />
+            </figure>
+            <figure>
+              <img
+                src={lemonGroveWorkImage.src}
+                alt="レモン畑で木を手入れする様子"
+                loading="lazy"
+              />
+            </figure>
+          </div>
         </header>
         <ol class="bbq-timeline">
           <li>
@@ -759,10 +796,56 @@ const returnFerries = [
     font: 500 clamp(2rem, 4vw, 4rem)/1.35 var(--font-island-heading);
     letter-spacing: -0.045em;
   }
-  .bbq-schedule header > p:last-child {
+  .bbq-schedule header > p:last-of-type {
     max-width: 27rem;
     margin: 0;
     line-height: 1.9;
+  }
+  .bbq-schedule__collage {
+    position: relative;
+    width: min(100%, 30rem);
+    height: clamp(26rem, 35vw, 34rem);
+    margin-top: 2.2rem;
+  }
+  .bbq-schedule__collage figure {
+    position: absolute;
+    width: 54%;
+    margin: 0;
+    padding: 0.38rem;
+    background: #fff;
+    box-shadow: 0.45rem 0.55rem 0 rgb(32 59 96 / 12%);
+  }
+  .bbq-schedule__collage figure:nth-child(1) {
+    top: 0;
+    left: 2%;
+    transform: rotate(-4deg);
+  }
+  .bbq-schedule__collage figure:nth-child(2) {
+    top: 18%;
+    right: 0;
+    width: 49%;
+    transform: rotate(3.5deg);
+  }
+  .bbq-schedule__collage figure:nth-child(3) {
+    top: 48%;
+    left: 7%;
+    width: 45%;
+    transform: rotate(2.5deg);
+  }
+  .bbq-schedule__collage figure:nth-child(4) {
+    right: 4%;
+    bottom: 0;
+    width: 47%;
+    transform: rotate(-3deg);
+  }
+  .bbq-schedule__collage img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .bbq-schedule__collage figure:nth-child(4) img {
+    object-position: center 42%;
   }
   .bbq-timeline {
     position: relative;
@@ -1813,6 +1896,84 @@ const returnFerries = [
     .bbq-cta__yano {
       width: 40vw;
       max-height: 280px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .bbq-hero__visual {
+      height: clamp(290px, 45vw, 350px);
+    }
+
+    .bbq-schedule__collage {
+      width: 100%;
+      height: clamp(15rem, 32vw, 20rem);
+      margin-top: 1.75rem;
+    }
+
+    .bbq-schedule__collage figure {
+      width: 28%;
+    }
+
+    .bbq-schedule__collage figure:nth-child(1) {
+      left: 1%;
+    }
+
+    .bbq-schedule__collage figure:nth-child(2) {
+      top: 13%;
+      right: auto;
+      left: 25%;
+      width: 27%;
+    }
+
+    .bbq-schedule__collage figure:nth-child(3) {
+      top: 2%;
+      left: 49%;
+      width: 25%;
+    }
+
+    .bbq-schedule__collage figure:nth-child(4) {
+      right: 1%;
+      bottom: 4%;
+      width: 27%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .bbq-hero__visual {
+      height: clamp(250px, 65vw, 285px);
+    }
+
+    .bbq-schedule__collage {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+      height: auto;
+      margin: 1.5rem 0 0.75rem;
+      padding: 0.3rem;
+    }
+
+    .bbq-schedule__collage figure,
+    .bbq-schedule__collage figure:nth-child(n) {
+      position: relative;
+      inset: auto;
+      width: auto;
+      padding: 0.28rem;
+    }
+
+    .bbq-schedule__collage figure:nth-child(1) {
+      transform: translateY(0.35rem) rotate(-3deg);
+    }
+
+    .bbq-schedule__collage figure:nth-child(2) {
+      transform: rotate(2.5deg);
+    }
+
+    .bbq-schedule__collage figure:nth-child(3) {
+      transform: rotate(2deg);
+    }
+
+    .bbq-schedule__collage figure:nth-child(4) {
+      transform: translateY(-0.25rem) rotate(-2.5deg);
     }
   }
 
