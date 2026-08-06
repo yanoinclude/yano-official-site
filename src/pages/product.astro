@@ -3,23 +3,47 @@ import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import lemonCooking from "@/assets/images/product/lp/lemon-cooking.webp";
+import lemonCookingSm from "@/assets/images/product/lp/lemon-cooking-sm.webp";
 import lemonCookingJpg from "@/assets/images/product/lp/lemon-cooking.jpg";
 import lemonFarmWide from "@/assets/images/product/lp/lemon-farm-wide.webp";
+import lemonFarmWideSm from "@/assets/images/product/lp/lemon-farm-wide-sm.webp";
 import lemonFarmWideJpg from "@/assets/images/product/lp/lemon-farm-wide.jpg";
 import lemonFarmMobile from "@/assets/images/product/lp/lemon-farm-mobile.webp";
+import lemonFarmMobileSm from "@/assets/images/product/lp/lemon-farm-mobile-sm.webp";
 import lemonFarmMobileJpg from "@/assets/images/product/lp/lemon-farm-mobile.jpg";
 import harvestHand from "@/assets/images/product/lp/lemon-harvest-hand.webp";
+import harvestHandSm from "@/assets/images/product/lp/lemon-harvest-hand-sm.webp";
 import harvestHandJpg from "@/assets/images/product/lp/lemon-harvest-hand.jpg";
 import harvestBasket from "@/assets/images/product/lp/lemon-harvest-basket.webp";
+import harvestBasketSm from "@/assets/images/product/lp/lemon-harvest-basket-sm.webp";
 import harvestBasketJpg from "@/assets/images/product/lp/lemon-harvest-basket.jpg";
 import eventLabels from "@/assets/images/product/lp/event-labels.webp";
+import eventLabelsSm from "@/assets/images/product/lp/event-labels-sm.webp";
 import eventLabelsJpg from "@/assets/images/product/lp/event-labels.jpg";
 import productBottleCutout from "@/assets/images/product/lp/product-bottle-cutout.webp";
 import productBottleCutoutPng from "@/assets/images/product/lp/product-bottle-cutout.png";
 import lemonSquash from "@/assets/images/product/lp/lemon-squash-card.webp";
+import lemonSquashSm from "@/assets/images/product/lp/lemon-squash-card-sm.webp";
 import lemonSquashJpg from "@/assets/images/product/lp/lemon-squash-card.jpg";
 
 const shopUrl = "https://weekend-island-shop.square.site/";
+const productUrl = "https://yano-official-site.pages.dev/product/";
+const productOgImage = "https://yano-official-site.pages.dev/og/product-og.jpg";
+const productStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "週末移住レモン果汁",
+  description: "愛媛・中島で育ったレモンから生まれた100％レモン果汁",
+  image:
+    "https://yano-official-site.pages.dev/images/product/weekend-lemon-juice-bottle.webp",
+  brand: { "@type": "Brand", name: "週末移住レモン" },
+  offers: {
+    "@type": "Offer",
+    price: "800",
+    priceCurrency: "JPY",
+    url: shopUrl,
+  },
+};
 
 const features = [
   [
@@ -49,8 +73,14 @@ const productDetails = [
 <BaseLayout
   title="週末移住レモン果汁"
   description="愛媛・中島で育ったレモンから生まれた100％レモン果汁。味わい、楽しみ方、畑の物語をご紹介します。"
+  canonical={productUrl}
+  ogImage={productOgImage}
 >
-  <main class="product-lp">
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify(productStructuredData)}
+  />
+  <article class="product-lp">
     <section class="product-hero" aria-labelledby="product-title">
       <div class="product-hero__yano" aria-hidden="true">
         <YanoSpeechBubble />
@@ -101,7 +131,11 @@ const productDetails = [
       </header>
       <div class="features__stage">
         <picture class="features__farm">
-          <source srcset={lemonFarmWide.src} type="image/webp" />
+          <source
+            srcset={`${lemonFarmWideSm.src} 960w, ${lemonFarmWide.src} 1600w`}
+            sizes="(max-width: 767px) 90vw, 55vw"
+            type="image/webp"
+          />
           <img
             src={lemonFarmWideJpg.src}
             alt="中島の畑に実るレモン"
@@ -109,6 +143,7 @@ const productDetails = [
             height="900"
             loading="lazy"
             decoding="async"
+            sizes="(max-width: 767px) 90vw, 55vw"
           />
         </picture>
         <picture class="features__bottle">
@@ -171,7 +206,11 @@ const productDetails = [
       <div class="enjoy__grid">
         <article class="enjoy-card">
           <picture>
-            <source srcset={lemonSquash.src} type="image/webp" />
+            <source
+              srcset={`${lemonSquashSm.src} 720w, ${lemonSquash.src} 1400w`}
+              sizes="(max-width: 767px) 90vw, 33vw"
+              type="image/webp"
+            />
             <img
               src={lemonSquashJpg.src}
               alt="炭酸の泡が立つレモンスカッシュと週末移住レモン果汁"
@@ -179,6 +218,7 @@ const productDetails = [
               height="1400"
               loading="lazy"
               decoding="async"
+              sizes="(max-width: 767px) 90vw, 33vw"
             />
           </picture>
           <div>
@@ -199,7 +239,11 @@ const productDetails = [
         </article>
         <article class="enjoy-card">
           <picture>
-            <source srcset={lemonCooking.src} type="image/webp" />
+            <source
+              srcset={`${lemonCookingSm.src} 720w, ${lemonCooking.src} 1400w`}
+              sizes="(max-width: 767px) 90vw, 33vw"
+              type="image/webp"
+            />
             <img
               src={lemonCookingJpg.src}
               alt="輪切りレモンをのせた鍋料理"
@@ -207,6 +251,7 @@ const productDetails = [
               height="1400"
               loading="lazy"
               decoding="async"
+              sizes="(max-width: 767px) 90vw, 33vw"
             />
           </picture>
           <div>
@@ -222,7 +267,8 @@ const productDetails = [
       <picture class="farm-story__hero">
         <source
           media="(max-width: 767px)"
-          srcset={lemonFarmMobile.src}
+          srcset={`${lemonFarmMobileSm.src} 800w, ${lemonFarmMobile.src} 1200w`}
+          sizes="100vw"
           type="image/webp"
         />
         <source
@@ -230,7 +276,11 @@ const productDetails = [
           srcset={lemonFarmMobileJpg.src}
           type="image/jpeg"
         />
-        <source srcset={lemonFarmWide.src} type="image/webp" />
+        <source
+          srcset={`${lemonFarmWideSm.src} 960w, ${lemonFarmWide.src} 1600w`}
+          sizes="100vw"
+          type="image/webp"
+        />
         <img
           src={lemonFarmWideJpg.src}
           alt="中島のレモン畑"
@@ -238,19 +288,27 @@ const productDetails = [
           height="900"
           loading="lazy"
           decoding="async"
+          sizes="100vw"
         />
       </picture>
       <div class="farm-story__inner">
         <div class="farm-story__copy">
           <p class="eyebrow">THE FARM STORY</p>
-          <h2 id="story-title">古民家の隣にあった、<br />レモン畑。</h2>
+          <h2 id="story-title">島で出会った、<br />100本のレモン畑。</h2>
           <blockquote>「もう、レモンの木は<br />全部切る」</blockquote>
           <p>
-            この畑は、古民家のお隣さんが長く手入れしてきた場所です。けれど、足を痛めてから斜面での作業が難しくなり、「もうレモンの木は全部切る」と聞きました。
+            この畑を長く手入れしてきたのは、古民家再生を始めた頃から、活動を見守ってくれていた島の農家さんです。
           </p>
           <p>
-            農業は初めてでした。それでも木がなくなることへの寂しさと、「残さないと」という衝動から、100本の手入れを引き継ぎました。週末に草を刈り、枝を見て、収穫した実の行き先まで考える。このレモン果汁は、島で受け取った関係の続きにあります。
+            けれど、足を痛めてから斜面での作業が難しくなり、「もうレモンの木は全部切る」と聞きました。
           </p>
+          <p>
+            農業は初めてでした。それでも、木がなくなることへの寂しさと、「残さないと」という衝動から、100本の手入れを引き継ぎました。
+          </p>
+          <p>
+            週末に草を刈り、枝を見て、収穫した実の行き先まで考える。古民家とレモン畑は、物理的に隣り合う場所ではありません。けれど、どちらも島で出会った人との関係から始まった活動です。
+          </p>
+          <p>このレモン果汁は、島で受け取った関係の続きにあります。</p>
           <a class="text-arrow" href="/lemon-farm/"
             >100本のレモン畑を見る <span aria-hidden="true">→</span></a
           >
@@ -258,13 +316,18 @@ const productDetails = [
         <div class="farm-story__photos">
           <figure>
             <picture
-              ><source srcset={harvestHand.src} type="image/webp" /><img
+              ><source
+                srcset={`${harvestHandSm.src} 720w, ${harvestHand.src} 1200w`}
+                sizes="(max-width: 767px) 90vw, 34vw"
+                type="image/webp"
+              /><img
                 src={harvestHandJpg.src}
                 alt="畑で収穫した二つのレモン"
                 width="1200"
                 height="1500"
                 loading="lazy"
                 decoding="async"
+                sizes="(max-width: 767px) 90vw, 34vw"
               /></picture
             >
             <figcaption>
@@ -272,17 +335,54 @@ const productDetails = [
             </figcaption>
           </figure>
           <picture class="farm-story__basket"
-            ><source srcset={harvestBasket.src} type="image/webp" /><img
+            ><source
+              srcset={`${harvestBasketSm.src} 720w, ${harvestBasket.src} 1200w`}
+              sizes="(max-width: 767px) 90vw, 34vw"
+              type="image/webp"
+            /><img
               src={harvestBasketJpg.src}
               alt="籠と箱に集めた収穫後のレモン"
               width="1200"
               height="1500"
               loading="lazy"
               decoding="async"
+              sizes="(max-width: 767px) 90vw, 34vw"
             /></picture
           >
         </div>
       </div>
+    </section>
+
+    <section class="related" aria-labelledby="related-title">
+      <div class="related__episode">
+        <picture
+          ><source
+            srcset={`${eventLabelsSm.src} 900w, ${eventLabels.src} 1800w`}
+            sizes="(max-width: 767px) 90vw, 55vw"
+            type="image/webp"
+          /><img
+            src={eventLabelsJpg.src}
+            alt="色とりどりの限定ラベルが貼られたレモン果汁"
+            width="1800"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+            sizes="(max-width: 767px) 90vw, 55vw"
+          /></picture
+        >
+        <div>
+          <p class="eyebrow">A SMALL CONNECTION</p><h2 id="related-title">
+            レモンから生まれた、<br />小さなつながり。
+          </h2><p>
+            イベントでは、色とりどりの絵をラベルにした一本も生まれました。レモンを売るだけでなく、島や人との関係が増えていくことも、この活動の楽しみです。
+          </p>
+        </div>
+      </div>
+      <a class="related-card" href="/lemon-farm/"
+        ><span>畑のことを、もう少し。</span><strong
+          >100本のレモン畑を見る</strong
+        ><i aria-hidden="true">→</i></a
+      >
     </section>
 
     <section class="details" aria-labelledby="details-title">
@@ -342,38 +442,12 @@ const productDetails = [
           href={shopUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="週末移住レモン果汁をオンラインで購入する（新しいタブで開く）"
           ><span>オンラインで購入する</span><span aria-hidden="true">↗</span></a
         >
       </div>
     </section>
-
-    <section class="related" aria-labelledby="related-title">
-      <div class="related__episode">
-        <picture
-          ><source srcset={eventLabels.src} type="image/webp" /><img
-            src={eventLabelsJpg.src}
-            alt="色とりどりの限定ラベルが貼られたレモン果汁"
-            width="1800"
-            height="1200"
-            loading="lazy"
-            decoding="async"
-          /></picture
-        >
-        <div>
-          <p class="eyebrow">A SMALL CONNECTION</p><h2 id="related-title">
-            レモンから生まれた、<br />小さなつながり。
-          </h2><p>
-            イベントでは、色とりどりの絵をラベルにした一本も生まれました。レモンを売るだけでなく、島や人との関係が増えていくことも、この活動の楽しみです。
-          </p>
-        </div>
-      </div>
-      <a class="related-card" href="/lemon-farm/"
-        ><span>畑のことを、もう少し。</span><strong
-          >100本のレモン畑を見る</strong
-        ><i aria-hidden="true">→</i></a
-      >
-    </section>
-  </main>
+  </article>
 
   <aside class="sticky-buy" data-sticky-buy aria-label="商品を購入">
     <span>150ml・800円</span>
@@ -387,22 +461,40 @@ const productDetails = [
     "[data-final-purchase]",
   );
   const footer = document.querySelector<HTMLElement>("footer");
+  let hasScrolled = window.scrollY > 520;
+  let finalPurchaseVisible = false;
+  let footerVisible = false;
+  let scrollFrame = 0;
   const updateStickyBuy = () => {
     if (!stickyBuy) return;
-    const nearPurchase = finalPurchase
-      ? finalPurchase.getBoundingClientRect().top < window.innerHeight * 0.9
-      : false;
-    const nearFooter = footer
-      ? footer.getBoundingClientRect().top < window.innerHeight
-      : false;
     stickyBuy.toggleAttribute(
       "data-visible",
-      window.scrollY > 520 && !nearPurchase && !nearFooter,
+      hasScrolled && !finalPurchaseVisible && !footerVisible,
     );
   };
+  const onScroll = () => {
+    if (scrollFrame) return;
+    scrollFrame = window.requestAnimationFrame(() => {
+      hasScrolled = window.scrollY > 520;
+      scrollFrame = 0;
+      updateStickyBuy();
+    });
+  };
+  const visibilityObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === finalPurchase)
+          finalPurchaseVisible = entry.isIntersecting;
+        if (entry.target === footer) footerVisible = entry.isIntersecting;
+      });
+      updateStickyBuy();
+    },
+    { rootMargin: "0px 0px -10%" },
+  );
+  if (finalPurchase) visibilityObserver.observe(finalPurchase);
+  if (footer) visibilityObserver.observe(footer);
   updateStickyBuy();
-  window.addEventListener("scroll", updateStickyBuy, { passive: true });
-  window.addEventListener("resize", updateStickyBuy);
+  window.addEventListener("scroll", onScroll, { passive: true });
 </script>
 
 <style>
@@ -1016,6 +1108,7 @@ const productDetails = [
     padding: clamp(5rem, 10vw, 9rem) max(5vw, calc((100vw - 1100px) / 2));
     background: var(--navy);
     color: #fff;
+    border-bottom: 10px solid var(--yellow);
   }
   .final-cta > picture {
     display: grid;
@@ -1027,7 +1120,7 @@ const productDetails = [
   }
   .final-cta img {
     display: block;
-    width: 52%;
+    width: 60%;
     filter: drop-shadow(10px 16px 8px rgb(0 0 0 / 24%));
     transform: rotate(3deg);
   }

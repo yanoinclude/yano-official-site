@@ -9,7 +9,7 @@
   <div class="yano-journey__traveler" data-yano-traveler>
     <span class="yano-sprite" data-yano-sprite>
       <img
-        src="/images/animation/yano-30frames-v4.png"
+        src="/images/animation/yano-30frames-v5.webp"
         alt=""
         width="4800"
         height="264"
@@ -30,7 +30,10 @@
   const setPath = () => {
     if (!journey || !traveler) return;
     const pathEnd = Math.ceil(journey.getBoundingClientRect().width + 90);
-    const pathY = Math.max(96, Math.round(journey.getBoundingClientRect().height - 2));
+    const pathY = Math.max(
+      96,
+      Math.round(journey.getBoundingClientRect().height - 2),
+    );
     traveler.style.offsetPath = `path("M -90 ${pathY} L ${pathEnd} ${pathY}")`;
     journey.dataset.pathPixels = String(pathEnd + 90);
   };
@@ -68,7 +71,6 @@
       height: 118px;
       margin-top: 0.5rem;
     }
-
   }
 
   .yano-journey__traveler {
@@ -92,7 +94,8 @@
     width: 84.848px;
     height: 140px;
     overflow: hidden;
-    transform: translateX(-50%) scaleX(var(--yano-facing, 1)) translateY(var(--yano-bob, 0));
+    transform: translateX(-50%) scaleX(var(--yano-facing, 1))
+      translateY(var(--yano-bob, 0));
     transform-origin: 50% 100%;
     will-change: transform;
   }
@@ -117,7 +120,9 @@
       height: 100px;
     }
 
-    .yano-sprite img { height: 100px; }
+    .yano-sprite img {
+      height: 100px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
