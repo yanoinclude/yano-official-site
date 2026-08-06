@@ -73,8 +73,12 @@ const returnFerries = [
       <div class="bbq-hero__copy">
         <p class="bbq-kicker">YANO'S ISLAND SUMMER / NAKAJIMA</p>
         <p class="bbq-hero__date"><strong>2026.8.8</strong><span>SAT</span></p>
-        <h1>レモン香る、中島BBQ大会</h1>
-        <p class="bbq-hero__lead">レモン畑で汗をかいて、海辺を走って、焼く。</p>
+        <h1>レモン香る、<br />中島BBQ大会</h1>
+        <p class="bbq-hero__lead">
+          レモン畑で汗をかいて、海辺を走って、<span class="bbq-title-keep"
+            >焼く。</span
+          >
+        </p>
         <div class="bbq-hero__facts" aria-label="イベント概要">
           <p><span>TIME</span><strong>10:00–16:00</strong></p>
           <p><span>PLACE</span><strong>矢野の古民家</strong></p>
@@ -1671,7 +1675,7 @@ const returnFerries = [
 
     .bbq-hero__copy {
       margin-top: 0;
-      padding: 1.35rem 1.15rem 1.4rem;
+      padding: 1.35rem 1rem 1.4rem;
       box-shadow:
         -5px 7px 0 #111,
         6px 11px 0 var(--yellow),
@@ -1688,9 +1692,9 @@ const returnFerries = [
 
     .bbq-hero h1 {
       max-width: 100%;
-      font-size: clamp(2.25rem, 9.5vw, 3rem);
+      font-size: clamp(2rem, 8.4vw, 2.55rem);
       line-height: 1.16;
-      letter-spacing: -0.055em;
+      letter-spacing: -0.065em;
       white-space: normal;
       word-break: keep-all;
       overflow-wrap: normal;
@@ -1698,7 +1702,7 @@ const returnFerries = [
 
     .bbq-hero__lead {
       margin-top: 1.4rem;
-      font-size: clamp(1rem, 4.4vw, 1.12rem);
+      font-size: clamp(0.96rem, 4vw, 1.06rem);
       line-height: 1.8;
       white-space: normal;
       word-break: normal;
