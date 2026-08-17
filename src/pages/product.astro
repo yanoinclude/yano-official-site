@@ -68,7 +68,7 @@ const productDetails = [
   ["販売者", "矢野諭稔（しとらすすたんどKominKa）"],
 ];
 
-const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
+const heroBottles = Array.from({ length: 12 }, (_, index) => index + 1);
 ---
 
 <BaseLayout
@@ -1569,7 +1569,7 @@ const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
     height: 160px;
     margin: 0;
     opacity: 0;
-    filter: drop-shadow(7px 10px 8px rgb(24 57 94 / 18%));
+    filter: drop-shadow(5px 7px 7px rgb(24 57 94 / 12%));
     transform: rotate(var(--bottle-rotate));
     transform-origin: center;
     animation: bottleEnter 700ms ease-out forwards;
@@ -1580,7 +1580,8 @@ const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
     display: block;
     width: auto;
     height: 100%;
-    animation: bottleFloat var(--bottle-duration) ease-in-out infinite;
+    transform-origin: 50% 55%;
+    animation: bottleSway var(--bottle-duration) ease-in-out infinite;
     animation-delay: calc(var(--bottle-delay) + 700ms);
   }
 
@@ -1778,6 +1779,13 @@ const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
   }
 
   @media (max-width: 1024px) {
+    .hero-bottle--9,
+    .hero-bottle--10,
+    .hero-bottle--11,
+    .hero-bottle--12 {
+      display: block;
+    }
+
     .product-hero {
       min-height: min(100svh, 860px);
       padding-inline: 20px;
@@ -1988,6 +1996,196 @@ const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
     }
   }
 
+  /* Diagonal bottle streams */
+  .hero-bottle--1 {
+    --bottle-rotate: -18deg;
+    top: -9%;
+    left: -3%;
+    height: 202px;
+  }
+  .hero-bottle--2 {
+    --bottle-rotate: 14deg;
+    top: 18%;
+    left: 10%;
+    height: 190px;
+  }
+  .hero-bottle--3 {
+    --bottle-rotate: -11deg;
+    top: -6%;
+    left: 20%;
+    height: 182px;
+  }
+  .hero-bottle--4 {
+    --bottle-rotate: 16deg;
+    top: 57%;
+    left: -2%;
+    height: 196px;
+  }
+  .hero-bottle--5 {
+    --bottle-rotate: -15deg;
+    top: 76%;
+    left: 11%;
+    height: 188px;
+  }
+  .hero-bottle--6 {
+    --bottle-rotate: 19deg;
+    top: 49%;
+    left: 21%;
+    height: 180px;
+  }
+  .hero-bottle--7 {
+    --bottle-rotate: 18deg;
+    top: -10%;
+    right: -3%;
+    bottom: auto;
+    height: 202px;
+  }
+  .hero-bottle--8 {
+    --bottle-rotate: -14deg;
+    top: 18%;
+    right: 10%;
+    bottom: auto;
+    height: 190px;
+  }
+  .hero-bottle--9 {
+    --bottle-rotate: 11deg;
+    top: -6%;
+    right: 20%;
+    bottom: auto;
+    left: auto;
+    height: 182px;
+  }
+  .hero-bottle--10 {
+    --bottle-rotate: -16deg;
+    top: 57%;
+    right: -2%;
+    bottom: auto;
+    height: 196px;
+  }
+  .hero-bottle--11 {
+    --bottle-rotate: 15deg;
+    top: 76%;
+    right: 11%;
+    height: 188px;
+  }
+  .hero-bottle--12 {
+    --bottle-rotate: -19deg;
+    top: 49%;
+    right: 21%;
+    height: 180px;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-bottle--9,
+    .hero-bottle--10,
+    .hero-bottle--11,
+    .hero-bottle--12 {
+      display: block;
+    }
+
+    .hero-bottle--1,
+    .hero-bottle--7 {
+      height: 166px;
+    }
+
+    .hero-bottle--2,
+    .hero-bottle--8 {
+      right: auto;
+      left: 8%;
+      height: 150px;
+    }
+
+    .hero-bottle--8 {
+      right: 8%;
+      left: auto;
+    }
+
+    .hero-bottle--3,
+    .hero-bottle--9 {
+      height: 142px;
+    }
+
+    .hero-bottle--4,
+    .hero-bottle--10 {
+      height: 160px;
+    }
+
+    .hero-bottle--5,
+    .hero-bottle--11 {
+      right: auto;
+      left: 9%;
+      height: 148px;
+    }
+
+    .hero-bottle--11 {
+      right: 9%;
+      left: auto;
+    }
+
+    .hero-bottle--6,
+    .hero-bottle--12 {
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-bottle--1 {
+      top: -4%;
+      left: -9%;
+      height: 128px;
+    }
+
+    .hero-bottle--2 {
+      top: 24%;
+      left: 3%;
+      height: 106px;
+    }
+
+    .hero-bottle--3 {
+      top: 52%;
+      left: -7%;
+      height: 120px;
+    }
+
+    .hero-bottle--4 {
+      top: 81%;
+      left: 4%;
+      height: 110px;
+    }
+
+    .hero-bottle--7 {
+      top: -5%;
+      right: -9%;
+      height: 128px;
+    }
+
+    .hero-bottle--8 {
+      top: 24%;
+      right: 3%;
+      left: auto;
+      height: 106px;
+    }
+
+    .hero-bottle--9 {
+      top: 52%;
+      right: -7%;
+      height: 120px;
+    }
+
+    .hero-bottle--10 {
+      top: 81%;
+      right: 4%;
+      height: 110px;
+    }
+
+    .hero-bottle--5,
+    .hero-bottle--6,
+    .hero-bottle--11,
+    .hero-bottle--12 {
+      display: none;
+    }
+  }
+
   @keyframes bottleEnter {
     from {
       opacity: 0;
@@ -1999,13 +2197,13 @@ const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
     }
   }
 
-  @keyframes bottleFloat {
+  @keyframes bottleSway {
     0%,
     100% {
-      translate: 0 0;
+      transform: rotate(-1.4deg);
     }
     50% {
-      translate: 0 -9px;
+      transform: rotate(1.4deg);
     }
   }
 
