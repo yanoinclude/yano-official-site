@@ -2,6 +2,7 @@
 import { placeholderImages, siteConfig } from "@/content/pages/site";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import YanoMowing from "@/components/animation/YanoMowing.astro";
+import YanoSpeechBubble from "@/components/animation/YanoSpeechBubble.astro";
 import MobileYanoJourney from "@/components/animation/MobileYanoJourney.astro";
 import islandUserCutout from "@/assets/images/home/island-user-cutout.png";
 import kominkaCutout from "@/assets/images/home/kominka-map-cutout.png";
@@ -292,28 +293,6 @@ const recentInstagramPosts = [
       </svg>
 
       <a
-        class="map-spot map-spot--yano"
-        href="#profile"
-        aria-label="ページ内のヤノのプロフィールへ"
-        data-island-yano
-        data-yano-traveler
-      >
-        <span class="map-yano" aria-hidden="true" data-yano-sprite>
-          <span class="map-yano__frame">
-            <img
-              src="/images/animation/yano-30frames-v5.webp"
-              alt=""
-              width="4800"
-              height="264"
-              loading="eager"
-              decoding="async"
-              data-yano-sheet
-            />
-          </span>
-        </span>
-        <span>ヤノ</span>
-      </a>
-      <a
         class="map-spot map-spot--house"
         href="/kominka/"
         aria-label="古民家の再生活動を見る"
@@ -425,6 +404,10 @@ const recentInstagramPosts = [
       </div>
     </div>
   </section>
+
+  <div class="activities-yano" aria-hidden="true">
+    <YanoSpeechBubble size="map" />
+  </div>
 
   <section class="activities-section reveal-section" id="activities">
     <div class="content-shell">
@@ -996,7 +979,7 @@ const recentInstagramPosts = [
   }
 
   :global(body:has(.weekend-hero) .site-header) {
-    color: #2e4568;
+    color: #fff;
   }
 
   @media (min-width: 768px) {
@@ -1628,11 +1611,36 @@ const recentInstagramPosts = [
   }
 
   .weekend-intro {
+    position: relative;
     display: grid;
     padding-block: clamp(5rem, 9vw, 8rem);
     overflow: hidden;
     background: #36a9ee;
     color: #111;
+  }
+
+  .activities-yano {
+    position: relative;
+    z-index: 4;
+    height: clamp(10rem, 13vw, 12rem);
+    overflow: visible;
+    background: #36a9ee;
+    pointer-events: none;
+  }
+
+  .activities-yano :global(.yano-brand) {
+    --brand-yano-height-desktop: clamp(140px, 11vw, 160px) !important;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+
+  .activities-yano :global(.yano-brand__character) {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(var(--brand-yano-bob, 0));
   }
 
   .weekend-intro__layer,
@@ -3570,7 +3578,7 @@ const recentInstagramPosts = [
     margin-inline: 0;
   }
   .site-name {
-    font-size: clamp(1.3rem, 2.1vw, 1.8rem);
+    display: none !important;
   }
   .hero-introduction {
     width: min(36rem, calc(100% - 3rem));
@@ -4061,7 +4069,7 @@ const recentInstagramPosts = [
       display: block;
       min-height: 0;
       height: auto;
-      padding: 1rem 0 2.5rem;
+      padding: 5rem 0 2.5rem;
       overflow: clip;
     }
     .site-name {
@@ -6213,6 +6221,16 @@ const recentInstagramPosts = [
       padding: 0 0 4.5rem;
       overflow-x: clip;
       background: #36a9ee;
+    }
+    .activities-yano {
+      position: relative;
+      bottom: auto;
+      height: 8.5rem;
+      margin-top: 1.5rem;
+    }
+    .activities-yano :global(.yano-brand) {
+      --brand-yano-height-desktop: 128px !important;
+      top: 0;
     }
     .weekend-intro__layer {
       display: none;

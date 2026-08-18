@@ -3,36 +3,93 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import lemonCooking from "@/assets/images/product/lp/lemon-cooking.webp";
 import lemonCookingSm from "@/assets/images/product/lp/lemon-cooking-sm.webp";
-import lemonCookingJpg from "@/assets/images/product/lp/lemon-cooking.jpg";
 import lemonFarmWide from "@/assets/images/product/lp/lemon-farm-wide.webp";
 import lemonFarmWideSm from "@/assets/images/product/lp/lemon-farm-wide-sm.webp";
-import lemonFarmWideJpg from "@/assets/images/product/lp/lemon-farm-wide.jpg";
 import lemonFarmMobile from "@/assets/images/product/lp/lemon-farm-mobile.webp";
 import lemonFarmMobileSm from "@/assets/images/product/lp/lemon-farm-mobile-sm.webp";
-import lemonFarmMobileJpg from "@/assets/images/product/lp/lemon-farm-mobile.jpg";
 import harvestHand from "@/assets/images/product/lp/lemon-harvest-hand.webp";
 import harvestHandSm from "@/assets/images/product/lp/lemon-harvest-hand-sm.webp";
-import harvestHandJpg from "@/assets/images/product/lp/lemon-harvest-hand.jpg";
 import harvestBasket from "@/assets/images/product/lp/lemon-harvest-basket.webp";
 import harvestBasketSm from "@/assets/images/product/lp/lemon-harvest-basket-sm.webp";
-import harvestBasketJpg from "@/assets/images/product/lp/lemon-harvest-basket.jpg";
 import eventLabels from "@/assets/images/product/lp/event-labels.webp";
 import eventLabelsSm from "@/assets/images/product/lp/event-labels-sm.webp";
-import eventLabelsJpg from "@/assets/images/product/lp/event-labels.jpg";
-import productBottleCutout from "@/assets/images/product/lp/product-bottle-cutout.webp";
-import productBottleCutoutPng from "@/assets/images/product/lp/product-bottle-cutout.png";
+import productBottle from "@/assets/images/product/lp/product-bottle-cutout.webp";
+import productBottlePng from "@/assets/images/product/lp/product-bottle-cutout.png";
+import productSquare from "@/assets/images/product/lp/product-square.webp";
 import lemonSquash from "@/assets/images/product/lp/lemon-squash-card.webp";
 import lemonSquashSm from "@/assets/images/product/lp/lemon-squash-card-sm.webp";
-import lemonSquashJpg from "@/assets/images/product/lp/lemon-squash-card.jpg";
+import islandFerryView from "@/assets/images/events/nakajima-bbq-2026/island-ferry-view.jpg";
 
 const shopUrl = "https://weekend-island-shop.square.site/";
 const productUrl = "https://yano-official-site.pages.dev/product/";
-const productOgImage = "https://yano-official-site.pages.dev/og/product-og.jpg";
-const productStructuredData = {
+const productDetails = [
+  ["商品名", "週末移住レモン果汁"],
+  ["内容量", "150mL"],
+  ["価格", "800円（税込）"],
+  ["原材料名", "レモン"],
+  ["保存方法", "直射日光を避け、常温で保存してください。"],
+  ["開栓後", "10℃以下で保存し、お早めにお召し上がりください。"],
+  ["販売者", "矢野諭稔（しとらすすたんどKominKa）"],
+];
+const heroBottles = Array.from({ length: 10 }, (_, index) => index + 1);
+const qualityPoints = [
+  {
+    number: "01",
+    title: "中島で育ったレモン",
+    body: "瀬戸内海に浮かぶ中島で育ったレモンを使用しています。",
+    image: lemonFarmMobile,
+    imageSm: lemonFarmMobileSm,
+    alt: "中島の斜面に広がるレモン畑",
+  },
+  {
+    number: "02",
+    title: "収穫したレモンを果汁に",
+    body: "畑で収穫したレモンを、日々の食卓で使いやすい一本の果汁にしています。",
+    image: harvestBasket,
+    imageSm: harvestBasketSm,
+    alt: "籠と箱に集めた収穫後のレモン",
+  },
+  {
+    number: "03",
+    title: "小さく使い切れる150mL",
+    body: "冷蔵庫にも収まりやすく、料理や飲み物に使いやすい150mLです。",
+    image: eventLabels,
+    imageSm: eventLabelsSm,
+    alt: "食卓に並ぶ週末移住レモン果汁の小瓶",
+  },
+];
+const uses = [
+  {
+    number: "01",
+    title: "炭酸水にひと搾り",
+    body: "きりっとした酸味を、泡と一緒に。すっきりとした一杯になります。",
+    image: lemonSquash,
+    imageSm: lemonSquashSm,
+    alt: "レモン果汁を使った炭酸ドリンク",
+  },
+  {
+    number: "02",
+    title: "唐揚げや魚料理に",
+    body: "食べる直前にひと回し。香りと酸味が、いつもの料理を軽やかにします。",
+    image: lemonCooking,
+    imageSm: lemonCookingSm,
+    alt: "レモンを添えた料理",
+  },
+  {
+    number: "03",
+    title: "はちみつレモンやドレッシングに",
+    body: "甘さやオイルと合わせて、好みの味へ。台所で自由に楽しめます。",
+    image: harvestHand,
+    imageSm: harvestHandSm,
+    alt: "手のひらにのせた中島のレモン",
+  },
+];
+
+const structuredData = {
   "@context": "https://schema.org",
   "@type": "Product",
   name: "週末移住レモン果汁",
-  description: "愛媛・中島で育ったレモンから生まれた100％レモン果汁",
+  description: "愛媛・中島で育ったレモンから生まれたレモン果汁",
   image:
     "https://yano-official-site.pages.dev/images/product/weekend-lemon-juice-bottle.webp",
   brand: { "@type": "Brand", name: "週末移住レモン" },
@@ -43,54 +100,29 @@ const productStructuredData = {
     url: shopUrl,
   },
 };
-
-const features = [
-  [
-    "01",
-    "瀬戸内・中島のレモン",
-    "島の斜面にある畑で育ったレモンを使用しています。",
-  ],
-  ["02", "果汁100％", "香料や甘味料を加えず、レモンそのものの風味を届けます。"],
-  [
-    "03",
-    "飲み物にも、料理にも",
-    "甘くないから、炭酸やお酒、日々の料理に幅広く使えます。",
-  ],
-];
-
-const productDetails = [
-  ["商品名", "週末移住レモン果汁"],
-  ["内容量", "150ml"],
-  ["価格", "800円（税込）"],
-  ["原材料名", "レモン"],
-  ["保存方法", "直射日光を避け、常温で保存してください。"],
-  ["開栓後", "10℃以下で保存し、お早めにお召し上がりください。"],
-  ["販売者", "矢野諭稔（しとらすすたんどKominKa）"],
-];
-
-const heroBottles = Array.from({ length: 12 }, (_, index) => index + 1);
 ---
 
 <BaseLayout
   title="週末移住レモン果汁"
-  description="愛媛・中島で育ったレモンから生まれた100％レモン果汁。味わい、楽しみ方、畑の物語をご紹介します。"
+  description="愛媛・中島で育ったレモンから生まれたレモン果汁。味わい、楽しみ方、畑の物語をご紹介します。"
   canonical={productUrl}
-  ogImage={productOgImage}
-  preloadImages={[productBottleCutout.src]}
+  preloadImages={[productBottle.src]}
 >
   <script
     type="application/ld+json"
-    set:html={JSON.stringify(productStructuredData)}
+    is:inline
+    set:html={JSON.stringify(structuredData)}
   />
+
   <article class="product-lp">
     <section class="product-hero" aria-labelledby="product-title">
-      <div class="product-hero__pattern" aria-hidden="true">
+      <div class="hero-pattern" aria-hidden="true">
         {
           heroBottles.map((number) => (
             <picture class={`hero-bottle hero-bottle--${number}`}>
-              <source srcset={productBottleCutout.src} type="image/webp" />
+              <source srcset={productBottle.src} type="image/webp" />
               <img
-                src={productBottleCutoutPng.src}
+                src={productBottlePng.src}
                 alt=""
                 width="920"
                 height="1600"
@@ -101,12 +133,12 @@ const heroBottles = Array.from({ length: 12 }, (_, index) => index + 1);
           ))
         }
       </div>
-      <div class="product-hero__copy">
+      <div class="hero-copy">
         <p class="eyebrow">WEEKEND ISLAND PRODUCT</p>
         <h1 id="product-title"><span>週末移住</span><span>レモン果汁</span></h1>
-        <p class="product-hero__catch">中島のレモンを、ぎゅっと一本に。</p>
-        <p class="product-price">
-          <span>150ml</span><strong>800円</strong><small>（税込）</small>
+        <p class="hero-catch">中島のレモンを、ぎゅっと一本に。</p>
+        <p class="price">
+          <span>150mL</span><strong>800円</strong><small>（税込）</small>
         </p>
         <a
           class="buy-button"
@@ -119,343 +151,263 @@ const heroBottles = Array.from({ length: 12 }, (_, index) => index + 1);
       </div>
     </section>
 
-    <section class="product-intro" aria-labelledby="product-intro-title">
-      <div class="product-intro__inner">
-        <p class="eyebrow">FROM NAKAJIMA, EHIME</p>
-        <h2 id="product-intro-title">島の果実を、<br />日常の中へ。</h2>
-        <p>
-          愛媛・中島で育ったレモンから生まれた、100％レモン果汁です。炭酸やお酒に加えたり、料理の仕上げに使ったり。島の果実を、日常の中で気軽に楽しめます。
-        </p>
+    <section class="intro section-card reveal" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow">FROM NAKAJIMA</p>
+        <h2 id="intro-title">平日は街で働いて、<br />週末は船に乗る。</h2>
+        <p>中島で出会ったレモンを、<br />いつでも味わえる一本にしました。</p>
       </div>
-    </section>
-
-    <section class="features" aria-labelledby="features-title">
-      <header class="section-heading section-heading--center">
-        <p class="eyebrow">THREE THINGS</p>
-        <h2 id="features-title">レモンのおいしさを、<br />そのまま。</h2>
-      </header>
-      <div class="features__stage">
-        <picture class="features__farm">
-          <source
-            srcset={`${lemonFarmWideSm.src} 960w, ${lemonFarmWide.src} 1600w`}
-            sizes="(max-width: 767px) 90vw, 55vw"
-            type="image/webp"
-          />
+      <div class="bottle-stage" aria-label="週末移住レモン果汁の商品ボトル">
+        <span class="stage-circle" aria-hidden="true"></span>
+        <span class="lemon-orb lemon-orb--left" aria-hidden="true"></span>
+        <span class="lemon-orb lemon-orb--right" aria-hidden="true"></span>
+        <picture>
+          <source srcset={productBottle.src} type="image/webp" />
           <img
-            src={lemonFarmWideJpg.src}
-            alt="中島の畑に実るレモン"
-            width="1600"
-            height="900"
-            loading="lazy"
-            decoding="async"
-            sizes="(max-width: 767px) 90vw, 55vw"
-          />
-        </picture>
-        <picture class="features__bottle">
-          <source srcset={productBottleCutout.src} type="image/webp" />
-          <img
-            src={productBottleCutoutPng.src}
-            alt="週末移住レモン果汁"
+            src={productBottlePng.src}
+            alt="週末移住レモン果汁のボトル"
             width="920"
             height="1600"
             loading="lazy"
             decoding="async"
           />
         </picture>
-        <ol class="features__list">
-          {
-            features.map(([number, title, body]) => (
-              <li>
-                <span>{number}</span>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </li>
-            ))
-          }
-        </ol>
       </div>
     </section>
 
-    <section class="taste" aria-labelledby="taste-title">
-      <div class="taste__copy">
-        <p class="eyebrow">TASTE</p>
-        <h2 id="taste-title">島の酸っぱさを、<br />日常に。</h2>
-        <p>
-          ひと口目は、きゅっと鮮やかな酸味。<br />
-          そのあとに、レモンらしい香りと、ほのかな苦みが残ります。<br />
-          甘くないから、飲み物にも料理にも使える一本です。
-        </p>
-      </div>
-      <div class="taste__notes" aria-label="味わいの特徴">
-        <div>
-          <span class="taste-lemon" aria-hidden="true"></span><strong
-            >酸味</strong
-          ><small>きゅっと鮮やか</small>
-        </div>
-        <div>
-          <span class="taste-lemon taste-lemon--leaf" aria-hidden="true"
-          ></span><strong>香り</strong><small>レモンらしく爽やか</small>
-        </div>
-        <div>
-          <span class="taste-lemon taste-lemon--half" aria-hidden="true"
-          ></span><strong>ほのかな苦み</strong><small>あと味に、少しだけ</small>
-        </div>
-      </div>
-    </section>
-
-    <section class="enjoy" aria-labelledby="enjoy-title">
-      <header class="section-heading">
-        <p class="eyebrow">HOW TO ENJOY</p>
-        <h2 id="enjoy-title">こんなふうに、<br />楽しめます。</h2>
-      </header>
-      <div class="enjoy__grid">
-        <article class="enjoy-card">
-          <picture>
-            <source
-              srcset={`${lemonSquashSm.src} 720w, ${lemonSquash.src} 1400w`}
-              sizes="(max-width: 767px) 90vw, 33vw"
-              type="image/webp"
-            />
-            <img
-              src={lemonSquashJpg.src}
-              alt="炭酸の泡が立つレモンスカッシュと週末移住レモン果汁"
-              width="1400"
-              height="1400"
-              loading="lazy"
-              decoding="async"
-              sizes="(max-width: 767px) 90vw, 33vw"
-            />
-          </picture>
-          <div>
-            <p class="enjoy-card__number">01</p><h3>レモンスカッシュ</h3><p>
-              炭酸水で割って、島のレモンスカッシュに。
-            </p>
-          </div>
-        </article>
-        <article class="enjoy-card enjoy-card--illustration enjoy-card--pink">
-          <div class="drink-drawing drink-drawing--short" aria-hidden="true">
-            <span></span><i></i>
-          </div>
-          <div>
-            <p class="enjoy-card__number">02</p><h3>レモンサワー</h3><p>
-              焼酎やジンに加えて、すっきりと。
-            </p>
-          </div>
-        </article>
-        <article class="enjoy-card">
-          <picture>
-            <source
-              srcset={`${lemonCookingSm.src} 720w, ${lemonCooking.src} 1400w`}
-              sizes="(max-width: 767px) 90vw, 33vw"
-              type="image/webp"
-            />
-            <img
-              src={lemonCookingJpg.src}
-              alt="輪切りレモンをのせた鍋料理"
-              width="1400"
-              height="1400"
-              loading="lazy"
-              decoding="async"
-              sizes="(max-width: 767px) 90vw, 33vw"
-            />
-          </picture>
-          <div>
-            <p class="enjoy-card__number">03</p><h3>いつもの料理に</h3><p>
-              鍋料理やドレッシング、魚料理など、いつもの食卓にレモンの酸味を加えて。
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="farm-story" aria-labelledby="story-title">
-      <picture class="farm-story__hero">
-        <source
-          media="(max-width: 767px)"
-          srcset={`${lemonFarmMobileSm.src} 800w, ${lemonFarmMobile.src} 1200w`}
-          sizes="100vw"
-          type="image/webp"
-        />
-        <source
-          media="(max-width: 767px)"
-          srcset={lemonFarmMobileJpg.src}
-          type="image/jpeg"
-        />
-        <source
-          srcset={`${lemonFarmWideSm.src} 960w, ${lemonFarmWide.src} 1600w`}
-          sizes="100vw"
-          type="image/webp"
-        />
+    <section class="story section-card reveal" aria-labelledby="story-title">
+      <picture class="story-image">
         <img
-          src={lemonFarmWideJpg.src}
-          alt="中島のレモン畑"
-          width="1600"
-          height="900"
+          src={islandFerryView.src}
+          alt="船上から眺める瀬戸内海と中島の風景"
+          width={islandFerryView.width}
+          height={islandFerryView.height}
           loading="lazy"
           decoding="async"
-          sizes="100vw"
         />
       </picture>
-      <div class="farm-story__inner">
-        <div class="farm-story__copy">
-          <p class="eyebrow">THE FARM STORY</p>
-          <h2 id="story-title">島で出会った、<br />100本のレモン畑。</h2>
-          <blockquote>「もう、レモンの木は<br />全部切る」</blockquote>
-          <p>
-            この畑を長く手入れしてきたのは、古民家再生を始めた頃から、活動を見守ってくれていた島の農家さんです。
-          </p>
-          <p>
-            けれど、足を痛めてから斜面での作業が難しくなり、「もうレモンの木は全部切る」と聞きました。
-          </p>
-          <p>
-            農業は初めてでした。それでも、木がなくなることへの寂しさと、「残さないと」という衝動から、100本の手入れを引き継ぎました。
-          </p>
-          <p>
-            週末に草を刈り、枝を見て、収穫した実の行き先まで考える。古民家とレモン畑は、物理的に隣り合う場所ではありません。けれど、どちらも島で出会った人との関係から始まった活動です。
-          </p>
-          <p>このレモン果汁は、島で受け取った関係の続きにあります。</p>
-          <a class="text-arrow" href="/lemon-farm/"
-            >100本のレモン畑を見る <span aria-hidden="true">→</span></a
-          >
-        </div>
-        <div class="farm-story__photos">
-          <figure>
-            <picture
-              ><source
-                srcset={`${harvestHandSm.src} 720w, ${harvestHand.src} 1200w`}
-                sizes="(max-width: 767px) 90vw, 34vw"
-                type="image/webp"
-              /><img
-                src={harvestHandJpg.src}
-                alt="畑で収穫した二つのレモン"
-                width="1200"
-                height="1500"
-                loading="lazy"
-                decoding="async"
-                sizes="(max-width: 767px) 90vw, 34vw"
-              /></picture
-            >
-            <figcaption>
-              見た目も形も、一つずつ違う。島の畑で実ったレモンを、自分たちの手で収穫しています。
-            </figcaption>
-          </figure>
-          <picture class="farm-story__basket"
-            ><source
-              srcset={`${harvestBasketSm.src} 720w, ${harvestBasket.src} 1200w`}
-              sizes="(max-width: 767px) 90vw, 34vw"
-              type="image/webp"
-            /><img
-              src={harvestBasketJpg.src}
-              alt="籠と箱に集めた収穫後のレモン"
-              width="1200"
-              height="1500"
-              loading="lazy"
-              decoding="async"
-              sizes="(max-width: 767px) 90vw, 34vw"
-            /></picture
-          >
-        </div>
+      <div class="story-copy">
+        <header class="section-title">
+          <p class="eyebrow">STORY</p>
+          <h2 id="story-title">一本になるまで</h2>
+        </header>
+        <p>平日は街で働き、週末は船で中島へ。</p>
+        <p>
+          草を刈り、枝を整え、<br />島の人に教わりながら、<br
+          />レモン畑と少しずつ関わってきました。
+        </p>
+        <p>
+          すべてを完璧にはできなくても、<br />できる範囲で、できるだけ丁寧に。
+        </p>
+        <p>その週末の積み重ねが、<br />小さな一本のレモン果汁になりました。</p>
       </div>
     </section>
 
-    <section class="related" aria-labelledby="related-title">
-      <div class="related__episode">
-        <picture
-          ><source
-            srcset={`${eventLabelsSm.src} 900w, ${eventLabels.src} 1800w`}
-            sizes="(max-width: 767px) 90vw, 55vw"
-            type="image/webp"
-          /><img
-            src={eventLabelsJpg.src}
-            alt="色とりどりの限定ラベルが貼られたレモン果汁"
-            width="1800"
-            height="1200"
+    <section class="visual section-card reveal" aria-labelledby="visual-title">
+      <div class="visual-copy">
+        <p class="eyebrow">TASTE OF THE ISLAND</p>
+        <h2 id="visual-title">ひと口で、<br />島の酸っぱさ。</h2>
+        <p>香りも、苦みも、レモンのまま。<br />水や炭酸、お料理にも。</p>
+      </div>
+      <div class="visual-stage">
+        <span class="stage-circle" aria-hidden="true"></span>
+        <span class="lemon-orb lemon-orb--left" aria-hidden="true"></span>
+        <span class="lemon-orb lemon-orb--right" aria-hidden="true"></span>
+        <picture>
+          <source srcset={productBottle.src} type="image/webp" />
+          <img
+            src={productBottlePng.src}
+            alt="週末移住レモン果汁の商品ボトル"
+            width="920"
+            height="1600"
             loading="lazy"
             decoding="async"
-            sizes="(max-width: 767px) 90vw, 55vw"
-          /></picture
-        >
-        <div>
-          <p class="eyebrow">A SMALL CONNECTION</p><h2 id="related-title">
-            レモンから生まれた、<br />小さなつながり。
-          </h2><p>
-            イベントでは、色とりどりの絵をラベルにした一本も生まれました。レモンを売るだけでなく、島や人との関係が増えていくことも、この活動の楽しみです。
-          </p>
-        </div>
-      </div>
-      <a class="related-card" href="/lemon-farm/"
-        ><span>畑のことを、もう少し。</span><strong
-          >100本のレモン畑を見る</strong
-        ><i aria-hidden="true">→</i></a
-      >
-    </section>
-
-    <section class="details" aria-labelledby="details-title">
-      <picture class="details__image"
-        ><source srcset={productBottleCutout.src} type="image/webp" /><img
-          src={productBottleCutoutPng.src}
-          alt="週末移住レモン果汁の商品写真"
-          width="920"
-          height="1600"
-          loading="lazy"
-          decoding="async"
-        /></picture
-      >
-      <div class="details__copy">
-        <p class="eyebrow">PRODUCT INFORMATION</p>
-        <h2 id="details-title">商品情報</h2>
-        <dl>
-          {
-            productDetails.map(([term, value]) => (
-              <div>
-                <>
-                  <dt>{term}</dt>
-                  <dd>{value}</dd>
-                </>
-              </div>
-            ))
-          }
-        </dl>
+          />
+        </picture>
       </div>
     </section>
 
     <section
-      class="final-cta"
-      data-final-purchase
-      aria-labelledby="final-cta-title"
+      class="quality section-card reveal"
+      aria-labelledby="quality-title"
     >
-      <picture
-        ><source srcset={productBottleCutout.src} type="image/webp" /><img
-          src={productBottleCutoutPng.src}
-          alt="週末移住レモン果汁"
-          width="920"
-          height="1600"
+      <header class="section-title section-title--center">
+        <p class="eyebrow">QUALITY</p>
+        <h2 id="quality-title">この一本のこと</h2>
+      </header>
+      <div class="quality-list">
+        {
+          qualityPoints.map((point, index) => (
+            <article
+              class:list={[
+                "quality-item",
+                { "quality-item--reverse": index % 2 === 1 },
+              ]}
+            >
+              <picture>
+                <source
+                  srcset={`${point.imageSm.src} ${point.imageSm.width}w, ${point.image.src} ${point.image.width}w`}
+                  sizes="(max-width: 767px) calc(100vw - 64px), 50vw"
+                  type="image/webp"
+                />
+                <img
+                  src={point.image.src}
+                  alt={point.alt}
+                  width={point.image.width}
+                  height={point.image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <div class="quality-copy">
+                <p class="point-number">POINT {point.number}</p>
+                <h3>{point.title}</h3>
+                <p>{point.body}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="uses section-card reveal" aria-labelledby="uses-title">
+      <header class="section-title section-title--center">
+        <p class="eyebrow">HOW TO USE</p>
+        <h2 id="uses-title">楽しみ方</h2>
+      </header>
+      <div class="use-grid">
+        {
+          uses.map((item) => (
+            <article class="use-card">
+              <picture>
+                <source
+                  srcset={`${item.imageSm.src} ${item.imageSm.width}w, ${item.image.src} ${item.image.width}w`}
+                  sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1023px) 45vw, 360px"
+                  type="image/webp"
+                />
+                <img
+                  src={item.image.src}
+                  alt={item.alt}
+                  width={item.image.width}
+                  height={item.image.height}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <div>
+                <>
+                  <span>{item.number}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      class="information section-card reveal"
+      aria-labelledby="information-title"
+    >
+      <div class="information-image">
+        <span aria-hidden="true"></span>
+        <img
+          src={productSquare.src}
+          alt="週末移住レモン果汁の商品写真"
+          width="1200"
+          height="1200"
           loading="lazy"
           decoding="async"
-        /></picture
-      >
-      <div>
-        <p class="eyebrow">FROM THE ISLAND</p>
-        <h2 id="final-cta-title">島のレモンを、<br />食卓へ。</h2>
-        <p>週末に通うレモン畑から、一本ずつお届けします。</p>
+        />
+      </div>
+      <div class="information-copy">
+        <header class="section-title">
+          <p class="eyebrow">PRODUCT</p>
+          <h2 id="information-title">商品について</h2>
+        </header>
         <h3>週末移住レモン果汁</h3>
-        <p class="product-price">
-          <span>150ml</span><strong>800円</strong><small>（税込）</small>
+        <p class="price">
+          <span>150mL</span><strong>800円</strong><small>（税込）</small>
         </p>
+        <details>
+          <summary>原材料・保存方法などを見る</summary>
+          <dl>
+            {
+              productDetails.map(([term, value]) => (
+                <div>
+                  <>
+                    <dt>{term}</dt>
+                    <dd>{value}</dd>
+                  </>
+                </div>
+              ))
+            }
+          </dl>
+        </details>
         <a
           class="buy-button"
           href={shopUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="週末移住レモン果汁をオンラインで購入する（新しいタブで開く）"
-          ><span>オンラインで購入する</span><span aria-hidden="true">↗</span></a
         >
+          <span>オンラインで購入する</span><span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="final-cta section-card reveal"
+      data-final-purchase
+      aria-labelledby="final-title"
+    >
+      <picture class="final-photo">
+        <source
+          srcset={`${lemonFarmWideSm.src} 960w, ${lemonFarmWide.src} 1600w`}
+          sizes="100vw"
+          type="image/webp"
+        />
+        <img
+          src={lemonFarmWide.src}
+          alt="中島のレモン畑"
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <div class="final-shade" aria-hidden="true"></div>
+      <picture class="final-bottle">
+        <source srcset={productBottle.src} type="image/webp" />
+        <img
+          src={productBottlePng.src}
+          alt="週末移住レモン果汁"
+          width="920"
+          height="1600"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <div class="final-copy">
+        <p class="eyebrow">FROM THE ISLAND</p>
+        <h2 id="final-title">島の週末を、<br />食卓へ。</h2>
+        <p>中島のレモンを、ぎゅっと一本に。</p>
+        <a
+          class="buy-button"
+          href={shopUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>オンラインで購入する</span><span aria-hidden="true">↗</span>
+        </a>
       </div>
     </section>
   </article>
 
   <aside class="sticky-buy" data-sticky-buy aria-label="商品を購入">
-    <span>150ml・800円</span>
+    <span>150mL・800円</span>
     <a href={shopUrl} target="_blank" rel="noopener noreferrer">購入する ↗</a>
   </aside>
 </BaseLayout>
@@ -467,1769 +419,991 @@ const heroBottles = Array.from({ length: 12 }, (_, index) => index + 1);
   );
   const footer = document.querySelector<HTMLElement>("footer");
   let hasScrolled = window.scrollY > 520;
-  let finalPurchaseVisible = false;
+  let finalVisible = false;
   let footerVisible = false;
-  let scrollFrame = 0;
-  const updateStickyBuy = () => {
-    if (!stickyBuy) return;
-    stickyBuy.toggleAttribute(
+  const updateSticky = () =>
+    stickyBuy?.toggleAttribute(
       "data-visible",
-      hasScrolled && !finalPurchaseVisible && !footerVisible,
+      hasScrolled && !finalVisible && !footerVisible,
     );
-  };
-  const onScroll = () => {
-    if (scrollFrame) return;
-    scrollFrame = window.requestAnimationFrame(() => {
+  window.addEventListener(
+    "scroll",
+    () => {
       hasScrolled = window.scrollY > 520;
-      scrollFrame = 0;
-      updateStickyBuy();
-    });
-  };
+      updateSticky();
+    },
+    { passive: true },
+  );
   const visibilityObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.target === finalPurchase)
-          finalPurchaseVisible = entry.isIntersecting;
+        if (entry.target === finalPurchase) finalVisible = entry.isIntersecting;
         if (entry.target === footer) footerVisible = entry.isIntersecting;
       });
-      updateStickyBuy();
+      updateSticky();
     },
     { rootMargin: "0px 0px -10%" },
   );
   if (finalPurchase) visibilityObserver.observe(finalPurchase);
   if (footer) visibilityObserver.observe(footer);
-  updateStickyBuy();
-  window.addEventListener("scroll", onScroll, { passive: true });
 </script>
 
 <style>
-  :global(body) {
-    background: #36a9ee;
+  :global(html:has(.product-lp)),
+  :global(body:has(.product-lp)) {
+    max-width: 100%;
+    overflow-x: clip;
   }
+
   .product-lp {
     --blue: #36a9ee;
-    --navy: #18395e;
-    --cream: #fffdf4;
     --yellow: #ffe000;
-    --pink: #f7b8cb;
+    --cream: #fff9e9;
+    --navy: #18395e;
+    --pink: #f4a8b8;
+    box-sizing: border-box;
     overflow: clip;
+    background: var(--cream);
     color: var(--navy);
-    background: var(--blue);
+    font-family: "Noto Sans JP", sans-serif;
   }
   .product-lp *,
   .product-lp *::before,
   .product-lp *::after {
     box-sizing: border-box;
   }
-  .eyebrow {
-    margin: 0 0 1rem;
-    color: #2e7ca8;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-  }
-  h1,
-  h2,
-  h3,
-  p,
-  figure,
-  blockquote {
+  .product-lp h1,
+  .product-lp h2,
+  .product-lp h3,
+  .product-lp p {
     margin-top: 0;
   }
-  h1,
-  h2 {
+  .product-lp h1,
+  .product-lp h2 {
     font-family: "Noto Serif JP", serif;
     font-weight: 500;
-    letter-spacing: 0.02em;
   }
-  h2 {
-    margin-bottom: 1.75rem;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.45;
-  }
-  .product-hero {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(380px, 0.9fr) minmax(470px, 1.1fr);
-    gap: clamp(3rem, 7vw, 7rem);
-    align-items: center;
-    min-height: calc(100svh - 76px);
-    padding: clamp(5rem, 8vw, 8rem) max(5vw, calc((100vw - 1180px) / 2));
-  }
-  .product-hero__yano {
-    position: absolute;
-    z-index: 2;
-    top: 2rem;
-    left: max(1rem, calc((100vw - 1360px) / 2));
-    transform: scale(1);
-    transform-origin: top left;
-  }
-  .product-hero__yano :global(.yano-brand) {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-  .product-hero__visual {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 660px;
-  }
-  .product-hero__visual::before {
-    position: absolute;
-    width: min(92%, 560px);
-    aspect-ratio: 1;
-    border-radius: 48% 52% 46% 54%;
-    background: var(--yellow);
-    content: "";
-    transform: rotate(-8deg);
-  }
-  .product-hero__visual::after {
-    position: absolute;
-    right: 4%;
-    bottom: 7%;
-    width: 42%;
-    aspect-ratio: 1.5;
-    border-radius: 50%;
-    background: var(--pink);
-    content: "";
-    transform: rotate(18deg);
-  }
-  .product-hero__visual picture {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: min(72%, 370px);
-    filter: drop-shadow(16px 20px 12px rgb(24 57 94 / 28%));
-  }
-  .product-hero__visual img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .lemon-slice {
-    position: absolute;
-    width: 112px;
-    aspect-ratio: 1;
-    border: 13px solid var(--yellow);
-    border-radius: 50%;
-    opacity: 0.85;
-  }
-  .lemon-slice::before {
-    position: absolute;
-    inset: 13px;
-    border: 2px dashed var(--navy);
-    border-radius: inherit;
-    content: "";
-    opacity: 0.45;
-  }
-  .lemon-slice--one {
-    top: 12%;
-    left: 2%;
-    transform: rotate(-12deg);
-  }
-  .lemon-slice--two {
-    right: 0;
-    bottom: 11%;
-    width: 80px;
-    transform: rotate(18deg);
-  }
-  .product-hero__copy {
-    max-width: 570px;
-  }
-  .product-hero__copy .eyebrow {
-    color: var(--yellow);
-  }
-  .product-hero h1 {
-    margin-bottom: 1.2rem;
-    color: #fff;
-    font-size: clamp(3rem, 5vw, 5rem);
-    line-height: 1.3;
-  }
-  .product-hero h1 span {
-    display: block;
-  }
-  .product-hero__catch {
-    margin-bottom: 0.35rem;
-    color: var(--yellow);
-    font-size: clamp(1.25rem, 2vw, 1.65rem);
-    font-weight: 800;
-  }
-  .product-hero__sub {
-    margin-bottom: 1.4rem;
-    color: #fff;
-    font-size: 1.05rem;
-  }
-  .product-price {
-    display: flex;
-    align-items: baseline;
-    gap: 0.7rem;
-    margin: 0 0 1.5rem;
+  .eyebrow {
+    margin-bottom: 1rem;
     color: var(--navy);
-  }
-  .product-hero .product-price {
-    color: #fff;
-  }
-  .product-price span {
-    font-size: 1rem;
+    font-size: 0.72rem;
     font-weight: 700;
+    letter-spacing: 0.19em;
   }
-  .product-price strong {
-    font-size: 1.75rem;
+  .section-card {
+    width: min(calc(100% - 40px), 1200px);
+    margin: 24px auto 0;
+    border: 2px solid var(--navy);
+    border-radius: clamp(28px, 4vw, 52px);
   }
-  .product-price small {
-    font-size: 0.8rem;
+  .section-title h2 {
+    margin-bottom: 0;
+    font-size: clamp(2rem, 4vw, 3.6rem);
+    line-height: 1.35;
+    letter-spacing: 0.04em;
   }
-  .product-hero__description {
-    max-width: 34rem;
-    margin-bottom: 2rem;
-    color: #fff;
-    font-size: 0.98rem;
-    font-weight: 500;
-    line-height: 1.95;
-  }
-  .buy-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    width: min(100%, 350px);
-    min-height: 60px;
-    padding: 0.85rem 1.5rem;
-    border: 2px solid #111;
-    border-radius: 0.4rem;
-    background: var(--yellow);
-    color: var(--navy);
-    font-weight: 800;
-    text-decoration: none;
-    box-shadow: 0.38rem 0.42rem 0 #111;
-    transition:
-      transform 180ms ease,
-      box-shadow 180ms ease;
-  }
-  .buy-button:hover {
-    box-shadow: 0.55rem 0.6rem 0 #111;
-    transform: translateY(-3px);
-  }
-  .buy-button:focus-visible {
-    outline: 3px solid #fff;
-    outline-offset: 5px;
-  }
-  .features,
-  .enjoy,
-  .details,
-  .related {
-    padding: clamp(5rem, 10vw, 9rem) max(5vw, calc((100vw - 1180px) / 2));
-  }
-  .features {
-    background: var(--cream);
-  }
-  .section-heading {
-    max-width: 760px;
-    margin-bottom: clamp(3rem, 6vw, 5rem);
-  }
-  .section-heading--center {
-    margin-inline: auto;
+  .section-title--center {
     text-align: center;
-  }
-  .features__stage {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.85fr);
-    gap: clamp(2.5rem, 6vw, 6rem);
-    align-items: center;
-  }
-  .features__farm {
-    position: absolute;
-    inset: 10% 34% 8% 0;
-    display: block;
-    overflow: hidden;
-    border: 2px solid var(--navy);
-    transform: rotate(-1.2deg);
-  }
-  .features__farm img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .features__bottle {
-    position: relative;
-    z-index: 1;
-    display: block;
-    width: min(54%, 290px);
-    margin-inline: auto;
-    filter: drop-shadow(12px 18px 10px rgb(24 57 94 / 26%));
-    transform: rotate(-1.5deg);
-  }
-  .features__bottle img {
-    display: block;
-    width: 100%;
-  }
-  .features__list {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    gap: 1.1rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .features__list li {
-    position: relative;
-    display: grid;
-    grid-template-columns: 3.5rem 1fr;
-    padding: 1.4rem 1.5rem;
-    border: 2px solid var(--navy);
-    border-radius: 0.75rem;
-    background: #fff;
-    box-shadow: 0.28rem 0.32rem 0 rgb(24 57 94 / 16%);
-  }
-  .features__list li::before {
-    position: absolute;
-    top: 50%;
-    left: -0.65rem;
-    width: 1.1rem;
-    height: 1.1rem;
-    border-bottom: 2px solid var(--navy);
-    border-left: 2px solid var(--navy);
-    background: inherit;
-    content: "";
-    transform: translateY(-50%) rotate(45deg);
-  }
-  .features__list li:nth-child(2) {
-    margin-left: 2rem;
-    background: #fff7b8;
-  }
-  .features__list li:nth-child(3) {
-    background: #f8d1dc;
-  }
-  .features__list span {
-    grid-row: 1 / 3;
-    color: #2e7ca8;
-    font-size: 1.1rem;
-    font-weight: 800;
-  }
-  .features__list h3 {
-    margin: 0 0 0.45rem;
-    font-size: 1.3rem;
-  }
-  .features__list p {
-    margin: 0;
-    color: #4c5f74;
-    line-height: 1.8;
-  }
-  .taste {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(440px, 1.1fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    padding: clamp(5rem, 10vw, 9rem) max(5vw, calc((100vw - 1120px) / 2));
-    background: var(--pink);
-  }
-  .taste__copy > p:last-child {
-    margin: 0;
-    line-height: 2;
-  }
-  .taste__notes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: start;
-    gap: 1rem;
-  }
-  .taste__notes > div {
-    position: relative;
-    min-height: 250px;
-    padding: 1.4rem 0.85rem 1rem;
-    border: 2px solid var(--navy);
-    border-radius: 0.85rem;
-    background: var(--cream);
-    text-align: center;
-  }
-  .taste__notes > div::after {
-    position: absolute;
-    right: 1.5rem;
-    bottom: -0.62rem;
-    width: 1rem;
-    height: 1rem;
-    border-right: 2px solid var(--navy);
-    border-bottom: 2px solid var(--navy);
-    background: var(--cream);
-    content: "";
-    transform: rotate(45deg);
-  }
-  .taste__notes strong,
-  .taste__notes small {
-    display: block;
-  }
-  .taste__notes strong {
-    margin-top: 1rem;
-    font-size: 1.05rem;
-  }
-  .taste__notes small {
-    margin-top: 0.3rem;
-    color: #51677e;
-    line-height: 1.5;
-  }
-  .taste-lemon {
-    position: relative;
-    display: block;
-    width: 100%;
-    max-width: 118px;
-    aspect-ratio: 1;
-    margin-inline: auto;
-    border: 4px solid var(--navy);
-    border-radius: 50%;
-    background: var(--yellow);
-  }
-  .taste-lemon::before,
-  .taste-lemon::after {
-    position: absolute;
-    top: 50%;
-    left: 14%;
-    width: 72%;
-    height: 2px;
-    background: var(--navy);
-    content: "";
-    transform: rotate(30deg);
-  }
-  .taste-lemon::after {
-    transform: rotate(-30deg);
-  }
-  .taste-lemon--leaf {
-    transform: rotate(5deg) scale(0.9);
-  }
-  .taste-lemon--half {
-    border-radius: 50% 50% 12% 50%;
-    transform: rotate(18deg);
-  }
-  .enjoy {
-    background: var(--blue);
-    color: #fff;
-  }
-  .enjoy .eyebrow {
-    color: var(--yellow);
-  }
-  .enjoy__grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-  .enjoy-card {
-    overflow: hidden;
-    border: 2px solid var(--navy);
-    background: var(--cream);
-    color: var(--navy);
-    box-shadow: 0.5rem 0.55rem 0 var(--yellow);
-  }
-  .enjoy-card picture,
-  .enjoy-card > picture img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1;
-    object-fit: cover;
-  }
-  .enjoy-card > div:last-child {
-    min-height: 220px;
-    padding: 1.6rem;
-  }
-  .enjoy-card__number {
-    margin-bottom: 0.4rem;
-    color: #2e7ca8;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-  }
-  .enjoy-card h3 {
-    margin-bottom: 0.7rem;
-    font-size: 1.35rem;
-  }
-  .enjoy-card p:last-child {
-    margin: 0;
-    line-height: 1.8;
-  }
-  .enjoy-card--illustration {
-    background: #f8e56b;
-  }
-  .enjoy-card--pink {
-    background: #f5c3d2;
-  }
-  .drink-drawing {
-    position: relative;
-    display: grid;
-    place-items: center;
-    height: auto;
-    min-height: 0 !important;
-    padding: 0 !important;
-    aspect-ratio: 1;
-  }
-  .drink-drawing span {
-    width: 38%;
-    height: 58%;
-    border: 5px solid var(--navy);
-    border-top-width: 3px;
-    border-radius: 8px 8px 25px 25px;
-    transform: rotate(-3deg);
-  }
-  .drink-drawing span::before {
-    display: block;
-    width: 82%;
-    height: 58%;
-    margin: 48% auto 0;
-    border-radius: 4px 4px 18px 18px;
-    background: rgb(255 255 255 / 72%);
-    content: "";
-  }
-  .drink-drawing i {
-    position: absolute;
-    top: 19%;
-    right: 28%;
-    width: 4px;
-    height: 48%;
-    background: var(--navy);
-    transform: rotate(13deg);
-  }
-  .drink-drawing--short span {
-    height: 42%;
-    border-radius: 6px 6px 32px 32px;
-  }
-  .drink-drawing--short i {
-    height: 39%;
-  }
-  .farm-story {
-    padding-bottom: clamp(5rem, 10vw, 9rem);
-    background: var(--cream);
-  }
-  .farm-story__hero {
-    display: block;
-    width: 100%;
-    max-height: 680px;
-    overflow: hidden;
-  }
-  .farm-story__hero img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 7;
-    object-fit: cover;
-  }
-  .farm-story__inner {
-    display: grid;
-    grid-template-columns: minmax(360px, 0.85fr) minmax(480px, 1.15fr);
-    gap: clamp(4rem, 8vw, 8rem);
-    padding: clamp(4rem, 8vw, 7rem) max(5vw, calc((100vw - 1180px) / 2)) 0;
-  }
-  .farm-story__copy blockquote {
-    margin: 2.5rem 0;
-    color: #2e7ca8;
-    font-family: "Noto Serif JP", serif;
-    font-size: clamp(1.8rem, 3vw, 2.65rem);
-    font-weight: 600;
-    line-height: 1.65;
-  }
-  .farm-story__copy > p:not(.eyebrow) {
-    line-height: 2;
-  }
-  .text-arrow {
-    display: inline-flex;
-    gap: 2rem;
-    margin-top: 1.5rem;
-    padding-bottom: 0.35rem;
-    border-bottom: 1px solid currentColor;
-    font-weight: 700;
-    text-decoration: none;
-  }
-  .farm-story__photos {
-    position: relative;
-    min-height: 760px;
-  }
-  .farm-story__photos figure {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 55%;
-    margin: 0;
-  }
-  .farm-story__photos img {
-    display: block;
-    width: 100%;
-    border: 8px solid #fff;
-    box-shadow: 0.6rem 0.65rem 0 var(--yellow);
-  }
-  .farm-story__photos figcaption {
-    margin-top: 1.5rem;
-    padding-right: 1rem;
-    font-size: 0.9rem;
-    font-weight: 600;
-    line-height: 1.8;
-  }
-  .farm-story__basket {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 57%;
-    transform: rotate(2deg);
-  }
-  .details {
-    display: grid;
-    grid-template-columns: minmax(320px, 0.8fr) minmax(480px, 1.2fr);
-    gap: clamp(3rem, 8vw, 7rem);
-    align-items: center;
-    background: var(--yellow);
-  }
-  .details__image {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--cream);
-  }
-  .details__image img {
-    display: block;
-    width: 52%;
-    filter: drop-shadow(10px 14px 8px rgb(24 57 94 / 24%));
-  }
-  .details__copy dl {
-    margin: 0;
-    border-top: 1px solid rgb(24 57 94 / 35%);
-  }
-  .details__copy dl > div {
-    display: grid;
-    grid-template-columns: 8rem 1fr;
-    gap: 1.5rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid rgb(24 57 94 / 35%);
-  }
-  .details__copy dt {
-    font-weight: 800;
-  }
-  .details__copy dd {
-    margin: 0;
-    line-height: 1.7;
-  }
-  .final-cta {
-    display: grid;
-    grid-template-columns: minmax(340px, 0.85fr) minmax(440px, 1.15fr);
-    gap: clamp(3rem, 8vw, 7rem);
-    align-items: center;
-    padding: clamp(5rem, 10vw, 9rem) max(5vw, calc((100vw - 1100px) / 2));
-    background: var(--navy);
-    color: #fff;
-    border-bottom: 10px solid var(--yellow);
-  }
-  .final-cta > picture {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1;
-    border-radius: 46% 54% 52% 48%;
-    background: var(--yellow);
-    transform: rotate(-3deg);
-  }
-  .final-cta img {
-    display: block;
-    width: 60%;
-    filter: drop-shadow(10px 16px 8px rgb(0 0 0 / 24%));
-    transform: rotate(3deg);
-  }
-  .final-cta .eyebrow {
-    color: var(--yellow);
-  }
-  .final-cta h3 {
-    margin: 2rem 0 0.75rem;
-    font-size: 1.3rem;
-  }
-  .final-cta .product-price {
-    color: #fff;
-  }
-  .related {
-    background: var(--cream);
-  }
-  .related__episode {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
-    gap: clamp(3rem, 7vw, 6rem);
-    align-items: center;
-  }
-  .related__episode picture {
-    display: block;
-    border: 2px solid var(--navy);
-    box-shadow: 0.65rem 0.7rem 0 var(--pink);
-    transform: rotate(-0.5deg);
-  }
-  .related__episode img {
-    display: block;
-    width: 100%;
-  }
-  .related__episode p:last-child {
-    margin: 0;
-    line-height: 2;
-  }
-  .related-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.25rem 2rem;
-    margin-top: clamp(4rem, 8vw, 7rem);
-    padding: 2rem;
-    border: 2px solid var(--navy);
-    background: var(--yellow);
-    color: var(--navy);
-    text-decoration: none;
-  }
-  .related-card span {
-    grid-column: 1;
-    font-size: 0.85rem;
-  }
-  .related-card strong {
-    grid-column: 1;
-    font-size: 1.35rem;
-  }
-  .related-card i {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    align-self: center;
-    font-style: normal;
-    font-size: 1.5rem;
-  }
-  .sticky-buy {
-    position: fixed;
-    z-index: 40;
-    right: 12px;
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    left: 12px;
-    display: none;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 58px;
-    padding: 0.45rem 0.5rem 0.45rem 1rem;
-    border: 2px solid #111;
-    border-radius: 0.5rem;
-    background: var(--cream, #fffdf4);
-    color: #18395e;
-    box-shadow: 0.28rem 0.32rem 0 #111;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(140%);
-    transition:
-      opacity 180ms ease,
-      transform 180ms ease;
-  }
-  .sticky-buy a {
-    display: grid;
-    place-items: center;
-    min-height: 44px;
-    padding-inline: 1rem;
-    border-radius: 0.3rem;
-    background: #ffe000;
-    font-weight: 800;
-    text-decoration: none;
-  }
-  @media (max-width: 1024px) {
-    .product-hero {
-      grid-template-columns: minmax(300px, 0.85fr) minmax(400px, 1.15fr);
-      gap: 2.5rem;
-    }
-    .product-hero__visual {
-      min-height: 560px;
-    }
-    .product-hero h1 {
-      font-size: clamp(2.8rem, 6vw, 4rem);
-    }
-    .features__stage,
-    .taste,
-    .farm-story__inner,
-    .details,
-    .final-cta,
-    .related__episode {
-      grid-template-columns: 1fr;
-    }
-    .features__stage {
-      max-width: 720px;
-      margin-inline: auto;
-    }
-    .features__farm {
-      inset: 3% 20% 45% 0;
-    }
-    .features__bottle {
-      margin-right: 4%;
-    }
-    .features__list {
-      margin-top: 2rem;
-    }
-    .taste__notes {
-      max-width: 680px;
-    }
-    .farm-story__photos {
-      min-height: 780px;
-    }
-    .details__image,
-    .final-cta > picture {
-      width: min(100%, 520px);
-      margin-inline: auto;
-    }
-    .related__episode picture {
-      order: 2;
-    }
-  }
-  @media (max-width: 767px) {
-    .product-hero {
-      display: flex;
-      min-height: 0;
-      flex-direction: column;
-      gap: 1.75rem;
-      padding: 5.5rem 20px 4.5rem;
-    }
-    .product-hero__yano {
-      top: 0.85rem;
-      left: 1rem;
-      transform: scale(0.68);
-    }
-    .product-hero__visual {
-      order: 1;
-      width: 100%;
-      min-height: 0;
-      padding-top: 1.5rem;
-    }
-    .product-hero__visual picture {
-      width: min(100%, 220px);
-    }
-    .lemon-slice--one {
-      top: 9%;
-      left: 2%;
-      width: 72px;
-      border-width: 9px;
-    }
-    .lemon-slice--two {
-      right: 1%;
-      bottom: 7%;
-      width: 60px;
-      border-width: 8px;
-    }
-    .product-hero__copy {
-      order: 2;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-    .product-hero__copy .buy-button {
-      order: 6;
-      margin-bottom: 1.75rem;
-    }
-    .product-hero__description {
-      order: 7;
-    }
-    .product-hero h1 {
-      margin-bottom: 1rem;
-      font-size: clamp(2.55rem, 13vw, 3.45rem);
-      line-height: 1.3;
-    }
-    .product-hero__catch {
-      font-size: 1.18rem;
-    }
-    .product-hero__sub {
-      font-size: 0.98rem;
-    }
-    .product-hero__description {
-      font-size: 0.92rem;
-      line-height: 1.9;
-    }
-    .buy-button {
-      width: 100%;
-    }
-    .features,
-    .enjoy,
-    .details,
-    .related {
-      padding: 4.5rem 20px;
-    }
-    h2 {
-      font-size: clamp(1.9rem, 9vw, 2.6rem);
-    }
-    .section-heading {
-      margin-bottom: 2.75rem;
-    }
-    .features__stage {
-      display: block;
-    }
-    .features__farm {
-      position: relative;
-      inset: auto;
-      width: 92%;
-      margin: 0 auto 1.5rem 0;
-      transform: rotate(-1deg);
-    }
-    .features__farm img {
-      aspect-ratio: 4 / 3;
-    }
-    .features__bottle {
-      width: 68%;
-      margin: -4rem 0 2rem auto;
-    }
-    .features__list li {
-      grid-template-columns: 2.8rem 1fr;
-      padding-block: 1.5rem;
-    }
-    .features__list h3 {
-      font-size: 1.12rem;
-    }
-    .features__list p {
-      font-size: 0.9rem;
-    }
-    .taste {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      padding: 4.5rem 20px;
-    }
-    .taste__copy > p:last-child {
-      font-size: 0.92rem;
-    }
-    .taste__notes {
-      gap: 0.55rem;
-    }
-    .taste__notes strong {
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }
-    .taste__notes small {
-      font-size: 0.7rem;
-    }
-    .taste-lemon {
-      border-width: 3px;
-    }
-    .enjoy__grid {
-      display: grid;
-      grid-auto-columns: 84%;
-      grid-template-columns: none;
-      grid-auto-flow: column;
-      gap: 1rem;
-      margin-inline: -20px;
-      padding: 0 20px 1rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-    }
-    .enjoy-card {
-      scroll-snap-align: start;
-    }
-    .enjoy-card > div:last-child {
-      min-height: 205px;
-    }
-    .farm-story__hero img {
-      aspect-ratio: 4 / 5;
-    }
-    .farm-story__inner {
-      display: block;
-      padding: 4rem 20px 0;
-    }
-    .farm-story__copy blockquote {
-      font-size: 1.85rem;
-    }
-    .farm-story__copy > p:not(.eyebrow) {
-      font-size: 0.92rem;
-      line-height: 1.95;
-    }
-    .farm-story__photos {
-      display: grid;
-      gap: 2.5rem;
-      min-height: 0;
-      margin-top: 3.5rem;
-    }
-    .farm-story__photos figure,
-    .farm-story__basket {
-      position: relative;
-      inset: auto;
-      width: 88%;
-    }
-    .farm-story__photos figure {
-      margin: 0 auto 0 0;
-    }
-    .farm-story__basket {
-      margin-left: auto;
-      transform: rotate(1.5deg);
-    }
-    .farm-story__photos figcaption {
-      font-size: 0.82rem;
-    }
-    .details {
-      gap: 3rem;
-    }
-    .details__copy dl > div {
-      grid-template-columns: 6.2rem 1fr;
-      gap: 1rem;
-      font-size: 0.88rem;
-    }
-    .final-cta {
-      gap: 3rem;
-      padding: 4.5rem 20px;
-    }
-    .final-cta h3 {
-      font-size: 1.15rem;
-    }
-    .related__episode {
-      gap: 2.5rem;
-    }
-    .related__episode p:last-child {
-      font-size: 0.92rem;
-    }
-    .related-card {
-      padding: 1.4rem;
-    }
-    .related-card strong {
-      font-size: 1.05rem;
-    }
-    .sticky-buy {
-      display: flex;
-    }
-    .sticky-buy[data-visible] {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-  }
-
-  /* Product hero renewal */
-  :global(body:has(.product-lp) .site-header) {
-    position: absolute !important;
-    z-index: 60 !important;
-    border-bottom-color: transparent !important;
-    background: transparent !important;
-    color: #fff !important;
-    backdrop-filter: none !important;
-  }
-
-  :global(body:has(.product-lp) .site-header .site-logo),
-  :global(
-    body:has(.product-lp) .site-header .site-nav a:not(.site-nav__product)
-  ),
-  :global(body:has(.product-lp) .site-header .menu-button) {
-    color: #fff !important;
-  }
-
-  :global(body:has(.product-lp) .site-header .menu-button__line),
-  :global(body:has(.product-lp) .site-header .menu-button__line::before),
-  :global(body:has(.product-lp) .site-header .menu-button__line::after) {
-    background: #fff !important;
-  }
-
-  :global(body:has(.product-lp) .site-header[data-menu-open] .menu-button) {
-    color: #18395e !important;
   }
 
   .product-hero {
     position: relative;
     isolation: isolate;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
     place-items: center;
-    width: 100%;
-    min-height: min(100svh, 920px);
-    max-height: 920px;
-    padding: 92px 24px 112px;
+    min-height: 100svh;
+    padding: 7rem 1.5rem 3rem;
     overflow: hidden;
-    background:
-      radial-gradient(
-        circle at 18% 24%,
-        rgb(255 224 0 / 18%) 0 2px,
-        transparent 3px
-      ),
-      radial-gradient(
-        circle at 82% 72%,
-        rgb(255 255 255 / 14%) 0 2px,
-        transparent 3px
-      ),
-      var(--blue);
-    background-size:
-      46px 46px,
-      62px 62px,
-      auto;
+    background-color: var(--blue);
+    background-image: radial-gradient(
+      circle,
+      rgb(255 224 0 / 26%) 2px,
+      transparent 2.4px
+    );
+    background-size: 42px 42px;
   }
-
-  .product-hero::after {
-    position: absolute;
+  .hero-copy {
+    position: relative;
     z-index: 4;
-    right: -5%;
-    bottom: -72px;
-    left: -5%;
-    height: 128px;
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-    background: var(--cream);
+    display: grid;
+    justify-items: center;
+    width: min(100%, 42rem);
+    text-align: center;
+  }
+  .hero-copy::before {
+    position: absolute;
+    z-index: -1;
+    width: min(72vw, 35rem);
+    aspect-ratio: 1.35;
+    border: 1px solid rgb(255 255 255 / 42%);
+    border-radius: 50%;
+    background: rgb(255 249 233 / 12%);
     content: "";
   }
-
-  .product-hero__pattern {
+  .hero-copy .eyebrow {
+    color: var(--yellow);
+  }
+  .hero-copy h1 {
+    margin-bottom: 1rem;
+    color: #fff;
+    font-size: clamp(3.4rem, 7vw, 6.4rem);
+    line-height: 1.13;
+    letter-spacing: 0.04em;
+    text-shadow: 0 2px 16px rgb(24 57 94 / 15%);
+  }
+  .hero-copy h1 span {
+    display: block;
+  }
+  .hero-catch {
+    margin-bottom: 1.25rem;
+    color: #fff;
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    font-weight: 700;
+  }
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    margin-bottom: 1.55rem;
+    color: inherit;
+  }
+  .price span {
+    font-weight: 700;
+  }
+  .price strong {
+    font-size: 1.55rem;
+  }
+  .price small {
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+  .hero-copy .price {
+    color: #fff;
+  }
+  .buy-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    min-width: min(100%, 19rem);
+    min-height: 58px;
+    padding: 0.9rem 1.4rem;
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+    background: var(--yellow);
+    box-shadow: 0 7px 0 var(--navy);
+    color: var(--navy);
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+      transform 180ms ease,
+      box-shadow 180ms ease;
+  }
+  .buy-button:hover {
+    box-shadow: 0 4px 0 var(--navy);
+    transform: translateY(3px);
+  }
+  .buy-button:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 4px;
+  }
+  .hero-pattern {
     position: absolute;
-    z-index: 0;
     inset: 0;
-    overflow: hidden;
+    z-index: 1;
     pointer-events: none;
   }
-
   .hero-bottle {
-    --bottle-rotate: 0deg;
-    --bottle-duration: 6s;
-    --bottle-delay: 0s;
     position: absolute;
+    width: clamp(7rem, 10vw, 10rem);
+    transform: rotate(var(--rotate));
+    animation: bottleSway 5.5s ease-in-out var(--delay) infinite alternate;
+  }
+  .hero-bottle img {
     display: block;
-    height: 160px;
-    margin: 0;
-    opacity: 0;
-    filter: drop-shadow(5px 7px 7px rgb(24 57 94 / 12%));
-    transform: rotate(var(--bottle-rotate));
-    transform-origin: center;
-    animation: bottleEnter 700ms ease-out forwards;
-    animation-delay: var(--bottle-delay);
+    width: 100%;
+    height: auto;
+  }
+  .hero-bottle--1 {
+    top: -8%;
+    left: -1%;
+    --rotate: -16deg;
+    --delay: -1s;
+  }
+  .hero-bottle--2 {
+    top: 29%;
+    left: 8%;
+    --rotate: 14deg;
+    --delay: -3s;
+  }
+  .hero-bottle--3 {
+    top: 70%;
+    left: -2%;
+    --rotate: -12deg;
+    --delay: -2s;
+  }
+  .hero-bottle--4 {
+    top: -3%;
+    left: 18%;
+    --rotate: 18deg;
+    --delay: -4s;
+  }
+  .hero-bottle--5 {
+    top: 76%;
+    left: 18%;
+    --rotate: -18deg;
+    --delay: -0.5s;
+  }
+  .hero-bottle--6 {
+    top: -7%;
+    right: -1%;
+    --rotate: 16deg;
+    --delay: -2.2s;
+  }
+  .hero-bottle--7 {
+    top: 28%;
+    right: 8%;
+    --rotate: -14deg;
+    --delay: -4.2s;
+  }
+  .hero-bottle--8 {
+    top: 71%;
+    right: -2%;
+    --rotate: 13deg;
+    --delay: -1.8s;
+  }
+  .hero-bottle--9 {
+    top: 0;
+    right: 18%;
+    --rotate: -18deg;
+    --delay: -3.4s;
+  }
+  .hero-bottle--10 {
+    top: 77%;
+    right: 18%;
+    --rotate: 16deg;
+    --delay: -0.8s;
   }
 
-  .hero-bottle img {
+  .intro {
+    position: relative;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    min-height: 46rem;
+    padding: clamp(6rem, 10vw, 9rem);
+    overflow: hidden;
+    background: var(--yellow);
+  }
+  .intro-copy {
+    position: relative;
+    z-index: 3;
+    max-width: 31rem;
+  }
+  .intro-copy h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 3.3vw, 3.25rem);
+    line-height: 1.55;
+  }
+  .intro-copy > p:last-child {
+    margin-bottom: 0;
+    font-size: 1.08rem;
+    line-height: 2.05;
+  }
+  .bottle-stage,
+  .visual-stage {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 34rem;
+  }
+  .stage-circle {
+    position: absolute;
+    width: min(34rem, 90%);
+    aspect-ratio: 1;
+    border: 2px solid var(--navy);
+    border-radius: 50%;
+    background: var(--cream);
+  }
+  .bottle-stage picture,
+  .visual-stage picture {
+    position: relative;
+    z-index: 2;
+    display: block;
+    height: 35rem;
+  }
+  .bottle-stage img,
+  .visual-stage img {
     display: block;
     width: auto;
     height: 100%;
-    transform-origin: 50% 55%;
-    animation: bottleSway var(--bottle-duration) ease-in-out infinite;
-    animation-delay: calc(var(--bottle-delay) + 700ms);
+    filter: drop-shadow(0 1.4rem 1rem rgb(24 57 94 / 18%));
+  }
+  .lemon-orb {
+    position: absolute;
+    z-index: 4;
+    display: block;
+    width: clamp(5.5rem, 10vw, 9rem);
+    aspect-ratio: 1;
+    border: 2px solid var(--navy);
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at 35% 30%,
+      #fff9a8,
+      var(--yellow) 60%,
+      #eabf00
+    );
+  }
+  .lemon-orb::after {
+    position: absolute;
+    top: -10%;
+    left: 47%;
+    width: 35%;
+    height: 26%;
+    border-radius: 100% 0 100% 0;
+    background: #6e9e5f;
+    content: "";
+    transform: rotate(-20deg);
+  }
+  .lemon-orb--left {
+    bottom: 7%;
+    left: 3%;
+    filter: blur(5px);
+    transform: rotate(-9deg) scale(1.25);
+  }
+  .lemon-orb--right {
+    top: 10%;
+    right: 0;
+    filter: blur(2px);
+    transform: rotate(13deg) scale(0.72);
   }
 
-  .hero-bottle--1 {
-    --bottle-rotate: -7deg;
-    --bottle-duration: 6.8s;
-    --bottle-delay: 80ms;
-    top: 2%;
-    left: -1%;
-    height: 176px;
-  }
-  .hero-bottle--2 {
-    --bottle-rotate: 6deg;
-    --bottle-duration: 5.4s;
-    --bottle-delay: 210ms;
-    top: 5%;
-    left: 22%;
-    height: 154px;
-  }
-  .hero-bottle--3 {
-    --bottle-rotate: -5deg;
-    --bottle-duration: 7.4s;
-    --bottle-delay: 330ms;
-    top: 40%;
-    left: 8%;
-    height: 162px;
-  }
-  .hero-bottle--4 {
-    --bottle-rotate: 7deg;
-    --bottle-duration: 6.1s;
-    --bottle-delay: 150ms;
-    bottom: -5%;
-    left: -1.5%;
-    height: 174px;
-  }
-  .hero-bottle--5 {
-    --bottle-rotate: -6deg;
-    --bottle-duration: 7.7s;
-    --bottle-delay: 260ms;
-    right: auto;
-    bottom: 2%;
-    left: 22%;
-    height: 158px;
-  }
-  .hero-bottle--6 {
-    --bottle-rotate: -6deg;
-    --bottle-duration: 5.8s;
-    --bottle-delay: 390ms;
-    top: 4%;
-    right: 22%;
-    height: 156px;
-  }
-  .hero-bottle--7 {
-    --bottle-rotate: 7deg;
-    --bottle-duration: 6.9s;
-    --bottle-delay: 110ms;
-    top: 1%;
-    right: -1%;
-    bottom: auto;
-    height: 176px;
-  }
-  .hero-bottle--8 {
-    --bottle-rotate: 5deg;
-    --bottle-duration: 5.2s;
-    --bottle-delay: 440ms;
-    top: 40%;
-    right: 8%;
-    bottom: auto;
-    height: 162px;
-  }
-  .hero-bottle--9 {
-    --bottle-rotate: 6deg;
-    --bottle-duration: 7.2s;
-    --bottle-delay: 510ms;
-    top: auto;
-    right: 22%;
-    bottom: 2%;
-    left: auto;
-    height: 158px;
-  }
-  .hero-bottle--10 {
-    --bottle-rotate: -7deg;
-    --bottle-duration: 6.4s;
-    --bottle-delay: 310ms;
-    top: auto;
-    right: -1.5%;
-    bottom: -5%;
-    height: 174px;
-  }
-
-  .product-hero__copy {
-    position: relative;
-    z-index: 2;
+  .story {
     display: grid;
-    justify-items: center;
-    width: min(620px, 52vw);
-    max-width: none;
-    padding: clamp(2.2rem, 4vw, 3.5rem) clamp(2.5rem, 5vw, 4.5rem);
-    border: 1px solid rgb(255 255 255 / 32%);
-    border-radius: 46% 54% 48% 52% / 18% 20% 16% 22%;
-    background: rgb(255 253 244 / 13%);
-    box-shadow: 0 24px 70px rgb(24 57 94 / 12%);
-    text-align: center;
-    opacity: 0;
-    backdrop-filter: blur(5px);
-    animation: heroCopyEnter 800ms 180ms ease-out forwards;
-  }
-
-  .product-hero__copy .eyebrow {
-    margin-bottom: 1rem;
-    color: var(--yellow);
-  }
-
-  .product-hero h1 {
-    margin-bottom: 1rem;
-    color: #fff;
-    font-size: clamp(48px, 5vw, 82px);
-    line-height: 1.12;
-    text-shadow: 0 4px 18px rgb(24 57 94 / 14%);
-  }
-
-  .product-hero__catch {
-    margin-bottom: 1rem;
-    color: #fff;
-    font-size: clamp(20px, 1.7vw, 25px);
-    line-height: 1.55;
-  }
-
-  .product-hero .product-price {
-    justify-content: center;
-    gap: 0.55rem;
-    margin-bottom: 1.35rem;
-    color: #fff;
-  }
-
-  .product-hero .product-price span,
-  .product-hero .product-price small {
-    font-size: clamp(16px, 1.25vw, 19px);
-  }
-
-  .product-hero .product-price strong {
-    font-size: clamp(20px, 1.65vw, 24px);
-  }
-
-  .product-hero .buy-button {
-    width: min(100%, 310px);
-    min-height: 54px;
-    border-radius: 999px;
-    box-shadow: 0.28rem 0.32rem 0 #111;
-  }
-
-  .product-hero .buy-button span:last-child {
-    transition: transform 180ms ease;
-  }
-
-  .product-hero .buy-button:hover span:last-child {
-    transform: translateX(4px);
-  }
-
-  .product-intro {
-    position: relative;
-    z-index: 5;
-    margin-top: -56px;
-    padding: clamp(7rem, 10vw, 10rem) 24px clamp(5rem, 8vw, 8rem);
-    border-radius: 50% 50% 0 0 / 72px 72px 0 0;
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: center;
+    gap: clamp(3rem, 7vw, 7rem);
+    padding: clamp(6rem, 10vw, 9rem);
     background: var(--cream);
   }
+  .story-image {
+    display: block;
+    overflow: hidden;
+    border: 2px solid var(--navy);
+    border-radius: 30px;
+    aspect-ratio: 4 / 5;
+  }
+  .story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .story-copy {
+    max-width: 32rem;
+  }
+  .story-copy .section-title {
+    margin-bottom: 2.5rem;
+  }
+  .story-copy > p {
+    margin-bottom: 1.35rem;
+    font-size: 1rem;
+    line-height: 2;
+  }
 
-  .product-intro__inner {
+  .visual {
     display: grid;
-    grid-template-columns: minmax(250px, 0.7fr) minmax(320px, 1fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    align-items: start;
-    width: min(100%, 1040px);
-    margin-inline: auto;
+    grid-template-columns: 0.75fr 1.25fr;
+    align-items: center;
+    gap: 3rem;
+    min-height: 46rem;
+    padding: clamp(6rem, 10vw, 9rem);
+    overflow: hidden;
+    background: var(--yellow);
   }
-
-  .product-intro .eyebrow {
-    grid-column: 1;
+  .visual-copy {
+    position: relative;
+    z-index: 5;
   }
-
-  .product-intro h2 {
-    grid-column: 1;
+  .visual-copy h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(2.6rem, 5vw, 5rem);
+    line-height: 1.35;
+  }
+  .visual-copy > p:last-child {
     margin-bottom: 0;
+    font-size: 1.05rem;
+    line-height: 2;
+  }
+
+  .quality {
+    padding: clamp(6rem, 10vw, 9rem);
+    background: #ffe669;
+  }
+  .quality-list {
+    display: grid;
+    gap: clamp(5rem, 9vw, 8rem);
+    margin-top: clamp(4rem, 7vw, 6rem);
+  }
+  .quality-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+  .quality-item--reverse picture {
+    order: 2;
+  }
+  .quality-item picture {
+    display: block;
+    overflow: hidden;
+    border: 2px solid var(--navy);
+    border-radius: 26px;
+    aspect-ratio: 4 / 3;
+  }
+  .quality-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .quality-copy {
+    position: relative;
+    z-index: 1;
+    max-width: 30rem;
+    padding: clamp(2rem, 4vw, 3.5rem);
+  }
+  .quality-copy::before {
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: -1;
+    width: 110%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgb(255 249 233 / 62%);
+    content: "";
+    transform: translate(-50%, -50%);
+  }
+  .point-number {
+    margin-bottom: 1rem;
+    color: #8d6f00;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+  }
+  .quality-copy h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    line-height: 1.5;
+  }
+  .quality-copy > p:last-child {
+    margin-bottom: 0;
+    line-height: 1.9;
+  }
+
+  .uses {
+    padding: clamp(6rem, 10vw, 9rem);
+    background: var(--cream);
+  }
+  .use-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .use-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 2px solid var(--navy);
+    border-radius: 26px;
+    background: #fff;
+  }
+  .use-card picture {
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+  }
+  .use-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease;
+  }
+  .use-card:hover img {
+    transform: scale(1.035);
+  }
+  .use-card > div {
+    flex: 1;
+    padding: 1.5rem 1.5rem 1.75rem;
+  }
+  .use-card span {
+    color: #c57386;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+  }
+  .use-card h3 {
+    margin: 0.6rem 0 0.8rem;
+    font-size: 1.2rem;
+    line-height: 1.55;
+  }
+  .use-card p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  .information {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(3rem, 8vw, 7rem);
+    padding: clamp(6rem, 10vw, 9rem);
+    background: #fffef8;
+  }
+  .information-image {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-width: 0;
+  }
+  .information-image span {
+    position: absolute;
+    width: 92%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--yellow);
+  }
+  .information-image img {
+    position: relative;
+    width: min(100%, 32rem);
+    height: auto;
+    border: 2px solid var(--navy);
+    border-radius: 28px;
+    mix-blend-mode: multiply;
+  }
+  .information-copy {
+    min-width: 0;
+  }
+  .information-copy .section-title {
+    margin-bottom: 2.5rem;
+  }
+  .information-copy > h3 {
+    margin-bottom: 1rem;
+    font-size: 1.45rem;
+  }
+  details {
+    margin: 1.5rem 0 2rem;
+    border-top: 2px solid var(--navy);
+    border-bottom: 2px solid var(--navy);
+  }
+  summary {
+    position: relative;
+    padding: 1.15rem 2.5rem 1.15rem 0;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    position: absolute;
+    right: 0.25rem;
+    content: "+";
+    font-size: 1.4rem;
+  }
+  details[open] summary::after {
+    content: "−";
+  }
+  dl {
+    margin: 0 0 1rem;
+  }
+  dl div {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid rgb(24 57 94 / 18%);
+  }
+  dt {
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  dd {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+
+  .final-cta {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 42rem;
+    padding: clamp(5rem, 9vw, 8rem);
+    overflow: hidden;
+    color: #fff;
+  }
+  .final-photo,
+  .final-shade {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+  }
+  .final-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .final-shade {
+    z-index: -1;
+    background: linear-gradient(
+      90deg,
+      rgb(24 57 94 / 76%),
+      rgb(24 57 94 / 30%)
+    );
+  }
+  .final-bottle {
+    justify-self: center;
+    order: 2;
+    display: block;
+    height: min(58vw, 36rem);
+  }
+  .final-bottle img {
+    width: auto;
+    height: 100%;
+    filter: drop-shadow(0 1.5rem 1.2rem rgb(0 0 0 / 28%));
+  }
+  .final-copy {
+    max-width: 31rem;
+  }
+  .final-copy .eyebrow {
+    color: var(--yellow);
+  }
+  .final-copy h2 {
+    margin-bottom: 1.25rem;
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    line-height: 1.35;
+  }
+  .final-copy > p {
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .sticky-buy {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 0.7rem 0.65rem 1rem;
+    border: 2px solid var(--navy);
+    border-radius: 999px;
+    background: #fffef8;
     color: var(--navy);
-    font-size: clamp(2.3rem, 3.8vw, 3.8rem);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(1rem);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
   }
-
-  .product-intro__inner > p:last-child {
-    grid-column: 2;
-    grid-row: 1 / 3;
-    margin: 2rem 0 0;
-    font-size: clamp(1rem, 1.3vw, 1.12rem);
-    line-height: 2.05;
+  .sticky-buy[data-visible] {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
   }
-
-  @media (max-width: 1024px) {
-    .hero-bottle--9,
-    .hero-bottle--10,
-    .hero-bottle--11,
-    .hero-bottle--12 {
-      display: block;
-    }
-
-    .product-hero {
-      min-height: min(100svh, 860px);
-      padding-inline: 20px;
-    }
-
-    .product-hero__copy {
-      width: min(520px, 68vw);
-      padding-inline: 3rem;
-      background: rgb(54 169 238 / 72%);
-    }
-
-    .hero-bottle {
-      height: 132px;
-    }
-
-    .hero-bottle--1 {
-      top: 3%;
-      left: -3%;
-      height: 152px;
-    }
-
-    .hero-bottle--2 {
-      top: 7%;
-      right: auto;
-      left: 18%;
-      height: 126px;
-    }
-
-    .hero-bottle--3 {
-      top: 39%;
-      left: 4%;
-      height: 136px;
-    }
-
-    .hero-bottle--4 {
-      bottom: -4%;
-      left: 8%;
-      height: 148px;
-    }
-
-    .hero-bottle--5 {
-      right: 8%;
-      bottom: -4%;
-      left: auto;
-      height: 148px;
-    }
-
-    .hero-bottle--6 {
-      top: 7%;
-      right: 18%;
-      left: auto;
-      height: 126px;
-    }
-
-    .hero-bottle--7 {
-      top: 3%;
-      right: -3%;
-      bottom: auto;
-      height: 152px;
-    }
-
-    .hero-bottle--8 {
-      top: 39%;
-      right: 4%;
-      bottom: auto;
-      height: 136px;
-    }
-
-    .hero-bottle--9,
-    .hero-bottle--10 {
-      display: none;
-    }
+  .sticky-buy span {
+    font-size: 0.78rem;
+    font-weight: 700;
   }
-
-  @media (max-width: 767px) {
-    :global(
-      body:has(.product-lp) .site-header .site-nav a:not(.site-nav__product)
-    ) {
-      color: #18395e !important;
-    }
-
-    .product-hero {
-      display: grid;
-      min-height: min(100svh, 760px);
-      max-height: 760px;
-      padding: 78px 17px 76px;
-    }
-
-    .product-hero::after {
-      bottom: -48px;
-      height: 86px;
-    }
-
-    .product-hero__copy {
-      order: initial;
-      width: 100%;
-      max-width: 360px;
-      padding: 2rem 1rem 2.1rem;
-      border-radius: 43% 57% 46% 54% / 13% 16% 12% 17%;
-      background: rgb(54 169 238 / 68%);
-      backdrop-filter: blur(4px);
-    }
-
-    .product-hero__copy .eyebrow {
-      margin-bottom: 0.75rem;
-      font-size: 0.65rem;
-    }
-
-    .product-hero h1 {
-      margin-bottom: 0.8rem;
-      font-size: clamp(38px, 11.5vw, 50px);
-      line-height: 1.1;
-    }
-
-    .product-hero__catch {
-      max-width: 17rem;
-      margin-bottom: 0.8rem;
-      font-size: clamp(17px, 4.8vw, 19px);
-    }
-
-    .product-hero .product-price {
-      margin-bottom: 1rem;
-    }
-
-    .product-hero .product-price span,
-    .product-hero .product-price small {
-      font-size: 15px;
-    }
-
-    .product-hero .product-price strong {
-      font-size: 19px;
-    }
-
-    .product-hero .buy-button {
-      order: initial;
-      width: min(100%, 280px);
-      min-height: 50px;
-      margin: 0;
-      padding-inline: 1.2rem;
-      font-size: 0.9rem;
-    }
-
-    .hero-bottle {
-      height: 96px;
-    }
-
-    .hero-bottle--1 {
-      top: 5%;
-      left: -5%;
-      height: 122px;
-    }
-    .hero-bottle--2 {
-      top: 25%;
-      left: 3%;
-      height: 86px;
-    }
-    .hero-bottle--3 {
-      bottom: 1%;
-      left: 17%;
-      height: 118px;
-    }
-    .hero-bottle--4 {
-      bottom: 20%;
-      left: -3%;
-      height: 82px;
-    }
-    .hero-bottle--5 {
-      top: 4%;
-      right: -5%;
-      height: 124px;
-    }
-    .hero-bottle--6 {
-      top: 26%;
-      right: 2%;
-      left: auto;
-      height: 84px;
-    }
-    .hero-bottle--7 {
-      right: 16%;
-      bottom: 0;
-      height: 120px;
-    }
-    .hero-bottle--8 {
-      right: -3%;
-      bottom: 21%;
-      height: 82px;
-    }
-
-    .product-intro {
-      margin-top: -38px;
-      padding: 6rem 20px 4.5rem;
-      border-radius: 50% 50% 0 0 / 42px 42px 0 0;
-    }
-
-    .product-intro__inner {
-      display: block;
-    }
-
-    .product-intro h2 {
-      margin-bottom: 1.5rem;
-      font-size: clamp(2rem, 9vw, 2.7rem);
-    }
-
-    .product-intro__inner > p:last-child {
-      margin: 0;
-      font-size: 0.96rem;
-      line-height: 1.95;
-    }
+  .sticky-buy a {
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    background: var(--yellow);
+    color: var(--navy);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-decoration: none;
   }
-
-  /* Diagonal bottle streams */
-  .hero-bottle--1 {
-    --bottle-rotate: -18deg;
-    top: -9%;
-    left: -3%;
-    height: 202px;
-  }
-  .hero-bottle--2 {
-    --bottle-rotate: 14deg;
-    top: 18%;
-    left: 10%;
-    height: 190px;
-  }
-  .hero-bottle--3 {
-    --bottle-rotate: -11deg;
-    top: -6%;
-    left: 20%;
-    height: 182px;
-  }
-  .hero-bottle--4 {
-    --bottle-rotate: 16deg;
-    top: 57%;
-    left: -2%;
-    height: 196px;
-  }
-  .hero-bottle--5 {
-    --bottle-rotate: -15deg;
-    top: 76%;
-    left: 11%;
-    height: 188px;
-  }
-  .hero-bottle--6 {
-    --bottle-rotate: 19deg;
-    top: 49%;
-    left: 21%;
-    height: 180px;
-  }
-  .hero-bottle--7 {
-    --bottle-rotate: 18deg;
-    top: -10%;
-    right: -3%;
-    bottom: auto;
-    height: 202px;
-  }
-  .hero-bottle--8 {
-    --bottle-rotate: -14deg;
-    top: 18%;
-    right: 10%;
-    bottom: auto;
-    height: 190px;
-  }
-  .hero-bottle--9 {
-    --bottle-rotate: 11deg;
-    top: -6%;
-    right: 20%;
-    bottom: auto;
-    left: auto;
-    height: 182px;
-  }
-  .hero-bottle--10 {
-    --bottle-rotate: -16deg;
-    top: 57%;
-    right: -2%;
-    bottom: auto;
-    height: 196px;
-  }
-  .hero-bottle--11 {
-    --bottle-rotate: 15deg;
-    top: 76%;
-    right: 11%;
-    height: 188px;
-  }
-  .hero-bottle--12 {
-    --bottle-rotate: -19deg;
-    top: 49%;
-    right: 21%;
-    height: 180px;
-  }
-
-  @media (max-width: 1024px) {
-    .hero-bottle--9,
-    .hero-bottle--10,
-    .hero-bottle--11,
-    .hero-bottle--12 {
-      display: block;
-    }
-
-    .hero-bottle--1,
-    .hero-bottle--7 {
-      height: 166px;
-    }
-
-    .hero-bottle--2,
-    .hero-bottle--8 {
-      right: auto;
-      left: 8%;
-      height: 150px;
-    }
-
-    .hero-bottle--8 {
-      right: 8%;
-      left: auto;
-    }
-
-    .hero-bottle--3,
-    .hero-bottle--9 {
-      height: 142px;
-    }
-
-    .hero-bottle--4,
-    .hero-bottle--10 {
-      height: 160px;
-    }
-
-    .hero-bottle--5,
-    .hero-bottle--11 {
-      right: auto;
-      left: 9%;
-      height: 148px;
-    }
-
-    .hero-bottle--11 {
-      right: 9%;
-      left: auto;
-    }
-
-    .hero-bottle--6,
-    .hero-bottle--12 {
-      height: 140px;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .hero-bottle--1 {
-      top: -4%;
-      left: -9%;
-      height: 128px;
-    }
-
-    .hero-bottle--2 {
-      top: 24%;
-      left: 3%;
-      height: 106px;
-    }
-
-    .hero-bottle--3 {
-      top: 52%;
-      left: -7%;
-      height: 120px;
-    }
-
-    .hero-bottle--4 {
-      top: 81%;
-      left: 4%;
-      height: 110px;
-    }
-
-    .hero-bottle--7 {
-      top: -5%;
-      right: -9%;
-      height: 128px;
-    }
-
-    .hero-bottle--8 {
-      top: 24%;
-      right: 3%;
-      left: auto;
-      height: 106px;
-    }
-
-    .hero-bottle--9 {
-      top: 52%;
-      right: -7%;
-      height: 120px;
-    }
-
-    .hero-bottle--10 {
-      top: 81%;
-      right: 4%;
-      height: 110px;
-    }
-
-    .hero-bottle--5,
-    .hero-bottle--6,
-    .hero-bottle--11,
-    .hero-bottle--12 {
-      display: none;
-    }
-  }
-
-  @keyframes bottleEnter {
-    from {
-      opacity: 0;
-      translate: 0 12px;
-    }
-    to {
-      opacity: 1;
-      translate: 0 0;
-    }
+  .reveal {
+    animation: sectionEnter 650ms ease both;
   }
 
   @keyframes bottleSway {
-    0%,
-    100% {
-      transform: rotate(-1.4deg);
-    }
-    50% {
-      transform: rotate(1.4deg);
+    to {
+      transform: rotate(calc(var(--rotate) + 3deg)) translateY(-7px);
     }
   }
-
-  @keyframes heroCopyEnter {
+  @keyframes sectionEnter {
     from {
       opacity: 0;
-      translate: 0 14px;
+      transform: translateY(18px);
     }
     to {
       opacity: 1;
-      translate: 0 0;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .section-card {
+      width: min(calc(100% - 32px), 1200px);
+    }
+    .intro,
+    .visual,
+    .story,
+    .information {
+      padding: 6rem 3rem;
+    }
+    .quality,
+    .uses {
+      padding: 6rem 3rem;
+    }
+    .intro {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+    .story {
+      gap: 3rem;
+    }
+    .use-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .use-card:last-child {
+      grid-column: 1 / -1;
+      width: calc(50% - 0.75rem);
+      justify-self: center;
+    }
+    .hero-bottle {
+      width: clamp(6.5rem, 12vw, 8rem);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .section-card {
+      width: calc(100% - 20px);
+      margin-top: 12px;
+      border-radius: 28px;
+    }
+    .product-hero {
+      min-height: 100svh;
+      padding: 6.5rem 1.1rem 2rem;
+      background-size: 28px 28px;
+    }
+    .hero-copy h1 {
+      font-size: clamp(3rem, 15vw, 4.15rem);
+    }
+    .hero-copy::before {
+      width: 98vw;
+    }
+    .hero-catch {
+      max-width: 18rem;
+      line-height: 1.8;
+    }
+    .hero-bottle {
+      width: 6.6rem;
+    }
+    .hero-bottle--2,
+    .hero-bottle--4,
+    .hero-bottle--5,
+    .hero-bottle--7,
+    .hero-bottle--9,
+    .hero-bottle--10 {
+      display: none;
+    }
+    .hero-bottle--1 {
+      top: -3%;
+      left: -10%;
+    }
+    .hero-bottle--3 {
+      top: 70%;
+      left: -12%;
+    }
+    .hero-bottle--6 {
+      top: 8%;
+      right: -13%;
+    }
+    .hero-bottle--8 {
+      top: 72%;
+      right: -10%;
+    }
+    .buy-button {
+      min-height: 56px;
+    }
+    .intro,
+    .visual,
+    .story,
+    .information,
+    .final-cta {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding: 5rem 1.25rem;
+    }
+    .intro-copy,
+    .visual-copy,
+    .story-copy,
+    .information-copy {
+      max-width: 100%;
+    }
+    .intro-copy,
+    .visual-copy {
+      text-align: center;
+    }
+    .intro-copy h2 {
+      font-size: 2rem;
+    }
+    .intro-copy > p:last-child {
+      font-size: 0.98rem;
+    }
+    .bottle-stage,
+    .visual-stage {
+      min-height: 28rem;
+    }
+    .bottle-stage picture,
+    .visual-stage picture {
+      height: 27rem;
+    }
+    .lemon-orb--left {
+      left: -8%;
+    }
+    .lemon-orb--right {
+      right: -8%;
+    }
+    .story-image {
+      aspect-ratio: 4 / 3;
+    }
+    .story-copy {
+      order: 2;
+    }
+    .story-copy > p {
+      font-size: 0.95rem;
+    }
+    .visual-copy h2 {
+      font-size: 2.8rem;
+    }
+    .quality,
+    .uses {
+      padding: 5rem 1.25rem;
+    }
+    .quality-list {
+      gap: 4rem;
+      margin-top: 3.5rem;
+    }
+    .quality-item {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .quality-item--reverse picture {
+      order: 0;
+    }
+    .quality-copy {
+      padding: 1.5rem 0.8rem;
+    }
+    .quality-copy::before {
+      width: 96%;
+    }
+    .quality-item picture {
+      aspect-ratio: 4 / 3;
+    }
+    .use-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .use-card:last-child {
+      grid-column: auto;
+      width: auto;
+    }
+    .information-image img {
+      width: min(100%, 24rem);
+    }
+    dl div {
+      grid-template-columns: 5.5rem 1fr;
+    }
+    .information-copy .buy-button {
+      width: 100%;
+    }
+    .final-cta {
+      min-height: 45rem;
+      align-content: center;
+      text-align: center;
+    }
+    .final-bottle {
+      order: 0;
+      height: 20rem;
+    }
+    .final-copy {
+      display: grid;
+      justify-items: center;
+    }
+    .final-copy h2 {
+      font-size: 3rem;
+    }
+    .final-shade {
+      background: rgb(24 57 94 / 55%);
+    }
+    .sticky-buy {
+      right: 0.6rem;
+      bottom: 0.6rem;
+      left: 0.6rem;
+      justify-content: space-between;
+    }
+    .sticky-buy span {
+      margin-left: 0.4rem;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .product-hero {
+      padding-inline: 0.85rem;
+    }
+    .hero-copy h1 {
+      font-size: 3rem;
+    }
+    .hero-catch {
+      font-size: 0.95rem;
+    }
+    .hero-copy .price {
+      margin-bottom: 1.25rem;
+    }
+    .intro,
+    .visual,
+    .story,
+    .information,
+    .final-cta,
+    .quality,
+    .uses {
+      padding-inline: 1rem;
+    }
+    .section-title h2 {
+      font-size: 1.9rem;
+    }
+    .visual-copy h2,
+    .final-copy h2 {
+      font-size: 2.65rem;
+    }
+    .bottle-stage picture,
+    .visual-stage picture {
+      height: 24rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .buy-button,
-    .sticky-buy {
+    .hero-bottle {
+      animation: none;
+    }
+    .reveal {
+      opacity: 1;
+      transform: none;
       transition: none;
     }
-
-    .hero-bottle,
-    .hero-bottle img,
-    .product-hero__copy {
-      opacity: 1;
-      animation: none;
-      translate: none;
+    .use-card img,
+    .buy-button {
+      transition: none;
     }
   }
 </style>
